@@ -1,0 +1,97 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+*:focus {
+	outline: 0;
+}
+
+html {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+	align-items: center;
+	background-color: #010b10;
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.loader {
+	filter: url(#gooey);
+	height: 200px;
+	position: relative;
+	width: 200px;
+}
+
+.loader span:before {
+	background-image: linear-gradient(
+											#fce4ec,
+											#03a9f4
+										);
+	border-radius: 50%;
+	box-shadow: 0 0 30px #03a9f4;
+	content: '';
+	height: 40px;
+	left: calc(50% - 20px);
+	position: absolute;
+	top: 0;
+	width: 40px;
+}
+
+.loader span {
+	animation: animate 4s ease-in-out infinite;
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.loader span:nth-child(1) {
+	animation-delay: calc(0.2s * 1);
+}
+
+.loader span:nth-child(2) {
+	animation-delay: calc(0.2s * 2);
+}
+
+.loader span:nth-child(3) {
+	animation-delay: calc(0.2s * 3);
+}
+
+.loader span:nth-child(4) {
+	animation-delay: calc(0.2s * 4);
+}
+
+.loader span:nth-child(5) {
+	animation-delay: calc(0.2s * 5);
+}
+
+.loader span:nth-child(6) {
+	animation-delay: calc(0.2s * 6);
+}
+
+.loader span:nth-child(7) {
+	animation-delay: calc(0.2s * 7);
+}
+
+svg {
+	height: 0;
+	width: 0;
+}
+
+@keyframes animate {
+	0% {
+		transform: rotate(0);
+	}
+
+	50%,
+	100% {
+		transform: rotateZ(360deg)
+	}
+}

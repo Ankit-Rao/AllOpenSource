@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: 0;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+section {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+}
+
+section .book:before {
+	background: url('https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fsolapa.jpg?alt=media&token=57a2e476-4d1b-45ca-8285-51f7cc1d18d8') #202020 center/contain repeat scroll;
+	transform: rotateY(90deg);
+	transform-origin: left;
+	width: 60px;
+}
+
+section .book:before,
+section .book:after {
+	content: '';
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+
+section .book {
+	box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.2);
+	height: 567px;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: box-shadow 0.5s ease,
+							transform 0.5s ease;
+	width: 383px;
+}
+
+section .book:after {
+	background: url('https://firebasestorage.googleapis.com/v0/b/fire-fotos-8e3f9.appspot.com/o/img%2Fback-book.jpg?alt=media&token=3601433c-648a-4671-8e04-e1d80769a71c') #202020 center/contain repeat scroll;
+	transform: rotateY(180deg) translateZ(60px);
+	transform-origin: center;
+	width: 100%;
+}
+
+section .book:hover,
+section .book:focus {
+	box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.2);
+	transform: rotateY(35deg);
+}
+
+section .book:active {
+	transform: rotateY(180deg);
+}
+
+section .book img {
+	height: 100%;
+	left: 0;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
