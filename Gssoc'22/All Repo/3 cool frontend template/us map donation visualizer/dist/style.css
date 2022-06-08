@@ -1,0 +1,62 @@
+html {
+  font-family: sans-serif;
+}
+
+.title {
+  text-align: center;
+}
+
+.rank-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  text-align: center;
+}
+
+.rank {
+  margin: 10px;
+}
+
+h1 {
+  text-transform: capitalize;
+}
+
+h2 {
+  font-size: 15px;
+}
+
+.map-container {
+  position: relative;
+  margin: 0 10%;
+  width: 80%;
+  height: 50vw;
+}
+
+.map {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.overall {
+  opacity: 1;
+  left: -2.2%;
+  top: 0.6vw;
+  width: 102.5%;
+}
+
+.outlines {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.source {
+  width: 100%;
+  text-align: center;
+}

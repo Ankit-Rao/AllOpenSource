@@ -1,0 +1,252 @@
+@import "variables";
+
+// Button
+%btn-shared {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+  text-decoration: none;
+  border: none;
+  font-weight: $weight-medium;
+  font-size: $font-small;
+}
+
+.btn {
+  @extend %btn-shared;
+
+  &-primary {
+    background: $primary-color;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &-secondary {
+    border-radius: 30px;
+    background: $secondary-color;
+    color: #fff;
+    font-size: $font-small;
+    padding: 0.6rem 1.7rem;
+  }
+
+  &-light {
+    background: initial;
+    color: $text-primary-color;
+    opacity: 0.8;
+    border: $border-primary;
+
+    &:hover {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -2px,
+        rgba(0, 0, 0, 0.3) 0px 2px 5px -3px;
+    }
+  }
+}
+
+// Section
+section {
+  padding: 0 2rem;
+}
+
+// Horizontal rule
+.underline {
+  width: 100%;
+  border-bottom: $border-primary;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 6rem 0;
+  text-align: center;
+
+  h1 {
+    @extend %heading-one;
+    max-width: 900px;
+    margin: 0 auto 1rem;
+  }
+
+  p {
+    font-size: 1.3rem;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    color: $text-other-color;
+  }
+}
+
+.header-text-2 {
+  h2 {
+    font-size: $font-medium;
+    color: $text-primary-color-2;
+    font-weight: $weight-small;
+  }
+
+  p {
+    color: $text-other-color;
+    font-size: 1.5rem;
+    font-weight: $weight-xsmall;
+    max-width: 600px;
+  }
+}
+
+// Flex Align
+%flex-align {
+  display: flex;
+  align-items: center;
+}
+
+// Heading text
+%heading-one {
+  font-size: $font-xlarge;
+  letter-spacing: -0.15rem;
+  line-height: 1.2;
+  color: $text-secondary-color;
+  margin-bottom: 1rem;
+}
+
+%heading-two {
+  font-size: $font-large;
+  text-align: center;
+  line-height: 2.5rem;
+  color: $text-primary-color-2;
+  padding: 0 2.5rem;
+}
+
+.heading-two {
+  color: $text-primary-color-2;
+  font-size: $font-large;
+  font-weight: $weight-small;
+  text-align: center;
+  line-height: 2.8rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+// Grid card
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+// Card one
+.card-container-one {
+  grid-auto-rows: 200px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 150px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: $text-primary-color-2;
+      font-weight: 600;
+    }
+  }
+}
+
+// Card two
+.card-container-two {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4rem;
+  padding-bottom: 3rem;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+
+    h2 {
+      font-size: 2.2rem;
+      color: $text-primary-color-2;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      font-size: $font-small;
+    }
+  }
+
+  img {
+    width: 100%;
+    width: calc(100% + 40px);
+  }
+}
+
+// Media Queries
+
+// ================ @1000px =====================
+@media (max-width: 1025px) {
+  %heading-one {
+    font-size: $font-large;
+  }
+
+  %heading-two {
+    font-size: $font-medium;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .card-container-one {
+    grid-template-columns: repeat(2, 1fr);
+
+    .card {
+      img {
+        width: 140px;
+      }
+    }
+  }
+
+  // Card Two
+  .card-container-two {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+
+    img {
+      width: 350px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  // hero cards
+  .card-container-one {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  // Card Two
+  .card-container-two {
+    img {
+      width: 100%;
+    }
+  }
+
+  section {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  %heading-two {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: $weight-small;
+    line-height: 2.5rem;
+    color: $text-primary-color-2;
+    padding: 0 2.5rem;
+  }
+}

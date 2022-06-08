@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "YouTube Night Mode"
+    },
+    "description": {
+        "message": "Thay đổi YouTube sang giao diện mới với nhiều kiểu: chủ đề chế độ tối, chủ đề có lá rơi, chủ đề có tuyết rơi, v.v."
+    },
+    "default_title": {
+    	"message": "Bật/Tắt giao diện YouTube"
+    }
+}

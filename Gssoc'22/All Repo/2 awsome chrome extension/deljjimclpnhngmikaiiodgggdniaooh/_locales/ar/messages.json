@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Darker"
+    },
+    "description": {
+        "message": "تغيير YouTube إلى مظاهر جديدة مع العديد من الأنماط: مظاهر الوضع القاتم ، والموضوعات ذات الأوراق المتساقطة ، والمواضيع مع تساقط الثلوج وما إلى ذلك."
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

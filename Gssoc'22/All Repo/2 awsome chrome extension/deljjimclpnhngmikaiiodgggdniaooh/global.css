@@ -1,0 +1,22 @@
+ytd-toggle-theme-compact-link-renderer{display:none !important;}
+
+#yttheme-popouticon{
+	cursor:pointer;
+	display:none;
+	position:absolute;
+	top:-15px;
+	left:-15px;
+	height:72px;
+	background-color: rgba(255,255,255,.5);
+    transform: scale(.4);
+    border-radius: 5px;
+    filter: invert(1);
+	background-image:url('chrome-extension://__MSG_@@deljjimclpnhngmikaiiodgggdniaooh/pip.png');
+	background-position: 10px -4px;
+    width: 80px;
+    background-repeat: no-repeat;
+}
+
+#yttheme-popouticon:hover{
+	background-color: rgba(255,255,255,.7);
+}

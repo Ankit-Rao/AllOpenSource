@@ -1,0 +1,18 @@
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+  background-color: #121212;
+}
+body::-webkit-scrollbar-thumb {
+    background: darkgray; 
+}
+ytd-multi-page-menu-renderer ytd-account-settings .ytd-account-settings::-webkit-scrollbar{width:4px; background-color:#242424;}
+div.gstl_50.sbdd_a{filter:invert(85%);}
+#logo svg, #right-arrow ytd-button-renderer, #left-arrow ytd-button-renderer, paper-button{filter:brightness(80%);}
+div.gstl_50.sbdd_a *{text-shadow:none !important;font-weight:normal !important;color:#010101 !important;}
+
+
+#chips-wrapper #left-arrow, #chips-wrapper #right-arrow{background:none !important; background-color:transparent !important;}
+yt-chip-cloud-chip-renderer[chip-style="STYLE_HOME_FILTER"][selected]{
+	background-color:lightgray !important;
+}

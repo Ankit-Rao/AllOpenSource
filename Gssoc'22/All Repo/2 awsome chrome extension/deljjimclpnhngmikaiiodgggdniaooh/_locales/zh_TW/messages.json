@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "将YouTube改为具有多种风格的新外观：暗模式主题，落叶主题，落雪主题等。"
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

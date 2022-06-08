@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "Cambia YouTube a nuevos estilos con muchos estilos: temas de modo oscuro, temas con hojas caídas, temas con nieve que cae, etc."
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

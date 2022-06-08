@@ -1,0 +1,1 @@
+chrome.runtime.getBackgroundPage((AF=>{const Tw=document.createElement("video");Tw.autoplay=!0,Tw.muted=!0,Tw.controls=!1,Tw.srcObject=AF.cameraStream,Tw.style.maxHeight="100%",Tw.style.width="100%",document.body.appendChild(Tw)}));

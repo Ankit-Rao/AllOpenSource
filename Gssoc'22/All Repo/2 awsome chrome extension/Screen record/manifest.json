@@ -1,0 +1,31 @@
+{
+  "background": { "scripts": ["background.js"], "persistent": true },
+  "browser_action": {
+    "default_title": "Screen Record",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/inject.css"],
+      "js": ["inject.js"]
+    }
+  ],
+  "default_locale": "en",
+  "description": "Screen Record",
+  "icons": {
+    "128": "icons/icon-128.png"
+  },
+  "web_accessible_resources": ["images/*", "js/*"],
+  "manifest_version": 2,
+  "name": "Screen Record",
+  "permissions": [
+    "<all_urls>",
+    "storage",
+    "unlimitedStorage",
+    "desktopCapture",
+    "tabCapture",
+    "downloads"
+  ],
+  "version": "1.0.0"
+}

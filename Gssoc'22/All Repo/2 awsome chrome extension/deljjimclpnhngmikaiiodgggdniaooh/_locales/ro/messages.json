@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "Schimbă YouTube la noul aspect cu mai multe stiluri: temele în modul închis, temele cu frunze care se încadrează, temele cu zăpadă în declin etc."
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

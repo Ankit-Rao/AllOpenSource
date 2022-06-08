@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "ダークモードのテーマ、落ち葉のテーマ、降雪のテーマなど、YouTubeをさまざまなスタイルの新しい外観に変更します。"
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

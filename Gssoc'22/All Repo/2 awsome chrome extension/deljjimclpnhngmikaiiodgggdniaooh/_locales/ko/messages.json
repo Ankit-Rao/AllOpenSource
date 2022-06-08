@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "어두운 스타일의 테마, 낙엽이있는 테마, 떨어지는 눈이있는 테마 등 많은 스타일을 가진 새로운 외모로 YouTube를 바꿉니다."
+    },
+    "default_title": {
+    	"message": "ON / OFF"
+    }
+}

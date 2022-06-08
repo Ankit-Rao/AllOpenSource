@@ -1,0 +1,175 @@
+html{filter:invert(100%);}
+span.resume-playback-progress-bar{filter:invert(100%);}
+
+body{overflow-x:hidden !important;}
+img, yt-multi-page-menu-section-renderer yt-icon{filter:invert(100%) !important;}
+#body-container, #page{background-color:white;}
+
+#search-form #container{
+	background:transparent !important;
+	border:1px solid rgba(0,0,0,.2) !important;
+}
+#search-form #search-icon-legacy{
+	opacity:.3 !important;
+}
+#search-icon-legacy.ytd-searchbox yt-icon.ytd-searchbox{color:rgba(0, 0, 0, 1) !important;}
+button.yt-icon-button > yt-icon{
+	color:rgba(0,0,0,.8) !important;
+}
+
+iframe{filter:invert(100%) !important;}
+#page #content .shelf-action-container, .primary-header-actions, #upsell-video, #yt-picker-country-footer .yt-picker-region-flag, #watch7-subscription-container .yt-uix-button-subscription-container{filter:invert(100%);}
+.logo, .footer-logo-icon, .masthead-logo-renderer, #logo-icon, #logo-icon-container {filter:grayscale(100%);}
+#guide-button #guide-icon.ytd-masthead, button[is="paper-icon-button-light"].ytd-topbar-menu-button-renderer > yt-icon.ytd-topbar-menu-button-renderer, button[is="paper-icon-button-light"].ytd-button-renderer > yt-icon.ytd-button-renderer, button[is="paper-icon-button-light"].ytd-notification-topbar-button-renderer > yt-icon.ytd-notification-topbar-button-renderer{
+	filter:invert(40%) !important;
+}
+.arrow.yt-horizontal-list-renderer{
+	background-color:rgba(38, 226, 233, 0.85) !important;
+	box-shadow:none !important;
+}
+.content-icon.ytd-compact-link-renderer{filter:invert(100%);}
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+  background-color: #050505;
+}
+body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .2); 
+}
+#ad_creative_1{
+	position:fixed;
+	visibility:hidden;
+}
+#contentWrapper #header, #contentWrapper #header #avatar{filter:invert(100%);}
+
+#meta paper-button, #contents paper-button, #subscribe-button paper-button{background-color:cyan !important;color:black !important;opacity:.7;}
+paper-button#toggle, #comments paper-button, #meta #more, #contents #content #description paper-button{background-color:transparent !important;}
+
+#comments #comment #main #expander #content #content-text, #comments #replies #main #expander #content #content-text{filter:invert(100%);color:white;}
+#contents #comment #main #expander #content #content-text, #contents #replies #main #expander #content #content-text{filter:invert(100%);color:white;}
+#contents #comment #more, #contents #comment #button, #contents #replies #button{background-color:transparent !important;}
+
+#content #page-manager #banner{background-color:white;}
+#content #page-manager #container #contents h1 #title, #content #page-manager #container #contents a, #content #page-manager #container #contents a #button{color:black;}
+#player .player-api, #player #player-container, #contents #player-container{
+	/*position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	z-index: 9999;*/
+	filter:invert(100%) !important;
+}
+#theater-background{
+	background-color:white !important;
+}
+
+.comment-renderer-content{
+	filter:invert(100%);
+	color:white;
+}
+
+.comment-author-thumbnail .yt-thumb-clip img{
+	filter:invert(100%) !important;
+}
+#player-playlist #playlist-autoscroll-list{
+	background: white !important;
+}
+
+#player-playlist #playlist-autoscroll-list li:hover{
+	background: #ababab !important;
+}
+#player-playlist #playlist-autoscroll-list li.currently-playing{
+	background: #ababbb !important;
+}
+#player-playlist #playlist-autoscroll-list li .yt-ui-ellipsis, #player-playlist #playlist-autoscroll-list li .yt-ui-ellipsis:hover{
+	background:transparent !important;
+}
+#player-playlist #playlist-autoscroll-list li .yt-ui-ellipsis{
+	color:black !important;
+}
+#player-playlist #watch-appbar-playlist .playlist-header{
+	background:white !important;
+	color:black !important;
+}
+#player-playlist #watch-appbar-playlist .playlist-header .playlist-title{
+	color:black !important;
+}
+#gh-banner #c4-header-bg-container, #header #background{
+	filter:invert(100%) !important;
+}
+#gh-banner #c4-header-bg-container #header-links{
+	filter:invert(100%) !important;
+}
+#gh-banner #c4-header-bg-container .channel-header-profile-image-container{
+	filter:invert(100%) !important;
+}
+#guide-container .guide-module-content ul li div ul li .guide-item-selected{background-color:cyan; color:black;}
+#masthead-appbar #appbar-content #appbar-nav ul li h2, #masthead-appbar #appbar-content #appbar-nav ul li h2:hover{border-color:cyan !important;}
+#guide-container .guide-module-content ul li h3 a:link, #guide-container .guide-module-content ul li h3 a:visited{color:cyan !important;}
+#live-chat-iframe, #chatframe, .comment-renderer-replybox.comment-simplebox-content img{filter:invert(0%) !important;}
+#share-services-container, .comment-renderer-replybox.comment-simplebox-content #comment-simplebox{filter:invert(100%) !important;}
+ytd-masthead[mode="legacy"] #container.ytd-masthead{background-color:white !important;}
+#masthead-ad{display:none !important;}
+#search-form #search{color:rgba(0,0,0,.5) !important;}
+#comments a:link, #comments a:hover, #comments a:visited{color:rgb(0,150,136) !important;}
+
+paper-toggle-button#toggle.style-scope.ytd-compact-autoplay-renderer{filter:invert(100%) !important;}
+img.branding-img.iv-click-target{filter:invert(0%) !important;}
+#video #vm-video-player iframe{filter:invert(0%) !important;}
+#guide #contentContainer #guide-wrapper #guide-content #guide-inner-content #sections #items ytd-guide-entry-renderer yt-icon.guide-icon.style-scope.ytd-guide-entry-renderer{filter:invert(100%) !important;}
+a#video-title, h1.title.style-scope.ytd-video-primary-info-renderer{filter: invert(100%);color:white !important;}
+span#video-title{filter: invert(100%);color:white !important;}
+#author-comment-badge ytd-author-comment-badge-renderer{background:#0000003b !important;}
+#progress{background-color:cyan !important;}
+div#content yt-formatted-string#description{
+	color: white;
+    filter: invert(100%);
+}
+paper-button#less.style-scope.ytd-expander{
+	background:transparent !important;
+}
+iron-dropdown #contentWrapper yt-sharing-renderer #share-target-wrapper.style-scope.yt-sharing-renderer{filter:invert(100%) !important;}
+div#section-left[style*="background-image"], #watch-card-header.style-scope.ytd-generic-watch-card, #tabsContainer #tabsContent #selectionBar, #tabsContainer #tabsContent paper-tab{
+    filter: invert(100%);
+}
+#page-manager #wrapper #contentContainer #tabs-container #tabs-inner-container #tabs, #page-manager #wrapper #contentContainer #tabs-container #tabs-inner-container #tabs ytd-expandable-tab-renderer.style-scope.ytd-c4-tabbed-header-renderer{filter:invert(100%);}
+ytd-thumbnail-overlay-time-status-renderer.style-scope.ytd-thumbnail{filter:invert(100%);}
+ytd-app{--ytd-app-scroll-offset:0px !important; background:white !important;}
+ytd-active-account-header-renderer.style-scope.ytd-multi-page-menu-renderer, ytd-simple-menu-header-renderer.style-scope.ytd-multi-page-menu-renderer{background: #167ac6 !important;}
+ytd-masthead#masthead{background:transparent !important;}
+app-drawer#guide{height:1000px;}
+#columns, ytd-browse{background:#fafafa !important;}
+ytd-browse span{color:black !important;}
+#channel-container, app-toolbar, #channel-container *, app-toolbar *{background:rgba(0,0,0,0) !important;}
+app-toolbar input#input{color:orange !important;}
+ytd-comments#comments #sections #header, ytd-comments#comments #sections #header *{color:black !important;}
+#playlist div#items #meta span#byline{color:orange !important;}
+#player-theater-container{filter:invert(100%) !important;}
+body::-webkit-scrollbar {
+  width: 4px;
+  height: 5px;
+  background-color: black;
+}
+body::-webkit-scrollbar-thumb {
+    background: darkgray; 
+}
+svg #youtube-paths path{fill:#352828 !important;}
+ytd-section-list-renderer#primary, ytd-playlist-video-renderer, div#secondary, ytd-video-renderer.ytd-backstage-post-renderer{background-color:#fafafa !important;}
+html[invert]{background-color:#050505 !important;}
+ytd-masthead#masthead{background-color:white !important;}
+
+h3.ytd-miniplayer{background-color:black !important;color:white !important;}
+h3.ytd-miniplayer *{color:white !important;}
+ytd-miniplayer{filter:invert(100%);}
+
+ytd-thumbnail-overlay-time-status-renderer .ytd-thumbnail-overlay-time-status-renderer{color:lightgray !important;}
+ytd-thumbnail-overlay-side-panel-renderer{background-color:rgba(170,170,170,0.7) !important;}
+ytd-thumbnail-overlay-hover-text-renderer{background-color:rgba(170,170,170,1) !important;}
+#info-bar{background:black !important;}
+#playlist.ytd-miniplayer{filter:invert(100%);}
+#guide #guide-content #header, #guide #guide-content #header *:not(yt-icon), #guide #guide-inner-content, #guide #guide-inner-content *:not(yt-icon), ytd-mini-guide-renderer, ytd-mini-guide-renderer *{background-color:#fafafa !important;color:black !important;}
+#guide svg{fill:rgba(0,0,0,1) !important;}
+iron-overlay-backdrop, paper-dialog[role=dialog], #star-survey, #inline-survey-compact-video-renderer{background-color:white !important;}
+#guide #items yt-interaction{background:none !important;}
+

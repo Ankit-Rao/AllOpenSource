@@ -1,0 +1,61 @@
+.panel {
+    height: 70px;
+    background-color: #2398AB;
+    margin-top: auto;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.sedDe {
+    border-left: 2px solid #343434;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.actions {
+    display: flex;
+}
+
+.instruments {
+    display: flex;
+}
+
+.actions div {
+    cursor: pointer;
+    background: #fff;
+    padding: 6px 8px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.instruments div {
+    cursor: pointer;
+    background: #fff;
+    padding: 6px 8px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.actions img {
+    width: 24px;
+}
+
+.instruments img {
+    width: 24px;
+}
+
+.instruments div:last-child {
+    margin-right: 0;
+}
+
+.resRepsa {
+    pointer-events:none!important;
+    background: #00848C!important;
+}
+
+.width_block {
+    display: flex!important;
+}

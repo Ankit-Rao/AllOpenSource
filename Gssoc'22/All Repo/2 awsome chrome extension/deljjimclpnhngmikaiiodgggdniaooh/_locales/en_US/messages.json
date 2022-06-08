@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Night Mode for YouTube™"
+    },
+    "description": {
+        "message": "Changes the YouTube™ theme, including dark mode theme and Add Picture in Picture mode to all sites"
+    },
+    "default_title": {
+    	"message": "ON/OFF Theme"
+    }
+}

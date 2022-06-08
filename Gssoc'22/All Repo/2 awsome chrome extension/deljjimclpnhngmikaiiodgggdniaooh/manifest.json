@@ -1,0 +1,42 @@
+{
+    "name": "Youtube Theme",
+    "manifest_version": 2,
+	"version":"1.0.0",
+    "description": "Change Youube Theme",
+	"default_locale": "en",
+    "browser_action": {
+		"default_icon": "48.png",
+		"default_title": "Youtube theme"
+	},
+	"background":{
+		"page":"bgr.html",
+		"persistent": false
+	},
+	"options_page": "option.html",
+	"options_ui": {
+		"chrome_style": true,
+		"page": "option.html"
+	},
+	"permissions": [
+        "tabs",
+        "activeTab",
+        "storage",
+        "<all_urls>"
+    ],
+	"content_scripts": [
+	   {
+		 "matches": ["*://*.youtube.com/*"],
+		 "css": ["global.css"]
+	   },
+	   {
+		 "matches": ["<all_urls>"],
+		 "js": ["pip.js"]
+	   }
+	 ],
+	"icons": {"48": "48.png",
+			"16": "16.png",
+			"128": "128.png"},
+	"web_accessible_resources": [
+		"*.png"
+	]
+}

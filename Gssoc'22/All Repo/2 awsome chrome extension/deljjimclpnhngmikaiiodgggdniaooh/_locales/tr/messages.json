@@ -1,0 +1,14 @@
+{
+    "name": {
+        "message": "Themes for YouTube™ and Picture in Picture"
+    },
+    "short_name": {
+        "message": "Youtube Night Mode"
+    },
+    "description": {
+        "message": "YouTube'u birçok stille yeni görünümlere dönüştürür: karanlık mod temaları, düşen yapraklı temalar, düşen karlı temalar vb"
+    },
+    "default_title": {
+    	"message": "AÇIK / KAPALI"
+    }
+}

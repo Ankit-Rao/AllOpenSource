@@ -1,0 +1,19 @@
+/*=======================COPYRIGHT PART============================
+HTCom YouTube Theme Generator. This theme is used for YouTube only.
+Please visit our site: https://www.videoeffects.org.
+This theme is compatible with YouTube Dark Mode Pro https://chrome.google.com/webstore/detail/youtube-dark-mode-pro/deljjimclpnhngmikaiiodgggdniaooh.
+Copyright 2018 by HTCom. Email: myhoangthanh@yahoo.com
+It is legal to modify the code below and share it somewhere you want, but you must not remove this copyright part.
+==================================================================*/
+body::-webkit-scrollbar {
+  width: 8px;
+  height: 5px;
+  background-color: #121212;
+}
+body::-webkit-scrollbar-thumb {
+    background: darkgray; 
+}
+ytd-multi-page-menu-renderer ytd-account-settings .ytd-account-settings::-webkit-scrollbar{width:4px; background-color:#242424;}
+div.gstl_50.sbdd_a{filter:invert(85%);}
+#logo svg, #right-arrow ytd-button-renderer, #left-arrow ytd-button-renderer, paper-button{filter:brightness(80%);}
+div.gstl_50.sbdd_a *{text-shadow:none !important;font-weight:normal !important;color:#010101 !important;}

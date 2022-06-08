@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Generate Gradient",
+  "description": "Click to Generate the Gradient",
+  "version": "1.0.0",
+  "background": {
+    "page": "index.html",
+    "script": "script.js"
+  },
+  "browser_action": {
+    "default_title": "Gradient Generate",
+    "default_popup": "index.html"
+  },
+
+  "icons": { "128": "logo.png" },
+
+  "permissions": [
+    "activeTab",
+    "storage",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+
+  "options_page": "index.html"
+}

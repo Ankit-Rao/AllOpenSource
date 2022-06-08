@@ -1,0 +1,56 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+
+// Font Family
+$font-primary: "Inter", sans-serif;
+$font-secondary: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+// Color
+$primary-color: #2962ff;
+$secondary-color: rgb(19, 158, 92);
+
+// Dark mode
+$bg-primary: #232626;
+$bg-secondary: #18191a;
+$text-primary-color: #fff;
+$text-secondary-color: rgb(189, 189, 189);
+
+// Light mode
+$text-primary-color: #111827;
+$text-primary-color-2: #333333;
+$text-secondary-color: #212121;
+$text-other-2: #424242;
+$text-other-color: #757575;
+$text-other: #616161;
+$bg-primary: #fff;
+$bg-secondary: #f5f7fa;
+$bg-other-color: #e6f4f0;
+
+// Text size
+$font-xlarge: 3rem;
+$font-large: 2.25rem;
+$font-medium: 2rem;
+$font-small: 1.125rem;
+$font-xsmall: 0.9rem;
+
+// Letter spacing
+$spacing-primary: -0.08rem;
+$spacing-secondary: -0.09rem;
+
+// Font weight
+$weight-large: 900;
+$weight-medium: 700;
+$weight-small: 600;
+$weight-xsmall: 500;
+$weight-thin: 300;
+
+// Border:
+$border-primary: 1px solid rgb(229, 231, 235);
+
+// Box shadow
+$shadow-one: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+  rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+// Align
+.align-center {
+  text-align: center;
+}
