@@ -1,0 +1,37 @@
+body { 
+  font-family: Verdana, Arial, sans-serif;       
+  font-size: 12px; 
+}
+#placeholder {
+   width: 840px; 
+   height: 400px;
+  position:relative;
+}
+
+#showInteractive {
+  height: 190px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 25.5%;
+  left: 154px;
+  vertical-align: middle;
+  width: 190px;
+  border-radius:100%;
+  background-color:white;
+  display:block;
+  
+}
+#showInteractive2 {
+  height: 140px;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  width: 190px;
+  border-radius:100%;
+}
+#graph1 .pie-label {
+    color: white;
+}
+.pieLabelBackground {  background-color: black; }

@@ -1,0 +1,10 @@
+body{
+	margin:0;
+	background:green;
+}
+canvas{
+	width:100%;
+}
+svg{
+	opacity:0;
+}
