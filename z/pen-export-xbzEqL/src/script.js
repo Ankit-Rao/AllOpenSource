@@ -1,1 +1,0 @@
-TweenMax.fromTo("#outline",4,{autoAlpha:1,drawSVG:"50% 50%"},{drawSVG:"0% 100%", ease:Quint.easeOut});
