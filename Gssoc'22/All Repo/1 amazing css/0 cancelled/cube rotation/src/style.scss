@@ -1,0 +1,86 @@
+body{
+  
+}
+
+/* keyframes for rotating animation */
+@-webkit-keyframes spin {
+  from { transform: rotateY(0) rotateX(15deg); }
+  to   { transform: rotateY(360deg) rotateX(15deg); }
+}
+
+/* scene wrapper */
+.wrapper{
+	font-size:5vw;
+	width:100%;
+  height: 100%;
+  position:fixed;
+	top:0;
+	left:0;
+  perspective: 800px;
+  perspective-origin: 50% 50%;
+	background:grey;
+}
+
+/* cube wrapper */
+.cublet{
+  position: absolute;
+  
+ 
+	left:50%;
+	top:50%;
+  transform-style: preserve-3d;
+  animation: spin 4s infinite linear;
+  transition: all 1s linear;
+	// transform: rotateX(15deg) rotateY(30deg);
+}
+
+/* outer cube */
+rubiks-face{
+  position:absolute;
+  width:2em;
+  height:2em;
+  display:block;
+  background:rgba(255,255,255,0.1);
+  box-shadow:inset 0 0 1em rgba(0,0,0,0.2);
+  text-align:center;
+  
+	font-size:0.5em;
+  color:rgba(0,0,0,0.5);
+  font-family:sans-serif;
+  text-transform:uppercase;
+	transform-origin:top-left;
+	
+	border-radius:.05em;
+	// background:white;
+	backface-visibility:hidden;
+	span{
+		font-size:.2em;
+		line-height:100%;
+	}
+}
+rubiks-face.back{
+  transform:translate3d(0em, -1em, 0em) rotateY(90deg);
+	background:red;
+}
+rubiks-face.right{
+  transform:translate3d(-1em, -1em, 1em) rotateY(0deg);
+	background:green;
+}
+rubiks-face.left{
+  transform:translate3d(-1em, -1em, -1em) rotateY(180deg);
+	background:blue;
+}
+rubiks-face.top{
+  transform:translate3d(-1em, -2em, 0em) rotateX(90deg);
+	background:yellow;
+}
+rubiks-face.bottom{
+  transform:translate3d(-1em, 0em, 0em) rotateX(-90deg);
+	background:orange;
+}
+rubiks-face.front{
+  transform:translate3d(-2em, -1em, 0em) rotateY(-90deg);
+	background:purple;
+}
+
+
