@@ -1,0 +1,3 @@
+TweenMax.to("#head",1.5,{startAt:{rotation:-10},rotation:10,yoyo:true,transformOrigin:"50% 90%",repeat:-1,ease:Sine.easeInOut,force3D:true});
+TweenMax.to("#container",1.5,{startAt:{rotation:-5},rotation:7,yoyo:true,transformOrigin:"50% 90%",repeat:-1,ease:Sine.easeInOut,force3D:true});
+TweenMax.to("#container",.3,{scaleX:.95,scaleY:1.05,yoyo:true,transformOrigin:"50% 95%",repeat:-1,ease:Sine.easeInOut,force3D:true});

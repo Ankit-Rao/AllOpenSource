@@ -1,0 +1,122 @@
+body {
+  font-family: "Nunito Sans", sans-serif;
+  margin: 0;
+}
+
+button {
+  width: 200px;
+  height: 42px;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background: #2C2A29;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.button-red {
+  background: #DD1E25;
+}
+
+.button-green {
+  background: #498430;
+}
+
+.button-blue {
+  background: #00529F;
+}
+
+section {
+  padding: 50px;
+  border-bottom: solid 10px #eee;
+}
+section h2 {
+  margin: 0;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+section .button-list {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, 200px);
+}
+
+.outer-ring button {
+  position: relative;
+}
+.outer-ring button:before {
+  content: "";
+  color: #2C2A29;
+  position: absolute;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border: solid 3px currentColor;
+  left: -7px;
+  top: -7px;
+  opacity: 0.6;
+  transform: scale(0.87, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+  z-index: -1;
+  border-radius: 7px;
+}
+.outer-ring button:hover:before, .outer-ring button:focus:before {
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.outer-ring .button-red:before {
+  color: #DD1E25;
+}
+.outer-ring .button-green:before {
+  color: #498430;
+}
+.outer-ring .button-blue:before {
+  color: #00529F;
+}
+
+.outline-shadow button {
+  position: relative;
+  box-shadow: 0 0 0 6px rgba(44, 42, 41, 0);
+  transition: box-shadow 0.2s ease-out;
+}
+.outline-shadow button:hover, .outline-shadow button:focus {
+  box-shadow: 0 0 0 6px rgba(44, 42, 41, 0.3);
+}
+
+.darken button {
+  transition: background 0.2s ease-out;
+}
+.darken button:hover, .darken button:focus {
+  background: #000;
+  transition: background 0.3s ease-out;
+}
+
+.invert button {
+  transition: background 0.2s ease-out, color 0.2s ease-out;
+  border: solid #2C2A29 3px;
+}
+.invert button:hover, .invert button:focus {
+  background: #fff;
+  color: #2C2A29;
+}
+.invert .button-red {
+  border-color: #DD1E25;
+}
+.invert .button-red:hover, .invert .button-red:focus {
+  color: #DD1E25;
+}
+.invert .button-green {
+  border-color: #498430;
+}
+.invert .button-green:hover, .invert .button-green:focus {
+  color: #498430;
+}
+.invert .button-blue {
+  border-color: #00529F;
+}
+.invert .button-blue:hover, .invert .button-blue:focus {
+  color: #00529F;
+}

@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:300');
+
+body {
+  background-color: #0a2840;
+  font-family: 'Exo', sans-serif;
+}
+
+.container {
+  font-size: 140px;
+  color: #fff;
+  width: 100%;
+  height: 140px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.letter {
+  display: inline-block;
+  position: relative;
+}
+
+.letter.l2 {
+  transform: rotate(180deg);
+  height: 179px;
+}
+
+.letter .swing {
+  position: absolute;
+  width: 3px;
+  height: 90px;
+  background-color: #fff;
+  animation-name: swing;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: bottom;
+  border-radius: 25%;
+}
+
+.letter .swing:before {
+  content: "";
+  position: absolute;
+  background-color: #000;
+  left: -1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.letter:not(.l2) .swing:before {
+  top: 0;
+}
+
+.letter.l2 .swing:before {
+  bottom: 0;
+}
+
+.letter .swing:after {
+    position: absolute;
+    width: 18px;
+    height: 4px;
+    background-color: #fff;
+    left: -8px;
+    content: "";
+}
+
+.letter.l1 .swing:after {
+  bottom: 0;
+}
+
+.letter.l2 .swing:after {
+  top: 0;
+}
+
+.letter.l5 .swing:after {
+  bottom: 0;
+}
+
+.letter.l1 .swing.s1 {
+    top: 39px;
+    right: 15px;
+    animation-duration: 2s;
+    transform-origin: top;
+    animation-name: swing3;
+    height: 35px;
+}
+
+.letter.l2 .swing.s1 {
+  bottom: 41px;
+  right: 36px;
+  animation-duration: 5s;
+}
+  
+.letter.l2 .swing.s2 {
+  bottom: 41px;
+  right: 100px;
+  animation-duration: 4s;
+}
+
+.letter.l3 {
+  color: #fff;
+  line-height: 110px;
+  height: 100px;
+  transform-origin: bottom;
+  animation-delay: 5s;
+  animation-name: letter-fall;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(1, 0.03, 1, 1);
+}
+
+.letter.l5 .swing.s1 {
+    animation-name: swing;
+    transform-origin: top;
+    animation-duration: 2s;
+    top: 40px;
+    right: 18px;
+    height: 30px;
+}
+
+.letter.l5 .swing.s2 {
+    animation-name: swing;
+    transform-origin: top;
+    animation-duration: 2.5s;
+    bottom: 67px;
+    right: 41px;
+    height: 30px;
+}
+
+@keyframes swing {
+  0%   { transform: rotate(10deg); }
+  50% { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
+}
+
+@keyframes swing2 {
+  0%   { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+  100% { transform: rotate(-7deg); }
+}
+
+@keyframes swing3 {
+  0%   { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+@keyframes letter-fall {
+  0%   { transform: rotate(0deg); }
+  50% { transform: rotate(-48deg); }
+  90% { transform: rotate(-90deg) translateY(40px); }
+  100% { transform: rotate(-90deg) translateY(52px); }
+}

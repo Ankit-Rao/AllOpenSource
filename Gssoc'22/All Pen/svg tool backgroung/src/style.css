@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Black+Ops+One);
+body{
+  background-color:#FCB827;
+  overflow:hidden;
+}
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+  max-width:600px;
+  height:600px;
+}
+
+svg{
+  max-width:100%;
+}
+.myText{
+  font-family: 'Black Ops One', cursive;
+
+  fill:#262626;
+}

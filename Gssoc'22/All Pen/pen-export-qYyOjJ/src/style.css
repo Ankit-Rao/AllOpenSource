@@ -1,0 +1,179 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(#222, #00A08D);
+  height: 100%;
+}
+
+/* real stuff */
+
+.container {
+  height: 160px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+}
+
+.image-container {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 1px #333;  
+  height: 156px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 156px;
+  z-index: 2;
+}
+
+.image-container > img {
+  height: 100%;
+  width: 100%;
+}
+
+.options-container {
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 1px;  
+  z-index: 3;
+}
+
+.options-container .option {
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: transform 600ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transform-origin: left;
+  width: 130px;
+}
+
+.options-container.open .option {
+  transition: transform 600ms ease-in-out;
+}
+
+.options-container .option .option-value {
+  background-color: #093637;
+  border-radius: 50%;
+  color: #fff;
+  content: "";  
+  font-size: 22px;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 50%;
+  transform: rotate(0deg);
+  transition: transform 250ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  width: 40px;
+}
+
+.options-container .option .option-value:hover {
+  cursor: pointer;
+}
+
+.options-container .option-main .option-value,
+.options-container .option1 .option-value,
+.options-container .option2 .option-value,
+.options-container .option3 .option-value,
+.options-container .option4 .option-value,
+.options-container .option5 .option-value{
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 5px 1px #333;
+}
+
+/* main option */
+
+.options-container .option-main .option-value {z-index: 100;}
+
+/* option 1 */
+
+.options-container .option1 {z-index: 5;}
+.options-container.open .option1 {transform: rotate(-25deg);}
+.options-container .option1 .option-value{transform: rotate(25deg);}
+.options-container .option1 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(-335deg);}
+.options-container .option1:hover{z-index: 200;}
+
+.style2 .options-container.open .option1 {transform: rotate(25deg);}
+.style2 .options-container .option1 .option-value{transform: rotate(-25deg);}
+.style2 .options-container .option1 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(335deg);}
+.style2 .options-container .option1:hover{z-index: 200;}
+
+/* option 2 */
+
+.options-container .option2 {z-index: 4;}
+.options-container.open .option2 {transform: rotate(-50deg);}
+.options-container .option2 .option-value{transform: rotate(50deg);}
+.options-container .option2 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(-310deg);}
+.options-container .option2:hover{z-index: 200;}
+
+.style2 .options-container.open .option2 {transform: rotate(50deg);}
+.style2 .options-container .option2 .option-value{transform: rotate(-50deg);}
+.style2 .options-container .option2 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(310deg);}
+.style2 .options-container .option2:hover{z-index: 200;}
+
+/* option 3 */
+.options-container .option3 {z-index: 3;}
+.options-container.open .option3 {transform: rotate(-75deg);}
+.options-container .option3 .option-value{transform: rotate(75deg);}
+.options-container .option3 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(-285deg);}
+.options-container .option3:hover{z-index: 200;}
+
+.style2 .options-container.open .option3 {transform: rotate(75deg);}
+.style2 .options-container .option3 .option-value{transform: rotate(-75deg);}
+.style2 .options-container .option3 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(285deg);}
+.style2 .options-container .option3:hover{z-index: 200;}
+
+/* option 4 */
+.options-container .option4 {z-index: 2;}
+.options-container.open .option4 {transform: rotate(-100deg);}
+.options-container .option4 .option-value{transform: rotate(100deg);}
+.options-container .option4 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(-260deg);}
+.options-container .option4:hover{z-index: 200;}
+
+.style2 .options-container.open .option4 {transform: rotate(100deg);}
+.style2 .options-container .option4 .option-value{transform: rotate(-100deg);}
+.style2 .options-container .option4 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(260deg);}
+.style2 .options-container .option4:hover{z-index: 200;}
+
+/* option 5 */
+.options-container .option5 {z-index: 1;}
+.options-container.open .option5 {transform: rotate(-125deg);}
+.options-container .option5 .option-value{transform: rotate(125deg);}
+.options-container .option5 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(-235deg);}
+.options-container .option5:hover{z-index: 200;}
+
+.style2 .options-container.open .option5 {transform: rotate(125deg);}
+.style2 .options-container .option5 .option-value{transform: rotate(-125deg);}
+.style2 .options-container .option5 .option-value:hover {transform: translateX(5px) scale(1.5) rotate(235deg);}
+.style2 .options-container .option5:hover{z-index: 200;}
+
+/* extra classes */
+
+.style-button {
+  background-color: #999;
+  border-radius: 10px;
+  color: #333;
+  font-weight: bold;
+  margin: 5px;
+  padding: 10px 10px;
+  text-align: center;  
+  width: 100px;
+}
+
+.style-button:hover {
+  cursor: pointer;
+}
+
+.style-button.active {
+  background-color: black;
+  color: #fff;
+}

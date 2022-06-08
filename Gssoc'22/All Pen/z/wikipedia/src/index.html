@@ -1,0 +1,22 @@
+<html>
+<main ng-app="WikipediaSearch" ng-controller="SearchController as SearchCtrl">
+    <div class="container">
+        <form ng-submit="search()">
+            <div id="search" class="input-group">
+                <input type="text" class="form-control" placeholder="Search Wikipedia" ng-model=searchArticles>
+                <span class="input-addon"><a href ng-click="getRandom()">Random article</a></span>
+            </div>   
+        </form>
+        <div id="results">
+            <ul class="article-list">
+                <a href="{{item.url}}" target="_blank" ng-repeat="item in results | filter:searchArticles">
+                    <li class="article animated bounce">
+                        <h5>{{ item.title }}</h5>
+                        <p>{{ item.text }}</p>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+</main>
+    </html>

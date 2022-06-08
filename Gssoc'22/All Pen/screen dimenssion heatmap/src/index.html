@@ -1,0 +1,14 @@
+<div class="container">
+	<svg width="4000" height="4000" viewBox="0 0 4000 4000">
+	<linearGradient id="height-gradient" x1="0" x2="0" y1="0" y2="100%">
+	</linearGradient>
+	<linearGradient id="width-gradient" x1="0" x2="100%" y1="0" y2="0">
+	</linearGradient>
+	<rect width="4000" height="4000" fill="url(#height-gradient)"/>
+	<rect width="4000" height="4000" fill="url(#width-gradient)"/>
+	
+	<g class="grid"></g>
+	<g class="labels"></g>
+</svg>
+</div>
+<input type="range" min="1000" max="4000" value="4000" step="1" oninput="update(this.value)" onchange="update(this.value)">

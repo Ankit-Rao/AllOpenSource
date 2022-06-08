@@ -1,0 +1,80 @@
+@keyframes murder-box {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scaleX(1) scaleY(1);
+  }
+  10% {
+    transform: translate(-50%, -50%) rotate(-3deg) scaleX(0.8) scaleY(0.8);
+  }
+  20% {
+    transform: translate(-50%, -50%) rotate(-3deg) scaleX(0.8) scaleY(0.8);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(-3deg) scaleX(1.2) scaleY(1.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  60% {
+    transform: translate(-50%, -50%) rotate(-3deg) scaleX(1.2) scaleY(1.2);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  80% {
+    transform: translate(-50%, -50%) rotate(-3deg) scaleX(1.2) scaleY(1.2);
+    background: grey;
+  }
+  90% {
+    transform: translate(-50%, -50%) rotate(3deg) scaleX(1.2) scaleY(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scaleX(1.4) scaleY(0.6);
+    background: red;
+  }
+}
+label {
+  background: grey;
+  transition: background 0.3s ease-in-out;
+  color: white;
+  font-size: 40px;
+  font-family: sans-serif;
+  text-align: center;
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+label:hover {
+  background: #ffcc00;
+}
+label:hover:before {
+  content: "I mean it!";
+}
+label:before {
+  content: "Don't push!";
+}
+
+input {
+  display: none;
+}
+input:checked + label {
+  animation: murder-box linear 1s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  animation-fill-mode: forwards;
+}
+input:checked + label:before {
+  content: "ARGGGH!";
+}
+
+body {
+  margin: 0;
+  background: #222;
+}

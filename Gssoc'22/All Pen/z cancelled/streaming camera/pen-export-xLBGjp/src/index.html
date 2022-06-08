@@ -1,0 +1,76 @@
+
+
+
+<div class="webcam-frame">
+  <div class="webcam">
+    <video id="webcam"></video>
+  </div>
+  <div class="trigger-webcam">Click to Enable Webcam</div>
+</div>
+
+<div class="container">
+  <div class="filter">
+    <div class="out-of-frame"></div>
+    <div class="song-box">
+      <div class="icon">
+
+      </div>
+      <div class="text">
+        <div class="name">ALongUserNameGoesHere</div>
+        <div class="artist"><span class="amount"></span><span class="unit"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="droplets"></div>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="fancy-goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+      <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+    </filter>
+  </defs>
+</svg>
+
+
+
+<div class="buttons">
+  <div class="button-wrap follower">
+    Test Follower
+    <button>Test</button>
+  </div>
+  <div class="button-wrap subscriber">
+    Test Subscriber
+    <div class="input-wrap ">
+      <input type="text" value="3"> mos
+    </div>
+    <button>Send Test</button>
+  </div>
+  <div class="button-wrap donation">
+    Test Donation
+    <div class="input-wrap">
+      $<input type="text" value="100">
+    </div>
+    <button>Send Test</button>
+  </div>
+  <div class="button-wrap cheer">
+    Test Cheer
+    <div class="input-wrap">
+      <input type="text" value="100000"> bits
+    </div>
+    <button>Send Test</button>
+  </div>
+  utils
+  <button class="toggle">Toggle</button>
+  
+    <button onclick="startDrips();">Start Drips</button>
+  <button onclick="stopDrips();">Stop Drips</button>
+  Themes:
+  <button class="theme" data-theme="blood">Blood</button>
+  <button class="theme" data-theme="donation">Donation</button>
+  <button class="theme" data-theme="bits">Bits</button>
+  <button class="theme" data-theme="subscriber">Subscriber</button>
+
+</div>

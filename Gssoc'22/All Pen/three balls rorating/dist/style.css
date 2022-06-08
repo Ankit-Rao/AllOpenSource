@@ -1,0 +1,20 @@
+body {
+  background: #222;
+  text-align: center;
+  padding: 2em;
+}
+.spinner-background {
+  background:red;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/91525/loader.svg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  
+}
+.spinner {
+  display: inline-block;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  background-color: #fe8;
+  
+}

@@ -1,0 +1,17 @@
+.flickity-prev-next-button.previous {
+  left: -30px;
+}
+.flickity-prev-next-button.next {
+  right: -30px;
+}
+.flickity-prev-next-button .arrow {
+  fill: #F5F7FA;
+}
+.flickity-prev-next-button {
+  background-color: #434A54;
+  width: 38px;
+  height: 38px;
+}
+.flickity-prev-next-button:hover {
+  background-color: #656D78;
+}

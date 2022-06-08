@@ -1,0 +1,137 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+
+$background: #fff;
+$base-color: #fff;
+$search-box: #fff;
+$search-box-hover: #fff;
+$article-color: #46A1DE;
+body {
+  background: url('http://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1122px-Wikipedia-logo-v2.svg.png');
+ background-repeat:no-repeat;
+  margin: 0;
+  padding: 0;
+}
+body {
+    color: $base-color;
+    font-family: 'Roboto';
+}
+
+h5 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+#search {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    transition: all 100ms ease;
+}
+
+#search.top {
+    top: 10%;
+}
+
+#search input {
+    width: 300px;
+    border: 2px solid $search-box;
+    border-radius: 20px;
+    background-color: #eee;
+}
+
+#search input:focus {
+    border: 2px solid $search-box-hover;
+    background-color: #fff;
+}
+
+#search input:focus + .input-addon {
+    border-color: $search-box-hover;
+}
+
+.input-addon {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    padding-left: 10px;
+    color: #bbb;
+    font-weight: 500;
+    border-left: 1px solid $search-box;
+    z-index: 10;
+}
+
+.input-addon a:hover {
+    color: #999;
+}
+
+.article-list {
+    margin: 150px auto;
+}
+
+.article {
+    width: 80%;
+    min-height: 75px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: $article-color;
+    border: 1px solid #ddd;
+    opacity: 1;
+    
+    font-size: 1.1em;
+    
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    
+    transition: all 200ms ease;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+}
+
+.article:hover {
+    transform: translateX(5px);
+}
+
+.article p {
+    margin-left: 15px;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration:none;
+    color: inherit;
+}
+
+/* Bounce animation from animate.css by Daniel Eden:  https://daneden.github.io/animate.css/ */
+@keyframes bounce {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: ease;
+  }
+
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.bounce {
+  animation: bounce .8s ease;
+}

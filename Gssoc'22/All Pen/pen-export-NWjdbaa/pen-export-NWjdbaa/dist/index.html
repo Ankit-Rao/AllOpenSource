@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - V2 Translation Text</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+
+<head>
+  <title>Funraise Widget</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <script>
+    (function(f, u, n, r, a, i, s, e) {
+      var data = {
+        window: window,
+        document: document,
+        tag: "script",
+        data: "funraise",
+        orgId: f,
+        uri: u,
+        common: n,
+        client: r,
+        script: a
+      };
+      var scripts;
+      var funraiseScript;
+      data.window[data.data] = data.window[data.data] || [];
+      if (data.window[data.data].scriptIsLoading || data.window[data.data].scriptIsLoaded) return;
+      data.window[data.data].loading = true;
+      data.window[data.data].push("init", data);
+      scripts = data.document.getElementsByTagName(data.tag)[0];
+      funraiseScript = data.document.createElement(data.tag);
+      funraiseScript.async = true;
+      funraiseScript.src = data.uri + data.common + data.script + "?orgId=" + data.orgId;
+      scripts.parentNode.insertBefore(funraiseScript, scripts)
+    })('6d3e6d28-eb38-4b1e-a370-98a58d25f88b', 'https://assets-demo-2.funraise.io', '/widget/common/2.0', '/widget/client', '/inject-form.js');
+  </script>
+  <script>
+    window.funraise.push('create', {
+      form: 1289
+    }, {
+      selector: '#fr-placed-form-container-1289',
+      type: 'grow_contained',
+    });
+    window.funraise.push('config', {
+      form: 1289
+    }, {
+      i18n: {
+        locale: window.navigator.language,
+        phrases: {
+          form_header_text: {
+            'en-US': 'Make a Donation',
+            'en-CA': 'Make a Donation, eh?',
+          },
+          donation_optional_donation: {
+            'en-US': 'Add an optional donation',
+            'en-CA': 'Add an optional donation, eh?',
+          },
+          donation_select_amount: {
+            'en-US': 'Select donation amount',
+            'en-CA': 'Select donation amount, eh?',
+          },
+          donation_or_enter_amount: {
+            'en-US': 'or enter amount',
+            'en-CA': 'or enter amount, eh?',
+          },
+          donation_allocation_donate_to: {
+            'en-US': 'Donate To',
+            'en-CA': 'Donate To, eh?',
+          },
+          donation_frequency_name: {
+            'en-US': 'Frequency',
+            'en-CA': 'Frequency, eh?',
+          },
+          donation_frequency_one_time: {
+            'en-US': 'One Time',
+            'en-CA': 'One Time, eh?',
+          },
+          donation_frequency_weekly: {
+            'en-US': 'Weekly',
+            'en-CA': 'Weekly, eh?',
+          },
+          donation_frequency_monthly: {
+            'en-US': 'Monthly',
+            'en-CA': 'Monthly, eh?',
+          },
+          donation_frequency_quarterly: {
+            'en-US': 'Quarterly',
+            'en-CA': 'Quarterly, eh?',
+          },
+          donation_frequency_yearly: {
+            'en-US': 'Yearly',
+            'en-CA': 'Yearly, eh?',
+          },
+          donation_your: {
+            'en-US': 'Your donation',
+            'en-CA': 'Your donation, eh?',
+          },
+          donation_amount: {
+            'en-US': 'Amount',
+            'en-CA': 'Amount, eh?',
+          },
+          donation_remove_amount: {
+            'en-US': 'REMOVE',
+            'en-CA': 'REMOVE, eh?',
+          },
+          donation_min_validation: {
+            'en-US': 'Amount must be at least %{currency_symbol}%{amount}',
+            'en-CA': 'Amount must be at least %{currency_symbol}%{amount}, eh?',
+          },
+          donation_max_validation: {
+            'en-US': 'Amount must be at most %{currency_symbol}%{amount}',
+            'en-CA': 'Amount must be at most %{currency_symbol}%{amount}, eh?',
+          },
+          customize_question_this: {
+            'en-US': 'This question',
+            'en-CA': 'This question, eh?',
+          },
+          customize_question_select_an_option: {
+            'en-US': 'Select an option',
+            'en-CA': 'Select an option, eh?',
+          },
+          customize_dedication_in_honor_label: {
+            'en-US': 'In Honor of',
+            'en-CA': 'In Honor of, eh?',
+          },
+          customize_dedication_in_memory_label: {
+            'en-US': 'In Memory of',
+            'en-CA': 'In Memory of, eh?',
+          },
+          customize_dedication_inspired_by_label: {
+            'en-US': 'Inspired by',
+            'en-CA': 'Inspired by, eh?',
+          },
+          customize_dedication_type_hint: {
+            'en-US': 'Select a dedication type',
+            'en-CA': 'Select a dedication type, eh?',
+          },
+          customize_dedication_type_label: {
+            'en-US': 'Dedication Type',
+            'en-CA': 'Dedication Type, eh?',
+          },
+          customize_dedication_person_name_label: {
+            'en-US': 'Dedication Name',
+            'en-CA': 'Dedication Name, eh?',
+          },
+          customize_dedication_person_name_hint: {
+            'en-US': 'Name of this person',
+            'en-CA': 'Name of this person, eh?',
+          },
+          customize_dedication_person_email_label: {
+            'en-US': 'Dedication Email',
+            'en-CA': 'Dedication Email, eh?',
+          },
+          customize_dedication_person_email_hint: {
+            'en-US': 'Email address for notification',
+            'en-CA': 'Email address for notification, eh?',
+          },
+          customize_dedication_person_message_label: {
+            'en-US': 'Dedication Message',
+            'en-CA': 'Dedication Message, eh?',
+          },
+          customize_dedication_person_message_hint: {
+            'en-US': 'Add a message for this dedication',
+            'en-CA': 'Add a message for this dedication, eh?',
+          },
+          customize_dedication_hover: {
+            'en-US': 'You can dedicate your donation to someone special. If you would like to notify the person ' +
+              'or someone else of your dedication, add their email to the field that says "Email address for notification." ' +
+              'Your message and information about your donation will be sent to that email address.',
+            'en-CA': 'Dedicate this to someone special, eh?',
+          },
+          customize_dedication_name: {
+            'en-US': 'Dedicate this donation',
+            'en-CA': 'Dedicate this donation, eh?',
+          },
+          customize_company_match_company_name: {
+            'en-US': 'Company Name',
+            'en-CA': 'Company Name, eh?',
+          },
+          customize_company_match_company_email: {
+            'en-US': 'Company Email',
+            'en-CA': 'Company Email, eh?',
+          },
+          customize_company_match_company_email_placeholder: {
+            'en-US': 'example@example.com',
+            'en-CA': 'example@example.com, eh?',
+          },
+          customize_company_match_search_companies: {
+            'en-US': 'Search Companies',
+            'en-CA': 'Search Companies, eh?',
+          },
+          customize_company_match_name: {
+            'en-US': 'Company match',
+            'en-CA': 'Company match, eh?',
+          },
+          customize_company_match_min_match_error: {
+            'en-US': 'Amount is less than the specified company match amount of $',
+            'en-CA': 'Amount is less than the specified company match amount of $, eh?',
+          },
+          customize_company_match_hint: {
+            'en-US': 'Many Companies match employee donations. Enter this option to see if your employer has a donation matching program!',
+            'en-CA': 'Many Companies match employee donations. Enter this option to see if your employer has a donation matching program!, eh?',
+          },
+          customize_comment_name: {
+            'en-US': 'Comment',
+            'en-CA': 'Comment, eh?',
+          },
+          customize_comment_place_holder: {
+            'en-US': 'Leave a comment',
+            'en-CA': 'Leave a comment, eh?',
+          },
+          customize_anonymous_name: {
+            'en-US': 'Donate anonymously',
+            'en-CA': 'Donate anonymously, eh?',
+          },
+          customize_anonymous_hover: {
+            'en-US': 'When you donate anonymously, your name will never appear in public as a donor. But, ' +
+              'your name will be recorded so that we can send a tax donation receipt.',
+            'en-CA': 'When you donate anonymously, your name will not appear, eh?',
+          },
+          general_ssl: {
+            'en-US': 'The information sent through this form is encrypted and transmitted over a secure SSL connection',
+            'en-CA': 'The information sent through this form is encrypted and transmitted over a secure SSL connection, eh?',
+          },
+          general_recaptcha_invalid: {
+            'en-US': 'reCAPTCHA is not solved',
+            'en-CA': 'reCAPTCHA is not solved, eh?',
+          },
+          general_email_invalid: {
+            'en-US': 'You must enter a valid email address',
+            'en-CA': 'You must enter a valid email address, eh?',
+          },
+          general_dates_month_label: {
+            'en-US': 'Month',
+            'en-CA': 'Month, eh?',
+          },
+          general_dates_month_invalid: {
+            'en-US': 'Invalid Month',
+            'en-CA': 'Invalid Month, eh?',
+          },
+          general_dates_day_label: {
+            'en-US': 'Day',
+            'en-CA': 'Day, eh?',
+          },
+          general_dates_day_invalid: {
+            'en-US': 'Invalid Day',
+            'en-CA': 'Invalid Day, eh?',
+          },
+          general_dates_year_label: {
+            'en-US': 'Year',
+            'en-CA': 'Year, eh?',
+          },
+          general_dates_year_invalid: {
+            'en-US': 'Invalid Year',
+            'en-CA': 'Invalid Year, eh?',
+          },
+          payments_currency: {
+            'en-US': 'Currency',
+            'en-CA': 'Currency, eh?',
+          },
+          payments_methods_name: {
+            'en-US': 'Payment Method',
+            'en-CA': 'Payment Method, eh?',
+          },
+          payments_methods_apple_pay: {
+            'en-US': 'Apple Pay',
+            'en-CA': 'Apple Pay, eh?',
+          },
+          payments_methods_card: {
+            'en-US': 'Card',
+            'en-CA': 'Card, eh?',
+          },
+          payments_methods_paypal: {
+            'en-US': 'PayPal',
+            'en-CA': 'PayPal, eh?',
+          },
+          payments_methods_check: {
+            'en-US': 'E-Check',
+            'en-CA': 'E-Check, eh?',
+          },
+          payments_methods_bitcoin: {
+            'en-US': 'Bitcoin',
+            'en-CA': 'Bitcoin, eh?',
+          },
+          payments_check_savings: {
+            'en-US': 'Savings',
+            'en-CA': 'Savings, eh?',
+          },
+          payments_check_checking: {
+            'en-US': 'Checking',
+            'en-CA': 'Checking, eh?',
+          },
+          payments_check_personal: {
+            'en-US': 'Personal',
+            'en-CA': 'Personal, eh?',
+          },
+          payments_check_business: {
+            'en-US': 'Business',
+            'en-CA': 'Business, eh?',
+          },
+          payments_check_bank_account_type: {
+            'en-US': 'Account Type',
+            'en-CA': 'Account Type, eh?',
+          },
+          payments_check_bank_account_holder_type: {
+            'en-US': 'Account Holder',
+            'en-CA': 'Account Holder, eh?',
+          },
+          payments_check_bank_name: {
+            'en-US': 'Bank Name',
+            'en-CA': 'Bank Name, eh?',
+          },
+          payments_check_bank_account_number: {
+            'en-US': 'Bank Account Number',
+            'en-CA': 'Bank Account Number, eh?',
+          },
+          payments_check_bank_routing_number: {
+            'en-US': 'Bank Routing Number',
+            'en-CA': 'Bank Routing Number, eh?',
+          },
+          payments_credit_card_cvv_hint: {
+            'en-US': 'CVV codes are located on the back of Visa, Mastercard, and Discover cards. American Express CVV codes are located on the front.',
+            'en-CA': 'CVV codes are located on the back of Visa, Mastercard, and Discover cards. American Express CVV codes are located on the front., eh?',
+          },
+          payments_credit_card_cvv_label: {
+            'en-US': 'Card CVV',
+            'en-CA': 'Card CVV, eh?',
+          },
+          payments_credit_card_number_label: {
+            'en-US': 'Card Number',
+            'en-CA': 'Card Number, eh?',
+          },
+          payments_credit_card_number_error: {
+            'en-US': 'Credit Card Number is invalid',
+            'en-CA': 'Credit Card Number is invalid, eh?',
+          },
+          payments_credit_card_cvv_error: {
+            'en-US': 'CVV is invalid',
+            'en-CA': 'CVV is invalid, eh?',
+          },
+          payments_credit_card_number_placeholder: {
+            'en-US': 'Credit Card #',
+            'en-CA': 'Credit Card #, eh?',
+          },
+          payments_cvv_placeholder: {
+            'en-US': 'cvv',
+            'en-CA': 'cvv, eh?',
+          },
+          payments_credit_card_submit: {
+            'en-US': 'Submit payment',
+            'en-CA': 'Submit payment, eh?',
+          },
+          payments_credit_card_progress: {
+            'en-US': 'Submitting payment',
+            'en-CA': 'Submitting payment, eh?',
+          },
+          payments_check_submit: {
+            'en-US': 'Submit payment',
+            'en-CA': 'Submit payment, eh?',
+          },
+          payments_check_progress: {
+            'en-US': 'Submitting  payment',
+            'en-CA': 'Submitting  payment, eh?',
+          },
+          payments_bitcoin_submit: {
+            'en-US': 'Finish with BitPay',
+            'en-CA': 'Finish with BitPay, eh?',
+          },
+          payments_bitcoin_progress: {
+            'en-US': 'Talking with BitPay',
+            'en-CA': 'Talking with BitPay, eh?',
+          },
+          payments_paypal_submit: {
+            'en-US': 'Finish with PayPal',
+            'en-CA': 'Finish with PayPal, eh?',
+          },
+          payments_paypal_progress: {
+            'en-US': 'Talking with PayPal',
+            'en-CA': 'Talking with PayPal, eh?',
+          },
+          payments_paypal_success: {
+            'en-US': 'Please finish your transaction with PayPal.',
+            'en-CA': 'Please finish your transaction with PayPal., eh?',
+          },
+          payments_bitcoin_success: {
+            'en-US': 'Please finish your transaction with BitPay.',
+            'en-CA': 'Please finish your transaction with BitPay., eh?',
+          },
+          payments_apple_pay_progress: {
+            'en-US': 'Completing transaction with Apple Pay®',
+            'en-CA': 'Completing transaction with Apple Pay®, eh?',
+          },
+          payments_failed_try_again: {
+            'en-US': 'Try Again',
+            'en-CA': 'Try Again, eh?',
+          },
+          payments_thank_you_supporter: {
+            'en-US': 'Thank you, %{name}',
+            'en-CA': 'Thank you, %{name}, eh?',
+          },
+          payments_thank_you_receipt: {
+            'en-US': 'You will receive a receipt by email shortly.',
+            'en-CA': 'You will receive a receipt by email shortly., eh?',
+          },
+          order_your: {
+            'en-US': 'Your order',
+            'en-CA': 'Your order, eh?',
+          },
+          order_items_heading: {
+            'en-US': 'Select number of tickets',
+            'en-CA': 'Select number of tickets, eh?',
+          },
+          general_next_button: {
+            'en-US': 'Next',
+            'en-CA': 'Next, eh?',
+          },
+         general_next_button_aria: {
+            'en-US': 'Continue to Registrant Info',
+            'en-CA': 'Continue to Registrant Info, eh?',
+          },
+          order_items_submit: {
+            'en-US': 'Submit order',
+            'en-CA': 'Submit order, eh?',
+          },
+          order_items_errors_empty: {
+            'en-US': 'At least one ticket is required',
+            'en-CA': 'At least one ticket is required, eh?',
+          },
+          order_registrations_heading: {
+            'en-US': 'Customize ticket %{position} of %{total}',
+            'en-CA': 'Customize ticket %{position} of %{total}, eh?',
+          },
+          order_registrations_for_me: {
+            'en-US': 'This ticket is for me',
+            'en-CA': 'This ticket is for me, eh?',
+          },
+          order_registrations_guest_heading: {
+            'en-US': 'Guest Information',
+            'en-CA': 'Guest Information, eh?',
+          },
+          order_registrations_next: {
+            'en-US': 'Next',
+            'en-CA': 'Next, eh?',
+          },
+          order_registrations_next_aria_next: {
+            'en-US': 'Continue to Next Ticket',
+            'en-CA': 'Continue to Next Ticket, eh?',
+          },
+          order_registrations_next_aria_payment: {
+            'en-US': 'Continue to Payment Method Section',
+            'en-CA': 'Continue to Payment Method Section, eh?',
+          },
+          validation_default: {
+            'en-US': 'Something is not correct, please recheck the inputs.',
+            'en-CA': 'Something is not correct, please recheck the inputs., eh?',
+          },
+          validation_missing: {
+            'en-US': '%{label} is missing',
+            'en-CA': '%{label} is missing, eh?',
+          },
+          validation_required: {
+            'en-US': '%{label} is required',
+            'en-CA': '%{label} is required, eh?',
+          },
+          institution_checkbox_label: {
+            'en-US': 'This donation is from an institution',
+            'en-CA': 'This donation is from an institution, eh?',
+          },
+          institution_name: {
+            'en-US': 'Institution Name',
+            'en-CA': 'Institution Name, eh?',
+          },
+          institution_type: {
+            'en-US': 'Institution Type',
+            'en-CA': 'Institution Type, eh?',
+          },
+          institution_name_place_holder: {
+            'en-US': 'enter institution name',
+            'en-CA': 'enter institution name, eh?',
+          },
+          institution_categories_corporation: {
+            'en-US': 'Corporation',
+            'en-CA': 'Corporation, eh?',
+          },
+          institution_categories_foundation: {
+            'en-US': 'Foundation',
+            'en-CA': 'Foundation, eh?',
+          },
+          institution_categories_place_of_worship: {
+            'en-US': 'Place of Worship',
+            'en-CA': 'Place of Worship, eh?',
+          },
+          institution_categories_government: {
+            'en-US': 'Government',
+            'en-CA': 'Government, eh?',
+          },
+          institution_categories_school: {
+            'en-US': 'School',
+            'en-CA': 'School, eh?',
+          },
+          institution_categories_donor_advised_fund: {
+            'en-US': 'Donor Advised Fund',
+            'en-CA': 'Donor Advised Fund, eh?',
+          },
+          institution_categories_other: {
+            'en-US': 'Other',
+            'en-CA': 'Other, eh?',
+          },
+          donor_information_first_name: {
+            'en-US': 'First Name',
+            'en-CA': 'First Name, eh?',
+          },
+          donor_information_last_name: {
+            'en-US': 'Last Name',
+            'en-CA': 'Last Name, eh?',
+          },
+          donor_information_email: {
+            'en-US': 'Email',
+            'en-CA': 'Email, eh?',
+          },
+          donor_information_email_opt_in: {
+            'en-US': 'Keep me informed with email updates',
+            'en-CA': 'Keep me informed with email updates, eh?',
+          },
+          donor_information_phone: {
+            'en-US': 'Phone',
+            'en-CA': 'Phone, eh?',
+          },
+          donor_information_address: {
+            'en-US': 'Address',
+            'en-CA': 'Address, eh?',
+          },
+          donor_information_birthday_month: {
+            'en-US': 'Month',
+            'en-CA': 'Month, eh?',
+          },
+          donor_information_birthday_day: {
+            'en-US': 'Day',
+            'en-CA': 'Day, eh?',
+          },
+          donor_information_birthday_year: {
+            'en-US': 'Year',
+            'en-CA': 'Year, eh?',
+          },
+          donor_information_gender_women: {
+            'en-US': 'Woman',
+            'en-CA': 'Woman, eh?',
+          },
+          donor_information_gender_man: {
+            'en-US': 'Man',
+            'en-CA': 'Man, eh?',
+          },
+          donor_information_gender_prefer_not_to_say: {
+            'en-US': 'Prefer not to say',
+            'en-CA': 'Prefer not to say, eh?',
+          },
+          donor_information_gender_non_binary_other: {
+            'en-US': 'Non-Binary/Other',
+            'en-CA': 'Non-Binary/Other, eh?',
+          },
+          donor_information_auto_address_manual_entry: {
+            'en-US': 'Manual Entry',
+            'en-CA': 'Manual Entry, eh?',
+          },
+          donor_information_auto_address_server_error: {
+            'en-US': 'An error occurred retrieving address details. Please enter the address manually.',
+            'en-CA': 'An error occurred retrieving address details. Please enter the address manually., eh?',
+          },
+          donor_information_auto_address_label: {
+            'en-US': 'Search Address',
+            'en-CA': 'Search Address, eh?',
+          },
+          donor_information_auto_address_place_holder: {
+            'en-US': 'Enter Address',
+            'en-CA': 'Enter Address, eh?',
+          },
+          donor_information_city: {
+            'en-US': 'City',
+            'en-CA': 'City, eh?',
+          },
+          donor_information_state: {
+            'en-US': 'State',
+            'en-CA': 'State, eh?',
+          },
+          donor_information_postal_code: {
+            'en-US': 'Postal Code',
+            'en-CA': 'Postal Code, eh?',
+          },
+          donor_information_postal_code_error: {
+            'en-US': 'Bad postal code',
+            'en-CA': 'Bad postal code, eh?',
+          },
+          donor_information_country: {
+            'en-US': 'Country',
+            'en-CA': 'Country, eh?',
+          },
+          donor_information_or_enter_postal_code: {
+            'en-US': 'or enter postal code',
+            'en-CA': 'or enter postal code, eh?',
+          },
+          donor_information_heading: {
+            'en-US': 'Your Information',
+            'en-CA': 'Your Information, eh?',
+          },
+          donor_information_billing: {
+            'en-US': 'Billing Address',
+            'en-CA': 'Billing Address, eh?',
+          },
+        },
+      },
+    });
+  </script>
+  <div id="fr-placed-form-container-1289" style="min-height: 415px;"></div>
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>

@@ -1,0 +1,15 @@
+body{
+  margin:0;
+}
+svg{
+  width:100%;
+  height:calc(100% - 30px);
+  position:fixed;
+  font-family:sans-serif;
+  
+}
+input{
+  position:absolute;
+  width:100%;
+  bottom:10px;
+}

@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.target {
+  fill: red;
+  cursor: move;
+}
+
+.output {
+  width: 400px;
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
+}
+
+.math {
+  margin: 20px;
+  position: absolute;
+}
+.math span {
+  font-family: monospace;
+  display: block;
+  color: grey;
+  line-height: 24px;
+  opacity: 0.5;
+  font-size: 16px;
+}

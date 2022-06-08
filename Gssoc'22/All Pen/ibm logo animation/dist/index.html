@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Eye Bee M TimelineMax</title>
+  <link rel='stylesheet' href='https://codepen.io/pyrografix/pen/ggzEYm.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg class="animation" xmlns="http://www.w3.org/2000/svg" viewBox="200 200 880 350" width="100%" height="100%" opacity="0">
+	<g id="m">
+		<clipPath id="mMask">
+			<path d="M928,323V293H868l-26,68-25-68H756v30h23v90H756v30h53V353l33,89,33-89v90h53V413H905V323h23" />
+		</clipPath>
+		<path id="lines" d="M747,298H983M657,318h376M567,338H923M707,358H963M726,438H962M707,418h376M617,398H973M757,378h256" stroke="#335fb4" stroke-width="10" clip-path="url(#mMask)" stroke-dasharray="384,10,256,15,170,22,113,33,75,50,50,75,33,113,22,170,15,256,10"
+		stroke-dashoffset="1872" />
+	
+	</g>
+
+	<marker id="BodyStart" markerWidth="64" markerHeight="32" refX="32" refY="32" orient="auto" markerUnits="userSpaceOnUse" overflow="visible">
+		<path d="M16,60V4A32,32,0,0,0,16,60Z" fill="#f7b853" />
+	</marker>
+	<marker id="BodyEnd" markerWidth="64" markerHeight="32" refX="0" refY="32" orient="auto" markerUnits="userSpaceOnUse" overflow="visible">
+		<path d="M16,4V60A32,32,0,0,0,16,4Z" fill="#f7b853" />
+	</marker>
+	<g class="bee">
+		<circle class="eye" cx="629" cy="320" r="15" fill="#f17585" />
+		<circle class="eye" cx="661" cy="320" r="15" fill="#f17585" />
+		<path class="body" id="body" d="M645 368q0 30 0 45" fill="none" stroke="#222" stroke-width="64" stroke-linecap="round" />
+		<path class="body" id="bodyStripes" d="M645 368q0 30 0 45" fill="none" stroke="#f7b853" stroke-width="64" stroke-dasharray="16 16" marker-end="url(#BodyEnd)" marker-start="url(#BodyStart)" />
+		<path class="right" d="M675 348l18 55a25 25 0 0 0 41 11 25 25 0 0 0-6-42z" fill="#528950" />
+		<path class="left" d="M615 348l-18 55a25 25 0 0 1-41 11 25 25 0 0 1 6-42z" fill="#528950" />
+	</g>
+
+	<g id="eye">
+		<g clip-path="url(#EyeMask)">
+			<g class="eyeBall">
+				<circle cx="440" cy="385" r="175" fill="#fff" />
+				<circle cx="440" cy="385" r="48" fill="#a98358" />
+				<circle cx="440" cy="385" r="20"  fill="#222"/>
+			</g>
+		</g>
+		<clipPath id="EyeMask">
+			<path class="eyeShape" d="M354 386c30 -80 142 -80 172 0c-30 80 -142 80 -172 0" />
+		</clipPath>
+		<path class="eyelash" fill="#e1593c" d="M356 340c40 -55 130 -55 170 0v-18c-40 -65 -130 -65 -170 0" fill="#e1593c" />
+	</g>
+</svg>
+
+<div class="controls">
+
+	<svg class="play-pause" viewBox="0 0 20 20">
+
+		<g class="pause-icon">
+
+			<rect x="5" y="3" width="4" height="14"/>
+
+			<rect x="11" y="3" width="4" height="14"/>
+
+		</g>
+
+		<path class="play-icon" d="M5,3 L15,10 L5,17" opacity="0"/>
+
+	</svg>
+
+	<svg class="progress-bar" width="600" height="20" >
+
+			<svg width="99%" height="100%" overflow="visible">
+
+					<rect class="thumb" x="0%" width="1%" height="100%"/>
+
+			</svg>
+
+		<text class="progress-time" x="100%" y="50%" text-anchor="end" font-family="sans-serif" dx="-18" alignment-baseline="central" font-size="20">0.00</text>
+
+	</svg>
+
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js'></script>
+<script src='https://codepen.io/pyrografix/pen/wgjRrL.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

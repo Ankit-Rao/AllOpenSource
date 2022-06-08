@@ -1,0 +1,297 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+body, html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.filter {
+  filter: url("#fancy-goo");
+}
+
+.out-of-frame {
+  background: #000;
+  transition: background 0.8s ease-in-out;
+  width: 430px;
+  height: 100px;
+  z-index: 1;
+  position: absolute;
+  top: -99px;
+  left: 0;
+}
+
+.song-box {
+  font-family: "Oswald";
+  z-index: 0;
+  background: #000;
+  position: absolute;
+  padding: 15px 30px;
+  border-radius: 150px;
+  top: -88px;
+  left: 20px;
+  transition: top 1s cubic-bezier(0.56, -0.53, 0.38, 1.34) 0.25s, background 0.8s ease;
+  max-width: 331px;
+  margin-right: 20px;
+  margin-bottom: 100px;
+}
+.song-box > div {
+  float: left;
+}
+.song-box > div.text {
+  max-width: 266px;
+}
+.song-box > div.icon {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  z-index: 10;
+  left: -5px;
+  margin-right: 5px;
+}
+.song-box p {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background: #000;
+  z-index: 0;
+  transition: all 2s ease-in-out;
+}
+.song-box p.drip {
+  top: 90px;
+}
+.song-box .name, .song-box .artist {
+  font-size: 2em;
+  color: #FFF;
+  position: relative;
+  z-index: 4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.song-box .artist {
+  font-size: 1.25em;
+  color: #FFF;
+  opacity: 0.75;
+}
+
+.container.animate .song-box {
+  opacity: 1;
+  top: -5px;
+}
+
+.droplets {
+  z-index: -1;
+  position: absolute;
+  padding: 15px 30px;
+  top: -100px;
+  left: 50px;
+  max-width: 100%;
+  width: 500px;
+  height: 100px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+  transition: all 0.8s cubic-bezier(0.42, 0, 1, 0.45) 0.25s;
+}
+
+.container.animate .droplets {
+  display: block;
+  opacity: 1;
+  top: 0px;
+}
+
+.droplets p {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  height: 14px;
+  width: 14px;
+  border-radius: 20px;
+  background: #000;
+  z-index: -1;
+  opacity: 1;
+  transition: all 1.5s cubic-bezier(0.55, 0.09, 0.78, 0.43) 0.55s;
+}
+.droplets p.drip {
+  top: 260px;
+  opacity: 0;
+}
+
+.blood .droplets p,
+.blood .song-box p,
+.blood .out-of-frame,
+.blood .song-box {
+  background: #8e2b06;
+}
+
+.bits .droplets p,
+.bits .song-box p,
+.bits .out-of-frame,
+.bits .song-box {
+  background: purple;
+}
+.bits .icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.donation .droplets p,
+.donation .song-box p,
+.donation .out-of-frame,
+.donation .song-box {
+  background: green;
+}
+
+.subscriber .droplets p,
+.subscriber .song-box p,
+.subscriber .out-of-frame,
+.subscriber .song-box {
+  background: red;
+}
+
+.follower .droplets p,
+.follower .song-box p,
+.follower .out-of-frame,
+.follower .song-box {
+  background: blue;
+}
+
+.container {
+  position: relative;
+  top: -2px;
+  border-radius: 8px;
+}
+.container.subscriber .icon {
+  background-image: url("https://i.warosu.org/data/tg/img/0308/54/1394917261555.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container.follower .icon {
+  background-image: url("https://vignette2.wikia.nocookie.net/shipping/images/6/66/Pixel_heart_icon.png/revision/latest?cb=20151011174450");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container.donation .icon {
+  background-image: url("http://www.song2stream.com/images/coin_rotating.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container.bits.cheer10 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/10.gif");
+}
+.container.bits.cheer100 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/100.gif");
+}
+.container.bits.cheer1000 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/1000.gif");
+}
+.container.bits.cheer5000 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/5000.gif");
+}
+.container.bits.cheer10000 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/10000.gif");
+}
+.container.bits.cheer100000 .icon {
+  background-image: url("https://cdn.twitchalerts.com/twitch-bits/images/hd/100000.gif");
+}
+
+.webcam-frame {
+  position: relative;
+  width: 431px;
+  height: 300px;
+  border-radius: 8px;
+  border-bottom: none;
+  overflow: hidden;
+  background: #000;
+  z-index: 5;
+}
+.webcam-frame .text-row {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #FFF;
+  font-family: "Oswald";
+}
+
+.webcam-frame {
+  transition: background 0.8s ease;
+}
+.webcam-frame.blood {
+  background: #8e2b06;
+}
+.webcam-frame.bits {
+  background: purple;
+}
+.webcam-frame.donation {
+  background: green;
+}
+.webcam-frame.subscriber {
+  background: red;
+}
+.webcam-frame.follower {
+  background: blue;
+}
+
+.webcam {
+  background-color: black;
+  width: 400px;
+  height: 216px;
+  overflow: hidden;
+  position: relative;
+  left: 15px;
+  top: 65px;
+}
+.webcam video {
+  position: relative;
+  top: -65px;
+}
+
+.trigger-webcam {
+  background-color: white;
+  width: 400px;
+  height: 216px;
+  cursor: pointer;
+  overflow: hidden;
+  position: absolute;
+  left: 15px;
+  top: 65px;
+  z-index: 1;
+  font-size: 30px;
+  text-align: center;
+  line-height: 216px;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+.buttons .button-wrap {
+  padding: 5px;
+  background: #999;
+  margin-bottom: 5px;
+}
+.buttons .input-wrap {
+  text-align: center;
+}
+.buttons .input-wrap input {
+  width: 100px;
+}
+.buttons button {
+  display: block;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+}

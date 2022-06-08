@@ -1,0 +1,21 @@
+body{
+  background:black;
+  overflow:hidden;
+  margin:0;
+}
+audio{
+  width:100%;
+  display:block;
+  position:absolute;
+  bottom:20px;
+}
+.darth{
+  position:absolute;
+  bottom:-5%;
+  right:-5%;
+}
+.drip{
+  position:absolute;
+  height:100%;
+  width:100%;
+}

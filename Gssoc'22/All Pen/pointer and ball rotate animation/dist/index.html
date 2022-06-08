@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Rotate towards point</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg>
+	<svg x="50%" y="50%" overflow="visible">
+		<polygon class="arrow" points="-30,-10 -30,10 15,10 15,20 35,0 15,-20 15-10"/>
+	</svg>
+<circle class="target" r="8" />
+</svg>
+
+<div class="output">
+	<h2></h2>
+	<span>Drag the red dot.</span>
+</div>
+
+<div class="math">
+	<span>
+		var radians = Math.atan2(targetY - objectY, targetX - objectX);
+	</span>
+	<span>
+		var degrees = radians * 180 / Math.PI;
+	</span>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

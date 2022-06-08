@@ -1,0 +1,24 @@
+/* Nothing to see here really */
+html {
+	font-size: 1vw;
+}
+
+body {
+	margin: 0;
+	background: #333;
+}
+
+.ratings {
+	height: 4rem;
+	width: 100%;
+	margin-top: 10rem;
+}
+
+span {
+	text-align: center;
+	width: 100%;
+	font-family:sans-serif;
+	display:block;
+	font-size:2rem;
+	color:#666;
+}

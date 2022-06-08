@@ -1,0 +1,32 @@
+.logo-wrapper {
+	width: 1em;
+	font-size: 400px;
+}
+
+.logo {
+	position: relative;
+	height: 0;
+	padding-bottom: 66.666666%;
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		font-size: 23.57022604%;
+		width: 23.57022604%;
+		height: 35.355339059%;
+		top: 50%;
+		left: calc(50% - 0.70710678118655em);
+		transform-origin: center center;
+		transform: translate(-50%, -50%) rotate(-45deg);
+		box-shadow: -1em 0, 0 -1em, .9em 1em, 1.1em 1em, 1em .9em, 1em 1.1em, 1em 0, 0 1em, 2em 1em, 1em 2em;
+		animation-name: example;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+		animation-timing-function: ease-in-out;
+	}
+}
+@keyframes example {
+    from {box-shadow: 0 0 #000;}
+    to {box-shadow: -1em 0 #000, 0 -1em #000, .9em 1em #000, 1.1em 1em #000, 1em .9em #000, 1em 1.1em #000, 1em 0 #000, 0 1em #000, 2em 1em #000, 1em 2em #000;}
+}

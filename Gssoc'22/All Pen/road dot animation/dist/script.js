@@ -1,0 +1,1 @@
+TweenMax.to(".busy",100,{ease:Linear.easeNone,repeat:-1,"stroke-dashoffset":5000});

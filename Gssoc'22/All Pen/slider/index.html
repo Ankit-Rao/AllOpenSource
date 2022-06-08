@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodePen - Flickity Slider Test</title>
+  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.min.css'>
+<link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,300italic,300'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Infinite Flickity Slider Test</title>
+</head>
+<style>
+  html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+.cf:before,
+.cf:after {
+  display: table;
+  content: ' ';
+}
+.cf:after {
+  clear: both;
+}
+.cf {
+  *zoom: 1;
+}
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  color: #555555;
+  background-color: #f5f7fa;
+  text-align: center;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+figure {
+  margin: 0;
+  padding: 10px;
+}
+figure a {
+  display: block;
+}
+mark {
+  padding: 0 5px;
+  background-color: #dddddd;
+}
+::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.site-content {
+	text-align: left;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	padding-right: 5%; 
+	padding-left: 5%;
+	margin-bottom: 90px;
+}
+
+.card {
+	width: 100%;
+	background-color: #fff;
+	text-align: left;
+	position: relative;
+	height: 100%;
+	box-shadow: 0px 2px 6px 0px rgba(204,209,217,.5);
+	border: 1px solid #E6E9ED;
+}
+
+.courses {
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+.course-item {
+	width: 33%;
+	padding-right: 2%;
+	padding-left: 2%;
+	margin-bottom: 30px;
+
+	/* ensuring proper layout*/
+	float: left;
+}
+.course-heading {
+	font-weight: 500;
+	font-size: 12px;
+	color: #AAB2BD;
+	text-transform: uppercase;
+	text-align: center;
+}
+.course-info {
+	padding: 7%;
+	min-height: 140px;
+}
+.course-topic {
+	font-weight: 500;
+	color: #AAB2BD;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+.course-topic.photo {
+	color: #673AB7;
+}
+.course-topic.webdesign {
+	color: #009688;
+}
+.course-topic.computer {
+	color: #2196F3;
+}
+.course-topic.code {
+	color: #4CAF50;
+}
+.course-topic.design {
+	color: #F44336;
+}
+.course-title {
+	font-weight: 500;
+	font-size: 14px;
+	margin: 0 0 30%;
+}
+.course-meta {
+	color: #AAB2BD;
+	font-weight: 300;
+	font-size: 11px;
+	position: absolute;
+	left: 7%;
+	bottom: 7%;
+}
+.course-duration:before {
+	display: inline-block;
+	content: "•";
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.course-caption {
+	position: absolute;
+	right: 5%;
+	bottom: 5%;
+	font-size: 18px;
+	color: #AAB2BD;
+  
+}
+</style>
+
+<body>
+  <div class="site-content cf">
+
+    <h2 class="course-heading">Toolkit</h2>
+    <div class="courses cf" id="showcase">
+
+      <div class="course-item slide">
+        <div class="course-summary card">
+          <div class="course-thumbnail">
+            <img src="https://cms-assets.tutsplus.com/legacy-courses/CRS-96680.png" height="277" width="400" alt="image">
+          </div>
+          <div class="course-info">
+            <div class="course-topic webdesign">Programming</div>
+            <h3 class="course-title">Ruby on Rails</h3>
+            <div class="course-meta">
+              <time class="course-date">Version</time>
+              <span class="course-duration">2.2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-item slide">
+        <div class="course-summary card">
+          <div class="course-thumbnail">
+            <img src="https://s-media-cache-ak0.pinimg.com/736x/80/51/ba/8051ba29d8450492b819ae2aace51b99.jpg" height="277" width="400" alt="">
+          </div>
+          <div class="course-info">
+            <div class="course-topic webdesign">Web</div>
+            <h3 class="course-title">HTML5 & CSS3</h3>
+            <div class="course-meta">
+              <time class="course-date">Version</time>
+              <span class="course-duration">3</span>
+            </div>
+          </div>
+          <span class="course-caption ion ion-closed-captioning"></span>
+        </div>
+      </div>
+
+      <div class="course-item slide">
+        <div class="course-summary card">
+          <div class="course-thumbnail">
+            <img src="https://cms-assets.tutsplus.com/uploads/users/48/posts/22337/preview_image/Linux-setup-for-developers.png" height="277" width="400" alt="Linux Image">
+          </div>
+          <div class="course-info">
+            <div class="course-topic computer">OS</div>
+            <h3 class="course-title">Linux</h3>
+            <div class="course-meta">
+              <time class="course-date">Version</time>
+              <span class="course-duration">14.10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-item slide">
+        <div class="course-summary card">
+          <div class="course-thumbnail">
+            <img src="https://avatars.githubusercontent.com/u/1089146?s=280&v=4" height="277" width="400" alt="TextEdit Image">
+          </div>
+          <div class="course-info">
+            <div class="course-topic code">Text Editor</div>
+            <h3 class="course-title">Atom</h3>
+            <div class="course-meta">
+              <time class="course-date">Version</time>
+              <span class="course-duration">1.0.11</span>
+            </div>
+          </div>
+          <span class="course-caption ion ion-closed-captioning"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/flickity/1.1.0/flickity.pkgd.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

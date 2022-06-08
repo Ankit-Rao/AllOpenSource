@@ -1,0 +1,20 @@
+body{
+	margin:0;
+}
+.container{
+	overflow:scroll;
+}
+svg{
+	width:4000px;
+	height:4000px;
+	position:absolute;
+	transform-origin:0 0;
+	*{
+		vector-effect: non-scaling-stroke;
+	}
+}
+input{
+	position:fixed;
+	bottom:30px;
+	right:30px;
+}

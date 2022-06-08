@@ -1,0 +1,9 @@
+body {
+	background: hsl(60, 100%, 50%)
+		repeating-conic-gradient(
+			from 45deg at 66% calc(100vh + 80px),
+			hsl(60, 100%, 50%) 0 5deg,
+			hsl(57, 100%, 50%) 0 10deg
+		);
+	background-size: 100vw 100vh;
+}

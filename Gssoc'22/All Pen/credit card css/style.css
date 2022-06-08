@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
+
+.card{
+  display:grid;
+  max-width: 430px;
+  height: 270px;
+  background-color: rgba(0,0,0,.5);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px 0 rgba(14, 42, 90, 0.55);
+  backface-visibility: hidden;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 
+    "membership membership membership"
+    "img name name"
+    ". start end";
+  color:#fff;
+  font-family: "Source Code Pro", monospace;
+  font-size: 27px;
+  position:relative;
+}
+
+.card:after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:-1;
+background-image: url(https://media.istockphoto.com/vectors/abstract-creative-background-vector-id1039532442?k=6&m=1039532442&s=612x612&w=0&h=yDIQZo3NdoBuGN6GZTiJitCPQGz2fAOBW-cvGsa8D4U=);
+}
+.card > img{
+  grid-area:img;
+  width: 100px;
+  height: 125px;
+  object-fit:cover;
+  border-radius:2px;
+  border:1px solid #ddd;
+  margin: 0px 20px 0px 20px;
+}
+
+.card > .mshp-userName{
+  grid-area:name;
+  align-self: center;
+}
+
+.card > .mshp-sDate{
+  grid-area:start;
+  font-size: 18px;
+  text-align:center;
+  align-self: center;
+  margin: 0px 0px 5px;
+}
+
+.card > .mshp-eDate{
+  grid-area:end;
+  font-size: 18px;
+  text-align:center;
+  align-self: center;
+  margin: 0px 0px 5px;
+}
+
+.card > .mshp-sDate > .heading, .card > .mshp-eDate > .heading{
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.card > .mshp-name{
+  grid-area:membership;
+  text-align:center;
+  align-self: center;
+  margin:10px;
+}

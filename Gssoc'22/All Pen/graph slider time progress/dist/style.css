@@ -1,0 +1,10 @@
+body{
+  background:grey;
+  margin:0;
+}
+#timeSlider{
+  position:absolute;
+  left:200px;
+  top:410px;
+  width:200px;
+}

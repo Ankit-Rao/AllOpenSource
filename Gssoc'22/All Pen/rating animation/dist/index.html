@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Ratings Star System</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- Adjust the viewBox attribute's width (currently 5) to adjust the amount of stars. -->
+<svg class="ratings" viewBox="0 0 5 0.84375" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+	<!-- Adjust the value rectangle's width attribute (currently 3.5) to adjust the value of stars. -->
+  <rect class="value" width="3.5" height="100%" fill="url(#fill)" />
+  <rect fill="url(#stroke)" width="100%" height="100%"/>
+  <defs>
+    <pattern id="fill" width="1" height="100%" patternUnits="userSpaceOnUse">
+      <use x=".0625" fill="#efa81a" xlink:href="#star"/>
+    </pattern>
+    <pattern id="stroke" width="1" height="100%" patternUnits="userSpaceOnUse">
+      <use x=".0625" fill="none" stroke="#efa81a" stroke-width=".0625" xlink:href="#star"/>
+    </pattern>
+    <polygon id="star" points="0.4375, 0.09375, 0.53125, 0.34375, 0.78125, 0.34375, 0.5625, 0.5, 0.625, 0.75, 0.4375, 0.59375, 0.25, 0.75, 0.3125, 0.5, 0.09375, 0.34375, 0.34375, 0.34375"/>
+  </defs>
+</svg>
+<span>Not interactive</span>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

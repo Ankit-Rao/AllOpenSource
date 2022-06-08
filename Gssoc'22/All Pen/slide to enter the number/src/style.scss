@@ -1,0 +1,22 @@
+html{
+  font-size:1vw;
+}
+body{
+  font-size:0;
+  white-space:nowrap;
+}
+div{
+  display:inline-block;
+  width:32rem;
+  position:relative;
+  input{
+    display:block;
+    width:100%;
+  }
+  label{
+    position:absolute;
+    width:100%;
+    text-align:center;
+    font-size:13rem;
+  }
+}

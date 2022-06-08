@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - CSS-animated SVG, 3 ways</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<img class="spinner"
+     src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/91525/loader.svg" 
+     alt="3 filled squares surrounded by circle outlines, in red, blue and green; if the animation is working, they pulse, fading in and out each second; if the animation and transforms are working, they rotate one-third of a circle, twist in, rotate, twist out, rotate, shift straight in, rotate, shift back out, on and on ad infinitum."/>
+<div class="spinner spinner-background" role="img"
+     aria-label="The same graphic included as a background image."></div>
+<svg class="spinner"
+     width="150" height="150"
+     viewBox="-75 -75 150 150"
+     role="img"
+     aria-label="The same graphic embedded as inline SVG.">
+  
+  <style>
+    @keyframes pulse {
+      40%, 60% {opacity: 0.5}
+    }
+    @keyframes spin {
+       0%, 10% {transform: rotate(0deg)  translate(5px,0) rotate(0deg)  ;}
+      30%, 40% {transform: rotate(0deg)  translate(30px,0) rotate(0deg)  ;}
+      60%, 70% {transform: rotate(60deg) translate(30px,0) rotate(0deg)  ;}
+      90%,100% {transform: rotate(60deg) translate(30px,0) rotate(180deg);}
+    }
+    @keyframes step-rotate {
+       3%, 33% {transform: rotate(120deg);}
+      37%, 67% {transform: rotate(240deg);}
+      70%,100% {transform: rotate(360deg);}
+    }
+    .planets{
+      animation: pulse 1s infinite linear,
+                 spin 5s infinite alternate;
+    }
+    .loader {
+      animation: step-rotate 15s infinite;
+    }
+  </style>
+  <defs>
+    <g id="planet">
+      <rect width="30" height="30" fill="currentColor"/>
+      <circle cx="15" cy="15" r="20" fill="none"
+              stroke="currentColor" stroke-width="4" />
+    </g>
+  </defs>
+  <g class="loader">
+    <g transform="rotate(0)" color="tomato">
+      <use xlink:href="#planet" class="planets" transform="translate(5,0)"/>
+    </g>
+    <g transform="rotate(120)" color="royalBlue">
+      <use xlink:href="#planet" class="planets" transform="translate(5,0)"/>
+    </g>
+    <g transform="rotate(240)" color="mediumSeaGreen">
+      <use xlink:href="#planet" class="planets" transform="translate(5,0)"/>
+    </g>
+  </g>
+</svg>
+<!-- partial -->
+  
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Clock Teaching Tool</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1000">
+  
+  <path id="minutes" stroke="#D4145A" stroke-width="30" d="M500 500V160" />
+  <path id="hours" stroke="#D4145A" stroke-width="30" d="M500 500V300" />
+  <path id="seconds" stroke="#D4145A" stroke-width="10" d="M500 500V170" />
+  <circle cx="500" cy="500" r="30"/>
+  <text class="output" x="1500" y="500" font-size="400" text-anchor="middle" alignment-baseline="middle">12:00</text>
+<!--   <circle cx="500" cy="500" r="350" opacity="0.2"/>
+  <circle cx="500" cy="500" r="450" opacity="0.2"/> -->
+  <g font-size="120" text-anchor="middle" font-weight="bold" transform="translate(0,40)">
+    <text x="500" y="105" >12</text>
+    <text x="695" y="160" >1</text>
+    <text x="850" y="300" >2</text>
+    <text x="900" y="500" >3</text>
+    <text x="840" y="705" >4</text>
+    <text x="700" y="850" >5</text>
+    <text x="500" y="900" >6</text>
+    <text x="300" y="850" >7</text>
+    <text x="155" y="705" >8</text>
+    <text x="100" y="500" >9</text>
+    <text x="150" y="300" >10</text>
+    <text x="300" y="150" >11</text>
+    
+  </g>
+  
+</svg>
+<input type="range" value="0" min="0" max="1" step="0.00000000001">
+<!-- partial -->
+  <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/TweenMax-latest-beta.js?r=31'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!--
+
+  Inspired by github.com/voxmedia/meme and a Tweet
+  twitter.com/CodePen/status/482595868215103489
+
+  Recruiting some help from the following sources:
+  meltingice.github.io/psd.js
+  github.com/eligrey
+
+-->
+<script src="http://c.boylett.uk/libraries/Blob.js"></script>
+<script src="http://c.boylett.uk/libraries/canvas-toBlob.js"></script>
+<script src="http://c.boylett.uk/libraries/FileSaver.js"></script>
+<script src="http://c.boylett.uk/libraries/psd.min.js"></script>
+<aside>
+  <h1>
+    jsMeme
+  </h1>
+  <div class="drop">
+    Drop an image file here
+    <span>Accepted: JP(E)G, PNG, GIF, BMP, PSD</span>
+    <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+  </div>
+  <form class="webcam" style="display: none">
+    <video></video>
+    <button class="fr" onclick="return jsMeme.webcam.reset(), !1">Retry</button>
+    <button class="blue" onclick="return jsMeme.webcam.take(), !1">Take</button>
+  </form>
+  <form>
+    <button class="fr" onclick="return jsMeme.webcam.start(), !1"><i class="fa fa-camera"></i></button>
+    <button onclick="return jsMeme.file.rotate(-90), !1"><i class="fa fa-rotate-left"></i></button>
+    <button onclick="return jsMeme.file.rotate(90), !1"><i class="fa fa-rotate-right"></i></button>
+  </form>
+  <form>
+    <input type="text" placeholder="Type your first line..." name="line-1" />
+    <input type="text" placeholder="Type your second line..." name="line-2" />
+    <label><input type="text" size="14" placeholder="Image Size..." value="550" name="maximum-width" class="slider" min="200" max="1024" /> <em>Width: <span name="img-width">550px</span></em></label>
+  </form>
+  <form>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="33%" align="left" valign="top">
+          <label class="layout-type default">
+            <em></em>
+            <input type="radio" name="layout-type" value="default" onchange="jsMeme.captions.layout(this.value)" checked />
+            <b></b>
+          </label>
+        </td>
+        <td width="33%" align="center" valign="top">
+          <label class="layout-type classic">
+            <em></em>
+            <input type="radio" name="layout-type" value="classic" onchange="jsMeme.captions.layout(this.value)" />
+            <b></b>
+          </label>
+        </td>
+        <td width="33%" align="right" valign="top">
+          <label class="layout-type classic-split">
+            <em></em>
+            <input type="radio" name="layout-type" value="classic-split" onchange="jsMeme.captions.layout(this.value)" />
+            <b></b>
+          </label>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <form onsubmit="return jsMeme.file.export(), !1">
+    <button class="fr" onclick="return jsMeme.reset(), !1">Reset</button>
+    <button class="blue">Download Image</button>
+  </form>
+  <form>
+    <ul class="changelog">
+      <li><strong>Changelog</strong></li>
+      <li v="1.0.8">
+        <span>Removed redundant functions</span>
+        <span>Removed &lt;!DOCTYPE&gt;</span>
+      </li>
+      <li v="1.0.7">
+        <span>Fixed icons (FontAwesome)</span>
+        <span>Changed width input to slider</span>
+        <span>Fixed download filename bug</span>
+      </li>
+      <li v="1.0.6">
+        <span>Added text layouts</span>
+        <span>Added webcam support</span>
+        <span>Added rotation</span>
+      </li>
+      <li v="1.0.5">
+        <span>Variable shadow strength</span>
+        <span>Facility to change image width (height is automatic)</span>
+      </li>
+      <li v="1.0.4">Removed temporary images from viewport</li>
+      <li v="1.0.3">
+        <span>Tweaked text typing timeout.</span>
+        <span>Fixed bugs, made 'lines' more extensible, added reset.</span>
+      </li>
+      <li v="1.0.2">Added shadows (blurring) to text.</li>
+      <li v="1.0.1">Initial build took ~2hrs.</li>
+    </ul>
+  </form>
+</aside>
+<main>
+  <div class="canvas-container">
+    <canvas></canvas>
+  </div>
+  <div class="not-ready">
+    <button class="dark">
+      Choose an image file to get started
+      <input type="file" accept="image/*;capture=camera" onchange="jsMeme.file.import(this)" />
+    </button>
+  </div>
+</main>
