@@ -1,0 +1,53 @@
+$l: 1.25em;
+$h: 2*$l;
+$t: 1s;
+
+body {
+	display: grid;
+	place-content: center;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #302440
+}
+
+div { transform-style: preserve-3d }
+
+.a3d {
+	display: grid;
+	grid-template: repeat(var(--n), $l)/ repeat(var(--n), $l);
+	transform: rotatex(55deg) rotate(45deg);
+}
+
+.s3d {
+	--lim: calc(.5*(var(--n) - 1));
+	--abs-i: max(calc(var(--i) - var(--lim)), calc(var(--lim) - var(--i)));
+	--abs-j: max(calc(var(--j) - var(--lim)), calc(var(--lim) - var(--j)));
+	position: relative;
+	background: #efca98;
+	transform: translatez($h);
+	--dt: calc(.5*(var(--abs-i)*var(--abs-i) + var(--abs-j)*var(--abs-j))/var(--lim)/var(--lim)*#{-$t});
+	animation: a $t ease-in-out var(--dt) infinite alternate;
+	
+	&::before, &::after {
+		--k: 0;
+		position: absolute;
+		top: 50%;
+		width: $l; height: $h;
+		transform-origin: 50% 0;
+		transform: 
+			rotate(calc(var(--k)*-90deg)) 
+			translatey(.5*$l) 
+			rotatex(-90deg);
+		background: 
+			linear-gradient(90deg, #9699B6 50%, #8d6986 0) 
+				calc(var(--k)*100%)/ 200%;
+		content: ''
+	}
+	
+	&::after { --k: 1 }
+}
+
+@keyframes a {
+	to { transform: translatez(-$h) scale(.1) }
+}

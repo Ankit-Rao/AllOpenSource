@@ -1,0 +1,59 @@
+@property --ay {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --az {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+body, div {
+  display: grid;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  background: #5c5757;
+}
+
+.a3d {
+  --ay: 0deg;
+  --az: 0deg;
+  transform-style: preserve-3d;
+  transform: rotatey(var(--ay)) rotate(var(--az));
+  animation: az 8s linear infinite, ay 8s cubic-bezier(0.68, -0.6, 0.32, 1.6) infinite;
+}
+
+.dot {
+  --m: calc(.5*(var(--p) - 1));
+  --abs: max(calc(var(--m) - var(--i)), calc(var(--i) - var(--m)));
+  --sgn: clamp(-1, var(--i) - var(--m), 1);
+  --d: calc(3px + var(--abs)/var(--p)*1.75em);
+  --a: calc(var(--k)*1turn/var(--n-dot));
+  --x: calc(var(--abs)*2*1.75em/var(--n-dot));
+  --z: calc((var(--i) - var(--m))*2*1.75em/var(--n-dot));
+  grid-area: 1/1;
+  place-self: center;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  transform: scalex(var(--sgn)) rotate(var(--a)) translate3d(var(--x), 0, var(--z)) rotate(calc(-1*var(--a))) scalex(var(--sgn)) rotate(calc(-1*var(--az))) rotatey(calc(-1*var(--ay)));
+  background: radial-gradient(circle at 35% 35%, #fff, hsl(calc((1 - calc(var(--i)/var(--p)))*37 + calc(var(--i)/var(--p))*221), calc((1 - calc(var(--i)/var(--p)))*100% + calc(var(--i)/var(--p))*79%), calc((1 - calc(var(--i)/var(--p)))*42% + calc(var(--i)/var(--p))*63%)) 65%);
+}
+
+@keyframes ay {
+  0%, 15% {
+    --ay: 1turn ;
+  }
+  50%, 65% {
+    --ay: .5turn ;
+  }
+}
+@keyframes az {
+  to {
+    --az: 1turn ;
+  }
+}

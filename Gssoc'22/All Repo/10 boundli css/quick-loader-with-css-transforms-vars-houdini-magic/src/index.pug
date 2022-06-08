@@ -1,0 +1,9 @@
+- var n = 128, ha = Math.PI/n;
+
+style 
+	| :root {
+	| 	--n: #{n};
+	| 	--f: #{Math.tan(ha)}
+	| }
+while n--
+	.spike(style=`--i: ${n}`)

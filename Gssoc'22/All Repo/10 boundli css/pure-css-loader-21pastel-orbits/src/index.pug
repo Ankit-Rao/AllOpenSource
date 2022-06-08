@@ -1,0 +1,15 @@
+- let n = 6;
+- let min = 3, max = min + n;
+- let k = .25;
+
+style
+	- for(let j = 0; j < max; j++)
+		| .planet:nth-child(#{j + 1}) { --j: #{j} }
+.system(style=`--n: ${n}; --a: ${k*360}deg`)
+	- for(let i = 0; i < n; i++) {
+		- let m = min + i;
+		- let f = 1/Math.tan(k*Math.PI/m);
+		.orbit(style=`--i: ${i}; --m: ${m}; --f: ${f}`)
+			- for(let j = 0; j < m; j++)
+				.planet
+	- }

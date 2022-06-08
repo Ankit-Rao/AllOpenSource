@@ -1,0 +1,225 @@
+@charset "UTF-8";
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+}
+
+body {
+  --i: var(--wide, 1);
+  --not-i: calc(1 - var(--i));
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  overflow-x: hidden;
+  min-width: 205px;
+  height: 100vh;
+  background: #222;
+  color: #eee;
+  font: 1.25em/1.5 consolas, ubuntu mono, monaco, monospace;
+  transition: --a calc(var(--f)*2s) ease-out;
+  counter-reset: a var(--a);
+}
+@media (max-width: 715px) {
+  body .token--arg:nth-child(3)::before {
+    content: "\a     ";
+  }
+}
+@media (max-width: 605px) {
+  body {
+    --wide: 0 ;
+  }
+}
+@media (max-width: 435px) {
+  body .token--arg:nth-child(1)::before {
+    content: "\a     ";
+  }
+}
+@media (max-width: 340px) {
+  body {
+    font-size: 1em;
+  }
+}
+@media (max-width: 275px) {
+  body {
+    font-size: 0.875em;
+  }
+}
+@media (max-width: 240px) {
+  body {
+    font-size: 0.75em;
+  }
+}
+
+.sec {
+  --focus: 0;
+  --not-focus: calc(1 - var(--focus));
+  padding: 0.5em;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 15em 1fr;
+  grid-gap: 0.5em;
+  filter: grayScale(var(--not-focus));
+}
+form:focus-within, form:focus-within ~ .sec {
+  --focus: 1 ;
+}
+
+label {
+  grid-column: calc(1 + var(--not-i));
+  place-self: center var(--wide, end);
+}
+
+input {
+  cursor: pointer;
+}
+input[type=range] {
+  grid-column: 2;
+  grid-row: calc(1 + var(--not-i));
+}
+input[type=range], input[type=range]::-webkit-slider-thumb, input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  border: none;
+  width: 15em;
+  height: 0.25em;
+  border-radius: 0.125em;
+  background: currentcolor;
+}
+input[type=range]::-moz-range-track {
+  border: none;
+  width: 15em;
+  height: 0.25em;
+  border-radius: 0.125em;
+  background: currentcolor;
+}
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -0.375em;
+  border: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #fe7e10;
+  transition: all calc(var(--f)*2s);
+}
+input[type=range]::-moz-range-thumb {
+  margin-top: 0em;
+  border: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #fe7e10;
+  transition: all calc(var(--f)*2s);
+}
+input[type=range]:focus {
+  outline: solid 0 transparent;
+}
+input[type=button] {
+  --hlight: 0;
+  --select: 0;
+  border: solid 1px #eee;
+  width: 2em;
+  border-radius: 5px;
+  background: rgba(254, 126, 16, calc(var(--select) + .875*var(--hlight)));
+  color: HSL(0, 0%, calc(100%*(1 - (var(--select) + var(--hlight)))));
+}
+input[type=button]:focus {
+  outline: none;
+}
+input[type=button]:hover, input[type=button]:focus {
+  --hlight: 1 ;
+}
+input.hl {
+  --select: 1 ;
+}
+
+output {
+  grid-column: calc(3 - var(--not-i));
+  grid-row: calc(1 + var(--not-i));
+  place-self: start;
+  transform: translate(calc(var(--not-i)*(0.5em + var(--a)/180*14em - 50%)), calc(var(--not-i)*(0.5625em - 100%)));
+}
+output::after {
+  display: block;
+  border: solid 0.375em transparent;
+  padding: 0 0.25em;
+  border-radius: calc(0.375em + 3px);
+  transform-origin: 50% 100%;
+  transform: scale(calc(var(--i) + var(--not-i)*var(--focus)));
+  background: #fe7e10 border-box;
+  color: #222;
+  text-align: center;
+  --xy: calc(var(--not-i)*50%) calc(50%*(1 + var(--not-i)));
+  --mask:
+  	linear-gradient(red, red) padding-box,
+  	conic-gradient(
+  			from calc(45deg - var(--not-i)*90deg)
+  			at var(--xy),
+  			red 0% 25%, transparent 0%)
+  		var(--xy)/ 50% 50% no-repeat border-box;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  transition: transform 0.3s, filter 0.3s;
+  content: counter(a) "°";
+}
+
+.button {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 calc(0.5em - 1em);
+}
+
+#result {
+  --line: #fe7e10 0 1px,
+  				transparent 0 calc(100% - 1px),
+  				#fe7e10;
+  background: linear-gradient(var(--line)), linear-gradient(90deg, var(--line)), repeating-conic-gradient(from calc(var(--a)*1deg), #000 0% 25%, #eee 0% 50%);
+  background-position: 50%;
+  background-size: 9em 9em;
+}
+
+.token--func {
+  color: #fe7e10;
+}
+.token--keyw {
+  color: #cc7aff;
+}
+.token--ang {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.25em;
+  vertical-align: bottom;
+  color: #ff67b0;
+}
+.token--ang::before {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: currentcolor;
+  --rect: inset(0 calc(var(--not-focus)*100%) 0 0 round 5px);
+  -webkit-clip-path: var(--rect);
+  clip-path: var(--rect);
+  mix-blend-mode: difference;
+  transition: 0.5s cubic-bezier(calc(var(--focus)*.42), 0, calc(var(--not-focus)*.58), 1);
+  content: "";
+}
+.token--hex {
+  color: #ffd401;
+}
+.token--perc {
+  color: #87c830;
+}
+.token--ang .token--num::after {
+  content: counter(a);
+}
+.token--arg::before {
+  white-space: pre;
+}

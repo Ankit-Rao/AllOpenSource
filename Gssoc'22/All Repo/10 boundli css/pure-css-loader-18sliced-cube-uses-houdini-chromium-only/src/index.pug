@@ -1,0 +1,13 @@
+- let n = 4;
+
+.cube
+	- for(let k = 0; k < n; k++) {
+		.cuboid.slice
+			- for(let i = 0; i < 6; i++) {
+				.cuboid__face
+			- }
+	- }
+	.drop
+		- for(let k = 0; k < n; k++) {
+			.shadow.slice
+		- }

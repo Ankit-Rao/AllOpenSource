@@ -1,0 +1,100 @@
+- let d = 400;
+- let o = -.5*d, sw = Math.round(.425*d);
+- let e = .0005*d;
+- let info = {
+- 	home: {
+- 		hue: 202, 
+- 		ico: {
+- 			data: `M0${.55*o}l${.2625*d} ${.2*d}v${.35*d}h${-.525*d}v${-.35*d}z`, 
+- 			line: Math.round(.275*d), 
+- 			deco: {
+- 				data: `M${.25*o} ${-.475*o}h${.25*d}M0 0`, 
+- 				line: .08*d, 
+- 				clas: 'wire'
+- 			}
+- 		}, 
+- 		txt: 'home'
+- 	}, 
+- 	menu: {
+- 		hue: 267, 
+- 		ico: {
+- 			data: `M${-.4*o}${.4*o}h${-.4*d}v${.4*d}h${.4*d}z`, 
+- 			line: sw, 
+- 			deco: {
+- 				data: `M${.375*o - 1.5*e} 0h${.375*d + 3*e}M0 9`, 
+- 				line: .1*d, 
+- 				clas: 'wire', 
+- 				dash: `${e} ${.1875*d}`
+- 			}
+- 		}, 
+- 		txt: 'notes'
+- 	}, 
+- 	bell: {
+- 		hue: 340, 
+- 		ico: {
+- 			data: `M${-.4*o}${.4*o}h${-.4*d}v${.4*d}h${.4*d}z`, 
+- 			line: sw, 
+- 			deco: {
+- 				data: `M${.375*o} ${-.225*o}l${.125*d}${-.15*d} ${.125*d} ${.075*d} ${.125*d}${-.15*d}`, 
+- 				line: .065*d, 
+- 				clas: 'wire', 
+- 			}
+- 		}, 
+- 		txt: 'activity'
+- 	}, 
+- 	comp: {
+- 		hue: 8, 
+- 		ico: {
+- 			crad: .475*d, 
+- 			deco: {
+- 				data: `M0${.25*o}l${.225*d} ${.125*d}${-.225*d} ${.125*d}${-.225*d}${-.125*d}z`, 
+- 				line: .05*d, 
+- 				zrot: -45, 
+- 				clas: 'wire fill', 
+- 			}
+- 		}, 
+- 		txt: 'discovery'
+- 	}
+- };
+
+svg(width='0' height='0')
+	defs
+		rect#rect(x=2*o y=2*o width=2*d height=2*d style='--lum: 100%')
+		- for(let p in info)
+			- let v = info[p];
+			if v.ico.data
+				path(id=p d=v.ico.data stroke-width=v.ico.line)
+			else
+				circle(id=p r=v.ico.crad)
+	
+	filter#blur(x='-100%' y='-100%' width='300%' height='300%')
+		feGaussianBlur(in='SourceGraphic' stdDeviation=.05*d)
+	
+	linearGradient#grad
+		stop(stop-color='#848484')
+		stop(offset='1' stop-color='#1f1f1f')
+	
+	- for(let p in info)
+		mask(id=`${p}-inner`)
+			rect(x=o y=o width=d height=d style='--lum: 0%')
+			use(xlink:href=`#${p}` style='--lum: 100%')
+		mask(id=`${p}-outer`)
+			use(xlink:href='#rect')
+			use(xlink:href=`#${p}` style='--lum: 0%')
+
+nav
+	- for(let p in info)
+		- let v = info[p];
+		a.item(style=`--hue: ${v.hue}`)
+			svg.icon(viewBox=[o, o, d, d].join(' ') aria-hidden='true')
+				g(mask=`url(#${p}-outer)`)
+					use(xlink:href='#rect')
+					use.mono(xlink:href=`#${p}`)
+				g.blur(mask=`url(#${p}-inner)`)
+					use(xlink:href='#rect')
+					use.mono(xlink:href=`#${p}`)
+				g.over
+					- let deco = v.ico.deco;
+					use(xlink:href=`#${p}`)
+					path.deco(d=deco.data class=deco.clas stroke-width=deco.line stroke-dasharray=deco.dash transform=deco.zrot ? `rotate(${deco.zrot})` : null)
+			span.text #{v.txt}

@@ -1,0 +1,115 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  -webkit-animation: float 1s ease-in-out infinite alternate;
+          animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@-webkit-keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  min-height: 100vh;
+  background: #f3e5d3;
+}
+
+#toggle {
+  z-index: 2;
+  width: 20em;
+  height: 11em;
+  opacity: 0;
+}
+#toggle, #toggle + [for=toggle] {
+  grid-area: 1/1;
+  -webkit-clip-path: inset(0 round 5.5em);
+          clip-path: inset(0 round 5.5em);
+  cursor: pointer;
+}
+#toggle + [for=toggle] {
+  --i: 0;
+  --not-i: calc(1 - var(--i));
+  display: grid;
+  grid-template: 1fr/1fr 1fr;
+  overflow: hidden;
+  border: solid 1em transparent;
+  width: 18em;
+  height: 9em;
+  --c: rgb(calc(var(--not-i)*243 + var(--i)*126),
+           calc(var(--not-i)*229 + var(--i)*134),
+           calc(var(--not-i)*211 + var(--i)*250));
+  background: radial-gradient(closest-side, var(--c) calc(100% - 1px), transparent) calc(var(--i)*100%)/50% no-repeat, radial-gradient(closest-side, rgba(215, 214, 255, var(--i)) 65%, transparent) calc(var(--i)*100% + 1em) 1em/50% no-repeat #fff;
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: --i 0.5s;
+}
+#toggle + [for=toggle]::before, #toggle + [for=toggle]::after {
+  --j: 0;
+  --not-j: calc(1 - var(--j));
+  --sgn-j: calc(2*var(--j) - 1);
+  grid-area: 1/1;
+  place-self: center;
+  width: 9em;
+  height: 0.5em;
+  transform: translate(calc(var(--i)*100%)) rotate(calc(var(--sgn-j)*45deg - var(--i)*.5turn)) translate(calc(var(--i)*var(--j)*0.675em), calc(var(--i)*(var(--not-j)*-0.675em + var(--j)*(1.5em - 4.5em + 50%))));
+  background: #fff;
+  --o: calc(var(--not-i)*2em +
+            var(--i)*(var(--not-j)*1.5em +
+                      var(--j)*3.15em));
+  -webkit-clip-path: inset(0 var(--o) round 0.25em);
+          clip-path: inset(0 var(--o) round 0.25em);
+  content: "";
+}
+#toggle + [for=toggle]::after {
+  --j: 1 ;
+}
+#toggle:checked + [for=toggle] {
+  --i: 1 ;
+}

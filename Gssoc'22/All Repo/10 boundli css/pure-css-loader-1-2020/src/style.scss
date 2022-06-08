@@ -1,0 +1,51 @@
+$w: 10em;
+$h: .5em;
+$r: .5*$h;
+$p: 10%;
+$t: .5s;
+
+body { background: #000 }
+
+div { position: absolute }
+
+.a {
+	top: 50%; left: 50%;
+	animation: r 4*$t linear infinite
+}
+
+@keyframes r { to { transform: rotate(1turn) } }
+
+.dir { transform: rotate(calc(var(--i)*1turn/var(--n))) }
+
+.spark {
+	overflow: hidden;
+	position: absolute;
+	margin: -$r;
+	width: $w; height: $h;
+	border-radius: $r;
+	animation: mov-out 2*$t ease-out 
+		calc((var(--i)*var(--j))*#{-2*$t}/(var(--n)*var(--m))) 
+		infinite alternate;
+	mix-blend-mode: color-burn;
+	
+	&:before {
+		position: absolute;
+		width: 100%; height: 100%;
+		border-radius: $r;
+		background: var(--c);
+		animation: inherit;
+		animation-name: mov-in;
+		animation-duration: $t;
+		content: ''
+	}
+}
+
+@keyframes mov-out {
+	0%, #{$p} { transform: translate($h - $w) }
+	#{100% - $p}, 100% { transform: none }
+}
+
+@keyframes mov-in {
+	0%, #{2*$p} { transform: translate($w - $h) }
+	#{100% - 2*$p}, 100% { transform: translate(.9*($w - $h)) }
+}

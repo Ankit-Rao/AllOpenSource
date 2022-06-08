@@ -1,0 +1,100 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkseagreen;
+}
+
+[id=c] {
+  position: absolute;
+  left: -100vw;
+}
+[id=c]:checked + label {
+  --inner: linear-gradient(green, limegreen);
+}
+[id=c]:checked + label:after {
+  transform: translate(4.5em);
+  color: limegreen;
+  content: "on";
+}
+
+[for=c] {
+  position: relative;
+  border: solid 0.75em transparent;
+  width: 8em;
+  height: 3.5em;
+  border-radius: 3.5em;
+  box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.5);
+  background: var(--inner, linear-gradient(dimgray, silver)) padding-box, linear-gradient(silver, whitesmoke) border-box;
+  font-size: 2.5em;
+  text-indent: -100vw;
+  cursor: pointer;
+}
+[for=c]:after {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.35em;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  box-shadow: 0 0.4em 0.6em rgba(0, 0, 0, 0.2);
+  background: linear-gradient(silver, whitesmoke) content-box, linear-gradient(whitesmoke, silver) border-box;
+  color: grey;
+  font-family: sans-serif;
+  text-indent: 0;
+  text-transform: uppercase;
+  transition: 0.5s;
+  content: "off";
+}

@@ -1,0 +1,87 @@
+table{
+			margin: 10px auto;
+			border: none;
+			border-collapse: collapse;
+			padding: 0;
+			border: solid 7px black;
+		}
+
+		table td{
+			width: 70px;
+			height: 70px;
+			box-shadow: inset 0 0 10px rgba(0,0,0,.4);
+			text-align: center;
+			background: rgba(220,220,220,1);
+			border: solid 0px black;
+		}
+
+		table tr:nth-child(2n) td:nth-child(2n){
+			background: rgba(0,0,0,.5);
+		}
+
+		table tr:nth-child(2n-1) td:nth-child(2n-1){
+			background: rgba(0,0,0,.5);
+		}
+
+		span{
+			font-size: 40px;
+			text-shadow: 0 0 5px white;
+			cursor: pointer;
+			position: relative;
+		}
+
+		span:before{
+			content: "Pawn";
+			position: absolute;
+			width: 120%;
+			top: -25px;
+			left: -6px;
+
+			color: black;
+			font: normal 12px/20px Georgia;
+			background: rgba(240,240,240,1);
+			border: solid 1px rgba(200,200,200,1);
+			border-radius: 2px;
+			box-shadow: inset 0 0 13px rgba(0,0,0,.2);
+			text-shadow: 0 0 0 transparent;
+			opacity: 0;
+		}
+
+		.spawn:before{content: "Pawn"}
+		.benteng:before{content:"Rook";}
+		.kuda:before{content:"Knight";}
+		.queen:before{content: "Queen";}
+		.king:before{content: "King";}
+		.bishop:before{content: "Bishop";}
+
+		span:after{
+			content: "";
+			position: absolute;
+			left: 17px;
+			top: -3px;
+
+			border-width: 6px;
+			border-style: solid solid solid solid;
+			border-color: rgba(200,200,200,1) transparent transparent transparent;
+			opacity: 0;
+		}
+
+		.spawn:hover:before,
+		.spawn:hover:after,
+		.benteng:hover:before,
+		.benteng:hover:after,
+		.kuda:hover:before,
+		.kuda:hover:after,
+		.queen:hover:before,
+		.queen:hover:after,
+		.king:hover:before,
+		.king:hover:after,
+		.bishop:hover:before,
+		.bishop:hover:after{
+			opacity: 1;
+		}
+
+		.white{
+			color: white;
+			text-shadow: 0 0 5px black;
+		}

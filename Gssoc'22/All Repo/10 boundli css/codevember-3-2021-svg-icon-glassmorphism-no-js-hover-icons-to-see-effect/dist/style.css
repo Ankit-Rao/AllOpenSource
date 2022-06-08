@@ -1,0 +1,82 @@
+body, nav, a {
+  display: grid;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #333;
+}
+
+svg {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: currentcolor;
+  stroke: currentcolor;
+}
+svg[width="0"] {
+  position: absolute;
+}
+
+* {
+  color: hsl(var(--hue, 0), var(--sat, 0%), var(--lum, 65%));
+}
+
+nav {
+  grid-auto-flow: column;
+  place-self: center;
+  background: #fff;
+  font: clamp(.625em, 5vw, 1.25em)/1.25 ubuntu, sans-serif;
+}
+
+.item {
+  --hl: 0;
+  overflow: hidden;
+  padding: 0.75em 0 0.375em;
+  width: 5em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.item:focus {
+  outline: none;
+}
+.item:hover, .item:focus {
+  --hl: 1 ;
+}
+
+.text {
+  --sat: calc(var(--hl)*100%);
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.icon {
+  overflow: visible;
+  place-self: center;
+  width: 3em;
+}
+
+.mono {
+  --sat: 100%;
+  transform: translate(calc(var(--hl)*25%), calc(var(--hl)*-12.5%)) rotate(calc(var(--hl)*22.5deg));
+  opacity: var(--hl);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.blur {
+  filter: url(#blur);
+}
+
+.over {
+  --sat: 0%;
+  opacity: 0.2;
+}
+
+.deco.wire {
+  stroke: url(#grad);
+}
+
+.deco.fill {
+  fill: url(#grad);
+}

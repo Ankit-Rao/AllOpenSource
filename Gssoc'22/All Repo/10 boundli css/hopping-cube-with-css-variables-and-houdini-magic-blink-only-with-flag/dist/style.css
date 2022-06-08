@@ -1,0 +1,122 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/ 1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: .5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -.5em;
+  padding: .5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  background: #f1e6d9;
+}
+
+div {
+  position: absolute;
+}
+
+.cube {
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  --oy: 2.5em;
+  transform-origin: 50% var(--oy);
+  --pos: rotatex(-35deg) rotatey(45deg);
+  --y: -25vh;
+  transform: var(--pos) rotatey(calc(var(--ay0) + var(--ay1))) translatey(var(--y)) scaley(var(--fy));
+  animation: step 2.5s steps(4) infinite, fine 0.625s ease-in-out infinite, jump 0.625s ease-in-out infinite alternate, s 0.625s ease-in infinite alternate, orig 0.625s steps(1) infinite alternate;
+}
+.cube__face {
+  --i: 0;
+  --j: calc(1 - var(--i));
+  margin: -2.5em;
+  width: 5em;
+  height: 5em;
+  backface-visibility: hidden;
+  transform: rotate3d(var(--i), var(--j), 0, calc(var(--m, 1)*90deg)) translatez(2.5em);
+}
+.cube__face:nth-child(1) {
+  --m: 0;
+  background: #f7cb51;
+}
+.cube__face:nth-child(2) {
+  background: #289eaa;
+}
+.cube__face:nth-child(3) {
+  --m: 2;
+  background: #e35941;
+}
+.cube__face:nth-child(4) {
+  --m: 3;
+  background: #c3db6d;
+}
+.cube__face:nth-child(5) {
+  --i: 1;
+  background: #3c4951;
+}
+
+@keyframes step {
+  to {
+    --ay0: 1turn;
+  }
+}
+@keyframes fine {
+  to {
+    --ay1: 90deg;
+  }
+}
+@keyframes jump {
+  0%, 5% {
+    --y: 25vh;
+  }
+}
+@keyframes s {
+  0%, 5% {
+    --fy: 0.25;
+  }
+  65% {
+    --fy: 1;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes orig {
+  50% {
+    --oy: -2.5em;
+  }
+}

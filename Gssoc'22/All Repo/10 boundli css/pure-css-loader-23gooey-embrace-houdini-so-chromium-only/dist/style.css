@@ -1,0 +1,52 @@
+body {
+  --k: 0;
+  --notk: calc(1 - var(--k));
+  overflow: hidden;
+  margin: 0;
+  animation: k 1s ease-in infinite alternate;
+}
+body:before {
+  background: linear-gradient(90deg, #ffba42, #e473c6) 50%/calc((2 + var(--k))*6em);
+  content: "";
+}
+
+body, .loader {
+  display: grid;
+}
+
+div, ::before, ::after {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.loader {
+  place-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  filter: contrast(9);
+  mix-blend-mode: multiply;
+}
+.loader::before, .loader::after {
+  --i: 0;
+  --noti: calc(1 - var(--i));
+  --sgni: calc(2*var(--i) - 1);
+  padding: 3em;
+  border-radius: 50%;
+  transform: translate(calc(var(--sgni)*var(--k)*100%));
+  background: radial-gradient(closest-side, #fff 100%, transparent) 50%/calc(var(--k)*100%) 100% no-repeat, linear-gradient(#fff 50%, transparent 0) 0 0/1% 40%, linear-gradient(calc(var(--sgni)*90deg), transparent 50%, #fff 0);
+  filter: blur(9px);
+  content: "";
+}
+.loader::after {
+  --i: 1 ;
+}
+
+@keyframes k {
+  0%, 5% {
+    --k: 0 ;
+  }
+  80%, 100% {
+    --k: 1 ;
+  }
+}

@@ -1,0 +1,24 @@
+- var data = [
+- 	{
+- 		slist: ['#dc1f25', '#c71c22', '#8f0e12', '#640a0c', '#9e1117'], 
+- 		ptext: 'Cake muffin donut chocolate cake jelly sesame snaps wafer tart pie sweet roll muffin chupa chups. Brownie ice cream gingerbread cookie lemon drops.', 
+- 		icon: '❤️'
+- 	}, 
+- 	{
+- 		slist: ['#de27c1', '#de25cb', '#b01289', '#951574', '#b51b8b'], 
+- 		ptext: 'Cake cookie lemon drops muffin sugar plum. Liquorice pudding sugar plum topping macaroon pie chocolate apple pie soufflé topping dessert macaroon.', 
+- 		icon: '💜'
+- 	}, 
+- 	{
+- 		slist: ['#e9ef4d', '#e0e847', '#aec62a', '#9cb428', '#bacd4d'], 
+- 		ptext: 'Dessert jelly gingerbread cake soufflé chocolate cake. Apple pie chocolate bar topping donut powder muffin cake tart. Liquorice marzipan sugar plum.', 
+- 		icon: '💚'
+- 	}
+- ], n = data.length;
+
+style :root { --n: #{n} }
+h1 Infographic
+- for(var i = 0; i < n; i++)
+	- var c = data[i], s = c.slist
+	p(style=`--c0: ${s[0]}; --c1: ${s[1]}; --c2: ${s[2]}; --c3: ${s[3]}; --c4: ${s[4]}`
+		data-icon=`${c.icon}`) #{c.ptext}

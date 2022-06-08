@@ -1,0 +1,9 @@
+- var n = 3;
+
+h3 no longer lonely...
+- for(var i = 0; i < n; i++) {
+	input(type='checkbox' id=`toggle-${i}`)
+	label(for=`toggle-${i}`)
+		span.true #{i%2 ? '✔' : 'on'}
+		span.false #{i%2 ? '✘' : 'off'}
+- }

@@ -1,0 +1,11 @@
+body {
+	margin: 0; // get rid of default margin
+	overflow: hidden; // get rid of scrollbars
+}
+
+div {
+  position: absolute;
+	padding: 50vmin;  // initial dot size
+  border-radius: 50%; // round dot
+  transform-origin: 0 0 // keep dots within viewport at all times
+}

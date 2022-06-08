@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body {
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  background: #000;
+}
+
+.☯️ {
+  --d: 50%;
+  display: flex;
+  align-items: center;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  background: var(--mid,  ) linear-gradient(#fff 50%, #000 0);
+  background-repeat: no-repeat;
+  animation: a 5s linear infinite;
+}
+:not(.☯️) > .☯️ {
+  --d: 80vmin ;
+}
+.☯️:empty {
+  --mid: radial-gradient(circle closest-side, #000 calc(50% - 1px), #fff 50%, #fff calc(100% - 1px), transparent 100%) 0 50%/ 50%, radial-gradient(circle closest-side, #fff calc(50% - 1px), #000 50%, #000 calc(100% - 1px), transparent 100%) 100% 50%/ 50%, ;
+}
+
+@keyframes a {
+  to {
+    transform: rotate(1turn);
+  }
+}

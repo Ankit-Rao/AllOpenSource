@@ -1,0 +1,74 @@
+@import 'compass/css3';
+
+$axes: x y z;
+$cats: 'cheetah' 'cougar' 'jaguar' 'leopard' 'lion' 'tiger';
+$zr: 0 1 1 0 0 -1;
+$k: .5;
+$d: 9vmin;
+$t: 3s;
+
+body {
+	display: grid;
+	place-content: center;
+	margin: 0;
+	height: 100vh;
+	perspective: 25em;
+	background: #333
+}
+
+.a3d {
+	display: grid;
+	grid-template: repeat(var(--n), $d)/ repeat(var(--n), $d);
+	transform-style: preserve-3d;
+	box-shadow: 1em 1em 3em #000;
+	//animation: s $t ease-out infinite;
+}
+
+@keyframes s {
+	#{.5*(1 - $k)*100%} { grid-gap: .5em; animation-timing-function: ease-in }
+	0%, 100%, #{(1 - $k)*100%} { grid-gap: 0px }
+}
+
+.cube {
+	position: relative;
+	transform-style: preserve-3d;
+	animation: a 6*$t ease-out infinite;
+	animation-delay: calc(.5*(var(--fx) +var(--fy))*#{$k*$t}/var(--n));
+	
+	&__face {
+		--i: 0;
+		--j: calc(1 - var(--i));
+		position: absolute;
+		width: $d; height: $d;
+		transform: rotate3d(var(--i), var(--j), 0, var(--a)) 
+			translatez(.5*$d) rotate(var(--az));
+		background-position: calc(var(--fx)*#{-$d}) calc(var(--fy)*#{-$d});
+		background-size: calc(var(--n)*#{$d});
+		
+		&:nth-child(n + 5) { --i: 1 }
+		
+		@for $i from 0 to 6 {
+			&:nth-child(#{$i + 1}) {
+				--a: #{if($i < 4, $i, pow(-1, $i))*90deg};
+				--az: #{nth($zr, $i + 1)*90deg};
+				background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_#{nth($cats, $i + 1)}.jpg');
+			}
+		}
+	}
+}
+
+@keyframes a {
+	$u: 100%/6;
+	
+	@for $i from 0 through 6 {
+		$p: $i*$u;
+		$chain: ();
+		@if $i > 0 { $p: $p - $k*$u, $p }
+		
+		@for $j from 0 to 6 {
+			$chain: $chain unquote('rotate#{nth($axes, ($j + 1)%3 + 1)}(#{if($j < $i, 90deg, 0deg)})')
+		}
+		
+		#{$p} { transform: $chain }
+	}
+}

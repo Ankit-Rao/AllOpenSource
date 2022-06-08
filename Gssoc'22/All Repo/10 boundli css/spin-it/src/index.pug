@@ -1,0 +1,6 @@
+mixin nest(cls, n)
+	div(class=cls)
+		if --n
+			+nest(cls, n)
+
++nest('ring', 8)

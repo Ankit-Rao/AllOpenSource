@@ -1,0 +1,118 @@
+@charset "UTF-8";
+body, div {
+  display: grid;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  perspective: 35em;
+  background: #000014;
+}
+
+div, ::before, ::after {
+  --not-k: calc(1 - var(--k));
+  --sgn-k: calc(2*var(--k) - 1);
+  grid-area: 1/1;
+  place-self: center;
+}
+
+::before {
+  --k: 0 ;
+}
+
+::after {
+  --k: 1 ;
+}
+
+div {
+  transform-style: preserve-3d;
+}
+
+.🌙 {
+  animation: rot-y 12s linear infinite;
+}
+
+@keyframes rot-y {
+  to {
+    transform: rotatey(1turn);
+  }
+}
+.comp::before, .comp::after {
+  background: var(--over,  ) url(https://assets.codepen.io/2017/wood_door.jpg) 50%/cover;
+  background-blend-mode: overlay;
+  animation: shade 6s ease-in-out calc(var(--j)*-12s) infinite alternate;
+  content: "";
+}
+
+@keyframes shade {
+  to {
+    filter: brightness(0.2);
+  }
+}
+@property --intl {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --ints {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --rndl {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --rnds {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+.lat {
+  --p: calc((var(--i) + .5)/var(--n));
+  --pl: calc(.25 - var(--rsl) - var(--p)*var(--rdl) + 1);
+  --ps: calc(.25 - var(--rss) - var(--p)*var(--rds) + 1);
+  --intl: calc(var(--pl) - .5);
+  --ints: calc(var(--ps) - .5);
+  --modl: calc(var(--pl) - var(--intl));
+  --mods: calc(var(--ps) - var(--ints));
+  --absl: Max(calc(var(--modl) - .5), calc(.5 - var(--modl)));
+  --abss: Max(calc(var(--mods) - .5), calc(.5 - var(--mods)));
+  --incl: calc(2*var(--absl) - .5);
+  --incs: calc(2*var(--abss) - .5);
+  --rndl: var(--modl);
+  --rnds: var(--mods);
+}
+.lat::before, .lat::after {
+  --r: calc((var(--k) + var(--not-k)*var(--rf))*9em);
+  --ax: calc(var(--not-k)*(var(--rss)*-1turn - var(--p)*var(--ds)) +
+  					 var(--k)*(var(--rsl)*-1turn - var(--p)*var(--dl)));
+  --h: calc((var(--not-k)*var(--res) + var(--k)*var(--rel))*9em);
+  --inc: calc(var(--k)*var(--incl) + var(--not-k)*var(--incs));
+  --rnd: calc(var(--k)*var(--rndl) + var(--not-k)*var(--rnds));
+  --dif: calc(var(--k) - var(--rnd));
+  --not-xor: calc(1 - var(--dif)*var(--dif));
+  --j: calc(.5*var(--not-xor));
+  width: 2em;
+  height: var(--h);
+  transform: translatez(calc(var(--not-k)*var(--ofx)*9em)) rotatex(var(--ax)) translatez(var(--r)) scaley(1.05);
+  background-position: 50% calc(-1*var(--i)*var(--h));
+  background-size: auto calc(var(--n)*var(--h));
+  background-color: hsl(25, 50%, calc(50%*(1 - 1.5*var(--sgn-k)*var(--inc))));
+}
+
+.main::before, .main::after {
+  --over: linear-gradient(hsl(25, 50%, 87.5%), hsl(25, 50%, 12.5%)), ;
+  --j: calc(.25 + .5*var(--k));
+  padding: 9em;
+  border-radius: 50%;
+  transform: rotateY(calc(-90deg)) scalez(var(--sgn-k)) translatez(1em);
+  --mask:
+  	radial-gradient(circle at calc(50%*(1 + var(--ofx))),
+  			transparent calc(var(--rf)*9em),
+  			red calc(var(--rf)*9em + 1px));
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}

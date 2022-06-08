@@ -1,0 +1,133 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/ 1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: .5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -.5em;
+  padding: .5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  overflow: hidden;
+  height: 100vh;
+  perspective: 25em;
+  background: #fff4e3;
+}
+
+div, :after {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.a3d {
+  top: 50%;
+  left: 50%;
+  animation: ry 2s linear infinite reverse;
+}
+
+@keyframes ry {
+  to {
+    transform: rotatey(calc(1turn - var(--ay, 0deg)));
+  }
+}
+.ball {
+  --i: 0;
+  --s: 0;
+  --ay: calc(var(--i)*22.5deg + var(--s)*.5turn);
+  transform: rotatey(var(--ay)) translate3d(0, calc((var(--i) - 7.5)*3.5vh), 10vh);
+  color: hsl(calc(12 - var(--s)*18), calc(17% + var(--s)*30%), calc(40% + var(--s)*12%));
+}
+.ball:nth-child(n + 17) {
+  --s: 1;
+}
+.ball:nth-child(16n + 2) {
+  --i: 1;
+}
+.ball:nth-child(16n + 3) {
+  --i: 2;
+}
+.ball:nth-child(16n + 4) {
+  --i: 3;
+}
+.ball:nth-child(16n + 5) {
+  --i: 4;
+}
+.ball:nth-child(16n + 6) {
+  --i: 5;
+}
+.ball:nth-child(16n + 7) {
+  --i: 6;
+}
+.ball:nth-child(16n + 8) {
+  --i: 7;
+}
+.ball:nth-child(16n + 9) {
+  --i: 8;
+}
+.ball:nth-child(16n + 10) {
+  --i: 9;
+}
+.ball:nth-child(16n + 11) {
+  --i: 10;
+}
+.ball:nth-child(16n + 12) {
+  --i: 11;
+}
+.ball:nth-child(16n + 13) {
+  --i: 12;
+}
+.ball:nth-child(16n + 14) {
+  --i: 13;
+}
+.ball:nth-child(16n + 15) {
+  --i: 14;
+}
+.ball:nth-child(16n + 16) {
+  --i: 15;
+}
+.ball:after {
+  margin: -2.5vh;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  transform: rotatey(calc(-1*var(--ay)));
+  background: radial-gradient(circle at 35% 25%, #ffffff, currentColor 71%);
+  animation: ry 2s linear infinite;
+  content: "";
+}

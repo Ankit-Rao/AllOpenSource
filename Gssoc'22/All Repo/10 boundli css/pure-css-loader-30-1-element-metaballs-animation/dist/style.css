@@ -1,0 +1,56 @@
+body {
+  display: grid;
+  margin: 0;
+  height: 100vh;
+  filter: contrast(0.65);
+}
+body::before {
+  padding: 12.7082em;
+  background: linear-gradient(45deg, #fafe92 9%, #ffb066, #ff9191, #e679c8, #974bb5 91%);
+  filter: contrast(1.5);
+  content: "";
+}
+
+div, ::before, ::after {
+  grid-column: 1;
+  grid-row: 1;
+  place-self: center;
+}
+
+.loader {
+  display: grid;
+  place-self: stretch;
+  background: #000;
+  filter: contrast(13);
+  mix-blend-mode: multiply;
+}
+.loader::before, .loader::after {
+  padding: 1.5em;
+  border-radius: 50%;
+  color: #fff;
+  filter: blur(13px);
+  content: "";
+}
+.loader::before {
+  box-shadow: 0em -9.7082em currentcolor, 5.70634em -7.8541em currentcolor, 9.23305em -3em currentcolor, 9.23305em 3em currentcolor, 5.70634em 7.8541em currentcolor, 0em 9.7082em currentcolor, -5.70634em 7.8541em currentcolor, -9.23305em 3em currentcolor, -9.23305em -3em currentcolor, -5.70634em -7.8541em currentcolor;
+}
+.loader::after {
+  padding: 3em;
+  background: currentcolor;
+  animation: mov 3s ease-in-out infinite;
+}
+
+@keyframes mov {
+  0%, 100% {
+    transform: translatey(-9.7082em);
+  }
+  25% {
+    transform: translatey(9.7082em);
+  }
+  50% {
+    transform: translate(-6.7082em);
+  }
+  75% {
+    transform: translate(6.7082em);
+  }
+}

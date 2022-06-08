@@ -1,0 +1,64 @@
+body {
+  background: #000;
+}
+
+div {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.a3d {
+  top: 50%;
+  left: 50%;
+  transform: rotatex(-35deg) rotatey(-45deg) scale3d(0.2, 0.2, 0.2);
+}
+
+.bar {
+  --w: calc(100vmin/var(--nd));
+  --h: 100vmin;
+  --x: calc((.5*(var(--nd) - 1) - var(--i))*var(--w));
+  --z: calc((.5*(var(--nd) - 1) - var(--k))*var(--w));
+  --fv: var(--f);
+  transform-origin: calc(-50vmin - var(--x)) 50vmin calc(-50vmin - var(--z));
+  transform: translate3d(var(--x), 0, var(--z)) scale3d(var(--fh), var(--fv), var(--fh));
+  animation: fv 1s infinite ease-out alternate;
+  animation-name: fv, fh;
+}
+.bar__face {
+  --fi: 1;
+  --fj: calc(1 - var(--fi));
+  margin: calc(var(--f)*-50vmin) calc(-.5*var(--w));
+  width: var(--w);
+  height: calc(var(--f)*100vmin);
+  transform: rotate3d(var(--fi), var(--fj), 0, calc(var(--m, 1)*90deg)) translatez(calc(50vmin/var(--f)/var(--nd)));
+  background: currentcolor;
+  color: hsl(212, var(--s, 0%), calc(80% - var(--idx)*10%));
+}
+.bar__face:nth-child(1) {
+  --m: 0;
+  --s: calc(var(--k)*100%/(var(--nd) - 1));
+}
+.bar__face:nth-child(3) {
+  --fi: 0;
+  --s: calc(var(--i)*100%/(var(--nd) - 1));
+}
+
+@keyframes fv {
+  0%, 20% {
+    --fv: var(--f) ;
+  }
+  56%, 60% {
+    --fv: .001 ;
+  }
+  80%, 100% {
+    --fv: .65 ;
+  }
+}
+@keyframes fh {
+  0%, 20% {
+    --fh: 1 ;
+  }
+  60%, 100% {
+    --fh: .65 ;
+  }
+}

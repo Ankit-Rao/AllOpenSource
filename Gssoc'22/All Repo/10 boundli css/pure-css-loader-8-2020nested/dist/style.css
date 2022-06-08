@@ -1,0 +1,43 @@
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  height: 100vh;
+  background: repeating-linear-gradient(45deg, #333 0 2px, #000 0 7px);
+}
+
+.loader {
+  display: grid;
+  animation: r 2s linear infinite;
+}
+.loader:before, .loader:after {
+  --i: var(--in, 0);
+  --noti: calc(1 - var(--i));
+  --sgni: calc(2*var(--i) - 1);
+  --hsl: 0, 100%, calc((1 + var(--i))*50%);
+  grid-column: 1;
+  grid-row: 1;
+  place-self: end center;
+  padding: calc(var(--i)*2em) calc(var(--i)*1em) 0;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  --ini: scalex(var(--sgni));
+  transform: var(--ini);
+  background: Radial-gradient(circle at 50% 1em, HSL(var(--hsl)) calc(1em - 1px), HSLA(var(--hsl), 0) 1em), Conic-gradient(HSL(var(--hsl)) 11.53696deg, HSLA(var(--hsl), 0.3), HSLA(var(--hsl), 0.15), HSLA(var(--hsl), 0) 180deg);
+  --mask: radial-gradient(circle at 50% calc(50% + 1em), rgba(0, 0, 0, 0) calc(4em + var(--i)*1em), #ff0000 calc(4em + var(--i)*1em + 1px));
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  animation: inherit;
+  animation-duration: calc(var(--noti)*1s);
+  content: "";
+}
+.loader:after {
+  --in: 1;
+}
+
+@keyframes r {
+  0% {
+    transform: var(--ini,  ) rotate(1turn);
+  }
+}

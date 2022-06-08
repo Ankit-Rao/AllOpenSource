@@ -1,0 +1,7 @@
+- var id = 'mood';
+- var val = Math.round(100*Math.random());
+
+form(style=`--val: ${val}`)
+	label(for=id) Happiness
+	input(type='range' id=id value=val)
+	output(for=id)

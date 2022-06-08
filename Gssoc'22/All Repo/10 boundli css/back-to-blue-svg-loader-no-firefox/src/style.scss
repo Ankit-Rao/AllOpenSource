@@ -1,0 +1,28 @@
+$t: 1.5s;
+
+body { text-align: center }
+
+svg {
+	max-width: 25em;
+	fill: none;
+	stroke: #edf5ff;
+	stroke-width: 5%
+}
+
+g {
+	transform: rotate(45deg);
+	stroke: url(#g);
+	mask: url(#m)
+}
+
+#m use {
+	stroke: #fff;
+	stroke-linecap: round;
+	stroke-dasharray: var(--d1) var(--d0);
+	animation: r $t cubic-bezier(.5, -.43, .5, 1.43) infinite, 
+		s .5*$t ease-in-out infinite alternate
+}
+
+@keyframes r { to { transform: rotate(2turn) } }
+
+@keyframes s { 0%, 39% { stroke-dasharray: var(--d0) var(--d1) } }

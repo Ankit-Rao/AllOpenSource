@@ -1,0 +1,164 @@
+$s: 1em;
+
+$track-h: .375em;
+$track-r: .5*$track-h;
+$track-s: 
+	-.25em -.25em .5em #f0f0f0, 
+	.25em .25em .5em #d7d7d7;
+
+$progr-c: hsl(220deg 82% calc(60% - var(--sel)*23%));
+
+$thumb-d: 1.75em;
+$thumb-r: .5*$thumb-d;
+
+$rippl-d: $thumb-d + $s;
+$rippl-r: .5*$rippl-d;
+$rippl-f: $thumb-d/$rippl-d;
+
+$t: .3s;
+
+@mixin track($f: 0) {
+	width: 100%; height: $track-h;
+	border-radius: $track-r;
+	box-shadow: $track-s;
+	background: tranparent;
+	
+	@if $f > 0 { /* WebKit only */
+		background: 
+			linear-gradient(90deg, $progr-c var(--pos), transparent 0);
+		transition: --sel $t /* Chromium only, no transition in Safari */
+	}
+}
+
+@mixin thumb($o: 0) {
+	@if $o > 0 { margin-top: $track-r - $thumb-r }
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	box-shadow: $track-s;
+	background: hsl(218deg calc(var(--sel)*76%) calc(90% - var(--sel)*38%));
+	transition: background $t;
+	cursor: ew-resize
+}
+
+@property --sel {
+	syntax: '<number>';
+	initial-value: 0;
+	inherits: true
+}
+
+* {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	font: inherit
+}
+
+body, div { display: grid }
+
+body {
+	box-sizing: border-box;
+	padding: $s;
+	min-height: 100vh;
+	background: #eceef4;
+	
+	> * {
+		grid-area: 1/ 1;
+		place-self: center;
+	}
+}
+
+symbol { color: #4b5565 }
+
+g { fill: currentcolor }
+
+* + [d] {
+	stroke: currentcolor;
+	stroke-width: 10;
+	stroke-linecap: round;
+	stroke-linejoin: round
+}
+
+g + [d] {
+	fill: none;
+	opacity: var(--ico)
+}
+
+[role='group'] {
+	--sgn-dir: clamp(-1, var(--val) - var(--prv, var(--val)), 1);
+	--sel: 0;
+	--not-sel: calc(1 - var(--sel));
+	--pos: calc(#{$thumb-r} + .01*var(--val)*(100% - #{$thumb-d}));
+	grid-gap: $s;
+	grid-template-columns: max-content 1fr max-content;
+	padding: 2*$s $s;
+	width: Min(100%, 32em);
+	border-radius: 1em;
+	transform: scale(calc(1 - .05*var(--sel)));
+	box-shadow: 
+		.5em .5em 1em #d3d8e8, 
+		-.5em -.5em 1em #fefcfe;
+	background: #e3e5ed;
+	transition: transform $t;
+	
+	&::after {
+		--rippl-s: calc((var(--not-sel)*#{$rippl-f} + var(--sel))*100%);
+		grid-area: 1/ 2;
+		position: relative;
+		left: var(--pos);
+		margin-left: -$rippl-r;
+		width: $rippl-d; height: $rippl-d;
+		border-radius: 50%;
+		opacity: var(--not-sel);
+		background: 
+			radial-gradient(closest-side, 
+					transparent $thumb-r, rgba(#286be1, .32) calc(100% - 1px), transparent) 
+				50%/ var(--rippl-s) var(--rippl-s) no-repeat;
+		--mask: 
+			radial-gradient(transparent #{$thumb-r}, red calc(#{$thumb-r} + 1px));
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+		transition: calc(var(--sel)*#{$t});
+		transition-property: background-size, opacity;
+		transition-delay: 0s, $t;
+		pointer-events: none;
+		content: ''
+	}
+	
+	&:focus-within { --sel: 1 }
+}
+
+[type='range'] {
+  &::-webkit-slider-runnable-track, 
+  &::-webkit-slider-thumb, & { -webkit-appearance: none }
+	
+	grid-area: 1/ 2;
+	background: transparent;
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track { @include track(1) }
+  &::-moz-range-track { @include track }
+  
+  /* pure CSS Firefox-only fill */
+  &::-moz-range-progress {
+    height: $track-h;
+		border-radius: $track-r	0 0 $track-r;
+		background: $progr-c;
+		transition: background-color $t
+  }
+  
+  &::-webkit-slider-thumb { @include thumb(1) }
+  &::-moz-range-thumb { @include thumb }
+	
+	&:focus { outline: none }
+}
+
+.ico {
+	--sgn-ico: calc(2*var(--ico) - 1);
+	--abs: max(var(--sgn-dir) - var(--sgn-ico), var(--sgn-ico) - var(--sgn-dir));
+	--hlg: calc(var(--sel)*(1 - min(1, var(--abs))));
+	align-self: center;
+	width: $thumb-d; height: $thumb-d;
+	opacity: calc(1 - .85*(1 - var(--hlg)));
+	transition: opacity $t
+}

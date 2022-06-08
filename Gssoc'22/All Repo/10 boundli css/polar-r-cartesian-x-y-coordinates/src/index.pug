@@ -1,0 +1,85 @@
+- let r_max = 500, r_min = 200;
+- let r = .8*r_max;
+- let a_max = 180, a_min = -a_max;
+- let a = Math.round(a_max/3);
+- let rad = a*Math.PI/180;
+- let cos = +(Math.cos(rad)).toFixed(3);
+- let sin = +(Math.sin(rad)).toFixed(3);
+- let p = .2*r_max, ax = r_max + 2*p;
+- let d = 2*ax, o = -.5*d;
+- let as = .2*p, ah = .5*as, av = .3*as;
+- let rp = .05*p, fs = .4*p
+
+mixin fo(idx, cls)
+	foreignObject(class=cls style=idx.split(' ').length < 2 ? `--val: var(--${idx})` : null)
+		output(xmlns='http://www.w3.org/1999/xhtml' for=idx)
+
+body(style=`--r: ${r}; --r-min: ${r_min}; --r-max: ${r_max}; --a: ${a}; --cos: ${cos}; --sin: ${sin}`)
+	form
+		.wrap.wrap--r(style=`--min: var(--r-min); --max: var(--r-max); --val: var(--r)` role='group' aria-label='control the radius of the circle our point is on')
+			label(for='r') radius
+			input#r(type='range' min=r_min max=r_max value=r)
+			output(for='r')
+		.wrap.wrap--a(style=`--min: ${a_min}; --max: ${a_max}; --val: var(--a)` role='group' aria-label='control the angle of the radius to our point with respect to the horizontal axis')
+			label(for='a') angle
+			input#a(type='range' min=a_min max=a_max value=a)
+			output(for='a')
+	svg(viewBox=[o, o, d, d].join(' ') style=`font-size: ${fs}px`)
+		defs: path#arr(d=`M0 0l${ah}${-as}${-ah} ${av}${-ah}${-av}z`)
+		path.axes(d=`M${ax} 0H${-ax}M0${-ax}V${ax}`)
+		use.axes(xlink:href='#arr' transform=`rotate(-90) translate(0 ${-o})`)
+		use.axes(xlink:href='#arr' y=-o)
+		text.axes(x=-(.5*fs + o) y=-as) x
+		text.axes(y=-(.5*fs + o) x=-as text-anchor='end') y
+		line.guide(x2=r_max)
+		line.guide(y2=r_max)
+		line.proj(x2=r_max)
+		line.proj(y2=r_max)
+		g.meas
+			circle.arc(r=.1*r_max pathLength=360)
+			use.arr(xlink:href='#arr')
+		line.rad(x2=r_max)
+		circle.main
+		circle.point.proj.point--x(r=rp)
+		circle.point.proj.point--y(r=rp)
+		circle.point.rad.point--x.point--y(r=1.5*rp)
+		+fo('a', 'meas')
+		+fo('r', 'rad')
+		+fo('r a', 'cart')
+	pre
+		div.token--form
+			var.token--var x
+			span.token--oper =
+			var.token--var r
+			span.token--oper ·
+			span.token--func cos
+			span.token--punc (
+			span.token--arg: var.token--var θ
+			span.token--punc )
+			span.token--oper =
+			output.token--len(for='r' style=`--val: var(--r)`)
+			span.token--oper ·
+			span.token--func cos
+			span.token--punc (
+			span.token--arg: output.token--ang(for='a' style=`--val: var(--a)`)
+			span.token--punc )
+			span.token--oper =
+			output.token--coord(for='r a' style=`--val: var(--x)`)
+		div.token--form
+			var.token--var y
+			span.token--oper =
+			var.token--var r
+			span.token--oper ·
+			span.token--func sin
+			span.token--punc (
+			span.token--arg: var.token--var θ
+			span.token--punc )
+			span.token--oper =
+			output.token--len(for='r' style=`--val: var(--r)`)
+			span.token--oper ·
+			span.token--func sin
+			span.token--punc (
+			span.token--arg: output.token--ang(for='a' style=`--val: var(--a)`)
+			span.token--punc )
+			span.token--oper =
+			output.token--coord(for='r a' style=`--val: var(--y)`)

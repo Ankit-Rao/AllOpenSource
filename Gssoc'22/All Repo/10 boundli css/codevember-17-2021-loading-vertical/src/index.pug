@@ -1,0 +1,6 @@
+- let text = 'loading';
+- let n = text.length;
+
+p(style=`--n: ${n}`)
+	- for(let i = 0; i < n; i++)
+		span(style=`--i: ${i}`) #{text.charAt(i)}

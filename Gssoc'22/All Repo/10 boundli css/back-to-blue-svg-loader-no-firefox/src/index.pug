@@ -1,0 +1,13 @@
+- var r = 600;
+- var w = 6.5*r, h = .5*w, x = -.5*w, y = -.5*h;
+- var d = Math.round(.5*Math.PI*r);
+
+svg(viewBox=[x, y, w, h].join(' ') style=`--d0: ${d}px; --d1: ${3*d}px`)
+	linearGradient#g
+		stop(stop-color='#5873ff')
+		stop(stop-color='#49d0ff' offset=1)
+	mask#m
+		circle(r=2*r fill='#000')
+		use(xlink:href='#c')
+	circle#c(r=r)
+	g: use(xlink:href='#c')

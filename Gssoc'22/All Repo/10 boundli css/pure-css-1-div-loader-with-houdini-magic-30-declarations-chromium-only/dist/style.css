@@ -1,0 +1,97 @@
+@charset "UTF-8";
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+@property --k {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+body, div {
+  display: grid;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+body::after {
+  grid-area: 1/1;
+  background: #e0e0e0;
+  mix-blend-mode: darken;
+  content: "";
+}
+
+.♾️ {
+  grid-area: 1/1;
+  place-self: center;
+  padding: 5em;
+  transform: rotate(90deg);
+  background: #fff;
+  filter: blur(15px) contrast(45) hue-rotate(-60deg) saturate(9);
+}
+.♾️::before, .♾️::after {
+  --i: 0;
+  margin: -20px 0;
+  border: solid 40px transparent;
+  padding: 5em;
+  border-radius: 50%;
+  transform: scalex(calc(2*var(--i) - 1)) rotate(calc((1 - var(--i))*.5turn));
+  background: conic-gradient(transparent calc((var(--k) - .35)*100%), magenta 0% calc(var(--k)*100%), transparent 0%) border-box, conic-gradient(transparent calc((var(--k) - .85)*100%), yellow 0% calc((var(--k) - .5)*100%), transparent 0%) border-box;
+  --mask: radial-gradient(transparent 5em, red 0);
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  animation: k 2s calc(var(--i)*-.5*2s) linear infinite;
+  content: "";
+}
+.♾️::after {
+  --i: 1 ;
+}
+
+@keyframes k {
+  to {
+    --k: 2 ;
+  }
+}

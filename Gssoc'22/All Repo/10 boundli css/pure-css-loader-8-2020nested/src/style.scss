@@ -1,0 +1,63 @@
+@import 'compass/css3';
+
+$f: .8;
+$r-out-0: 5em;
+$d-out-0: 2*$r-out-0;
+$d-out-0: 2*$r-out-0;
+$r-inn-0: $f*$r-out-0;
+$r-start: $r-out-0 - $r-inn-0;
+$d-start: 2*$r-start;
+$r-out-1: $r-inn-0;
+$d-out-1: 2*$r-out-1;
+$r-inn-1: $r-out-1 - $r-start;
+$t: 2s;
+$a: asin($r-start/($r-inn-0 + $r-start))*180deg/pi();
+
+body {
+	display: grid;
+	place-content: center;
+	margin: 0;
+	height: 100vh;
+	background: repeating-linear-gradient(45deg, 
+			#333 0 2px, #000 0 7px)
+}
+
+.loader {
+	display: grid;
+	animation: r $t linear infinite;
+	
+	&:before, &:after {
+		--i: var(--in, 0);
+		--noti: calc(1 - var(--i));
+		--sgni: calc(2*var(--i) - 1);
+		--hsl: 0, 100%, calc((1 + var(--i))*50%);
+		grid-column: 1;
+		grid-row: 1;
+		place-self: end center;
+		padding: calc(var(--i)*#{$d-start}) calc(var(--i)*#{$r-start}) 0;
+		width: $d-out-0; height: $d-out-0;
+		border-radius: 50%;
+		--ini: scalex(var(--sgni));
+		transform: var(--ini);
+		background: 
+			Radial-gradient(circle at 50% #{$r-start}, 
+					HSL(var(--hsl)) calc(#{$r-start} - 1px), 
+					HSLA(var(--hsl), 0) #{$r-start}), 
+			Conic-gradient(HSL(var(--hsl)) $a, 
+					HSLA(var(--hsl), .3), HSLA(var(--hsl), .15), 
+					HSLA(var(--hsl), 0) 180deg);
+		--mask: 
+			radial-gradient(circle at 50% calc(50% + #{$r-start}), 
+					transparent calc(#{$r-out-1} + var(--i)*#{$r-start}), 
+					red calc(#{$r-out-1} + var(--i)*#{$r-start} + 1px));
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+		animation: inherit;
+		animation-duration: calc(var(--noti)*#{.5*$t});
+		content: ''
+	}
+	
+	&:after { --in: 1 }
+}
+
+@keyframes r { 0% { transform: var(--ini, #{unquote(' ')}) rotate(1turn) } }

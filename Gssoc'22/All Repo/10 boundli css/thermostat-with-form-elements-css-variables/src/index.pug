@@ -1,0 +1,8 @@
+- var min = 2, max = 34, val = 19;
+
+form(style=`--min:${min};--max:${max};--val:${val}`)
+	input#temp(type='range' value=val min=min max=max)
+	label(for='temp') heating
+	output(for='temp') #{val}
+	button#decr(style='--s:-1') decrease temperature
+	button#incr(style='--s:1') increase temperature

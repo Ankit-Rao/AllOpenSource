@@ -1,0 +1,108 @@
+body, div {
+  display: grid;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #333;
+}
+body::after {
+  z-index: 2;
+  background: radial-gradient(closest-side, transparent, #333);
+  content: "";
+}
+
+div {
+  transform-style: preserve-3d;
+}
+
+div, ::before, ::after {
+  grid-area: 1/1;
+}
+
+.a3d {
+  place-self: center;
+  transform: rotatex(-35deg) rotatey(-45deg) translate(100%);
+  animation: slide 2.5s infinite;
+}
+
+@keyframes slide {
+  100% {
+    transform: rotatex(-35deg) rotatey(-45deg) translate(-800%);
+  }
+}
+.cube {
+  --s: 0;
+  transform-origin: calc(var(--s)*100%) 100% 8vmin;
+}
+
+.large {
+  transform: rotate(-90deg);
+  animation: a 2.5s infinite;
+}
+
+@keyframes a {
+  25%, 100% {
+    transform: rotate(0deg);
+  }
+}
+.half {
+  --a: 0;
+  --j: 0;
+  --sgn-j: calc(2*var(--j) - 1);
+  --not-k: calc(1 - var(--k));
+  --sgn-k: calc(2*var(--k) - 1);
+  --f: calc(-1*var(--sgn-k)*var(--sgn-j)/(1 + var(--k)));
+  transform: scale3d(var(--f), var(--f), var(--f)) translate3d(calc(var(--k)*-8vmin), calc(var(--k)*8vmin), calc(var(--not-k)*8vmin));
+  background: conic-gradient(transparent calc(var(--a)*25%), #8c7b9d 0%);
+}
+.half ~ .half {
+  --j: 1 ;
+}
+.half::before, .half::after {
+  --i: 0;
+  --not-i: calc(1 - var(--i));
+  --sgn-i: calc(2*var(--i) - 1);
+  padding: 8vmin;
+  transform-origin: calc(var(--i)*50%) calc(100% - var(--not-i)*50%);
+  transform: translate(calc(var(--not-i)*100%), calc(var(--i)*-100%)) rotate3d(var(--i), var(--not-i), 0, 90deg);
+  background: conic-gradient(from calc((.5 + var(--not-i))*180deg), transparent calc(var(--a)*25%), hsla(270, 15%, calc(65% + var(--i)*10%)) 0%);
+  content: "";
+}
+.half::after {
+  --i: 1 ;
+}
+
+.outer {
+  --k: 0;
+}
+.outer ~ .outer:not(:last-child) {
+  --a: 1 ;
+}
+
+.inner {
+  --k: 1;
+}
+
+.small {
+  --s: 1;
+  transform: scale3d(0.5, 0.5, 0.5) translate(-100%, -200%) rotate(-180deg);
+  animation: jumpy 2.5s ease-out infinite;
+}
+
+@keyframes jumpy {
+  0%, 25% {
+    transform: scale3d(0.5, 0.5, 0.5) translate(-100%, -200%) rotate(-180deg);
+  }
+  45% {
+    transform: scale3d(0.5, 0.5, 0.5) translate(700%, -400%) rotate(-90deg);
+    animation-timing-function: ease-in;
+  }
+  75% {
+    transform: scale3d(0.5, 0.5, 0.5) translate(1600%, 0%) rotate(0deg);
+  }
+  100% {
+    transform: scale3d(1, 1, 1) translate(700%, 0%) rotate(90deg);
+  }
+}

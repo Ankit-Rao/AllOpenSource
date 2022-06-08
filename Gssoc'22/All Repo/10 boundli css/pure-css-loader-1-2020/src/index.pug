@@ -1,0 +1,13 @@
+- let n = 12;
+- let p = ['#85A29E','#FFEBBF','#F0D442','#F59330','#B22148'];
+- let m = p.length;
+
+body(style=`--n: ${n}; --m: ${m}`)
+	style
+		- for(let j = 0; j < m; j++)
+			| .spark:nth-child(#{j + 1}) { --j: #{j}; --c: #{p[j]} }
+	.a
+		while n--
+			.dir(style=`--i: ${n}`)
+				- for(let j = 0; j < m; j++)
+					.spark

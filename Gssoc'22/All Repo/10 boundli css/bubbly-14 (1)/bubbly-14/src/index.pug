@@ -1,0 +1,14 @@
+- let n = 7;
+- let p = Math.pow(n, 2); 
+- let q = Math.pow(n, 3);
+
+style
+	- for(let i = 0; i < n; i++)
+		- let y = [];
+		- for(let j = 0; j < n; j++) { y.push(j*p) }
+		| .ball:nth-child(#{n}n + #{i + 1}) { --i: #{i} }
+		| #{y.map(k => `.ball:nth-child(n + ${k + i*n + 1}):nth-child(-n + ${k + (i + 1)*n})`)} { --j: #{i} }
+		| .ball:nth-child(n + #{i*p + 1}) { --k: #{i} }
+.a3d(style=`--n: ${n}`)
+	- for(let i = 0; i < q; i++)
+		.ball

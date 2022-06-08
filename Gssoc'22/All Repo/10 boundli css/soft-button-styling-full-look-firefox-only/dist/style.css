@@ -1,0 +1,193 @@
+*, :before, :after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(var(--n, 8), var(--w, 14em));
+  grid-gap: 1.75em;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: radial-gradient(#f9f9f9, #d4d4d4);
+}
+@media (max-width: 127.75em) {
+  body {
+    --n: 7 ;
+  }
+}
+@media (max-width: 112em) {
+  body {
+    --n: 6 ;
+  }
+}
+@media (max-width: 96.25em) {
+  body {
+    --n: 5 ;
+  }
+}
+@media (max-width: 80.5em) {
+  body {
+    --n: 4 ;
+  }
+}
+@media (max-width: 64.75em) {
+  body {
+    --n: 3 ;
+  }
+}
+@media (max-width: 49em) {
+  body {
+    --n: 2 ;
+  }
+}
+@media (max-width: 33.25em) {
+  body {
+    --n: 1 ;
+  }
+}
+@media (max-width: 17.5em) {
+  body {
+    --w: 100% ;
+  }
+}
+
+#bump {
+  position: absolute;
+  left: -100vmax;
+  border: solid 0.875em transparent;
+  width: 1.75em;
+  height: 1.75em;
+  border-radius: 50%;
+}
+#bump:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  content: "";
+}
+
+button {
+  /* :after offset */
+  --o2: auto;
+  /* actual button padding */
+  --p0: 0px;
+  /* rounding factors */
+  --rf0: 0;
+  --rf1: calc(1 - var(--rf0));
+  /* actual button border-radius */
+  --r: calc(var(--rf0)*50% + var(--rf1)*3.5em);
+  --r1: calc(var(--r) - var(--rf1)*(0.875em + var(--p0)));
+  --r2: calc(var(--r) - var(--rf1)*(0.875em + var(--o2)));
+  --a: .25;
+  /* stop list outer (border-box) #0 (button itself) */
+  --slo0: #d4d5d9, #e2e3e7;
+  /* stop list middle (padding-box) #0 (button itself) */
+  --slm0: #f0c101, #f9a123;
+  /* stop list middle (padding-box) #1 (button :before) */
+  --slm1: #fefefe, #cbccd0;
+  /* stop list inner (content-box) #1 (button :before) */
+  --sli1: #ccc, #fff;
+  /* stop list middle (padding-box) #2 (button :after) */
+  --slm2: #dadada, #fff;
+  /* stop list inner (content-box) #2 (button :after) */
+  --sli2: #a1c82d, #e8e681;
+  box-sizing: border-box;
+  position: relative;
+  border: solid 0.875em transparent;
+  width: 14em;
+  height: 14em;
+  border-radius: var(--r);
+  background: linear-gradient(var(--slm0)) padding-box, linear-gradient(var(--slo0)) border-box;
+  text-indent: -200vmax;
+  filter: grayscale(0.8);
+  transition: filter 0.3s;
+  cursor: pointer;
+}
+button:hover, button:focus {
+  outline: solid 0 transparent;
+  filter: none;
+}
+button:active:before, button:active:after {
+  transform: translateY(1px);
+}
+button.circ {
+  --rf0: 1;
+  --b1: .25em;
+  --p1: 1.5em ;
+}
+button.soft {
+  --p0: .3125em;
+  --a: .4375;
+  --b1: .5em;
+  --p1: 1.25em;
+}
+button.over {
+  --sli1: #d4d4d4, #f7f8fc;
+  --slm1: #f1f1f1, #d2d5ce;
+  --o2: calc(2*var(--p0) + var(--b1) + var(--p1));
+}
+button.over:after {
+  background: linear-gradient(var(--slm2));
+  content: "";
+}
+button.sled:after {
+  top: calc(.5*(100% - 1.09375em));
+  left: calc(.5*(100% - 4.375em));
+  padding: 2px;
+  width: 4.375em;
+  height: 1.09375em;
+  border-radius: 0.546875em;
+  content: "";
+}
+@supports (background: element(#bump)) {
+  button.bump.sled:before {
+    padding: 35% calc(.5*(35% + 15%)) 15%;
+    background: element(#bump) 50%/25% 25% space content-box, linear-gradient(var(--slm1));
+  }
+  button.bump.sled:after {
+    top: calc(.5*(35% - 1.09375em));
+  }
+  button.bump.soft:after {
+    --o2: calc(2*var(--p0) + var(--b1) + var(--p1));
+    padding: 15%;
+    background: element(#bump) 50%/25% 25% space content-box, linear-gradient(var(--slm2));
+    content: "";
+  }
+}
+button:not(.base):before {
+  border: solid var(--b1) transparent;
+  padding: var(--p1);
+  background: linear-gradient(var(--sli1)) content-box, linear-gradient(var(--slm1)) padding-box, linear-gradient(var(--slo1)) border-box;
+}
+button:before, button:after {
+  position: absolute;
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+button:before {
+  top: var(--p0);
+  right: var(--p0);
+  bottom: var(--p0);
+  left: var(--p0);
+  border-radius: var(--r1);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, var(--a)), 0 5px 13px rgba(0, 0, 0, var(--a)), inset 0 -1px 2px rgba(255, 255, 255, 0.25);
+  background: linear-gradient(var(--slm1));
+  content: "";
+}
+button:after {
+  top: var(--o2);
+  right: var(--o2);
+  bottom: var(--o2);
+  left: var(--o2);
+  border-radius: var(--r2);
+  background: linear-gradient(var(--sli2)) content-box, linear-gradient(var(--slm2));
+}

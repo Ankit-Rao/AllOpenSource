@@ -1,0 +1,60 @@
+body {
+  height: 100vh;
+  color: #fff;  
+  background: #C0392B;
+  background-image: radial-gradient(#E67E22, #E74C3C);
+  font-family: 'Lobster', cursive;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  font-weight: 400;
+  margin: 0;
+  font-size: 16px;
+  // text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  
+  @media (min-width: 37.5em) {
+    font-size: 64px;
+  }
+  
+  span {
+    display: inline-block;
+    margin: 0 4px;
+    animation: 2s ease-in-out infinite move;
+  }
+  
+  @for $i from 1 through 14 {
+    span:nth-child(#{$i}) {
+      animation-delay: $i * .1s;
+    }
+  }
+}
+
+@keyframes move {
+  50% {
+    transform: translate(0, -20px);
+  }
+}
+
+.fa {
+  color: red;
+  opacity: .3;
+  animation: 1s ease grow infinite;
+  
+  @for $a from 1 through 50 {
+    body &:nth-child(#{$a}) {
+      animation-delay: $a * .3s;
+    }
+  }
+}
+
+@keyframes grow {
+  50% {
+    transform: scale(2)
+  }
+}

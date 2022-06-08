@@ -1,0 +1,18 @@
+$d: 90vmin;
+$c: #000;
+
+body {
+	display: grid;
+	place-content: center;
+	overflow: hidden;
+	margin: 0;
+	min-height: 100vh;
+	background: mix(#fff, $c, 20%)
+}
+
+canvas {
+	max-width: $d; max-height: $d;
+	border-radius: .5em;
+	box-shadow: 2px 2px 5px rgba($c, .5);
+	background: mix(#fff, $c, 13.5%)
+}

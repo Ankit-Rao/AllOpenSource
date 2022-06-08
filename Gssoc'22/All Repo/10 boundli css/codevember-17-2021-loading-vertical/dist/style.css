@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, p {
+  display: grid;
+}
+
+body {
+  height: 100vh;
+  background: #962d3e;
+  color: #fff;
+}
+
+p {
+  --mask:
+  	linear-gradient(transparent, red 1em 2em,
+  			transparent calc(100% - 2px), red 0);
+  grid-auto-flow: column;
+  grid-gap: 1em;
+  place-self: center;
+  overflow: hidden;
+  border-bottom: solid 2px transparent;
+  padding: 1em;
+  background: linear-gradient(90deg, currentcolor 33.333%, transparent 0 66.667%, currentcolor 0) 100% 100%/300% 2px no-repeat border-box;
+  font: 700 1.25em/1 quicksand, ubuntu, trebuchet ms, sans-serif;
+  text-transform: uppercase;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  animation: line 2.5s ease-in-out -1.25s infinite;
+}
+
+@keyframes line {
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+span {
+  animation: char 2.5s ease-out calc(var(--i)*0.25*2.5s/var(--n)) infinite;
+}
+
+@keyframes char {
+  0% {
+    transform: translatey(2em);
+  }
+  25%, 50% {
+    transform: none;
+  }
+  75%, 100% {
+    transform: translatey(-2em);
+  }
+}

@@ -1,0 +1,118 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template: repeat(auto-fit, 9em)/repeat(auto-fit, 9em);
+  place-content: space-evenly;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  background: #534666;
+}
+
+div {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.5em;
+  place-content: center;
+}
+div::before, div::after {
+  --i: 0;
+  --not-i: calc(1 - var(--i));
+  padding: 1.5em;
+  border-radius: 50%;
+  background: linear-gradient(#cd7672 50%, #eeb462 0) 0 calc(var(--not-i)*100%)/1% 200%;
+  animation: inherit;
+  content: "";
+}
+div::after {
+  --i: 1 ;
+}
+
+div:nth-child(1)::before, div:nth-child(1)::after {
+  transform-origin: calc(var(--not-i)*100%);
+  animation: a1 0.7s ease-in-out calc(var(--i)*-0.7s) infinite alternate;
+}
+
+@keyframes a1 {
+  to {
+    transform: scale(0.25);
+  }
+}
+div:nth-child(2) {
+  justify-content: space-between;
+  transform-style: preserve-3d;
+  transform: perspective(13em);
+  animation: a2 2.1s linear infinite;
+}
+div:nth-child(2)::before, div:nth-child(2)::after {
+  animation-direction: reverse;
+}
+
+@keyframes a2 {
+  to {
+    transform: perspective(13em) rotatey(1turn);
+  }
+}
+div:nth-child(3) {
+  grid-auto-flow: row;
+  animation: a30 1.05s ease-out infinite;
+}
+div:nth-child(3)::before, div:nth-child(3)::after {
+  animation-name: a31;
+}
+
+@keyframes a30 {
+  0%, 50% {
+    transform: rotate(0.5turn);
+  }
+}
+@keyframes a31 {
+  50%, 100% {
+    background-position: 0 calc(var(--i)*100%);
+  }
+}

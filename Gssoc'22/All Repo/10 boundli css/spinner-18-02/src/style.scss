@@ -1,0 +1,109 @@
+@import 'compass/css3';
+
+$dark-c: #253168;
+$lght-c: #fff;
+$dots-n: 48;
+$wrap-d: 24em; // wrapper dimensions
+$spin-d: 1.03125*$wrap-d/3;
+$star-d: $wrap-d/16; // star dimensions
+$star-p: 23.5% 13%, 70% 5.5%, 86.75% 39%, 40% 20%, 4% 57%; // star positions
+$star-n: length($star-p);
+$ship-w: 2.75em;
+$ship-h: 1.5*$ship-w;
+$ship-o: 3/11*$ship-w;
+$dots-d: 2/3*$ship-o;
+$circ-r: .5*$spin-d - .5*$ship-w + .5*($ship-w - $ship-o) - .5*$dots-d;
+
+@function trail($n, $o, $r, $c: #fff) {
+	$sh: ();
+	$ba: 360deg/($n + ceil($o));
+	
+	@for $i from 0 to $n {
+		$ca: 180deg - ($i + 1)*$ba;
+		$x: $r*cos($ca);
+		$y: $r*sin($ca);
+		$a: pow(1 - $i/$n, 2);
+		
+		$sh: $sh, $x $y 0 -1px rgba($c, $a), 
+			$x $y 13px rgba($c, $a)
+	}
+	
+	@return $sh
+}
+
+body { background: whitesmoke }
+
+.wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	width: $wrap-d; height: $wrap-d;
+		
+	svg { display: block }
+	
+	.dark & {
+		background: $dark-c;
+		color: $lght-c;
+	}
+	
+	.light & {
+		background: $lght-c;
+		color: $dark-c;
+		
+		.spin:before {
+			box-shadow: trail($dots-n, 1, $circ-r, $dark-c);
+		}
+	}
+}
+
+.spin {
+	display: flex;
+	align-items: center;
+	position: relative;
+	width: $spin-d; height: $spin-d;
+	animation: spin 5s linear infinite;
+	
+	&:before {
+		position: absolute;
+		top: 50%; left: 50%;
+		margin: -.5*$dots-d;
+		width: $dots-d; height: $dots-d;
+		border-radius: 50%;
+		box-shadow: trail($dots-n, 1, $circ-r);
+		content: ''
+	}
+}
+
+@keyframes spin { to { transform: rotate(1turn) } }
+
+[id='rocket'] {
+	display: flex;
+	margin-left: -$ship-o;
+	width: $ship-w; height: $ship-h	
+}
+
+.star {
+	position: absolute;
+	margin: -.5*$star-d;
+	width: $star-d; height: $star-d;
+	animation: size 0s cubic-bezier(.21,-1.45,.61,.78) infinite alternate;
+	
+	@for $i from 0 to $star-n {
+		$curr-p: nth($star-p, $i + 1);
+		$t: .25s + random(25)*.01s;
+		
+		&:nth-child(#{$i + 2}) {
+			top: nth($curr-p, 2); left: nth($curr-p, 1);
+			animation-duration: $t;
+			animation-delay: random(100)*-.01*$t
+		}
+	}
+}
+
+@keyframes size { 90%, 100% { transform: scale(.01) } }
+
+path {
+	fill: currentcolor;
+	filter: url(#shadow);
+}

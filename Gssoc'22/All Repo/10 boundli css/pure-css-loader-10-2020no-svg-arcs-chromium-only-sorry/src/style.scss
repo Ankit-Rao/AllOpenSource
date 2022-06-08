@@ -1,0 +1,75 @@
+@mixin loader($n: 3 /* number of arcs */, 
+							$r-mid0: 2.5em /* middle radius of innermost arc */, 
+							$r0: .25em /* rounding radius of innermost arc (half the arc thickness) */, 
+							$gap: .5em /* gap between arcs */, 
+							$r-incr: .125em /* by how much the rounding radius increases with every arc */, 
+							$a-max: 120deg /* maximum arc angle */, 
+							$t: .5s /* animation duration */, 
+							$m: 4 /* hue animation duration multiplier */) {
+	$r-outn: $r-mid0 + $n*$r0 + ($n - 1)*$gap + ($n - 1)*$n*$r-incr;
+	
+	$s-list: ();
+	$g-list: ();
+	
+	@for $i from 0 to $n {
+		$r-outi: $r-mid0 + ($i + 1)*$r0 + $i*$gap + $i*($i + 1)*$r-incr;
+		$r-inni: $r-outi - 2*($r0 + $i*$r-incr);
+		$r-midi: $r-outi - ($r0 + $i*$r-incr);
+		
+		$s-list: $s-list, 
+			0 (-$r-midi) 1px $i*$r-incr currentcolor;
+		
+		$g-list: $g-list, 
+			transparent calc(#{$r-inni} - 1px), 
+			red $r-inni $r-outi, 
+			transparent calc(#{$r-outi} + 1px)
+	}
+	
+	--f-ini: 0;
+	--f-fin: 0;
+	--f-hue: 0;
+	position: relative;
+	padding: $r-outn;
+	border-radius: 50%;
+	background: 
+		conic-gradient(from calc(var(--f-ini)*-360deg), 
+				currentcolor 0% calc(var(--f-fin)*#{$a-max}), 
+				transparent 0%);
+	color: hsl(calc(var(--f-hue)*360), 100%, 75%);
+	--mask: radial-gradient(#{$g-list});
+	-webkit-mask: var(--mask);
+					mask: var(--mask);
+	animation: 
+		f-ini 2*$t ease-out infinite, 
+		f-fin $t ease-out infinite alternate, 
+		f-hue $m*$t linear infinite;
+	
+	&:before, &:after {
+		--i: 0;
+		position: absolute;
+		margin: -$r0;
+		padding: $r0;
+		border-radius: 50%;
+		transform: rotate(calc(var(--f-ini)*-360deg + var(--i)*var(--f-fin)*#{$a-max}));
+		box-shadow: $s-list;
+		background: currentcolor;
+		content: ''
+	}
+	
+	&:after { --i: 1 }
+	
+	@keyframes f-ini { to { --f-ini: 1 } }
+	@keyframes f-fin { to { --f-fin: 1 } }
+	@keyframes f-hue { to { --f-hue: 1 } }
+}
+
+body {
+	display: grid;
+	place-content: center;
+	grid-gap: .5em;
+	margin: 0;
+	min-height: 100vh;
+	background: repeating-linear-gradient(45deg, #222 0 2px, #000 0 7px)
+}
+
+.loader { @include loader() }

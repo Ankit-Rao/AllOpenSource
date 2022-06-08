@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+}
+
+:root {
+  --eyes-c: #3a3d32;
+  --body-c0: #793c7f;
+  --body-c1: #efb923;
+  --wing-c0: #d1e6ec;
+  --wing-c1: #c2cdd7;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 101vh;
+}
+
+.sym {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  animation: a var(--t0) ease-in-out var(--dt0) infinite;
+}
+.sym:before {
+  position: absolute;
+  animation: a var(--t1) ease-in-out var(--dt1) infinite;
+  content: attr(data-sym);
+}
+
+.grow {
+  animation-name: hurl;
+}
+.grow:before {
+  animation-name: grow;
+}
+
+@keyframes hurl {
+  0% {
+    transform: rotate(var(--a0)) translate(0px) rotate(calc(-1*var(--a0)));
+  }
+  to {
+    transform: rotate(var(--a1)) translate(var(--dx)) rotate(calc(-1*var(--a1)));
+  }
+}
+@keyframes grow {
+  0% {
+    transform: scale(0.02);
+    opacity: 0.97;
+  }
+  11% {
+    opacity: 0.97;
+    filter: none;
+  }
+  23%, to {
+    transform: scale(2);
+    opacity: 0.02;
+    filter: blur(5px);
+  }
+}
+.fall {
+  animation-name: fall;
+}
+.fall:before {
+  animation-name: diff;
+  animation-direction: alternate;
+}
+
+@keyframes fall {
+  0% {
+    transform: translatey(-1em);
+  }
+  to {
+    transform: translatey(100vh);
+  }
+}
+@keyframes diff {
+  0% {
+    transform: translate(calc(-1*var(--dx))) rotate(0deg);
+  }
+  to {
+    transform: translate(var(--dx)) rotate(1turn);
+  }
+}
+svg {
+  position: relative;
+  width: 101%;
+  max-width: 37em;
+}
+
+#cicada {
+  fill: var(--body-c0);
+}
+
+.eye {
+  fill: var(--eyes-c);
+}
+
+.ant {
+  fill: var(--body-c1);
+}
+
+#body > .upper {
+  fill: url(#grad--upper);
+}
+#body > .lower {
+  fill: url(#grad--lower);
+}
+
+.lower {
+  fill: var(--body-c1);
+}
+
+.wing {
+  stroke: var(--wing-c1);
+  stroke-width: 5;
+}
+.wing :first-child {
+  fill: var(--wing-c0);
+  fill-opacity: 0.5;
+}
+.wing * + * {
+  fill: none;
+}

@@ -1,0 +1,21 @@
+- let rf = .875, ofx = .425, n = 20;
+
+- let rad_al = Math.acos(.5*(1 + Math.pow(ofx, 2) - Math.pow(rf, 2))/Math.abs(ofx));
+- let rad_as = Math.PI - Math.acos(.5*(Math.pow(ofx, 2) + Math.pow(rf, 2) - 1)/ofx/rf);
+- let rad_dl = 2*(Math.PI - rad_al);
+- let rad_ds = 2*(Math.PI - rad_as);
+- let rad_bl = rad_dl/n;
+- let rad_bs = rad_ds/n;
+- let rel = +(2*Math.tan(.5*rad_bl)).toFixed(3);
+- let res = +(2*rf*Math.tan(.5*rad_bs)).toFixed(3);
+- let rsl = +(.5*rad_al/Math.PI).toFixed(3);
+- let rss = +(.5*rad_as/Math.PI).toFixed(3);
+- let rdl = +(.5*rad_dl/Math.PI).toFixed(3);
+- let rds = +(.5*rad_ds/Math.PI).toFixed(3);
+- let deg_dl = +(rad_dl*180/Math.PI).toFixed(2);
+- let deg_ds = +(rad_ds*180/Math.PI).toFixed(2);
+
+div(class='🌙' style=`--n: ${n}; --rf: ${rf}; --ofx: ${ofx}; --rel: ${rel}; --res: ${res}; --rsl: ${rsl}; --rss: ${rss}; --rdl: ${rdl}; --rds: ${rds}; --dl: ${deg_dl}deg; --ds: ${deg_ds}deg`)
+	- for(let i = 0; i < n; i++)
+		.lat.comp(style=`--i: ${i}`)
+	.main.comp

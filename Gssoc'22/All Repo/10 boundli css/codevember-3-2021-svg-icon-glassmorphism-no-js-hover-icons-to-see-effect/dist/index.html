@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - #codeVember #3/2021: SVG icon glassmorphism (no JS, hover icons to see effect)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
+<script>const ID='nL2GHIY_JKc'</script><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<svg width="0" height="0">
+  <defs>
+    <rect id="rect" x="-400" y="-400" width="800" height="800" style="--lum: 100%"></rect>
+    <path id="home" d="M0-110.00000000000001l105 80v140h-210v-140z" stroke-width="110"></path>
+    <path id="menu" d="M80-80h-160v160h160z" stroke-width="170"></path>
+    <path id="bell" d="M80-80h-160v160h160z" stroke-width="170"></path>
+    <circle id="comp" r="190"></circle>
+  </defs>
+  <filter id="blur" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="20"></feGaussianBlur>
+  </filter>
+  <linearGradient id="grad">
+    <stop stop-color="#848484"></stop>
+    <stop offset="1" stop-color="#1f1f1f"></stop>
+  </linearGradient>
+  <mask id="home-inner">
+    <rect x="-200" y="-200" width="400" height="400" style="--lum: 0%"></rect>
+    <use xlink:href="#home" style="--lum: 100%"></use>
+  </mask>
+  <mask id="home-outer">
+    <use xlink:href="#rect"></use>
+    <use xlink:href="#home" style="--lum: 0%"></use>
+  </mask>
+  <mask id="menu-inner">
+    <rect x="-200" y="-200" width="400" height="400" style="--lum: 0%"></rect>
+    <use xlink:href="#menu" style="--lum: 100%"></use>
+  </mask>
+  <mask id="menu-outer">
+    <use xlink:href="#rect"></use>
+    <use xlink:href="#menu" style="--lum: 0%"></use>
+  </mask>
+  <mask id="bell-inner">
+    <rect x="-200" y="-200" width="400" height="400" style="--lum: 0%"></rect>
+    <use xlink:href="#bell" style="--lum: 100%"></use>
+  </mask>
+  <mask id="bell-outer">
+    <use xlink:href="#rect"></use>
+    <use xlink:href="#bell" style="--lum: 0%"></use>
+  </mask>
+  <mask id="comp-inner">
+    <rect x="-200" y="-200" width="400" height="400" style="--lum: 0%"></rect>
+    <use xlink:href="#comp" style="--lum: 100%"></use>
+  </mask>
+  <mask id="comp-outer">
+    <use xlink:href="#rect"></use>
+    <use xlink:href="#comp" style="--lum: 0%"></use>
+  </mask>
+</svg>
+<nav><a class="item" style="--hue: 202">
+    <svg class="icon" viewBox="-200 -200 400 400" aria-hidden="true">
+      <g mask="url(#home-outer)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#home"></use>
+      </g>
+      <g class="blur" mask="url(#home-inner)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#home"></use>
+      </g>
+      <g class="over">
+        <use xlink:href="#home"></use>
+        <path class="deco wire" d="M-50 95h100M0 0" stroke-width="32"></path>
+      </g>
+    </svg><span class="text">home</span></a><a class="item" style="--hue: 267">
+    <svg class="icon" viewBox="-200 -200 400 400" aria-hidden="true">
+      <g mask="url(#menu-outer)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#menu"></use>
+      </g>
+      <g class="blur" mask="url(#menu-inner)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#menu"></use>
+      </g>
+      <g class="over">
+        <use xlink:href="#menu"></use>
+        <path class="deco wire" d="M-75.3 0h150.6M0 9" stroke-width="40" stroke-dasharray="0.2 75"></path>
+      </g>
+    </svg><span class="text">notes</span></a><a class="item" style="--hue: 340">
+    <svg class="icon" viewBox="-200 -200 400 400" aria-hidden="true">
+      <g mask="url(#bell-outer)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#bell"></use>
+      </g>
+      <g class="blur" mask="url(#bell-inner)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#bell"></use>
+      </g>
+      <g class="over">
+        <use xlink:href="#bell"></use>
+        <path class="deco wire" d="M-75 45l50-60 50 30 50-60" stroke-width="26"></path>
+      </g>
+    </svg><span class="text">activity</span></a><a class="item" style="--hue: 8">
+    <svg class="icon" viewBox="-200 -200 400 400" aria-hidden="true">
+      <g mask="url(#comp-outer)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#comp"></use>
+      </g>
+      <g class="blur" mask="url(#comp-inner)">
+        <use xlink:href="#rect"></use>
+        <use class="mono" xlink:href="#comp"></use>
+      </g>
+      <g class="over">
+        <use xlink:href="#comp"></use>
+        <path class="deco wire fill" d="M0-50l90 50-90 50-90-50z" stroke-width="20" transform="rotate(-45)"></path>
+      </g>
+    </svg><span class="text">discovery</span></a>
+</nav>
+<!-- partial -->
+  
+</body>
+</html>

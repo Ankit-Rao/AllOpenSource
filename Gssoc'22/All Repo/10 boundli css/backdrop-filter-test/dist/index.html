@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - `backdrop-filter` test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet"> <link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body style="--n: 8; --val: brightness(var(--brightness)) contrast(var(--contrast)) saturate(var(--saturate)) grayscale(var(--grayscale)) invert(var(--invert)) sepia(var(--sepia)) blur(var(--blur)) hue-rotate(var(--hue-rotate))">
+  <style>body {--brightness: 1;--contrast: 1;--saturate: 1;--grayscale: 0;--invert: 0;--sepia: 0;--blur: 0px;--hue-rotate: 0deg;}
+  </style>
+  <section>
+    <article>
+      <h3>Hello Gorgeous!</h3>
+      <p>Remember all the blood we had...</p>
+    </article>
+  </section>
+  <aside>
+    <form style="--min: 0; --val: var(--brightness); --max: 10">
+      <input id="brightness" type="range" step="0.01" value="1" max="10"/>
+      <label for="brightness">brightness</label>
+      <button data-var="brightness" data-val="1" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--contrast); --max: 10">
+      <input id="contrast" type="range" step="0.01" value="1" max="10"/>
+      <label for="contrast">contrast</label>
+      <button data-var="contrast" data-val="1" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--saturate); --max: 10">
+      <input id="saturate" type="range" step="0.01" value="1" max="10"/>
+      <label for="saturate">saturate</label>
+      <button data-var="saturate" data-val="1" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--grayscale); --max: 1">
+      <input id="grayscale" type="range" step="0.01" value="0" max="1"/>
+      <label for="grayscale">grayscale</label>
+      <button data-var="grayscale" data-val="0" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--invert); --max: 1">
+      <input id="invert" type="range" step="0.01" value="0" max="1"/>
+      <label for="invert">invert</label>
+      <button data-var="invert" data-val="0" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--sepia); --max: 1">
+      <input id="sepia" type="range" step="0.01" value="0" max="1"/>
+      <label for="sepia">sepia</label>
+      <button data-var="sepia" data-val="0" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--blur); --max: 10">
+      <input id="blur" type="range" value="0" max="10" data-unit="px"/>
+      <label for="blur">blur</label>
+      <button data-var="blur" data-val="0" disabled="disabled">Reset</button>
+    </form>
+    <form style="--min: 0; --val: var(--hue-rotate); --max: 360">
+      <input id="hue-rotate" type="range" value="0" max="360" data-unit="deg"/>
+      <label for="hue-rotate">hue-rotate</label>
+      <button data-var="hue-rotate" data-val="0" disabled="disabled">Reset</button>
+    </form>
+    <p><strong>Why are there no <code>drop-shadow</code> and <code>opacity</code> filters?</strong><em>Because they are <a href="https://twitter.com/anatudor/status/1270001307584270336" target="_blank">a mess</a>!</em></p>
+    <p><strong>TODO:</strong><em>Make it responsive, for fuck's sake! Allow changing the function order by dragging the panels above.</em></p>
+  </aside>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

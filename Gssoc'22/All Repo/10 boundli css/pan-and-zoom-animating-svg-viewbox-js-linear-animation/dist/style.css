@@ -1,0 +1,94 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+* {
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  height: 100vh;
+}
+
+p {
+  font: 1.125em/2 trebuchet ms, tahoma, sans-serif;
+}
+
+code {
+  display: inline-block;
+  padding: 0 0.375em 0.125em;
+  border-radius: 5px;
+  background: #ccc;
+  font: 900 1.125em/1.25 consolas, monaco, monospace;
+}
+
+svg {
+  width: 96vw;
+  box-shadow: 0 0 1px 1px #333;
+}
+
+[d] {
+  fill: #333;
+  transition: 0.7s;
+  cursor: pointer;
+}
+
+[d]:hover {
+  fill: #f90;
+}
+
+.msg {
+  height: 2em;
+}
+.msg:not(:empty) {
+  padding: 0.25em 0.75em;
+  border-radius: 5px;
+  background: #b53;
+  color: #fff;
+}

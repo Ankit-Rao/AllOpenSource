@@ -1,0 +1,152 @@
+@import 'compass/css3';
+
+$thumb-w: .5em;
+$track-h: .5*$thumb-w;
+$track-r: .5*$track-h;
+$thumb-h: $track-h + 2*$thumb-w;
+$thumb-l: $track-h + $thumb-w;
+$label-b: 2*$track-h/3;
+$arrow-d: $label-b*sqrt(2);
+$arrow-h: $thumb-w - $arrow-d;
+$arrow-x: .5*$thumb-w + $arrow-d;
+$arrow-y: $arrow-h + $label-b;
+$c0: #e473c6;
+$c1: #ffba42;
+$r0: red($c0);
+$g0: green($c0);
+$b0: blue($c0);
+$r1: red($c1);
+$g1: green($c1);
+$b1: blue($c1);
+
+@mixin track($f: 0) {
+	border: none;
+	width: 100%; height: $track-h;
+	border-radius: $track-r;
+	background: #ccc;
+	color: none;
+	
+	@if $f > 0 {
+		background-image: var(--fill);
+		background-repeat: no-repeat;
+		background-size: var(--pos) 100%;
+	}
+}
+
+@mixin thumb($f: 0) {
+	border: none;
+	width: $thumb-w; height: $thumb-h;
+	background: var(--c);
+	clip-path: polygon(50% 0, 100% $thumb-w, 100% $thumb-l, 0 $thumb-l, 0 $thumb-w);
+	
+	@if $f > 0 {
+		margin-top: .5*($track-h - $thumb-h);
+	}
+}
+
+* { margin: 0; padding: 0; font: inherit; }
+
+html { font: 700 1.5em/ 1 lato }
+
+body {
+	--w: 12.5em;
+	--k: calc(.01*var(--val));
+	--j: calc(1 - var(--k));
+	--pos: calc(.5*#{$thumb-w} + var(--k)*(var(--w) - #{$thumb-w}));
+	--c: RGB(calc(var(--k)*#{$r0} + var(--j)*#{$r1}), 
+					 calc(var(--k)*#{$g0} + var(--j)*#{$g1}), 
+					 calc(var(--k)*#{$b0} + var(--j)*#{$b1}));
+	--fill: Linear-Gradient(90deg, #{$c1} #{.5*$thumb-w}, #{$c0} calc(var(--w) - #{$thumb-w}));
+	display: grid;
+	grid-template-columns: var(--w);
+	grid-gap: $arrow-h + .5*$thumb-w;
+	place-content: center;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: repeating-linear-gradient(45deg, #eee 0 2px, transparent 0 7px);
+	
+	@media (max-width: 240px) { --w: 100vw }
+}
+
+input, output {
+	--hl: 0;
+	--nothl: calc(1 - var(--hl));
+	filter: Grayscale(calc(var(--nothl)*.8));
+	transition: filter .5s
+}
+
+input {
+	&, &::-webkit-slider-thumb, 
+	&::-webkit-slider-runnable-track { -webkit-appearance: none }
+	
+	height: $thumb-h;
+	background: transparent;
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track { @include track(1) }
+	
+	&::-moz-range-track { @include track() }
+	
+	&::-moz-range-progress {
+		height: $track-h;
+		border-radius: $track-r 0 0 $track-r;
+		background: var(--fill)
+	}
+	
+	&::-webkit-slider-thumb { @include thumb(1) }
+	
+	&::-moz-range-thumb { @include thumb() }
+	
+	&:focus, &:hover {
+		outline: solid 0 transparent;
+		
+		&, & + output { --hl: 1 }
+	}
+}
+
+output {
+	display: grid;
+	grid-row: 1;
+	place-self: start;
+	transform: translate(calc(var(--pos) - 50%));
+	counter-reset: val var(--val);
+	
+	&::before, &::after {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	
+	&::after {
+		border: solid $label-b;
+		border-image: linear-gradient(-15deg, $c1, $c0) 1;
+		padding: 3px .5em;
+		color: transparent;
+		background: linear-gradient(30deg, $c0, $c1) content-box;
+		-webkit-background-clip: text;
+		clip-path: inset(0 round $label-b);
+		--full: linear-gradient(red, red);
+		--mask: var(--full) border-box, 
+			var(--full) 50% 100%/ #{$thumb-w} #{$label-b} no-repeat border-box;
+		-webkit-mask: var(--mask);
+		-webkit-mask-composite: source-out;
+						mask: var(--mask);
+						mask-composite: subtract;
+		content: counter(val) '%'
+	}
+	
+	&::before {
+		margin-bottom: -$arrow-h;
+		background: linear-gradient(-15deg, $c1, $c0);
+		clip-path: 
+			polygon(50% 100%, 
+							calc(50% + #{$arrow-x}) calc(100% - #{$arrow-y}), 
+							calc(50% + #{.5*$thumb-w}) calc(100% - #{$arrow-y}), 
+							50% calc(100% - #{$arrow-d}), 
+							calc(50% - #{.5*$thumb-w}) calc(100% - #{$arrow-y}), 
+							calc(50% - #{$arrow-x}) calc(100% - #{$arrow-y}));
+		content: '';
+		
+		@supports (-moz-transform: scale(2)) { transform: translatey(.5px) }
+	}
+}

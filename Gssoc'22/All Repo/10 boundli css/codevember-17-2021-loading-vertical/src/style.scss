@@ -1,0 +1,49 @@
+$b: 2px;
+$t: 2.5s;
+$f: .25;
+
+* { margin: 0; padding: 0 }
+
+body, p { display: grid }
+
+body {
+	height: 100vh;
+	background: #962d3e;
+	color: #fff
+}
+
+p {
+	--mask: 
+		linear-gradient(transparent, red 1em 2em, 
+				transparent calc(100% - #{$b}), red 0);
+	grid-auto-flow: column;
+	grid-gap: 1em;
+	place-self: center;
+	overflow: hidden;
+	border-bottom: solid $b transparent;
+	padding: 1em;
+	background: 
+		linear-gradient(90deg, 
+				currentcolor 33.333%, transparent 0 66.667%, currentcolor 0) 
+			100% 100%/ 300% $b no-repeat border-box;
+	font: 700 1.25em/ 1 quicksand, ubuntu, trebuchet ms, sans-serif;
+	text-transform: uppercase;
+	-webkit-mask: var(--mask);
+					mask: var(--mask);
+	animation: line $t ease-in-out -.5*$t infinite
+}
+
+@keyframes line {
+	50% { background-position: 50% 100% }
+	100% { background-position: 0 100% }
+}
+
+span {
+	animation: char $t ease-out calc(var(--i)*#{$f}*#{$t}/var(--n)) infinite
+}
+
+@keyframes char {
+	0% { transform: translatey(2em) }
+	25%, 50% { transform: none }
+	75%, 100% { transform: translatey(-2em) }
+}

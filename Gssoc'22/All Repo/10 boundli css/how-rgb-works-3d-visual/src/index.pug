@@ -1,0 +1,14 @@
+//- number of dimensions
+- var nd = 3;
+//- number of cubes per dimension
+- var nc = 5;
+//- total number of cubes
+- var n = Math.pow(nc, nd);
+
+.assembly
+	.rotor
+		while n--
+			- var nf = 6; //- number of cube faces
+			.cube
+				while nf--
+					.cube__face

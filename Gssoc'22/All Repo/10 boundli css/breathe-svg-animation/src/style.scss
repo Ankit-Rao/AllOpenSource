@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Unica+One');
+
+$body: hsl(240, 100%, 95%);
+$fill: hsl(340, 100%, 60%);
+$title: $fill;
+$bpm: 5;
+$count: 6;
+$ease: cubic-bezier(.65, .05, .36, 1);
+$radius: 225px;
+
+/*Page Setup*/
+
+circle {
+  opacity: 1/$count;
+  animation: breathe 60s/$bpm $ease infinite;
+  transform: rotate(var(--angle));
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) { --angle: #{360deg/$count*$i} }
+  }
+}
+
+@keyframes breathe {
+  45%, 55% {
+    transform: rotate(var(--angle)) translate($radius)
+  }
+}
+
+.rose { animation: turn 120s linear infinite }
+
+@keyframes turn { 100% { transform: rotate(1turn) } }
+
+svg {
+  fill: $fill;
+  width: 100vw;
+  height: 80vh
+}
+
+body {
+  background: $body;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+.title {
+  height: 10vh;
+  line-height: 10vh;
+  font-size: 8vh;
+  padding: 2.5vh;
+  margin: 0;
+  color: $title;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  font-family: 'Unica One', cursive
+}

@@ -1,0 +1,78 @@
+$d: 1.75em;
+$t: 8s;
+
+@function int-c($c0, $c1, $f) {
+	$h0: round(hue($c0)/1deg);
+	$s0: round(saturation($c0));
+	$l0: round(lightness($c0));
+
+	$h1: round(hue($c1)/1deg);
+	$s1: round(saturation($c1));
+	$l1: round(lightness($c1));
+	
+	@return hsl(calc((1 - #{$f})*#{$h0} + #{$f}*#{$h1}), 
+							calc((1 - #{$f})*#{$s0} + #{$f}*#{$s1}), 
+							calc((1 - #{$f})*#{$l0} + #{$f}*#{$l1}))
+}
+
+@property --ay {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: true
+}
+
+@property --az {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: true
+}
+
+body, div { display: grid }
+
+body {
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #5c5757
+}
+
+.a3d {
+	--ay: 0deg;
+	--az: 0deg;
+	transform-style: preserve-3d;
+	transform: rotatey(var(--ay)) rotate(var(--az));
+	animation: az $t linear infinite, 
+		ay $t cubic-bezier(.68, -.6, .32, 1.6) infinite
+}
+
+.dot {
+	--m: calc(.5*(var(--p) - 1));
+	--abs: max(calc(var(--m) - var(--i)), calc(var(--i) - var(--m)));
+	--sgn: clamp(-1, var(--i) - var(--m), 1);
+	--d: calc(3px + var(--abs)/var(--p)*#{$d});
+	--a: calc(var(--k)*1turn/var(--n-dot));
+	--x: calc(var(--abs)*2*#{$d}/var(--n-dot));
+	--z: calc((var(--i) - var(--m))*2*#{$d}/var(--n-dot));
+	grid-area: 1/ 1;
+	place-self: center;
+	width: var(--d); height: var(--d);
+	border-radius: 50%;
+	transform: 
+		scalex(var(--sgn))
+		rotate(var(--a)) 
+		translate3d(var(--x), 0, var(--z)) 
+		rotate(calc(-1*var(--a))) 
+		scalex(var(--sgn))
+		rotate(calc(-1*var(--az)))
+		rotatey(calc(-1*var(--ay)));
+	background: 
+		radial-gradient(circle at 35% 35%, 
+			#fff, int-c(#d68400, #5786eb, calc(var(--i)/var(--p))) 65%);
+}
+
+@keyframes ay {
+	0%, 15% { --ay: 1turn }
+	50%, 65% { --ay: .5turn }
+}
+
+@keyframes az { to { --az: 1turn } }

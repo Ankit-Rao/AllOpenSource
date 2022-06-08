@@ -1,0 +1,142 @@
+
+
+$input: (
+	h: (ini: 0, unit: 1, max: 360, p: 12), 
+	s: (ini: 100, unit: 1%, max: 100, p: 1), 
+	l: (ini: 50, unit: 1%, max: 100, p: 2)
+);
+$smap: ();
+$track-w: (min: 8em, val: 80vmin, max: 35em);
+$track-h: .75em;
+$thumb-d: 2.5*$track-h;
+
+@mixin limit($plist: (width), $flist: (1), $vlist: ($track-w,)) {
+	$np: length($plist);
+	$nf: length($flist);
+	$nv: length($vlist);
+	
+	@for $i from 0 to $np {
+		@each $key, $val in nth($vlist, $i%$nv + 1) {
+			$pname: if($key == val, '', $key + '-') + nth($plist, $i + 1);
+			#{$pname}: #{nth($flist, $i%$nf + 1)*$val};
+		}
+	}
+}
+
+@mixin track() {
+	border: none;
+	@include limit;
+	height: $track-h;
+	border-radius: $track-h;
+	box-shadow: 0 0 0 1px #fff, 0 0 1px 2px var(--basec);
+	background: linear-gradient(90deg, var(--slist));
+}
+
+@mixin thumb() {
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	box-shadow: 0 1px 3px 1px var(--basec);
+	background: gainsboro;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0;
+	height: 100vh;
+	--basec: #333;
+	--llight: hsl(calc(var(--h)), 85%, 35%);
+	--hlight: hsl(calc(var(--h)), 100%, 65%);
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_03_bg_rainbow_landscape.jpg) 50%/ cover hsl(calc(var(--h) + 180), 35%, 85%);
+	background-blend-mode: screen;
+	font: 1em/1.5 handlee, cursive;
+	
+	@each $k, $v in $input {
+		$clist: ();
+		$p: map-get($v, p);
+		
+		@for $i from 0 through $p {
+			$args: ();
+			
+			@each $k1, $v1 in $input {
+				$u: map-get($v1, unit);
+				$args: append(
+					$args, 
+					if($k == $k1, $i*map-get($v, max)*$u/$p, 
+						calc(var(#{--#{$k1}})*#{$u}))
+				);
+			}
+			
+			$clist: $clist, hsl($args...);
+		}
+		
+		$smap: map-merge($smap, ($k: $clist));
+		
+		#{--#{$k}}: #{map-get($v, ini)};
+	
+		@at-root {
+			[id='#{$k}'] { 
+				--slist: #{map-get($smap, $k)};
+
+				+ :after {
+					counter-reset: #{$k} var(#{--#{$k}});
+					content: ': ' counter(#{$k});
+				}
+			}
+		}
+	}
+}
+
+h1 {
+	font-size: 4em;
+	line-height: 1.2;
+	text-shadow: 2px 2px 1px var(--hlight), 
+		4px 4px 1px var(--basec);
+	
+	~ :not([for]) { margin-top: 2em }
+}
+
+input {
+	&, &::-webkit-slider-thumb, 
+	&::-webkit-slider-runnable-track {
+		-webkit-appearance: none;
+	}
+	
+	@include limit;
+	height: 1.5*$thumb-d;
+	background: transparent;
+	font: inherit;
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track {
+		@include track
+	}
+	
+	&::-webkit-slider-thumb {
+		margin-top: .5*($track-h - $thumb-d);
+		@include thumb
+	}
+	
+	&:focus {
+		outline: none;
+		
+		&, + label {
+			--basec: var(--llight);
+			font-weight: 900;
+		}
+	}
+}
+
+label {
+	color: var(--basec);
+	font-size: 2em;
+}
+
+output {
+	@include limit((width, height), (.65, .31));
+	border-radius: 5px;
+	box-shadow: 0 1px 3px #222;
+	background: hsl(calc(var(--h)), calc(var(--s)*1%), calc(var(--l)*1%));
+}

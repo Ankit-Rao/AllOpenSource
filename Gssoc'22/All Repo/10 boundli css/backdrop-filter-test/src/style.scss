@@ -1,0 +1,197 @@
+$pad: .5em;
+$rnd: 3px;
+
+$lght: #e3e3e3;
+$dark: #262626;
+
+$lghter: #f7f7f7;
+$darker: #0e0e0e;
+
+$track-w: 14.5em;
+$track-h: 2*$rnd;
+$track-r: .5*$track-h;
+
+$thumb-d: 1em;
+$thumb-r: .5*$thumb-d;
+
+$c: hotpink;
+$t: .3s;
+
+@mixin track() {
+	border: none;
+	width: 100%; height: $track-h;
+	border-radius: $track-r;
+	background: $lght
+}
+
+@mixin thumb($f: 0) {
+	margin-top: calc(#{$f}*(#{$track-r} - #{$thumb-r}));
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	background: $c
+}
+
+* {
+	--light: 0;
+	--not-light: calc(1 - var(--light));
+	--activ: 0;
+	--not-activ: calc(1 - var(--activ));
+	margin: 0;
+	border: none;
+	padding: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit
+}
+
+:focus { outline: solid 0 transparent }
+
+body {
+	--wide: 1;
+	--c: #{$c};
+	display: grid;
+	grid-template-columns: 1fr repeat(var(--wide), $track-w + 4*$pad);
+	height: 100vh;
+	font: 1.25em/ 1.375 montserrat, trebuchet ms, sans-serif;
+	
+	@media (max-width: 665px) { font-size: 1em }
+	
+	@media (max-width: 540px) { --wide: 0 }
+	
+	@media (max-width: 280px) { font-size: .875em }
+	
+	@media (max-width: 250px) { font-size: .75em }
+}
+
+section {
+	display: grid;
+	padding: 2rem 0;
+	background: url(https://images.unsplash.com/photo-1608830597604-619220679440?w=900) 50%/ cover
+}
+
+article {
+	align-self: center;
+	place-self: center;
+	padding: $pad;
+	padding: Min(9vmin, 9%);
+	background: rgba($lghter, .25);
+	font: 700 1.5em/ 1.25 parisienne, segoe script, comic sans ms, purisa, cursive;
+	backdrop-filter: var(--val)
+}
+
+h3 {
+	padding-bottom: $pad;
+	font-size: 1.5em;
+	font-weight: 900;
+	text-align: center
+}
+
+aside {
+	display: grid;
+	grid-gap: $pad;
+	grid-template-rows: repeat(var(--n), max-content);
+	padding: $pad;
+	background: $dark;
+	color: $lght;
+}
+
+form {
+	display: grid;
+	grid-gap: $pad 2*$pad;
+	grid-template-columns: 1fr max-content;
+	justify-self: center;
+	padding: $pad;
+	border-radius: $rnd;
+	box-shadow: 2px 2px 5px $darker;
+	color: var(--c);
+	
+	> * { filter: grayScale(var(--not-light)) }
+}
+
+label, code {
+	font: inherit 1em/ 1.375 ubuntu mono, consolas, monaco, monospace;
+	
+	&::after { content: '()' }
+}
+
+input {
+	&, &::-webkit-slider-thumb, 
+	&::-webkit-slider-runnable-track {
+		-webkit-appearance: none
+	}
+	
+	grid-row: 2;
+	grid-column: 1/ -1;
+	width: $track-w; height: $pad + $thumb-d;
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track {
+		@include track()
+	}
+	
+	&::-moz-range-track {
+		@include track()
+	}
+	
+	&::-webkit-slider-thumb {
+		@include thumb(1)
+	}
+	
+	&::-moz-range-thumb {
+		@include thumb()
+	}
+	
+	&::-ms-track {
+		@include track();
+		color: transparent
+	}
+	
+	&::-ms-fill-lower { display: none }
+	
+	&::-ms-thumb {
+		@include thumb()
+	}
+	
+	&:hover, &:focus { &, & + label { --light: 1 } }
+	&:active { --activ: 1 }
+}
+
+button {
+	--p: var(--enabled, 0);
+	--not-p: calc(1 - var(--p));
+	align-self: center;
+	position: relative;
+	border: solid $rnd transparent;
+	padding: 0 $pad;
+	border-radius: 2*$rnd - 1px;
+	box-shadow: 0 0 0 1px currentcolor;
+	opacity: calc(1 - .8*var(--not-p));
+	font-size: .8em;
+	line-height: 1.25;
+	cursor: pointer;
+	pointer-events: var(--enabled, none);
+	
+	&::before {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		border-radius: $rnd;
+		transform-origin: 0;
+		transform: scalex(var(--activ));
+		background: currentcolor;
+		mix-blend-mode: difference;
+		transition: transform .5*$t ease-out;
+		content: ''
+	}
+	
+	&:not([disabled]) { --enabled: 1 }
+	
+	&:hover, &:focus { --light: var(--p) }
+	&:active { --activ: var(--p) }
+}
+
+strong, em { display: block }
+strong { font-weight: 700 }
+em { font-style: italic }
+
+a { color: var(--c) }

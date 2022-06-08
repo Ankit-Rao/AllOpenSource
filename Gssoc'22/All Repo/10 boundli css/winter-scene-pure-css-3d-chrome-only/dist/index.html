@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Winter scene (pure CSS 3D, Chrome only)</title>
+  <script>const ID = 'AeQvfZE33Fw'</script><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<style>.side:nth-child(1) { --i: 0 }.side:nth-child(2) { --i: 1 }.side:nth-child(3) { --i: 2 }.side:nth-child(4) { --i: 3 }.side:nth-child(5) { --i: 4 }.side:nth-child(6) { --i: 5 }
+</style>
+<section class="scene" style="--ns: 6; --rri: 0.8660254037844387; --rax: 0deg">
+  <div class="assembly">
+    <div class="floor">
+      <svg viewBox="-450 -450 900 900">
+        <filter id="b" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="15"></feGaussianBlur>
+        </filter>
+        <path class="light" d="M180,0,90,156,-90,156,-180,0,-90,-156,90,-156"></path>
+        <g transform="translate(90)">
+          <path class="shadow" d="M189,0,95,164,-94,164,-189,0,-95,-164,94,-164" filter="url(#b)"></path>
+        </g>
+      </svg>
+    </div>
+    <div class="tree">
+      <div class="trunk">
+        <div class="side"></div>
+        <div class="side"></div>
+        <div class="side"></div>
+        <div class="side"></div>
+        <div class="side"></div>
+        <div class="side"></div>
+      </div>
+      <div class="crown">
+        <div class="level" style="--j: 0; --rl: 0.75; --rh: 0.9;
+									--rri: 0.649519052838329; --rax: 46.19400773163438deg; --rdy: 0">
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+        </div>
+        <div class="level" style="--j: 1; --rl: 0.65; --rh: 0.93;
+									--rri: 0.5629165124598852; --rax: 37.24946623795521deg; --rdy: 0.3114983948594278">
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+        </div>
+        <div class="level" style="--j: 2; --rl: 0.5; --rh: 1;
+									--rri: 0.43301270189221935; --rax: 25.658906273255283deg; --rdy: 0.6816419480924945">
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+          <div class="side"></div>
+        </div>
+      </div>
+    </div>
+    <div class="snow">
+      <div class="flake" style="--x: 0.2;
+											--z: 0.05;
+											--f: 0.26;
+											--p: 0.14;"></div>
+      <div class="flake" style="--x: 0.06;
+											--z: 0.21;
+											--f: 0.31;
+											--p: 0.37;"></div>
+      <div class="flake" style="--x: 0.8;
+											--z: 0.31;
+											--f: 0.39;
+											--p: 0.1;"></div>
+      <div class="flake" style="--x: 0.62;
+											--z: 0.76;
+											--f: 0.55;
+											--p: 0.29;"></div>
+      <div class="flake" style="--x: 0.08;
+											--z: 0.03;
+											--f: 0.28;
+											--p: 0.91;"></div>
+      <div class="flake" style="--x: 0.49;
+											--z: 0.67;
+											--f: 0.53;
+											--p: 0.32;"></div>
+      <div class="flake" style="--x: 0.93;
+											--z: 0.6;
+											--f: 0.42;
+											--p: 0.66;"></div>
+      <div class="flake" style="--x: 0.37;
+											--z: 0.2;
+											--f: 0.43;
+											--p: 0.99;"></div>
+      <div class="flake" style="--x: 0.28;
+											--z: 0.82;
+											--f: 0.65;
+											--p: 0.06;"></div>
+      <div class="flake" style="--x: 0.54;
+											--z: 0.71;
+											--f: 0.74;
+											--p: 0.49;"></div>
+      <div class="flake" style="--x: 0.17;
+											--z: 0.28;
+											--f: 0.55;
+											--p: 0.8;"></div>
+      <div class="flake" style="--x: 0.84;
+											--z: 0.85;
+											--f: 0.33;
+											--p: 0.5;"></div>
+      <div class="flake" style="--x: 0.6;
+											--z: 0.01;
+											--f: 0.48;
+											--p: 0.62;"></div>
+      <div class="flake" style="--x: 0.96;
+											--z: 0.17;
+											--f: 0.36;
+											--p: 0.23;"></div>
+      <div class="flake" style="--x: 0.53;
+											--z: 0.7;
+											--f: 0.47;
+											--p: 0.69;"></div>
+      <div class="flake" style="--x: 0.09;
+											--z: 0.52;
+											--f: 0.45;
+											--p: 0.2;"></div>
+      <div class="flake" style="--x: 0.01;
+											--z: 0.7;
+											--f: 0.28;
+											--p: 0.74;"></div>
+      <div class="flake" style="--x: 0.32;
+											--z: 0.09;
+											--f: 0.74;
+											--p: 0.94;"></div>
+      <div class="flake" style="--x: 0.56;
+											--z: 0.9;
+											--f: 0.63;
+											--p: 0.72;"></div>
+      <div class="flake" style="--x: 0.73;
+											--z: 0.62;
+											--f: 0.41;
+											--p: 0.95;"></div>
+      <div class="flake" style="--x: 0.71;
+											--z: 0.55;
+											--f: 0.46;
+											--p: 0.21;"></div>
+      <div class="flake" style="--x: 0.57;
+											--z: 0.7;
+											--f: 0.6;
+											--p: 0.12;"></div>
+      <div class="flake" style="--x: 0.55;
+											--z: 0.33;
+											--f: 0.56;
+											--p: 0;"></div>
+      <div class="flake" style="--x: 0.95;
+											--z: 0.72;
+											--f: 0.29;
+											--p: 0.49;"></div>
+      <div class="flake" style="--x: 0.75;
+											--z: 0.83;
+											--f: 0.32;
+											--p: 0.35;"></div>
+      <div class="flake" style="--x: 0.73;
+											--z: 0.95;
+											--f: 0.73;
+											--p: 0.26;"></div>
+      <div class="flake" style="--x: 0.67;
+											--z: 0.05;
+											--f: 0.48;
+											--p: 0.83;"></div>
+      <div class="flake" style="--x: 0.85;
+											--z: 0.77;
+											--f: 0.62;
+											--p: 0.84;"></div>
+      <div class="flake" style="--x: 0.39;
+											--z: 0.11;
+											--f: 0.49;
+											--p: 0.02;"></div>
+      <div class="flake" style="--x: 0.26;
+											--z: 0.92;
+											--f: 0.63;
+											--p: 0.82;"></div>
+      <div class="flake" style="--x: 0.96;
+											--z: 0.05;
+											--f: 0.45;
+											--p: 0.33;"></div>
+      <div class="flake" style="--x: 0.02;
+											--z: 0.99;
+											--f: 0.63;
+											--p: 0.28;"></div>
+      <div class="flake" style="--x: 0.21;
+											--z: 0.68;
+											--f: 0.54;
+											--p: 0.46;"></div>
+      <div class="flake" style="--x: 0.3;
+											--z: 0.04;
+											--f: 0.49;
+											--p: 0.94;"></div>
+      <div class="flake" style="--x: 0.31;
+											--z: 0.81;
+											--f: 0.29;
+											--p: 0.15;"></div>
+      <div class="flake" style="--x: 0.58;
+											--z: 0.63;
+											--f: 0.56;
+											--p: 0.79;"></div>
+      <div class="flake" style="--x: 0.67;
+											--z: 0.05;
+											--f: 0.44;
+											--p: 0.98;"></div>
+      <div class="flake" style="--x: 0.88;
+											--z: 0.1;
+											--f: 0.36;
+											--p: 0.35;"></div>
+      <div class="flake" style="--x: 0.56;
+											--z: 0.74;
+											--f: 0.31;
+											--p: 0.36;"></div>
+      <div class="flake" style="--x: 0.23;
+											--z: 0.61;
+											--f: 0.41;
+											--p: 0.24;"></div>
+      <div class="flake" style="--x: 0.63;
+											--z: 0.56;
+											--f: 0.61;
+											--p: 0.87;"></div>
+      <div class="flake" style="--x: 1;
+											--z: 0.19;
+											--f: 0.47;
+											--p: 0.67;"></div>
+      <div class="flake" style="--x: 0.7;
+											--z: 0.24;
+											--f: 0.47;
+											--p: 0.2;"></div>
+      <div class="flake" style="--x: 0.71;
+											--z: 0.22;
+											--f: 0.64;
+											--p: 0.66;"></div>
+      <div class="flake" style="--x: 0.53;
+											--z: 0.46;
+											--f: 0.46;
+											--p: 0.64;"></div>
+      <div class="flake" style="--x: 0.59;
+											--z: 0.44;
+											--f: 0.49;
+											--p: 0.8;"></div>
+      <div class="flake" style="--x: 0.61;
+											--z: 0.99;
+											--f: 0.54;
+											--p: 0.51;"></div>
+      <div class="flake" style="--x: 0.04;
+											--z: 0.77;
+											--f: 0.67;
+											--p: 0.66;"></div>
+      <div class="flake" style="--x: 0.6;
+											--z: 0.53;
+											--f: 0.73;
+											--p: 0.18;"></div>
+      <div class="flake" style="--x: 0.61;
+											--z: 0.22;
+											--f: 0.6;
+											--p: 0.46;"></div>
+      <div class="flake" style="--x: 0.34;
+											--z: 0.13;
+											--f: 0.51;
+											--p: 0.09;"></div>
+      <div class="flake" style="--x: 0.62;
+											--z: 0.37;
+											--f: 0.72;
+											--p: 0.28;"></div>
+      <div class="flake" style="--x: 0.18;
+											--z: 0.4;
+											--f: 0.64;
+											--p: 0.79;"></div>
+      <div class="flake" style="--x: 0.45;
+											--z: 0.83;
+											--f: 0.39;
+											--p: 0.05;"></div>
+      <div class="flake" style="--x: 0.43;
+											--z: 0.85;
+											--f: 0.36;
+											--p: 0.51;"></div>
+      <div class="flake" style="--x: 0.45;
+											--z: 0.64;
+											--f: 0.29;
+											--p: 0.62;"></div>
+      <div class="flake" style="--x: 0.15;
+											--z: 0.31;
+											--f: 0.37;
+											--p: 0.13;"></div>
+      <div class="flake" style="--x: 0.71;
+											--z: 0.87;
+											--f: 0.64;
+											--p: 0.74;"></div>
+      <div class="flake" style="--x: 0.35;
+											--z: 0.22;
+											--f: 0.61;
+											--p: 0.91;"></div>
+      <div class="flake" style="--x: 0.82;
+											--z: 0.89;
+											--f: 0.29;
+											--p: 1;"></div>
+      <div class="flake" style="--x: 0.6;
+											--z: 0.73;
+											--f: 0.42;
+											--p: 0.61;"></div>
+      <div class="flake" style="--x: 0.12;
+											--z: 0.15;
+											--f: 0.45;
+											--p: 0.27;"></div>
+      <div class="flake" style="--x: 0.21;
+											--z: 0.71;
+											--f: 0.32;
+											--p: 0.57;"></div>
+      <div class="flake" style="--x: 0.51;
+											--z: 0.81;
+											--f: 0.27;
+											--p: 0.9;"></div>
+      <div class="flake" style="--x: 0.59;
+											--z: 0.12;
+											--f: 0.64;
+											--p: 0.23;"></div>
+      <div class="flake" style="--x: 0.89;
+											--z: 0.46;
+											--f: 0.42;
+											--p: 0.58;"></div>
+      <div class="flake" style="--x: 0.73;
+											--z: 0.17;
+											--f: 0.47;
+											--p: 0.85;"></div>
+      <div class="flake" style="--x: 0.86;
+											--z: 0.85;
+											--f: 0.5;
+											--p: 0.74;"></div>
+      <div class="flake" style="--x: 0.25;
+											--z: 0.83;
+											--f: 0.72;
+											--p: 0.49;"></div>
+      <div class="flake" style="--x: 0.25;
+											--z: 0.02;
+											--f: 0.44;
+											--p: 0.65;"></div>
+      <div class="flake" style="--x: 0.2;
+											--z: 0.16;
+											--f: 0.44;
+											--p: 0.09;"></div>
+      <div class="flake" style="--x: 0.26;
+											--z: 0.84;
+											--f: 0.32;
+											--p: 0.27;"></div>
+      <div class="flake" style="--x: 0.55;
+											--z: 0.98;
+											--f: 0.46;
+											--p: 0.54;"></div>
+      <div class="flake" style="--x: 0.92;
+											--z: 0.43;
+											--f: 0.57;
+											--p: 0.13;"></div>
+      <div class="flake" style="--x: 0.4;
+											--z: 0.39;
+											--f: 0.51;
+											--p: 0.8;"></div>
+      <div class="flake" style="--x: 0.99;
+											--z: 0.7;
+											--f: 0.41;
+											--p: 0.32;"></div>
+      <div class="flake" style="--x: 0.8;
+											--z: 0.06;
+											--f: 0.57;
+											--p: 0.19;"></div>
+      <div class="flake" style="--x: 0.47;
+											--z: 0.02;
+											--f: 0.48;
+											--p: 0.57;"></div>
+      <div class="flake" style="--x: 0.8;
+											--z: 0.55;
+											--f: 0.73;
+											--p: 0.13;"></div>
+      <div class="flake" style="--x: 0.18;
+											--z: 0.15;
+											--f: 0.27;
+											--p: 0.81;"></div>
+      <div class="flake" style="--x: 0.28;
+											--z: 0.49;
+											--f: 0.66;
+											--p: 0.3;"></div>
+      <div class="flake" style="--x: 0.38;
+											--z: 0.77;
+											--f: 0.32;
+											--p: 0.59;"></div>
+      <div class="flake" style="--x: 0.1;
+											--z: 0.82;
+											--f: 0.37;
+											--p: 0.33;"></div>
+      <div class="flake" style="--x: 0.45;
+											--z: 0.76;
+											--f: 0.3;
+											--p: 0.16;"></div>
+      <div class="flake" style="--x: 0.9;
+											--z: 0.66;
+											--f: 0.32;
+											--p: 0.26;"></div>
+      <div class="flake" style="--x: 0.19;
+											--z: 0.01;
+											--f: 0.75;
+											--p: 0.55;"></div>
+      <div class="flake" style="--x: 0.21;
+											--z: 0.5;
+											--f: 0.71;
+											--p: 0.87;"></div>
+      <div class="flake" style="--x: 0.62;
+											--z: 0.53;
+											--f: 0.41;
+											--p: 0.85;"></div>
+      <div class="flake" style="--x: 0.38;
+											--z: 0.59;
+											--f: 0.44;
+											--p: 0.4;"></div>
+      <div class="flake" style="--x: 0.52;
+											--z: 0.64;
+											--f: 0.26;
+											--p: 0.19;"></div>
+      <div class="flake" style="--x: 0.9;
+											--z: 0.61;
+											--f: 0.32;
+											--p: 0.28;"></div>
+      <div class="flake" style="--x: 0.12;
+											--z: 0.95;
+											--f: 0.55;
+											--p: 0.45;"></div>
+      <div class="flake" style="--x: 0.83;
+											--z: 0.62;
+											--f: 0.5;
+											--p: 0.86;"></div>
+      <div class="flake" style="--x: 0.65;
+											--z: 0.16;
+											--f: 0.4;
+											--p: 0.69;"></div>
+      <div class="flake" style="--x: 0.58;
+											--z: 0.71;
+											--f: 0.73;
+											--p: 0.38;"></div>
+      <div class="flake" style="--x: 0.26;
+											--z: 0.48;
+											--f: 0.48;
+											--p: 0.95;"></div>
+      <div class="flake" style="--x: 0.08;
+											--z: 0.66;
+											--f: 0.33;
+											--p: 0.31;"></div>
+      <div class="flake" style="--x: 0.2;
+											--z: 0.32;
+											--f: 0.67;
+											--p: 0.48;"></div>
+      <div class="flake" style="--x: 0.46;
+											--z: 0.24;
+											--f: 0.65;
+											--p: 0.43;"></div>
+      <div class="flake" style="--x: 0.66;
+											--z: 0.83;
+											--f: 0.34;
+											--p: 0.45;"></div>
+      <div class="flake" style="--x: 0.32;
+											--z: 0.76;
+											--f: 0.38;
+											--p: 0.97;"></div>
+      <div class="flake" style="--x: 0.19;
+											--z: 0.88;
+											--f: 0.53;
+											--p: 0.57;"></div>
+      <div class="flake" style="--x: 0.15;
+											--z: 0.06;
+											--f: 0.34;
+											--p: 0.31;"></div>
+      <div class="flake" style="--x: 0.59;
+											--z: 0.18;
+											--f: 0.48;
+											--p: 0.77;"></div>
+      <div class="flake" style="--x: 0.97;
+											--z: 0.74;
+											--f: 0.25;
+											--p: 0.23;"></div>
+      <div class="flake" style="--x: 0.55;
+											--z: 0.72;
+											--f: 0.62;
+											--p: 0.64;"></div>
+      <div class="flake" style="--x: 0.43;
+											--z: 0.94;
+											--f: 0.61;
+											--p: 0.33;"></div>
+      <div class="flake" style="--x: 0.93;
+											--z: 0.65;
+											--f: 0.55;
+											--p: 0.6;"></div>
+      <div class="flake" style="--x: 0.27;
+											--z: 0.33;
+											--f: 0.73;
+											--p: 0.9;"></div>
+      <div class="flake" style="--x: 0.63;
+											--z: 0.81;
+											--f: 0.36;
+											--p: 0.52;"></div>
+      <div class="flake" style="--x: 0.83;
+											--z: 0.72;
+											--f: 0.31;
+											--p: 0.59;"></div>
+      <div class="flake" style="--x: 0.13;
+											--z: 0.4;
+											--f: 0.58;
+											--p: 0.05;"></div>
+      <div class="flake" style="--x: 0.99;
+											--z: 0.39;
+											--f: 0.44;
+											--p: 0.64;"></div>
+      <div class="flake" style="--x: 0.09;
+											--z: 0.59;
+											--f: 0.66;
+											--p: 0.12;"></div>
+      <div class="flake" style="--x: 0.81;
+											--z: 0.74;
+											--f: 0.63;
+											--p: 0.73;"></div>
+      <div class="flake" style="--x: 0.27;
+											--z: 0.41;
+											--f: 0.59;
+											--p: 0.95;"></div>
+      <div class="flake" style="--x: 0.82;
+											--z: 0;
+											--f: 0.52;
+											--p: 0.41;"></div>
+      <div class="flake" style="--x: 0.93;
+											--z: 0.87;
+											--f: 0.42;
+											--p: 0.41;"></div>
+      <div class="flake" style="--x: 0.51;
+											--z: 0.07;
+											--f: 0.58;
+											--p: 0.9;"></div>
+      <div class="flake" style="--x: 0.18;
+											--z: 0.59;
+											--f: 0.27;
+											--p: 0.1;"></div>
+      <div class="flake" style="--x: 0.74;
+											--z: 0.57;
+											--f: 0.73;
+											--p: 0.4;"></div>
+      <div class="flake" style="--x: 0.85;
+											--z: 0.9;
+											--f: 0.47;
+											--p: 0.02;"></div>
+      <div class="flake" style="--x: 0.43;
+											--z: 0.39;
+											--f: 0.42;
+											--p: 0.49;"></div>
+      <div class="flake" style="--x: 0.86;
+											--z: 0.94;
+											--f: 0.39;
+											--p: 0.38;"></div>
+      <div class="flake" style="--x: 0.99;
+											--z: 0.99;
+											--f: 0.73;
+											--p: 0.9;"></div>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script src='https://codepen.io/thebabydino/pen/evPbxv.js'></script>
+</body>
+</html>

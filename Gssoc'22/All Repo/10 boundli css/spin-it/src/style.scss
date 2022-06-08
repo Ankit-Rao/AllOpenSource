@@ -1,0 +1,35 @@
+$d: 25em;
+$f: .85;
+$n: 12;
+$a: 360deg/$n;
+$p0: calc(#{$f}*100% + 7px);
+$p1: calc(#{$f}*100% + 8px);
+
+body {
+	display: grid;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #000
+}
+
+.ring {
+	--top: 1;
+	--not-top: calc(1 - var(--top));
+	--d: calc(var(--top)*#{$d} + var(--not-top)*#{$f}*100%);
+	display: grid;
+	place-self: center;
+	width: var(--d); height: var(--d);
+	border-radius: 50%;
+	background: 
+		linear-gradient(#2e3b47,#d50889,#eb7c22,#f6b40c,#b2bc2b), 
+		repeating-conic-gradient(from -.25*$a, #000 0%, #fff 1deg .5*$a, #000 .5*$a + 1deg $a), 
+		radial-gradient(closest-side, #000 $p0, #fff $p1);
+	clip-path: circle(calc(50% - 1px)); /* fix FF rendering issue */
+	background-blend-mode: multiply;
+	animation: r 15s ease-in-out infinite;
+	
+	& > & { --top: 0 }
+}
+
+@keyframes r { to { transform: rotate(1turn) } }

@@ -1,0 +1,66 @@
+$c0: #cd7672;
+$c1: #eeb462;
+$l: 9em;
+$t: .7s;
+$p: perspective(13em);
+
+body {
+	display: grid;
+	grid-gap: .5em;
+	grid-template: repeat(auto-fit, $l)/ repeat(auto-fit, $l);
+	place-content: space-evenly;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #534666
+}
+
+div {
+	display: grid;
+	grid-auto-flow: column;
+	grid-gap: .5em;
+	place-content: center;
+	
+	&::before, &::after {
+		--i: 0;
+		--not-i: calc(1 - var(--i));
+		padding: 1.5em;
+		border-radius: 50%;
+		background: linear-gradient($c0 50%, $c1 0) 
+			0 calc(var(--not-i)*100%)/ 1% 200%;
+		animation: inherit;
+		content: ''
+	}
+	
+	&::after { --i: 1 }
+}
+
+div:nth-child(1) {
+	&::before, &::after {
+		transform-origin: calc(var(--not-i)*100%);
+		animation: a1 $t ease-in-out calc(var(--i)*#{-$t}) infinite alternate
+	}
+}
+
+@keyframes a1 { to { transform: scale(.25) } }
+
+div:nth-child(2) {
+	justify-content: space-between;
+	transform-style: preserve-3d;
+	transform: $p;
+	animation: a2 3*$t linear infinite;
+	
+	&::before, &::after { animation-direction: reverse }
+}
+
+@keyframes a2 { to { transform: $p rotatey(1turn) } }
+
+div:nth-child(3) {
+	grid-auto-flow: row;
+	animation: a30 1.5*$t ease-out infinite;
+	
+	&::before, &::after { animation-name: a31 }
+}
+
+@keyframes a30 { 0%, 50% { transform: rotate(.5turn) } }
+@keyframes a31 { 50%, 100% { background-position: 0 calc(var(--i)*100%) } }

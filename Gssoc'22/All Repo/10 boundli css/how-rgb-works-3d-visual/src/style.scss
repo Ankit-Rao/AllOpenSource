@@ -1,0 +1,102 @@
+@import 'compass/css3';
+
+$nc: 5; // cubes per dimension same as in Jade
+$nf: 6; // number of cube faces
+$n4gon: 4; // number of square edges/ vertices
+$l: 1.5em; // cube edge length
+$f: 2 1.5; // multiplying factors
+$t: .65s; // animation duration
+
+$m: .5*($nc - 1); // constant, compute here
+$hu: 360/($nc + 1); // hue unit
+// base angle corresponding to square edge
+$ba4gon: 360deg/$n4gon;
+$tu: 2*$t/pow($m, 3); // delay unit
+
+body {
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	perspective: 40em;
+	background: #111;
+	text-align: center;
+	
+	&:before {
+		color: #eee;
+		font: 2.5em/ 2 satisfy, cursive;
+		content: 'drag me!'
+	}
+}
+
+div {
+	position: absolute;
+	// allows nesting 3D transformed elements
+	transform-style: preserve-3d;
+}
+
+.assembly {
+	top: 50%; left: 50%;
+	transform: rotateX(-22.5deg) rotateY(-30deg)
+}
+
+.cube {
+	animation: a $t cubic-bezier(.65, .05, .35, 1) infinite alternate;
+	
+	.drag & { animation-play-state: paused; }
+	
+	@for $i0 from 0 to $nc {
+		$j0: $i0 - $m;
+		$k0: pow($j0, 2);
+		$xi: nth($f, 1)*$j0*$l; // initial x coord
+		$xf: nth($f, 2)*$xi; // final x coord
+		$r: ($nc - $i0 - .5)*$hu; // red component
+		
+		@for $i1 from 0 to $nc {
+			$j1: $i1 - $m;
+			$k1: pow($j1, 2);
+			$yi: nth($f, 1)*$j1*$l; // initial y coord
+			$yf: nth($f, 2)*$yi; // final y coord
+			$g: ($i1 + .5)*$hu; // green component
+			
+			@for $i2 from 0 to $nc {
+				$j2: $i2 - $m;
+				$k2: pow($j2, 2);
+				$zi: nth($f, 1)*$j2*$l; // initial z coord
+				$zf: nth($f, 2)*$zi; // final z coord
+				$b: ($nc - $i2 - .5)*$hu; // blue component
+				$dt: sqrt($k0 + $k1 + $k2)*$tu;
+				// current cube index
+				$idx: $i0*pow($nc, 2) + $i1*$nc + $i2 + 1;
+				
+				&:nth-child(#{$idx}) {
+					transform: translate3d($xi, $yi, $zi);
+					color: rgb($r, $g, $b);
+					animation-name: a#{$idx};
+					animation-delay: -$dt;
+				}
+				
+				@keyframes a#{$idx} {
+					to { transform: translate3d($xf, $yf, $zf); }
+				}
+			}
+		}
+	}
+	
+	&__face {
+		box-sizing: border-box;
+		margin: -.5*$l;
+		border: solid 1px #ccc;
+		width: $l; height: $l;
+		backface-visibility: hidden;
+		background: currentcolor;
+		
+		@for $i from 0 to $nf {
+			&:nth-child(#{$i + 1}) {
+				transform: 
+					if($i < $n4gon, rotateY($i*$ba4gon), 
+						rotateX(pow(-1, $i)*$ba4gon)) 
+					translateZ(.5*$l);
+			}
+		}
+	}
+}

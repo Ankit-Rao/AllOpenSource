@@ -1,0 +1,433 @@
+//iPhone
+$iphone_outer_frame_color: #C2C4C5;
+$iphone_inner_frame_color: #F0F1F0;
+$earpiece_color: #4E4C4D;
+$line_earpiece_color: #676667;
+$dot_color: #231F20;
+$signal_dot_color: #EEF;
+
+
+$screen_color1: #535c7e;
+$screen_color2: #64ABC0;
+$screen_color3: #57c3cc;
+
+$gold_color: #C9AF97;
+$offwhite_color: #C9C8CB;
+$lightblue_color: #C1C2C8;
+$pink_color: #D4A7A2;
+$black_color: #353942;
+
+
+//iphone end
+
+//background
+@mixin linear-gradient-b($args) {
+ background: -o-linear-gradient($args); 
+ background: -moz-linear-gradient($args); 
+ background: -webkit-linear-gradient($args); 
+ background: linear-gradient($args); 
+}
+
+//transform
+@mixin transform($transformValue) {
+ -webkit-transform: $transformValue;
+ -ms-transform: $transformValue;
+ -o-transform: $transformValue;
+ -moz-transform: $transformValue;
+ transform: $transformValue;
+}
+
+//Mixins
+//flexbox
+@mixin flexbox{
+ display:-webkit-box; // old
+ display:-moz-box; // old
+ display:-ms-flexbox; // ie
+ display:-webkit-flex; // new
+ display:flex; // new
+}
+
+//flexdirection
+@mixin flex-direction($direction){
+ @if $direction == column{
+ -webkit-flex-direction:vertical;
+ -moz-flex-direction:vertical;
+ -ms-flex-direction:column;
+ -webkit-flex-direction:column;
+ flex-direction:column;
+ }
+ @else {
+ -webkit-flex-direction:row;
+ -moz-flex-direction:row;
+ -ms-flex-direction:row;
+ -webkit-flex-direction:row;
+ flex-direction:row;
+ }
+}
+
+// flex-start | flex-end | center | space-between | space-around 
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+     -moz-justify-content: $justify;
+      -ms-justify-content: $justify;
+          justify-content: $justify;
+            -ms-flex-pack: $justify;
+}
+
+//Animation
+@mixin keyframes($rt) {
+    @-webkit-keyframes #{$rt} {
+        @content;
+    }
+    @-moz-keyframes #{$rt} {
+        @content;
+    }  
+    @-ms-keyframes #{$rt} {
+        @content;
+    }
+    @-o-keyframes #{$rt} {
+        @content;
+    }  
+    @keyframes #{$rt} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+//left
+@mixin left-align($leftValue) {
+ -webkit-transform: $leftValue;
+ -ms-transform: $leftValue;
+ -o-transform: $leftValue;
+ -moz-transform: $leftValue;
+ transform: $leftValue; 
+}
+
+
+//transform
+@mixin transform($transformValue) {
+ -webkit-transform: $transformValue;
+ -ms-transform: $transformValue;
+ -o-transform: $transformValue;
+ -moz-transform: $transformValue;
+ transform: $transformValue;
+}
+//Mixin end
+
+body{
+	background: #EEE;
+}
+.parent{
+	// box-shadow: 0 4px 2px -2px gray;
+	// box-shadow: 0px 15px 10px -15px #111;
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+@media (max-width: 410px){
+	.parent{
+		
+		@include transform(scale(0.9));
+	}
+}
+.outerFrame{
+	width: 290px;
+	// width: 340px;
+	background: #F0F0EC;
+	@include linear-gradient-b((to right, #F0F0EC, #fff, #F6F8F8));
+	height: 610px;
+	margin: auto;
+	border: 5px solid $iphone_outer_frame_color;
+	border-radius: 40px;
+	box-shadow: 0px 20px 10px -15px #333;
+}
+.conslide{
+	text-align: center;
+}
+.slide{
+	position: relative;
+	top: 355px;
+	color: #EEF;
+	font-family: helvetica;
+	font-weight: 100;
+	letter-spacing: 0.8px;
+	font-size: 18px;
+	display: inline-block;
+	cursor: pointer;
+	animation: 2s sli infinite alternate;
+	@include animation('2s sli infinite alternate');
+}
+@include keyframes(sli){
+	0%{
+		color: #EEF;
+	}
+	40%{
+		color: #EEF;
+	}
+	100%{
+		color: #CCC;
+	}
+}
+.shadow{
+	height: 20px;
+	padding-bottom: 15px;
+	width: 380px;
+	position: relative;
+	top: 20px;
+	background: inherit;
+	border-radius: 32%;
+	// box-shadow: 0px 20px 10px -15px #333;
+	box-shadow: 7px -17px 30px -15px #555;
+	margin: auto;
+}
+
+
+
+.innerframe{
+	@extend .outerFrame;
+	border: 1px solid #939599;
+	border-top-left-radius: 37px; 
+
+}
+
+
+
+
+.gold{
+	@include linear-gradient-b((to right, $gold_color, #fff, $gold_color)); 
+}
+
+.black{
+	@include linear-gradient-b((to right, $black_color, #eee, $black_color)); 
+
+}
+.lightblue{
+	@include linear-gradient-b((to right, $lightblue_color, #fff, $lightblue_color)); 
+
+}
+.offwhite{
+	@include linear-gradient-b((to right, $offwhite_color, #fff, $offwhite_color)); 
+
+}
+.pink{
+	@include linear-gradient-b((to right, $pink_color, #fff, $pink_color)); 
+}
+
+.pcolor{
+	float: right;
+	position: relative;
+	left: -80px;
+	top: 50px;
+}
+
+@media (max-width: 630px){
+	.pcolor{
+		float: left;
+		position: relative;
+		left: 10px;
+	}
+}
+
+@media (max-width: 410px){
+	.pcolor{
+		top: -40px;
+    padding-top: 10px;
+	}
+}
+
+.g{
+	width: 20px;
+	height: 20px;
+	border-radius: 4px;
+	background: $gold_color;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+.b{
+	@extend .g;
+	background: $black_color;
+}
+.ow{
+	@extend .g;
+	background: $offwhite_color;
+}
+.p{
+	@extend .g;
+	background: $pink_color;
+}
+
+@media (max-width: 410px){
+	.g{
+		display: inline-block;
+	}
+}
+.topearpiece{
+	height: 6px;
+	width: 6px;
+	margin: auto;
+	border-radius: 50%;
+	position: relative;
+	top: 22px;
+	background: $earpiece_color;
+}
+.leftearpiece{
+	@extend .topearpiece;
+	top: 36px;
+	left: -35px;
+}
+
+.lineearpiece{
+	height: 5px;
+	width: 45px;
+	margin: auto;
+	border-radius: 10px;
+	position: relative;
+	top: 30px;
+	background: $line_earpiece_color;
+}
+.screen{
+	border: 1px solid #989899;
+	width: 255px;
+	height: 450px;
+	margin: auto;
+	border-radius: 2px;
+	position: relative;
+	top: 60px;
+	z-index: 1;
+	// background: #FFFFFF;
+	@include linear-gradient-b((top, $screen_color1, $screen_color2, $screen_color3));
+	visibility: visible;
+}
+.circlebutton{
+	width: 40px;
+	height: 40px;
+	border: 3px solid #A8A9A6;
+	border-radius: 50%;
+	border-left-color:  #8C8D8C;
+	border-right-color: #8C8D8C;
+	@include transform(rotate(20deg));
+	margin: auto;
+	position: relative;
+	top: 80px;
+}
+
+
+.container_stb{ /*signal, time, battery*/
+	width: 100%;
+	height: 10px;
+	margin-top: 3px;
+	@include flexbox();
+	@include flex-direction(row);
+	@include justify-content(space-between);
+
+	.time{
+		font-size: 30px;
+		font-family: helvetica; //Ultra-Light
+		font-weight: 100;
+		color: #EEF;
+		position: relative;
+		left: -14px;
+		top: 30px;
+
+	}
+	.battery{
+		margin-right: 6px; 
+    color: #EEF;
+    position: relative; 
+    top: -3px;
+    
+
+		/*width: 18px;
+		height: 7px;
+		border: 1px solid #EEF;
+		border-radius: 2px;*/
+	}
+
+	.batteryout{
+		position: relative;
+		width: 1.8px;
+		height: 3px;
+		top: -4px;
+		left: 17.7px;
+		background: $screen_color1;
+		border: 1px solid #EEF;
+		border-left: none;
+		z-index: 1;
+	}
+
+	.batteryin{
+		position: relative;
+		width: 10.5px;
+		height: 4.5px;
+		top: 1px;
+		left: 1.5px;
+		background: #EEF;
+	}
+}
+
+.signal{
+	@include flexbox();
+	@include flex-direction(row);
+	margin: 4px 0 0 4px;
+}
+
+.s1{
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	border: 1px solid $signal_dot_color;
+	margin-right: 3px;
+	background: $signal_dot_color;
+}
+ .s5{
+	@extend .s1;
+	background: transparent;
+}
+.s2, .s3, .s4{
+	@extend .s1;
+}
+
+.s3{
+	@include animation('14s se1 infinite');
+}
+.s4{
+	@include animation('8s se infinite');
+}
+
+@include keyframes(se){
+	0%{
+		background: transparent;
+	}
+
+	60%{
+		background: $signal_dot_color;
+	}
+	100%{
+		background: transparent;
+	}
+}
+@include keyframes(se1){
+	0%{
+		background: $signal_dot_color;
+	}
+
+	60%{
+		background: $signal_dot_color;
+	}
+
+	80%{
+		background: $signal_dot_color;
+	}
+
+
+	100%{
+		background: transparent;
+	}
+}

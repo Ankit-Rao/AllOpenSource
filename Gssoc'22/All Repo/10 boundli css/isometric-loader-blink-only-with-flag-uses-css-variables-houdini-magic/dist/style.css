@@ -1,0 +1,97 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+html {
+  background: #1d2430;
+}
+
+div {
+  position: absolute;
+}
+
+div:not(:empty) {
+  transform-style: preserve-3d;
+}
+
+.a3d {
+  top: 50%;
+  left: 50%;
+  transform: rotatex(-35deg) rotatey(-45deg);
+}
+
+.bar {
+  transform-origin: 0 2em 0;
+  --a: calc(360deg*var(--idx)/var(--n));
+  transform: rotatey(var(--a)) translate3d(2em, 8em, 2em) rotatey(calc(-1*var(--a))) scaley(var(--f));
+  --dx: .4;
+  --cx: calc((1 - var(--dx))*var(--idx)/var(--n));
+  animation: s 1.25s cubic-bezier(var(--cx), 0, calc(var(--dx) + var(--cx)), 1) infinite;
+}
+.bar:nth-child(2n) {
+  --p: 0 ;
+}
+
+@keyframes s {
+  47.5%, 52.5% {
+    --f: 4 ;
+  }
+}
+.face {
+  --i: 0;
+  --j: calc(1 - var(--i));
+  --m: 1;
+  margin: -2em;
+  padding: 2em;
+  transform: rotate3d(var(--i), var(--j), 0, calc(var(--m)*90deg)) translatez(2em);
+  box-shadow: 0 0 calc(var(--i)*1px) #4968fc;
+  background: linear-gradient(#4968fc calc(var(--i)*100%), #38ebf5);
+  filter: brightness(calc(1 - var(--j)*(var(--m) + var(--p, 1))*.08));
+}
+.face:nth-child(1) {
+  --m: 0 ;
+}
+.face:nth-child(3) {
+  --i: 1 ;
+}

@@ -1,0 +1,98 @@
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  height: 100vh;
+  perspective: 25em;
+  background: #333;
+}
+
+.a3d {
+  display: grid;
+  grid-template: repeat(var(--n), 9vmin)/repeat(var(--n), 9vmin);
+  transform-style: preserve-3d;
+  box-shadow: 1em 1em 3em #000;
+}
+
+@keyframes s {
+  25% {
+    grid-gap: .5em;
+    animation-timing-function: ease-in;
+  }
+  0%, 100%, 50% {
+    grid-gap: 0px;
+  }
+}
+.cube {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: a 18s ease-out infinite;
+  animation-delay: calc(.5*(var(--fx) +var(--fy))*1.5s/var(--n));
+}
+.cube__face {
+  --i: 0;
+  --j: calc(1 - var(--i));
+  position: absolute;
+  width: 9vmin;
+  height: 9vmin;
+  transform: rotate3d(var(--i), var(--j), 0, var(--a)) translatez(4.5vmin) rotate(var(--az));
+  background-position: calc(var(--fx)*-9vmin) calc(var(--fy)*-9vmin);
+  background-size: calc(var(--n)*9vmin);
+}
+.cube__face:nth-child(n + 5) {
+  --i: 1;
+}
+.cube__face:nth-child(1) {
+  --a: 0deg;
+  --az: 0deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_cheetah.jpg");
+}
+.cube__face:nth-child(2) {
+  --a: 90deg;
+  --az: 90deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_cougar.jpg");
+}
+.cube__face:nth-child(3) {
+  --a: 180deg;
+  --az: 90deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_jaguar.jpg");
+}
+.cube__face:nth-child(4) {
+  --a: 270deg;
+  --az: 0deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_leopard.jpg");
+}
+.cube__face:nth-child(5) {
+  --a: 90deg;
+  --az: 0deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_lion.jpg");
+}
+.cube__face:nth-child(6) {
+  --a: -90deg;
+  --az: -90deg;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_tiger.jpg");
+}
+
+@keyframes a {
+  0% {
+    transform: rotatey(0deg) rotatez(0deg) rotatex(0deg) rotatey(0deg) rotatez(0deg) rotatex(0deg);
+  }
+  8.33333%, 16.66667% {
+    transform: rotatey(90deg) rotatez(0deg) rotatex(0deg) rotatey(0deg) rotatez(0deg) rotatex(0deg);
+  }
+  25%, 33.33333% {
+    transform: rotatey(90deg) rotatez(90deg) rotatex(0deg) rotatey(0deg) rotatez(0deg) rotatex(0deg);
+  }
+  41.66667%, 50% {
+    transform: rotatey(90deg) rotatez(90deg) rotatex(90deg) rotatey(0deg) rotatez(0deg) rotatex(0deg);
+  }
+  58.33333%, 66.66667% {
+    transform: rotatey(90deg) rotatez(90deg) rotatex(90deg) rotatey(90deg) rotatez(0deg) rotatex(0deg);
+  }
+  75%, 83.33333% {
+    transform: rotatey(90deg) rotatez(90deg) rotatex(90deg) rotatey(90deg) rotatez(90deg) rotatex(0deg);
+  }
+  91.66667%, 100% {
+    transform: rotatey(90deg) rotatez(90deg) rotatex(90deg) rotatey(90deg) rotatez(90deg) rotatex(90deg);
+  }
+}

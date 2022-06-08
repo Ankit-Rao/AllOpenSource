@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+}
+
+html {
+  font: 2vw/1.25 bubbler one, trebuchet ms, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  height: 100vh;
+  background: #404042;
+}
+
+h1 {
+  order: var(--n);
+  color: #fff;
+  font-size: 5em;
+  font-weight: 900;
+  text-shadow: -1px -1px #999;
+  text-transform: uppercase;
+}
+
+p {
+  box-sizing: border-box;
+  position: relative;
+  margin: 1em 0;
+  padding: 15.25rem 7.54409rem 0 0.75rem;
+  width: 16.79409rem;
+  height: 34.76347rem;
+  text-indent: 1em;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.35));
+  counter-increment: c;
+}
+p:last-of-type {
+  margin-right: -6.79409rem;
+}
+p:before, p:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 1rem;
+}
+p:before {
+  --points: 0 0, 9.29409rem 0.04422rem, 100% 2.35191rem, 100% 100%, 8.20591rem 100%, 0.70591rem 32.45578rem;
+  padding: 0.5rem 7.29409rem 2.76347rem 0.5rem;
+  width: 9rem;
+  height: 31.5rem;
+  background: radial-gradient(circle at calc(100% + .5rem) 7.75rem, rgba(0, 0, 0, 0) calc(6.5rem - .5rem), rgba(0, 0, 0, 0.5) 6.5rem) content-box, Linear-gradient(90deg, var(--c0), var(--c1) 50%, var(--c2) 0, var(--c3) 85%, var(--c4)) content-box, linear-gradient(-72.89727deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.65));
+  font: 6.25rem/ 16rem ubuntu, trebuchet ms, verdana, arial, sans-serif;
+  color: #fff;
+  text-indent: .8125em;
+  text-shadow: 1px 1px 1px #000;
+  -webkit-clip-path: polygon(var(--points));
+  clip-path: polygon(var(--points));
+  content: counter(c);
+}
+p:after {
+  --mask: Radial-gradient(circle at 100% 8rem, transparent calc(6.5rem - 1px), red 6.5rem);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.75rem;
+  width: 10rem;
+  height: 32.5rem;
+  background: Linear-gradient(90deg, #f8f8f8, #f5f5f7 50%, #eaeaec 0, #e8e8ea);
+  font-size: 2em;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  content: attr(data-icon);
+}

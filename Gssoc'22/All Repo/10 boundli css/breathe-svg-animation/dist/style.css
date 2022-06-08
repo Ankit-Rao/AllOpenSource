@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css?family=Unica+One");
+/*Page Setup*/
+circle {
+  opacity: 0.1666666667;
+  -webkit-animation: breathe 12s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+          animation: breathe 12s cubic-bezier(0.65, 0.05, 0.36, 1) infinite;
+  transform: rotate(var(--angle));
+}
+circle:nth-child(1) {
+  --angle: 60deg ;
+}
+circle:nth-child(2) {
+  --angle: 120deg ;
+}
+circle:nth-child(3) {
+  --angle: 180deg ;
+}
+circle:nth-child(4) {
+  --angle: 240deg ;
+}
+circle:nth-child(5) {
+  --angle: 300deg ;
+}
+circle:nth-child(6) {
+  --angle: 360deg ;
+}
+
+@-webkit-keyframes breathe {
+  45%, 55% {
+    transform: rotate(var(--angle)) translate(225px);
+  }
+}
+
+@keyframes breathe {
+  45%, 55% {
+    transform: rotate(var(--angle)) translate(225px);
+  }
+}
+.rose {
+  -webkit-animation: turn 120s linear infinite;
+          animation: turn 120s linear infinite;
+}
+
+@-webkit-keyframes turn {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes turn {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+svg {
+  fill: #ff3377;
+  width: 100vw;
+  height: 80vh;
+}
+
+body {
+  background: #e6e6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  height: 10vh;
+  line-height: 10vh;
+  font-size: 8vh;
+  padding: 2.5vh;
+  margin: 0;
+  color: #ff3377;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  font-family: "Unica One", cursive;
+}

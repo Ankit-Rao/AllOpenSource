@@ -1,0 +1,6 @@
+- var nc = 6, ba = 360/nc;
+
+style .circle:nth-child(-n + #{.5*nc}) { background: #529ca0 }
+.watch-face
+	- for(var i = 0; i < nc; i++)
+		.circle(style=`--ca: ${(i - 1)*ba}deg`)

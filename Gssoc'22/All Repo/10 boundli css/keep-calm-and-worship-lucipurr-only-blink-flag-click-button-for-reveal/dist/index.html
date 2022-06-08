@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Keep calm and worship Lucipurr! (only Blink + flag, click button for reveal)</title>
+  <link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body style="--min: 550; --max: 1550; --y2: 850">
+  <div class="grid dissolve invis">
+    <svg viewBox="-1350 99 2700 2700">
+      <defs>
+        <path id="ker" d="M10 0
+									 c0 45-10 50-30 65
+									 c10-30 10-40 10-65"></path>
+        <path id="wsk" d="M0 0
+										q350-5 725 95"></path>
+        <rect id="rect" x="-50%" width="100%" height="100%"></rect>
+      </defs>
+      <filter id="fglw" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="19" result="b"></feGaussianBlur>
+        <feFlood flood-color="tomato"></feFlood>
+        <feComposite in2="b" operator="in"></feComposite>
+        <feMerge>
+          <feMergeNode></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+      </filter>
+      <mask id="me0">
+        <use xlink:xhref="#rect"></use>
+        <path id="eye" d="M165 1160
+									c110-200 320-160 320-160
+									l-15 25
+									c-50 150-150 150-255 115z"></path>
+      </mask>
+      <mask id="me1">
+        <use xlink:xhref="#rect"></use>
+        <use xlink:href="#eye" transform="scale(-1 1)"></use>
+      </mask>
+      <path class="fur" id="head" d="M-380 465
+											q380-170 760 0
+											c500-105 500-45 500 5
+											c0 90-155 190-155 370
+											c90 250-50 510-345 670
+											c-100 290-660 290-760 0
+											c-295-160-435-420-345-670
+											c0-180-155-280-155-370
+											c0-50 0-110 500-5"></path>
+      <g class="lght" id="hrns">
+        <path id="horn" d="M130 445
+										q35 105 145 85
+										q130-165 5-320
+										c-5 90-85 95-150 235"></path>
+        <use xlink:href="#horn" transform="scale(-1 1)"></use>
+      </g>
+      <use xlink:href="#hrns" filter="url(#fglw)"></use>
+      <path class="lght" id="str-5" d="M0,950,-118,588,190,812,-190,812,118,588z"></path>
+      <use xlink:href="#str-5" filter="url(#fglw)"></use>
+      <use class="inc" id="can0" xlink:href="#ker" style="--ini: translate(130px, 1570px)"></use>
+      <use class="inc" id="can1" xlink:href="#ker" style="--ini: scale(-1, 1) translate(130px, 1570px)"></use>
+      <path class="skin" id="yawn" d="M410 510
+									 q290-75 400-50
+									 q-150 20-310 60
+									 q110 65 130 135
+									 q-90-90-220-145
+
+									 M-410 510
+									 q-290-75-400-50
+									 q150 20 310 60
+									 q-110 65-130 135
+									 q90-90 220-145
+
+									 M15 1470
+											c0 90 95 95 170 80
+											c-65 30-95 40-185-10
+											c-90 50-120 40-185 10
+											c75 15 170 10 170-80"></path>
+      <g id="wsks">
+        <circle class="spot" cx="50" cy="1500" r="9"></circle>
+        <use class="wsk osc" xlink:href="#wsk" style="--ini: translate(50px, 1500px)"></use>
+        <circle class="spot" cx="70" cy="1480" r="9"></circle>
+        <use class="wsk osc" xlink:href="#wsk" style="--ini: translate(70px, 1480px) rotate(-5deg)"></use>
+        <circle class="spot" cx="70" cy="1520" r="9"></circle>
+        <use class="wsk osc" xlink:href="#wsk" style="--ini: translate(70px, 1520px) rotate(5deg)"></use>
+      </g>
+      <use xlink:href="#wsks" transform="scale(-1 1)"></use>
+      <path id="nose" d="M0 1305
+									 c150 0 135 90 65 120
+									 c-40 60-90 60 -130 0
+									 c-70-30-85-120 65-120"></path>
+      <g id="eye0" mask="url(#me0)">
+        <rect class="sclera" x="-50%" width="100%" height="100%"></rect>
+        <circle id="iris0" r="95" transform="translate(275 1050) scale(.85 1.35)"></circle>
+        <circle id="pupil0" r="50" transform="translate(275 1050) scale(.85 1.35)"></circle>
+        <use class="rim" xlink:href="#eye"></use>
+      </g>
+      <g id="eye1" mask="url(#me1)">
+        <rect class="sclera" x="-50%" width="100%" height="100%"></rect>
+        <circle id="iris1" r="95" transform="translate(-385 1035) scale(.85 1.35)"></circle>
+        <circle id="pupil1" r="50" transform="translate(-385 1035) scale(.85 1.35)"></circle>
+        <use class="rim" xlink:href="#eye" transform="scale(-1 1)"></use>
+      </g>
+      <path class="fur" id="arm0" d="M310 2050
+									c0-50-5 -150-5-200
+									c0-30 0-80 50-80
+									c100 0 215 100 215 340
+									c0 90 0 390-200 390
+									q-250 0-520-250z"></path>
+      <g id="clws">
+        <use class="inc" id="clw0" xlink:href="#ker" style="--ini: translate(260px, 2320px) rotate(-30deg)"></use>
+        <use class="inc" id="clw1" xlink:href="#ker" style="--ini: translate(390px, 2300px) rotate(-30deg)"></use>
+        <use class="inc" id="clw2" xlink:href="#ker" style="--ini: translate(450px, 2230px) rotate(-30deg)"></use>
+      </g>
+      <g class="lght" id="fork">
+        <path id="tine" d="M0-460
+								q35 75 50 155
+								l-35-25
+								v270
+								l15 10
+								l40-20
+								q15-95 45-165
+								l-35 15
+								q50-70 105-95
+								q-75 135-85 295
+								l-15-10
+								l-70 30
+								h-15"></path>
+        <use xlink:href="#tine" transform="scale(-1 1)"></use>
+        <line id="handle" y2="550"></line>
+      </g>
+      <use xlink:href="#fork" filter="url(#fglw)"></use>
+      <path class="fur" id="arm1" d="M-310 2050
+									c0-50 5-150 5-200
+									c0-30 0-80-50-80
+									c-100 0-215 100-215 340
+									c0 90 0 390 200 390
+									q250 0 520-250
+									c40 80 140 110 160 40
+									c50 60 120 0 100-50
+									c30 30 55-20 55-50
+									c0-90-90-140-155-140
+									c-100 0-140-20-310 80
+									l-170 100z"></path>
+      <use xlink:href="#clws" transform="scale(-1 1)"></use>
+      <path class="fur" id="paw0" d="M-150 2250
+							c-40 80-140 110-160 40
+							c-50 60-120 0-100-50
+							c-30 30-55-20-55-50
+							c0-90 90-140 155-140
+							c100 0 140-20 310 80z"></path>
+    </svg>
+    <form>
+      <div role="group" aria-labelledby="glow-lbl">
+        <div id="glow-lbl">Glow up!</div>
+        <div class="wrap wrap--toggle">
+          <input id="glow-n" type="radio" name="glow" checked="checked"/>
+          <label for="glow-n">off</label>
+          <input id="glow-y" type="radio" name="glow"/>
+          <label for="glow-y">on</label>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="feel-lbl">
+        <div id="feel-lbl">Feel the way!</div>
+        <div class="wrap wrap--toggle">
+          <input id="feel-n" type="radio" name="feel" checked="checked"/>
+          <label for="feel-n">off</label>
+          <input id="feel-y" type="radio" name="feel"/>
+          <label for="feel-y">on</label>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="hunt-lbl">
+        <div id="hunt-lbl">Hunt mode on!</div>
+        <div class="wrap wrap--toggle">
+          <input id="hunt-n" type="radio" name="hunt" checked="checked"/>
+          <label for="hunt-n">off</label>
+          <input id="hunt-y" type="radio" name="hunt"/>
+          <label for="hunt-y">on</label>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="move-lbl">
+        <div id="wtch-lbl">Watching you!</div>
+        <div class="wrap wrap--toggle">
+          <input id="move-n" type="radio" name="move" checked="checked"/>
+          <label for="move-n">off</label>
+          <input id="move-y" type="radio" name="move"/>
+          <label for="move-y">on</label>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="fork-lbl">
+        <div id="fork-lbl">Adjust pitchfork!</div>
+        <input id="fork-r" type="range" name="fork" min="550" value="850" max="1550"/>
+      </div>
+      <div role="group" aria-labelledby="iris-lbl">
+        <div id="iris-lbl">Contact lenses!</div>
+        <div class="wrap wrap--colour">
+          <label for="iris-c">--iris-c</label>
+          <input id="iris-c" type="color" value="#8fae45"/>
+          <output for="iris-c">#8fae45</output>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button class="dissolve" id="summon">Summon Satan!</button>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

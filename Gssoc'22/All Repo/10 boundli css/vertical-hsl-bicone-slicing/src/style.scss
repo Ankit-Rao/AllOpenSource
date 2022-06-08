@@ -1,0 +1,390 @@
+$g: #000 #1b1d22 #22242a #323741 #484d5a #7b849c #c4c4c4 #fff;
+$c: #bf79f0 #fb678c #fb8c6c #eaa753;
+$u: 1.25;
+$t: .3s;
+
+$label-w: 5em;
+
+$value-w: 2.5em;
+$value-b: .3em;
+$value-r: 5px;
+$value-a: 70deg;
+$value-e: 5deg;
+
+$thumb-d: 1em;
+$thumb-r: .5*$thumb-d;
+$thumb-f: .5;
+$thumb-l: 3px;
+
+$track-m: 10em;
+$track-s: .5*$value-w - $thumb-r + .2*$value-b;
+$track-w: $track-m - 2*$track-s;
+$track-h: 6px;
+$track-r: .5*$track-h;
+
+$axis-sz: 1rem;
+$axis-pr: .2rem;
+$axis-ar: 40deg;
+
+$tri-max: 25em;
+$max-col: 2*($tri-max + 2*$track-s);
+
+$swatchr: .5em;
+
+// narr: i 1, j 0
+$break-0: $u*($track-m + $track-s + $value-w + 2*$track-s);
+// midd: i 0, j 0
+$break-1: $u*($track-m + 2*$track-s + $value-w + $label-w + 2*$track-s); // nullified
+$break-2: $u*(2*$track-w + 3*$track-s + 2*$track-s);
+// narr: i 1, j 0
+$break-3: $u*(2*($track-w + $track-s + $value-w) + 3*$track-s + 2*$track-s);
+// midd: i 0, j 0
+$break-4: $u*(2*($track-w + 2*$track-s + $value-w + $label-w) + 3*$track-s + 2*$track-s);
+// wide: i 0, j 1
+$break-5: $u*($max-col + $track-m + 3*$track-s);
+// narr: i 1, j 0
+$break-6: $u*($max-col + $track-m + $track-s + $value-w + 3*$track-s);
+// midd: i 0, j 0
+$break-7: $u*($max-col + $track-m + 2*$track-s + $value-w + $label-w + 3*$track-s); // nullified
+$break-8: $u*($max-col + 2*$track-w + 3*$track-s + 3*$track-s);
+// narr: i 1, j 0
+$break-9: $u*($max-col + 2*($track-w + $track-s + $value-w) + 3*$track-s + 3*$track-s);
+// midd: i 0, j 0
+$break-10: $u*($max-col + 2*($track-w + 2*$track-s + $value-w + $label-w) + 3*$track-s + 3*$track-s);
+// wide: i 0, j 1
+
+@mixin track() {
+	border: none;
+	width: 100%; height: $track-h;
+	border-radius: $track-h;
+	background: 
+		radial-gradient(circle at var(--pos), 
+			transparent calc(#{$thumb-f}*#{$thumb-r} + #{$thumb-l}), 
+			nth($g, 5) calc(#{$thumb-f}*#{$thumb-r} + #{$thumb-l} + 1px))
+}
+
+@mixin thumb($f: 0) {
+	margin-top: calc(#{$f}*(#{$track-r} - #{$thumb-r}));
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	transform: scale(calc(var(--not-hl)*#{$thumb-f} + var(--hl)));
+	background: nth($c, 4);
+	transition: transform $t;
+	cursor: ew-resize
+}
+
+* { margin: 0; border: none; padding: 0; background: transparent; color: inherit; font: inherit }
+
+html {
+	overflow-x: hidden;
+	background: nth($g, 3);
+	color: nth($g, 6);
+	font: clamp(.625em, 6.25vw, #{$u*1em})/ 1.25 raleway, 
+		trebuchet ms, verdana, arial, sans-serif
+}
+
+body, form, section, div, output { display: grid }
+
+body {
+	--k: var(--tall, 1);
+	--not-k: calc(1 - var(--k));
+	box-sizing: border-box;
+	grid-gap: $track-s calc(var(--not-k)*#{$track-s});
+	grid-template-columns: 
+		minmax(Min(100%, #{$max-col}), calc(var(--k)*100%)) 
+		Min(#{$max-col}, calc(var(--not-k)*(100% - #{$max-col} - #{$track-s})));
+	place-content: center;
+	padding: $track-s;
+		
+	@media (min-width: $break-5) { --tall: 0 }
+}
+
+form, section { border-radius: 5px }
+
+form {
+	box-sizing: border-box;
+	grid-column: calc(1 + var(--not-k));
+	grid-gap: $track-s;
+	grid-template-columns: repeat(auto-fit, minmax($track-w, 1fr));
+	align-self: start;
+	padding: $track-s;
+	box-shadow: 0 0 1px 1px nth($g, 5);
+	background: nth($g, 2)
+}
+
+code, output { font-family: ubuntu mono, consolas, monaco, monospace }
+
+.wrap {
+	--i: var(--narr, 1);
+	--not-i: calc(1 - var(--i));
+	--j: var(--wide, 0);
+	--not-j: calc(1 - var(--j));
+	--hl: 0;
+	--not-hl: calc(1 - var(--hl));
+	--pos: calc(#{$thumb-r} + var(--val)/var(--max, 100)*(100% - #{$thumb-d}));
+	--label-w: calc(#{$label-w}/(1 + var(--uni, 0)));
+	grid-template-columns: calc(var(--j)*var(--label-w)) 1fr calc(var(--not-i)*#{$value-w});
+	z-index: var(--hl);
+	filter: Saturate(var(--hl));
+	text-align: right;
+	transition: filter $t;
+	
+	&:focus-within { --hl: 1 }
+	
+	&:only-child {
+		--uni: 1;
+		
+		@media (min-width: $break-0) and (max-width: $break-5), 
+				   (min-width: $break-6) { --narr: 0 }
+		@media (min-width: $break-1) and (max-width: $break-5), 
+					 (min-width: $break-7) { --wide: 1 }
+	}
+	
+	&:not(:only-child) {
+		@media (min-width: $break-0) and (max-width: $break-2), 
+					 (min-width: $break-3) and (max-width: $break-5), 
+					 (min-width: $break-6) and (max-width: $break-8), 
+					 (min-width: $break-9) { --narr: 0 }
+		@media (min-width: $break-4) and (max-width: $break-5), 
+					 (min-width: $break-10) { --wide: 1 }
+	}
+}
+
+label {
+	grid-area: 1/ calc(1 + var(--not-j));
+	width: var(--label-w);
+	text-align: var(--wide, left)
+}
+
+[type='range'] {
+	&, &::-webkit-slider-runnable-track, 
+	&::-webkit-slider-thumb { -webkit-appearance: none }
+	
+	grid-area: calc(1 + var(--not-j))/ 2;
+	place-self: center stretch;
+	margin: 0 calc(var(--not-i)*#{$track-s}) 0 calc(var(--j)*#{$track-s});
+	min-width: $track-w;
+	height: $thumb-d;
+	cursor: pointer;
+	
+	&:focus { outline: none }
+	
+	&::-webkit-slider-runnable-track { @include track }
+  &::-moz-range-track { @include track }
+	
+	&::-webkit-slider-thumb { @include thumb(1) }
+  &::-moz-range-thumb { @include thumb }
+	
+	+ output {
+		--xy: calc(var(--i)*50%) calc(var(--not-i)*50%);
+		grid-area: calc(1 + var(--not-j) + var(--i))/ calc(2 + var(--not-i));
+		justify-self: start;
+		position: relative;
+		left: calc(var(--i)*var(--pos));
+		margin-bottom: calc(var(--i)*#{-$track-s});
+		transform: 
+			translate(calc(var(--i)*-50%), calc(var(--i)*(#{$value-b} + 2px))) 
+			scale(calc(var(--not-i) + var(--i)*var(--hl)));
+		transition: transform $t;
+		counter-reset: val var(--val);
+		
+		&::before, &::after { grid-area: 1/ 1 }
+		
+		&::before {
+			margin: calc(var(--i)*#{-$value-b}) 0 0 calc(var(--not-i)*#{-$value-b});
+			background: 
+				conic-gradient(
+						from calc((var(--i) + 1)*90deg - .5*#{$value-a}) 
+						at var(--xy), 
+						transparent, 
+						nth($c, 4) $value-e $value-a - $value-e, 
+						transparent  $value-a) 
+					var(--xy)/ 50% 50% no-repeat;
+			content: ''
+		}
+		
+		&::after {
+			width: $value-w;
+			border-radius: $value-r;
+			background: nth($c, 4);
+			color: nth($g, 2);
+			text-align: center;
+			content: counter(val) attr(data-unit)
+		}
+	}	
+}
+
+section {
+	grid-area: calc(1 + var(--k))/ 1/ calc(2 + 2*var(--not-k));
+	box-shadow: 0 0 0 1px nth($g, 5), 
+		4px 4px 33px rgba(nth($g, 1), .35), 
+		inset 0 0 13px rgba(nth($g, 1), .2);
+	background: nth($g, 3)
+}
+
+.graphic {
+	--i: var(--narr, 1);
+	--not-i: calc(1 - var(--i));
+	--pt: 3rem;
+	--pr: calc((1 - .6*var(--i))*6rem);
+	--pb: .5rem;
+	--pl: calc((1 - .35*var(--i))*5rem);
+	place-self: center;
+	position: relative;
+	margin: calc(.5*(1 + var(--i))*#{$track-s});
+	padding: var(--pt) var(--pr) var(--pb) var(--pl);
+	
+	*, ::before, ::after { grid-area: 1/ 1 }
+	
+	@media (min-width: 450px) { --narr: 0 }
+}
+
+.tri {
+	filter: drop-shadow(2px 2px 5px nth($g, 1));
+	
+	&::before, &::after {
+		grid-area: 1/ 1;
+		padding: clamp(7em, 31vmin, #{$tri-max});
+		padding-right: 0;
+		background: 
+			linear-gradient(
+				hsl(var(--h), 100%, 100%), 
+				hsl(var(--h), 100%, 50%), 
+				hsl(var(--h), 100%, 0%));
+		clip-path: polygon(0 0, 0 100%, 100% 50%);
+		content: ''
+	}
+	
+	&::after {
+		background: 
+			linear-gradient(hsl(0, 0%, 100%), hsl(0, 0%, 0%));
+		--mask: 
+			conic-gradient(at 0 100%, red, transparent 45deg) 
+				0 100%, 
+			conic-gradient(from 135deg at 0 0, transparent, red 45deg) 
+				0 0;
+		-webkit-mask: var(--mask);
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-size: 100% 50%;
+						mask: var(--mask);
+						mask-repeat: no-repeat;
+						mask-size: 100% 50%;
+		mix-blend-mode: saturation
+	}
+}
+
+.axs {
+	z-index: 1;
+	filter: drop-shadow(1px 1px 3px nth($g, 1));
+	
+	&::before {
+		place-self: start end;
+		overflow: hidden;
+		max-width: calc(var(--i)*1ch + var(--not-i)*9em);
+		transform: translate(100%, -100%);
+		line-height: 1.125;
+		content: attr(data-lbl)
+	}
+	
+	&::after {
+		--arr: red 0% #{$axis-ar}, 
+					 transparent 0%;
+		--pct: red calc(#{$axis-pr} - 1px), 
+					 transparent #{$axis-pr};
+		background: nth($g, 8);
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+		content: ''
+	}
+}
+
+.sat {
+	place-self: center stretch;
+	
+	&::after {
+		place-self: center stretch;
+		margin-right: calc(-1*var(--pr));
+		margin-left: -$axis-pr;
+		height: $axis-sz;
+		--mask: 
+			conic-gradient(from #{270deg - .5*$axis-ar} 
+					at 100% 50%, 
+					var(--arr)) 100%/ #{$axis-sz} no-repeat, 
+			radial-gradient(circle at calc(100% - var(--pr)), 
+					var(--pct)), 
+			radial-gradient(circle at #{$axis-pr}, 
+					var(--pct)), 
+			linear-gradient(red, red) 
+				#{$axis-pr}/ calc(100% - #{$axis-sz}) 2px 
+				no-repeat;
+	}
+}
+
+.lum {
+	place-self: stretch start;
+	grid-template: 1fr/ #{$axis-sz};
+	margin-left: -.5*$axis-sz;
+	width: $axis-sz;
+	
+	&::after {
+		place-self: stretch;
+		margin-top: calc(-1*var(--pt));
+		margin-bottom: -$axis-pr;
+		--mask: 
+			conic-gradient(from #{180deg - .5*$axis-ar} 
+					at 50% 0, 
+					var(--arr)) 0 0/ 100% #{$axis-sz} no-repeat, 
+			radial-gradient(circle at 50% var(--pt), 
+					var(--pct)), 
+			radial-gradient(circle at 50% calc(100% - #{$axis-pr}), 
+					var(--pct)), 
+			linear-gradient(red, red) 
+				right 50% bottom #{$axis-pr}/ 2px calc(100% - #{$axis-sz})  
+				no-repeat;
+	}
+}
+
+.lbl {
+	--dif: calc((100 - var(--s))/100);
+	--not-dif: calc(1 - var(--dif));
+	--sgn-dif: calc(2*var(--dif) - 1);
+	place-self: end start;
+	position: relative;
+	z-index: 2;
+	bottom: calc(var(--l)*1%);
+	left: calc(var(--s)*1%);
+	padding: 0 3px;
+	max-width: calc(var(--i)*3.5em + var(--not-i)*8em);
+	border-radius: 3px;
+	transform: 
+		translate(calc(var(--dif)*-100% - 2*#{$axis-pr}), 
+			calc(50% + var(--not-dif)*(50% + .5*#{$axis-sz})));
+	background: nth($c, 4);
+	font-size: .75em;
+	word-spacing: -.25rem;
+	filter: drop-shadow(2px 2px 5px nth($g, 1));
+	counter-reset: s var(--s) l var(--l);
+	
+	&::before {
+		color: nth($g, 3);
+		content: 'S:' counter(s) '%, L:' counter(l) '%'
+	}
+}
+
+.pos {
+	--abs: (1 - Max(calc(50 - var(--l)), calc(var(--l) - 50))/50);
+	place-self: end start;
+	position: relative;
+	z-index: 2;
+	bottom: calc(var(--l)*1%);
+	left: calc(var(--abs)*var(--s)*1%);
+	margin: -$swatchr;
+	padding: $swatchr;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px nth($g, 8), 
+		inset 1px 1px 3px  rgba(nth($g, 1), .35);
+	background: 
+		hsl(var(--h), calc(var(--s)*1%), calc(var(--l)*1%));
+	filter: drop-shadow(2px 2px 5px nth($g, 1));
+}

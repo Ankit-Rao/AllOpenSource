@@ -1,0 +1,197 @@
+:root {
+	--bg-image: url('https://images.pexels.com/photos/1279813/pexels-photo-1279813.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	--bg-palette: #cdcdcd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: 0;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.bg:before {
+	-webkit-animation: spin 5s linear infinite;
+	        animation: spin 5s linear infinite;	
+	background-image: var(--border-bg);
+	border-radius: 100%;
+	content: '';
+	display: block;
+	left: 50%;
+	padding-bottom: calc(100% * 1.41421356237);
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(100% * 1.41421356237);
+	z-index: -2;
+}
+
+.bg {
+	--border-radius: 1.5rem;
+	--border-size: 0.5rem;
+	--border-bg: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+	--padding: 1rem;
+	display: block;
+	height: 5rem;
+	margin: 1rem auto 0 auto;
+	padding: calc(var(--padding) + var(--border-size));
+	overflow: hidden;
+	position: relative;
+	width: 5rem;  
+	border-radius: var(--border-radius);
+}
+
+.bg:after {
+	background-color: var(--bg-palette);
+	border-radius: calc(var(--border-radius) - var(--border-size));
+	box-shadow: 0 0 5px #000000 inset;
+	bottom: var(--border-size);
+	content: '';
+	left: var(--border-size);
+	position: absolute;
+	right: var(--border-size);
+	top: var(--border-size);
+	z-index: 1;
+}
+
+.txt-color {
+	display: block;
+	font: bold 0.9rem 'Roboto', sans-serif;
+	margin: 10px auto;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+h1 {
+	background-image: linear-gradient(
+											to right,
+											#ff6a00 20%,
+											#ff0000,
+											#c5d500,
+											#147b14,
+											#00ffff,
+											#500259,
+											#ee82ee
+										);
+	-webkit-background-clip: text;
+	color: rgba(0, 0, 0, 0);
+	font: bold 3rem 'Lobster', sans-serif;
+	margin: 0 auto 1rem auto;
+	text-align: center;
+	text-shadow: 0 0 20px #ffffff,
+							 0 0 5px rgba(0, 0, 0, 0.2);
+	width: 70%;
+}
+
+.container {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.wallpaper {
+	background: var(--bg-image) #ffffff 0 0 / cover no-repeat scroll;
+	border: 5px solid rgba(0, 0, 0, 0);
+  -o-border-image: linear-gradient(
+									45deg,
+									#ff6a00,
+									#ff0000,
+									#c5d500,
+									#147b14,
+									#00ffff,
+									#500259,
+									#ee82ee
+								);
+     border-image: linear-gradient(
+									45deg,
+									#ff6a00,
+									#ff0000,
+									#c5d500,
+									#147b14,
+									#00ffff,
+									#500259,
+									#ee82ee
+								);
+  border-image-slice: 1;
+	filter: drop-shadow(0 0 3px #000000);
+	max-width: 100%;
+	min-height: 70vh;
+	position: relative;
+	width: 70%;
+}
+
+.ctn-icon-eyedropper {
+	align-items: center;
+	background-image: linear-gradient(
+											225deg,
+											#500259 25%,
+											#ee82ee
+										);
+	border-radius: 50%;
+	bottom: calc(100% - 1.25rem);
+	color: #ffffff;
+	cursor: pointer;
+	display: flex;
+	font-size: 1rem;
+	justify-content: center;
+	left: calc(100% - 1rem);
+	padding: 1rem;
+	position: absolute;
+	text-shadow: 0 0 1px #000000;
+	transition: background-image 0.3s ease-in-out,
+						  color 0.3s ease-in-out;
+}
+
+.ctn-icon-eyedropper:hover,
+.ctn-icon-eyedropper:focus,
+.ctn-icon-eyedropper:active {
+	background-image: linear-gradient(
+											180deg,
+											#ffffff,
+											#cdcdcd
+										);
+	color: #000000;
+}
+
+.icon-eyedropper {
+	display: inline-block;
+	transition: transform 0.3s ease-in-out;
+}
+
+.ctn-icon-eyedropper:hover .icon-eyedropper,
+.ctn-icon-eyedropper:focus .icon-eyedropper,
+.ctn-icon-eyedropper:active .icon-eyedropper {
+	transform: rotateZ(1turn);
+}
+
+@-webkit-keyframes spin {	
+  to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@keyframes spin {	
+  to {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 1.75rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+}

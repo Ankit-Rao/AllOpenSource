@@ -1,0 +1,14 @@
+- var n = 7, k = .2;
+- var nc = Math.pow(n, 2)
+
+style :root { --n: #{n}; --fx: 0; --fy: 0 }
+	- for(var i = 1; i < n; i++) {
+		| .cube:nth-child(#{n}n + #{i + 1}) { --fx: #{i} }
+		| .cube:nth-child(n + #{i*n + 1}) { --fy: #{i} }
+	- }
+.a3d
+	while nc--
+		.cube
+			- var nf = 6;
+			while nf--
+				.cube__face

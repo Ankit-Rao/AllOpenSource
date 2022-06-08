@@ -1,0 +1,43 @@
+@use 'sass:math';
+
+$l: 2em;
+$ax: math.asin(1/math.sqrt(3));
+$ay: 45deg;
+$t: 2s;
+
+@property --ry {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false
+}
+
+body, div { display: grid }
+
+body {
+	margin: 0;
+	height: 100vh;
+}
+
+.a3d {
+	--tmp: repeat(var(--n), #{$l});
+	grid-template: var(--tmp)/ var(--tmp);
+	place-self: center;
+	transform-style: preserve-3d;
+	transform: rotatex(-$ax) rotatey(-$ay)
+}
+
+.ball {
+	--m: calc(.5*(var(--n) - 1));
+	--sl: 97%, 63%;
+	grid-area: calc(var(--j) + 1)/ 1;
+	border-radius: 50%;
+	transform: 
+		rotatey(var(--ry))
+		translate3d(calc((var(--i) - var(--m))*#{$l}), 0, calc((var(--k) - var(--m))*#{$l})) 
+		rotatey(calc(#{$ay} - var(--ry))) rotatex(#{$ax});
+	box-shadow: 0 0 2px 1px #000;
+	background: hsl(calc((var(--j) - .375)*360/var(--n)), var(--sl));
+	animation: ry $t ease-in calc((var(--j)/var(--n) - 1)*#{$t}) infinite
+}
+
+@keyframes ry { 50%, 100% { --ry: 90deg } }

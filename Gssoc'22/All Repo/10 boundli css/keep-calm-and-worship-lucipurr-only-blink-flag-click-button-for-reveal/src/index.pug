@@ -1,0 +1,212 @@
+- let d = 2700;
+
+mixin star(p, q, r, ox, oy, oa, cls, id)
+	- var v = [];
+	- var ba = q*2*Math.PI/p;
+	- for(let i = 0; i < p; i++) {
+		- var ca = oa + i*ba;
+		- var x = ox + r*Math.cos(ca);
+		- var y = oy + r*Math.sin(ca);
+		- v.push([Math.round(x), Math.round(y)]);
+	- }
+	path(id=id class=cls d=`M${v}z`)
+
+body(style='--min: 550; --max: 1550; --y2: 850')
+	.grid.dissolve.invis
+		svg(viewBox=[-.5*d, 99, d, d].join(' '))
+			defs
+				path#ker(d=`M10 0
+									 c0 45-10 50-30 65
+									 c10-30 10-40 10-65`)
+				path#wsk(d=`M0 0
+										q350-5 725 95`)
+				rect#rect(x='-50%' width='100%' height='100%')
+
+			filter#fglw(x='-50%' y='-50%' width='200%' height='200%')
+				feGaussianBlur(in='SourceAlpha' stdDeviation='19' result='b')
+				feFlood(flood-color='tomato')
+				feComposite(in2='b' operator="in")
+				feMerge
+					feMergeNode
+					feMergeNode(in='SourceGraphic')
+
+			mask#me0
+				use(xlink:xhref='#rect')
+				path#eye(d=`M165 1160
+									c110-200 320-160 320-160
+									l-15 25
+									c-50 150-150 150-255 115z`)
+			mask#me1
+				use(xlink:xhref='#rect')
+				use(xlink:href='#eye' transform='scale(-1 1)')
+
+			path#head.fur(d=`M-380 465
+											q380-170 760 0
+											c500-105 500-45 500 5
+											c0 90-155 190-155 370
+											c90 250-50 510-345 670
+											c-100 290-660 290-760 0
+											c-295-160-435-420-345-670
+											c0-180-155-280-155-370
+											c0-50 0-110 500-5`)
+
+			g#hrns.lght
+				path#horn(d=`M130 445
+										q35 105 145 85
+										q130-165 5-320
+										c-5 90-85 95-150 235`)
+				use(xlink:href='#horn' transform='scale(-1 1)')
+			use(xlink:href='#hrns' filter='url(#fglw)')
+
+			+star(5, 2, 200, 0, 750, .5*Math.PI, 'lght', 'str-5')
+			use(xlink:href='#str-5' filter='url(#fglw)')
+
+			use#can0.inc(xlink:href='#ker' 
+									style='--ini: translate(130px, 1570px)')
+			use#can1.inc(xlink:href='#ker' 
+									style='--ini: scale(-1, 1) translate(130px, 1570px)')
+
+			path#yawn.skin(d=`M410 510
+									 q290-75 400-50
+									 q-150 20-310 60
+									 q110 65 130 135
+									 q-90-90-220-145
+
+									 M-410 510
+									 q-290-75-400-50
+									 q150 20 310 60
+									 q-110 65-130 135
+									 q90-90 220-145
+
+									 M15 1470
+											c0 90 95 95 170 80
+											c-65 30-95 40-185-10
+											c-90 50-120 40-185 10
+											c75 15 170 10 170-80`)
+
+			g#wsks
+				circle.spot(cx=50 cy=1500 r=9)
+				use.wsk.osc(xlink:href='#wsk' 
+										style='--ini: translate(50px, 1500px)')
+				circle.spot(cx=70 cy=1480 r=9)
+				use.wsk.osc(xlink:href='#wsk' 
+										style='--ini: translate(70px, 1480px) rotate(-5deg)')
+				circle.spot(cx=70 cy=1520 r=9)
+				use.wsk.osc(xlink:href='#wsk' 
+										style='--ini: translate(70px, 1520px) rotate(5deg)')
+
+			use(xlink:href='#wsks' transform='scale(-1 1)')
+
+			path#nose(d=`M0 1305
+									 c150 0 135 90 65 120
+									 c-40 60-90 60 -130 0
+									 c-70-30-85-120 65-120`)
+
+			g#eye0(mask='url(#me0)')
+				rect.sclera(x='-50%' width='100%' height='100%')
+				circle#iris0(r='95' transform='translate(275 1050) scale(.85 1.35)')
+				circle#pupil0(r='50' transform='translate(275 1050) scale(.85 1.35)')
+				use.rim(xlink:href='#eye')
+
+			g#eye1(mask='url(#me1)')
+				rect.sclera(x='-50%' width='100%' height='100%')
+				circle#iris1(r='95' transform='translate(-385 1035) scale(.85 1.35)')
+				circle#pupil1(r='50' transform='translate(-385 1035) scale(.85 1.35)')
+				use.rim(xlink:href='#eye' transform='scale(-1 1)')
+
+			path#arm0.fur(d=`M310 2050
+									c0-50-5 -150-5-200
+									c0-30 0-80 50-80
+									c100 0 215 100 215 340
+									c0 90 0 390-200 390
+									q-250 0-520-250z`)
+
+			g#clws
+				use#clw0.inc(xlink:href='#ker' style='--ini: translate(260px, 2320px) rotate(-30deg)')
+				use#clw1.inc(xlink:href='#ker' style='--ini: translate(390px, 2300px) rotate(-30deg)')
+				use#clw2.inc(xlink:href='#ker' style='--ini: translate(450px, 2230px) rotate(-30deg)')
+
+			g#fork.lght
+				path#tine(d=`M0-460
+								q35 75 50 155
+								l-35-25
+								v270
+								l15 10
+								l40-20
+								q15-95 45-165
+								l-35 15
+								q50-70 105-95
+								q-75 135-85 295
+								l-15-10
+								l-70 30
+								h-15`)
+				use(xlink:href='#tine' transform='scale(-1 1)')
+				line#handle(y2='550')
+			use(xlink:href='#fork' filter='url(#fglw)')
+
+			path#arm1.fur(d=`M-310 2050
+									c0-50 5-150 5-200
+									c0-30 0-80-50-80
+									c-100 0-215 100-215 340
+									c0 90 0 390 200 390
+									q250 0 520-250
+									c40 80 140 110 160 40
+									c50 60 120 0 100-50
+									c30 30 55-20 55-50
+									c0-90-90-140-155-140
+									c-100 0-140-20-310 80
+									l-170 100z`)
+
+			use(xlink:href='#clws' transform='scale(-1 1)')
+
+			path#paw0.fur(d=`M-150 2250
+							c-40 80-140 110-160 40
+							c-50 60-120 0-100-50
+							c-30 30-55-20-55-50
+							c0-90 90-140 155-140
+							c100 0 140-20 310 80z`)
+
+		form
+			div(role='group' aria-labelledby='glow-lbl')
+				#glow-lbl Glow up!
+				.wrap.wrap--toggle
+					input#glow-n(type='radio' name='glow' checked)
+					label(for='glow-n') off
+					input#glow-y(type='radio' name='glow')
+					label(for='glow-y') on
+
+			div(role='group' aria-labelledby='feel-lbl')
+				#feel-lbl Feel the way!
+				.wrap.wrap--toggle
+					input#feel-n(type='radio' name='feel' checked)
+					label(for='feel-n') off
+					input#feel-y(type='radio' name='feel')
+					label(for='feel-y') on
+
+			div(role='group' aria-labelledby='hunt-lbl')
+				#hunt-lbl Hunt mode on!
+				.wrap.wrap--toggle
+					input#hunt-n(type='radio' name='hunt' checked)
+					label(for='hunt-n') off
+					input#hunt-y(type='radio' name='hunt')
+					label(for='hunt-y') on
+
+			div(role='group' aria-labelledby='move-lbl')
+				#wtch-lbl Watching you!
+				.wrap.wrap--toggle
+					input#move-n(type='radio' name='move' checked)
+					label(for='move-n') off
+					input#move-y(type='radio' name='move')
+					label(for='move-y') on
+
+			div(role='group' aria-labelledby='fork-lbl')
+				#fork-lbl Adjust pitchfork!
+				input#fork-r(type='range' name='fork' min='550' value='850' max='1550')
+
+			div(role='group' aria-labelledby='iris-lbl')
+				#iris-lbl Contact lenses!
+				.wrap.wrap--colour
+					label(for='iris-c') --iris-c
+					input#iris-c(type='color' value='#8fae45')
+					output(for='iris-c') #8fae45
+	button#summon.dissolve Summon Satan!

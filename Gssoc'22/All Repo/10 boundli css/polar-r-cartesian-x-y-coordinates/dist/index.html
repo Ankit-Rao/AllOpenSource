@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Polar (r, θ) ➞ Cartesian (x, y) coordinates</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body style="--r: 400; --r-min: 200; --r-max: 500; --a: 60; --cos: 0.5; --sin: 0.866">
+  <form>
+    <div class="wrap wrap--r" style="--min: var(--r-min); --max: var(--r-max); --val: var(--r)" role="group" aria-label="control the radius of the circle our point is on">
+      <label for="r">radius</label>
+      <input id="r" type="range" min="200" max="500" value="400"/>
+      <output for="r"></output>
+    </div>
+    <div class="wrap wrap--a" style="--min: -180; --max: 180; --val: var(--a)" role="group" aria-label="control the angle of the radius to our point with respect to the horizontal axis">
+      <label for="a">angle</label>
+      <input id="a" type="range" min="-180" max="180" value="60"/>
+      <output for="a"></output>
+    </div>
+  </form>
+  <svg viewBox="-700 -700 1400 1400" style="font-size: 40px">
+    <defs>
+      <path id="arr" d="M0 0l10-20-10 6-10-6z"></path>
+    </defs>
+    <path class="axes" d="M700 0H-700M0-700V700"></path>
+    <use class="axes" xlink:href="#arr" transform="rotate(-90) translate(0 700)"></use>
+    <use class="axes" xlink:href="#arr" y="700"></use>
+    <text class="axes" x="680" y="-20">x</text>
+    <text class="axes" y="680" x="-20" text-anchor="end">y</text>
+    <line class="guide" x2="500"></line>
+    <line class="guide" y2="500"></line>
+    <line class="proj" x2="500"></line>
+    <line class="proj" y2="500"></line>
+    <g class="meas">
+      <circle class="arc" r="50" pathLength="360"></circle>
+      <use class="arr" xlink:href="#arr"></use>
+    </g>
+    <line class="rad" x2="500"></line>
+    <circle class="main"></circle>
+    <circle class="point proj point--x" r="5"></circle>
+    <circle class="point proj point--y" r="5"></circle>
+    <circle class="point rad point--x point--y" r="7.5"></circle>
+    <foreignObject class="meas" style="--val: var(--a)">
+      <output xmlns="http://www.w3.org/1999/xhtml" for="a"></output>
+    </foreignObject>
+    <foreignObject class="rad" style="--val: var(--r)">
+      <output xmlns="http://www.w3.org/1999/xhtml" for="r"></output>
+    </foreignObject>
+    <foreignObject class="cart">
+      <output xmlns="http://www.w3.org/1999/xhtml" for="r a"></output>
+    </foreignObject>
+  </svg>
+  <pre>
+    <div class="token--form">
+      <var class="token--var">x</var><span class="token--oper">=</span>
+      <var class="token--var">r</var><span class="token--oper">·</span><span class="token--func">cos</span><span class="token--punc">(</span><span class="token--arg">
+        <var class="token--var">θ</var></span><span class="token--punc">)</span><span class="token--oper">=</span>
+      <output class="token--len" for="r" style="--val: var(--r)"></output><span class="token--oper">·</span><span class="token--func">cos</span><span class="token--punc">(</span><span class="token--arg">
+        <output class="token--ang" for="a" style="--val: var(--a)"></output></span><span class="token--punc">)</span><span class="token--oper">=</span>
+      <output class="token--coord" for="r a" style="--val: var(--x)"></output>
+    </div>
+    <div class="token--form">
+      <var class="token--var">y</var><span class="token--oper">=</span>
+      <var class="token--var">r</var><span class="token--oper">·</span><span class="token--func">sin</span><span class="token--punc">(</span><span class="token--arg">
+        <var class="token--var">θ</var></span><span class="token--punc">)</span><span class="token--oper">=</span>
+      <output class="token--len" for="r" style="--val: var(--r)"></output><span class="token--oper">·</span><span class="token--func">sin</span><span class="token--punc">(</span><span class="token--arg">
+        <output class="token--ang" for="a" style="--val: var(--a)"></output></span><span class="token--punc">)</span><span class="token--oper">=</span>
+      <output class="token--coord" for="r a" style="--val: var(--y)"></output>
+    </div></pre>
+</body>
+<!-- partial -->
+  <script src='https://codepen.io/thebabydino/pen/wWMWqW.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

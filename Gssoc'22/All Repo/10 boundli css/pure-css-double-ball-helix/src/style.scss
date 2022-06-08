@@ -1,0 +1,51 @@
+@import 'compass/css3';
+
+$n: 32;
+$d: 5vh;
+$t: 2s;
+
+$p: .5*$n;
+$q: .5*($p - 1);
+$ba: 360deg/$p;
+$ani: ry $t linear infinite;
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	perspective: 25em;
+	background: #fff4e3
+}
+
+div, :after {
+	position: absolute;
+	transform-style: preserve-3d
+}
+
+.a3d {
+	top: 50%; left: 50%;
+	animation: $ani reverse;
+}
+
+@keyframes ry { to { transform: rotatey(calc(1turn - var(--ay, 0deg))) } }
+
+.ball {
+	--i: 0;
+	--s: 0;
+	--ay: calc(var(--i)*#{$ba} + var(--s)*.5turn);
+	transform: rotatey(var(--ay)) translate3d(0, calc((var(--i) - #{$q})*#{.7*$d}), 2*$d);
+	color: hsl(calc(12 - var(--s)*18), calc(17% + var(--s)*30%), calc(40% + var(--s)*12%));
+	
+	&:nth-child(n + #{$p + 1}) { --s: 1 }
+	
+	@for $i from 1 to $p { &:nth-child(#{$p}n + #{$i + 1}) { --i: $i } }
+	
+	&:after {
+		margin: -.5*$d;
+		width: $d; height: $d;
+		border-radius: 50%;
+		transform: rotatey(calc(-1*var(--ay)));
+		background: radial-gradient(circle at 35% 25%, #fff, currentColor 71%);
+		animation: $ani;
+		content: ''
+	}
+}

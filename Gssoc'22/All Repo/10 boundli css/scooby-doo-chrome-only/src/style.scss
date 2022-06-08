@@ -1,0 +1,52 @@
+$d: .5em;
+$p: .25*$d;
+
+* { margin: 0; padding: 0 }
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: url('https://2.bp.blogspot.com/-Jew-VhLqV2g/V5qivwf7C8I/AAAAAAAALrM/WArxXPrqClAFD9b1fJrT1NC7Uqfb90xKwCLcB/s1600/Scoobydoo-PNG-Queroimagem.com.png') 50% 100%/ 20em no-repeat #333;
+	color: #fff
+}
+
+h3 {
+	font: 12.5vw/ 1 gochi hand, cursive;
+	text-align: center;
+	filter: drop-shadow(2px 2px 7px #000);
+	
+	&:before, &:after {
+		font-size: .5em;
+		content: '🍩'
+	}
+	
+	@media (min-width: 1200px) { font-size: 150px }
+}
+
+span {
+	box-sizing: border-box;
+	overflow: hidden;
+	display: inline-block;
+	margin-left: 4px;
+	padding: $p;
+	width: $d; height: $d;
+	border-radius: 50%;
+	background: 
+		radial-gradient(circle at 
+					calc(100% - #{.5*$p}) 50%, 
+				HSL(var(--hsl1)) calc(#{.5*$p} - 1px), 
+				HSLA(var(--hsl1), 0) calc(#{.5*$p} + 1px)), 
+		conic-gradient(from 90deg, 
+				HSL(var(--hsl0)), HSL(var(--hsl1)));
+	text-indent: -2em;
+	vertical-align: middle;
+	--m: 
+		linear-gradient(red, red) content-box, 
+		linear-gradient(red, red) border-box;
+	-webkit-mask: var(--m);
+					mask: var(--m);
+	-webkit-mask-composite: xor;
+					mask-composite: exclude
+}

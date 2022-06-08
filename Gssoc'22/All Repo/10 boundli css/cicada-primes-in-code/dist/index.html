@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Cicada: primes in code</title>
+  <link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="sym grow" data-sym="❤️" style="--x: 9vw; --y: 5vh; --t0: 25.65s; --dt0: -5.26s; --t1: 25.65s; --dt1: -10.71s; --dx: 9.76em; --a0: 2.11deg; --a1: 117.67deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 100vw; --y: 0vh; --t0: 64.85s; --dt0: -31.66s; --t1: 5.06s; --dt1: -2.58s; --dx: 9.38em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 29vw; --y: 0vh; --t0: 44.44s; --dt0: -30.29s; --t1: 3.05s; --dt1: -3s; --dx: 3.24em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 3vw; --y: 56vh; --t0: 10.08s; --dt0: -2.66s; --t1: 10.08s; --dt1: -1.73s; --dx: 12.09em; --a0: 8.28deg; --a1: 225.62deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 49vw; --y: 38vh; --t0: 26.69s; --dt0: -0.09s; --t1: 26.69s; --dt1: -18.55s; --dx: 11.03em; --a0: 22.27deg; --a1: 356.79deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 21vw; --y: 0vh; --t0: 47.17s; --dt0: -43.83s; --t1: 7.21s; --dt1: -1.24s; --dx: 3.53em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 93vw; --y: 0vh; --t0: 42.64s; --dt0: -35.67s; --t1: 5.05s; --dt1: -3.98s; --dx: 2.48em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 11vw; --y: 0vh; --t0: 33.2s; --dt0: -17.52s; --t1: 8.27s; --dt1: -3.4s; --dx: 3.16em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 46vw; --y: 54vh; --t0: 3.21s; --dt0: -0.55s; --t1: 3.21s; --dt1: -0.83s; --dx: 9.71em; --a0: 13.92deg; --a1: 181.34deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 25vw; --y: 0vh; --t0: 59.49s; --dt0: -38.43s; --t1: 4.05s; --dt1: -1.48s; --dx: 3.96em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 2vw; --y: 0vh; --t0: 47.62s; --dt0: -7.33s; --t1: 9.03s; --dt1: -3.96s; --dx: 4.2em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 90vw; --y: 0vh; --t0: 75.97s; --dt0: -69.06s; --t1: 3.73s; --dt1: -0.9s; --dx: 8.88em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 88vw; --y: 18vh; --t0: 23.25s; --dt0: -7.05s; --t1: 23.25s; --dt1: -8.4s; --dx: 8.61em; --a0: 18.92deg; --a1: 209.97deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 93vw; --y: 20vh; --t0: 29.6s; --dt0: -23.22s; --t1: 29.6s; --dt1: -18.39s; --dx: 13.58em; --a0: 16.16deg; --a1: 360.37deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 42vw; --y: 0vh; --t0: 85.81s; --dt0: -55.26s; --t1: 4.78s; --dt1: -3.27s; --dx: 6.36em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 18vw; --y: 72vh; --t0: 16.28s; --dt0: -16.24s; --t1: 16.28s; --dt1: -12.31s; --dx: 14.58em; --a0: 15.29deg; --a1: 325.13deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 90vw; --y: 0vh; --t0: 23.76s; --dt0: -23.07s; --t1: 8.67s; --dt1: -0.96s; --dx: 4.59em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 28vw; --y: 70vh; --t0: 6.68s; --dt0: -0.48s; --t1: 6.68s; --dt1: -3.4s; --dx: 6.69em; --a0: 30.82deg; --a1: 248.96deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 88vw; --y: 92vh; --t0: 27.38s; --dt0: -2.1s; --t1: 27.38s; --dt1: -23.58s; --dx: 11.46em; --a0: 7.75deg; --a1: 197.04deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 53vw; --y: 0vh; --t0: 19.98s; --dt0: -12.68s; --t1: 7.76s; --dt1: -2.87s; --dx: 4.8em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 22vw; --y: 76vh; --t0: 12.81s; --dt0: -9.82s; --t1: 12.81s; --dt1: -11.44s; --dx: 11.9em; --a0: 30.02deg; --a1: 219.81deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 51vw; --y: 46vh; --t0: 19.9s; --dt0: -2.59s; --t1: 19.9s; --dt1: -17.18s; --dx: 7.74em; --a0: 5.49deg; --a1: 310.21deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 10vw; --y: 0vh; --t0: 40.5s; --dt0: -1.53s; --t1: 9.73s; --dt1: -3.5s; --dx: 2.57em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 45vw; --y: 0vh; --t0: 23.69s; --dt0: -10.98s; --t1: 4.56s; --dt1: -1.22s; --dx: 2.24em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 87vw; --y: 67vh; --t0: 16.85s; --dt0: -3.68s; --t1: 16.85s; --dt1: -2.97s; --dx: 8.44em; --a0: 22.15deg; --a1: 360.45deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 6vw; --y: 81vh; --t0: 13.13s; --dt0: -6.7s; --t1: 13.13s; --dt1: -3.59s; --dx: 6.61em; --a0: 11.16deg; --a1: 292.6deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 70vw; --y: 0vh; --t0: 37.37s; --dt0: -20.4s; --t1: 8.68s; --dt1: -2.43s; --dx: 9.76em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 55vw; --y: 60vh; --t0: 10.45s; --dt0: -7.47s; --t1: 10.45s; --dt1: -6.53s; --dx: 14.64em; --a0: 19.78deg; --a1: 290.62deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 73vw; --y: 0vh; --t0: 23.19s; --dt0: -3.03s; --t1: 8.88s; --dt1: -2.66s; --dx: 4.81em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 48vw; --y: 77vh; --t0: 27.63s; --dt0: -24.14s; --t1: 27.63s; --dt1: -2s; --dx: 13.3em; --a0: 7.33deg; --a1: 315.75deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 30vw; --y: 0vh; --t0: 34.07s; --dt0: -9.53s; --t1: 8.66s; --dt1: -8.13s; --dx: 2.98em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 81vw; --y: 0vh; --t0: 53.1s; --dt0: -2.86s; --t1: 7.99s; --dt1: -7.96s; --dx: 2.75em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 8vw; --y: 0vh; --t0: 30.34s; --dt0: -9.84s; --t1: 3.77s; --dt1: -0.03s; --dx: 8.14em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 36vw; --y: 0vh; --t0: 39.51s; --dt0: -21.14s; --t1: 5.03s; --dt1: -0.82s; --dx: 3.59em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 75vw; --y: 0vh; --t0: 91.64s; --dt0: -9.28s; --t1: 5.18s; --dt1: -2.58s; --dx: 8.73em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 37vw; --y: 0vh; --t0: 60.27s; --dt0: -23.38s; --t1: 3.08s; --dt1: -0.79s; --dx: 7.62em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 22vw; --y: 72vh; --t0: 9.15s; --dt0: -2.27s; --t1: 9.15s; --dt1: -8.57s; --dx: 7.69em; --a0: 7.74deg; --a1: 154.59deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 74vw; --y: 0vh; --t0: 80.11s; --dt0: -40.43s; --t1: 3.44s; --dt1: -0.04s; --dx: 4.08em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 100vw; --y: 0vh; --t0: 14.64s; --dt0: -14.37s; --t1: 3.14s; --dt1: -1.74s; --dx: 8.65em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 73vw; --y: 0vh; --t0: 29.11s; --dt0: -9.18s; --t1: 8.14s; --dt1: -1.29s; --dx: 8.32em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 2vw; --y: 10vh; --t0: 29.93s; --dt0: -3.98s; --t1: 29.93s; --dt1: -29.58s; --dx: 8.36em; --a0: 11.97deg; --a1: 206deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 58vw; --y: 0vh; --t0: 40.94s; --dt0: -4.07s; --t1: 6.37s; --dt1: -5.13s; --dx: 4.9em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 58vw; --y: 0vh; --t0: 55.1s; --dt0: -12.5s; --t1: 8.31s; --dt1: -1.78s; --dx: 4.74em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 89vw; --y: 0vh; --t0: 95.2s; --dt0: -40.79s; --t1: 6.09s; --dt1: -5.09s; --dx: 8.64em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 10vw; --y: 0vh; --t0: 15.31s; --dt0: -8.56s; --t1: 8.72s; --dt1: -7.84s; --dx: 3.91em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 40vw; --y: 0vh; --t0: 12.54s; --dt0: -2.63s; --t1: 5.9s; --dt1: -2.46s; --dx: 7.92em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 36vw; --y: 0vh; --t0: 22.87s; --dt0: -21.39s; --t1: 5.47s; --dt1: -2.32s; --dx: 4.41em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 16vw; --y: 0vh; --t0: 61.8s; --dt0: -7.24s; --t1: 5.54s; --dt1: -4.05s; --dx: 3.1em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 69vw; --y: 0vh; --t0: 25.86s; --dt0: -20.82s; --t1: 9.18s; --dt1: -5.16s; --dx: 4.25em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 86vw; --y: 0vh; --t0: 16.97s; --dt0: -9.52s; --t1: 5.57s; --dt1: -2.48s; --dx: 4.46em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 58vw; --y: 77vh; --t0: 27.08s; --dt0: -5.67s; --t1: 27.08s; --dt1: -13.84s; --dx: 7.18em; --a0: 0.17deg; --a1: 323.38deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 55vw; --y: 90vh; --t0: 10.76s; --dt0: -8.63s; --t1: 10.76s; --dt1: -6.2s; --dx: 10.06em; --a0: 12.89deg; --a1: 244.16deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 0vw; --y: 12vh; --t0: 21.45s; --dt0: -14.04s; --t1: 21.45s; --dt1: -7.1s; --dx: 8.66em; --a0: 2.09deg; --a1: 198.31deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 30vw; --y: 0vh; --t0: 42.53s; --dt0: -12.94s; --t1: 7.85s; --dt1: -7.08s; --dx: 7.48em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 39vw; --y: 89vh; --t0: 13.68s; --dt0: -5.87s; --t1: 13.68s; --dt1: -9.92s; --dx: 9.92em; --a0: 0.05deg; --a1: 237deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 18vw; --y: 0vh; --t0: 15.96s; --dt0: -9.32s; --t1: 3.3s; --dt1: -3.05s; --dx: 3.52em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 79vw; --y: 18vh; --t0: 8.9s; --dt0: -1.44s; --t1: 8.9s; --dt1: -0.25s; --dx: 6.58em; --a0: 9.08deg; --a1: 351.4deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 70vw; --y: 37vh; --t0: 4.36s; --dt0: -1.63s; --t1: 4.36s; --dt1: -0.35s; --dx: 14.09em; --a0: 3.17deg; --a1: 242.27deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 18vw; --y: 96vh; --t0: 25.01s; --dt0: -1.81s; --t1: 25.01s; --dt1: -2.84s; --dx: 12.24em; --a0: 2.91deg; --a1: 176deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 17vw; --y: 8vh; --t0: 11.24s; --dt0: -5.85s; --t1: 11.24s; --dt1: -1.23s; --dx: 8.63em; --a0: 17.95deg; --a1: 225.5deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 13vw; --y: 32vh; --t0: 9.93s; --dt0: -2.44s; --t1: 9.93s; --dt1: -3.5s; --dx: 7.39em; --a0: 6.91deg; --a1: 297.67deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 8vw; --y: 87vh; --t0: 3.36s; --dt0: 0s; --t1: 3.36s; --dt1: -0.26s; --dx: 9.97em; --a0: 20.12deg; --a1: 194.41deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 77vw; --y: 0vh; --t0: 22.06s; --dt0: -13.5s; --t1: 4.04s; --dt1: -2.96s; --dx: 7.53em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 34vw; --y: 0vh; --t0: 31.82s; --dt0: -27.89s; --t1: 8.37s; --dt1: -8.08s; --dx: 9.98em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 75vw; --y: 6vh; --t0: 20.51s; --dt0: -11.06s; --t1: 20.51s; --dt1: -17.11s; --dx: 14.46em; --a0: 3.61deg; --a1: 112.29deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 82vw; --y: 0vh; --t0: 27.58s; --dt0: -4.94s; --t1: 4.57s; --dt1: -3.59s; --dx: 4.19em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 46vw; --y: 0vh; --t0: 47.78s; --dt0: -21.66s; --t1: 3.56s; --dt1: -2.79s; --dx: 4.1em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 65vw; --y: 55vh; --t0: 11.23s; --dt0: -5.05s; --t1: 11.23s; --dt1: -2.15s; --dx: 10.11em; --a0: 28.87deg; --a1: 226.38deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 38vw; --y: 0vh; --t0: 44.68s; --dt0: -26.72s; --t1: 9.99s; --dt1: -5.62s; --dx: 2.14em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 76vw; --y: 0vh; --t0: 54.65s; --dt0: -24.07s; --t1: 6.42s; --dt1: -3.91s; --dx: 8.62em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 54vw; --y: 98vh; --t0: 25.24s; --dt0: -17.29s; --t1: 25.24s; --dt1: -9.45s; --dx: 14.51em; --a0: 23.83deg; --a1: 158.55deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 31vw; --y: 87vh; --t0: 28.15s; --dt0: -10.42s; --t1: 28.15s; --dt1: -21.13s; --dx: 8.39em; --a0: 10.44deg; --a1: 124.71deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 5vw; --y: 0vh; --t0: 8.18s; --dt0: -7.95s; --t1: 6.09s; --dt1: -1.97s; --dx: 4.48em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 45vw; --y: 12vh; --t0: 25.65s; --dt0: -17.62s; --t1: 25.65s; --dt1: -25.03s; --dx: 11.03em; --a0: 21.61deg; --a1: 229.43deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 83vw; --y: 0vh; --t0: 15.21s; --dt0: -0.64s; --t1: 3.05s; --dt1: -0.32s; --dx: 6.32em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 47vw; --y: 0vh; --t0: 38.84s; --dt0: -7.4s; --t1: 5.54s; --dt1: -3.77s; --dx: 6.48em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 60vw; --y: 0vh; --t0: 44.43s; --dt0: -17.66s; --t1: 6.37s; --dt1: -4.5s; --dx: 4.67em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 40vw; --y: 0vh; --t0: 58.23s; --dt0: -2.93s; --t1: 3.95s; --dt1: -3.54s; --dx: 2.17em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 20vw; --y: 0vh; --t0: 38.42s; --dt0: -11.03s; --t1: 8.27s; --dt1: -1.81s; --dx: 3.51em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 0vw; --y: 72vh; --t0: 28.31s; --dt0: -3.62s; --t1: 28.31s; --dt1: -20.66s; --dx: 14.45em; --a0: 16.71deg; --a1: 335.56deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 58vw; --y: 0vh; --t0: 90.8s; --dt0: -87.1s; --t1: 6.82s; --dt1: -4.98s; --dx: 8.81em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 97vw; --y: 0vh; --t0: 50.67s; --dt0: -35.97s; --t1: 8.14s; --dt1: -0.08s; --dx: 2.34em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 67vw; --y: 70vh; --t0: 9.47s; --dt0: -3.37s; --t1: 9.47s; --dt1: -0.87s; --dx: 13.55em; --a0: 10.11deg; --a1: 277.85deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 15vw; --y: 3vh; --t0: 24.88s; --dt0: -16.71s; --t1: 24.88s; --dt1: -13.39s; --dx: 10.55em; --a0: 13.26deg; --a1: 198.02deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 45vw; --y: 51vh; --t0: 29.13s; --dt0: -15.43s; --t1: 29.13s; --dt1: -18.31s; --dx: 10.75em; --a0: 22.21deg; --a1: 209.4deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 60vw; --y: 0vh; --t0: 94.01s; --dt0: -60.52s; --t1: 3.76s; --dt1: -1.44s; --dx: 6.53em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 31vw; --y: 0vh; --t0: 50.74s; --dt0: -30.86s; --t1: 7.09s; --dt1: -3.75s; --dx: 6.04em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 85vw; --y: 0vh; --t0: 38.62s; --dt0: -23.18s; --t1: 7.29s; --dt1: -6.02s; --dx: 2.54em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 84vw; --y: 98vh; --t0: 25.16s; --dt0: -14.96s; --t1: 25.16s; --dt1: -2.49s; --dx: 11.66em; --a0: 0.39deg; --a1: 157.18deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 25vw; --y: 0vh; --t0: 66.59s; --dt0: -55.01s; --t1: 9.36s; --dt1: -5.01s; --dx: 5.67em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 65vw; --y: 0vh; --t0: 46.42s; --dt0: -10.16s; --t1: 4.53s; --dt1: -3.53s; --dx: 5.15em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 68vw; --y: 0vh; --t0: 16.37s; --dt0: -6.78s; --t1: 8.61s; --dt1: -0.34s; --dx: 2.63em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 67vw; --y: 0vh; --t0: 90.51s; --dt0: -88.32s; --t1: 5.28s; --dt1: -0.08s; --dx: 4.15em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 62vw; --y: 0vh; --t0: 36.33s; --dt0: -1.11s; --t1: 9.2s; --dt1: -7.07s; --dx: 2.92em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 78vw; --y: 0vh; --t0: 42.69s; --dt0: -34.93s; --t1: 4.92s; --dt1: -2.54s; --dx: 4.96em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 24vw; --y: 0vh; --t0: 74.67s; --dt0: -64.79s; --t1: 3.26s; --dt1: -0.14s; --dx: 5.55em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 56vw; --y: 61vh; --t0: 9.69s; --dt0: -8.85s; --t1: 9.69s; --dt1: -1.99s; --dx: 14.62em; --a0: 3.88deg; --a1: 164.98deg"></div>
+<div class="sym fall" data-sym="🌸" style="--x: 56vw; --y: 0vh; --t0: 29.71s; --dt0: -11.57s; --t1: 5.06s; --dt1: -1.42s; --dx: 3em; --a0: 0deg; --a1: 359deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 92vw; --y: 89vh; --t0: 22.31s; --dt0: -19.26s; --t1: 22.31s; --dt1: -18.22s; --dx: 6.18em; --a0: 19.1deg; --a1: 376.24deg"></div>
+<div class="sym grow" data-sym="❤️" style="--x: 45vw; --y: 5vh; --t0: 5.62s; --dt0: -0.64s; --t1: 5.62s; --dt1: -2.02s; --dx: 7.56em; --a0: 30.84deg; --a1: 220.05deg"></div>
+<div class="sym fall" data-sym="🌿" style="--x: 5vw; --y: 0vh; --t0: 84.29s; --dt0: -7.36s; --t1: 6.58s; --dt1: -5.62s; --dx: 8.44em; --a0: 0deg; --a1: 359deg"></div>
+<svg viewBox="-2000.5 -1460.365 4001 2920.73">
+  <radialGradient id="grad--upper" r="653%" fy="101%">
+    <stop offset=".0887" stop-color="var(--body-c0)"></stop>
+    <stop offset=".089" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1049" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1051" stop-color="var(--body-c0)"></stop>
+  </radialGradient>
+  <radialGradient id="grad--lower" r="950%" fy="2%" gradientTransform="scale(1 .5)">
+    <stop offset=".0887" stop-color="var(--body-c1)"></stop>
+    <stop offset=".089" stop-color="var(--body-c0)"></stop>
+    <stop offset=".1049" stop-color="var(--body-c0)"></stop>
+    <stop offset=".1051" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1213" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1217" stop-color="var(--body-c0)"></stop>
+    <stop offset=".1549" stop-color="var(--body-c0)"></stop>
+    <stop offset=".1573" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1747" stop-color="var(--body-c1)"></stop>
+    <stop offset=".1753" stop-color="var(--body-c0)"></stop>
+  </radialGradient>
+  <g id="cicada">
+    <g id="head">
+      <g id="head--side">
+        <circle class="eye" r="37" cx="101" cy="-233"></circle>
+        <path class="ant" d="M67-317q89-73 149-37q-67-47-163 37"></path>
+      </g>
+      <use xlink:href="#head--side" transform="scale(-1 1)"></use>
+      <ellipse rx="83" ry="67" cy="-281"></ellipse>
+    </g>
+    <g id="body">
+      <path class="upper" d="M-89 83C-433-373 433-373 97 83"></path>
+      <ellipse class="lower" rx="137" ry="271" cy="293"></ellipse>
+      <g id="body--side">
+        <path class="upper" d="M151-181l23-13 3 3 37-19 13-53 89-41-73 53-11 53-53 31 5 5-37 19M131-53l23 11-2 5 37 19 67-5 67 61-71-43-61 5-37-19-5 5-23-11"></path>
+        <path class="lower" d="M79 83l23 11-1 5 67 41 67-5 53 61-61-43-61 5-53-37-5 5-23-11"></path>
+        <g class="wing lower">
+          <path d="M89 0c-19 67-17 127 167 263s229 127 317 5-67-233-181-241z"></path>
+          <path d="M251 257q137-37 241 89M89 0q151 199 283 263 53-137 197 5M461 199q23-97 103-79M479 167q-199-127-307-71M397 113q0-67-17-89"></path>
+        </g>
+        <g class="wing upper">
+          <path d="M89 0c5-79 53-151 211-251s127-131 491-131 337 97 199 199-71 41-199 157-181 73-701 31z"></path>
+          <path d="M97-37q839 17 977-293M127-101q367-101 409-263M109-71q263-7 271-127M373-173q71 67 17 131M487-277c37 89 277 0 283-113M409-127q151 -51 181-113M563-199q127 37 167 103M673-151q349-227 397-181M823-241q53-67 7-137M523-53q73 53 67 101"></path>
+        </g>
+      </g>
+      <use xlink:href="#body--side" transform="scale(-1 1)"></use>
+    </g>
+  </g>
+  <line y1="-1460.365" y2="1460.365"></line>
+  <line x1="-2000.5" x2="2000.5"> </line>
+</svg>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

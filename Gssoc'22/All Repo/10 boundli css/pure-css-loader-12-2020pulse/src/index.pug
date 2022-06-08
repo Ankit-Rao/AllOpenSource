@@ -1,0 +1,9 @@
+- let n = 36, f = +(1/Math.tan(Math.PI/n)).toFixed(2);
+
+.eq(style=`--n: ${n}; --f: ${f}`)
+	- for(let k = 0; k < n; k++) {
+		- let t = +(.5 + 2*Math.random()).toFixed(2);
+		- let dt = +(-t*Math.random()).toFixed(2);
+		- let tx = ~~(100*Math.random()*Math.random());
+		.bar(style=`--k: ${k}; --t: ${t}s; --dt: ${dt}s; --tx: ${tx}%`)
+	- }

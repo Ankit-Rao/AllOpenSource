@@ -1,0 +1,12 @@
+//- number of groups and dots per group
+- var ng = 12, nd = 3;
+//- total number of dots
+- var n = ng*nd
+
+style
+	| .dot { --i: 0; --rr: #{+(.5/Math.tan(Math.PI/n)).toFixed(2)} }
+	- for(var i = 1; i < nd; i++)
+		| .dot:nth-of-type(#{nd}n + #{i}) { --i: #{i} }
+- for(var i = 0; i < n ; i++)
+	- var f = +(.5*(1 + Math.random())).toFixed(2);
+	.dot(style=`--k: ${i/n}; --f: ${f}`)

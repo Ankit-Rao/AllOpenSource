@@ -1,0 +1,46 @@
+html {
+  background: #222;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+  filter: hue-rotate(60deg);
+  animation: hue 6s linear infinite;
+}
+
+@keyframes hue {
+  to {
+    filter: hue-rotate(-300deg);
+  }
+}
+.dot {
+  --j: calc(1 + var(--i));
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -1.25em;
+  padding: 1.25em;
+  border-radius: 50%;
+  --dr: calc(var(--i) - 1.5 + .125/(var(--j)*var(--j)));
+  --pos:
+  	rotate(calc(var(--k)*1turn))
+  	translate(calc(var(--rr)*1.875em + var(--dr)*1.25em))
+  	scale(var(--f));
+  transform: var(--pos);
+  background: #ff8080;
+  mix-blend-mode: screen;
+  animation: a 1.2s ease-in-out calc(var(--k)*1.2s) infinite;
+}
+
+@keyframes a {
+  0%, 20%, 100% {
+    transform: var(--pos) scale(1);
+    opacity: 0.99;
+  }
+  10% {
+    transform: var(--pos) scale(3);
+    opacity: 0.65;
+  }
+}

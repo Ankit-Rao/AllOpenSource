@@ -1,0 +1,113 @@
+$d: 15em;
+$t: 6s;
+
+@property --ay {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false
+}
+
+@property --sy {
+	syntax: '<length-percentage>';
+	initial-value: 0%;
+	inherits: false
+}
+
+body {
+	display: grid;
+	grid-template: #{$d}/ #{$d};
+	place-content: center;
+	margin: 0;
+	height: 100vh;
+	background: #f6921d;
+}
+
+.👁️ {
+	display: grid;
+	border-radius: 50%;
+	background: #fff;
+	
+	&::before, &::after {
+		grid-area: 1/ 1;
+		border-radius: 50%;
+		background: currentcolor;
+		color: #130912;
+		animation: a $t infinite;
+		content: ''
+	}
+	
+	&::before {
+		place-self: center;
+		padding: 25%;
+		transform: 
+			perspective(25em) 
+			translatez(-.5*$d)
+			rotatey(var(--ay))
+			translatez(.5*$d);
+		animation-name: eye;
+	}
+	
+	&::after {
+		--mask: 
+			linear-gradient(red, red), 
+			radial-gradient(closest-side, 
+					red calc(100% - 1px), transparent 100%) 
+				50%/ 94% var(--sy, 80%) no-repeat;
+		-webkit-mask: var(--mask);
+		-webkit-mask-composite: xor;
+						mask: var(--mask);
+						mask-composite: exclude;
+		animation-name: lid-o, lid-c
+	}
+}
+
+@keyframes eye {
+	0%, 35%, 52.5%, 100% {
+		--ay: 0deg;
+		animation-timing-function: ease-out
+	}
+	37.5% {
+		--ay: -55deg;
+		animation-timing-function: ease-in-out
+	}
+	50% {
+		--ay: 55deg;
+		animation-timing-function: ease-in
+	}
+}
+
+@keyframes lid-o {
+	0%, 12.5%, 75% {
+		--sy: 0%;
+		animation-timing-function: cubic-bezier(.33, 1, .68, 1)
+	}
+	25%, 62.5% {
+		--sy: 80%;
+		animation-timing-function: cubic-bezier(.32, 0, .67, 0)
+	}
+}
+
+@keyframes lid-c {
+	0%, 60%, 100% { 
+		background: currentcolor;
+		animation-timing-function: ease-out
+	}
+	80% {
+		background: #602749;
+		animation-timing-function: ease-in
+	}
+}
+
+/*
+12.5% start to open eyelids, ease-out
+25% eyelids opened
+* 35% start to move eye ease-out
+* 37.5% eye to left ease-out-in
+* 50% eye to right ease-in
+* 52.5% eye back to mid
+60% start to color ==
+62.5% start to close eyelids
+75% eyelids closed
+80% color red ==
+100% back to dark ==
+*/

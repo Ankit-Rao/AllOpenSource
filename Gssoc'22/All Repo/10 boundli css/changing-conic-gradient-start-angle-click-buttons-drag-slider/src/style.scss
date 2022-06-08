@@ -1,0 +1,226 @@
+$sec-pad: .5em;
+$btn-dim: 2em;
+$b-arrow: .75*$sec-pad;
+
+$track-w: 15em;
+$track-h: .25em;
+$track-r: .5*$track-h;
+
+$thumb-d: 1em;
+$thumb-r: .5*$thumb-d;
+
+$mover-w: $track-w - $thumb-d;
+
+$c: #fe7e10 #cc7aff #ff67b0 #ffd401 #87c830;
+$s: 9em;
+$l: 2px;
+
+@mixin track() {
+	border: none;
+	width: $track-w; height: $track-h;
+	border-radius: $track-r;
+	background: currentcolor;
+}
+
+@mixin thumb($f: 0) {
+	margin-top: $f*($track-r - $thumb-r);
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	background: nth($c, 1);
+	transition: all calc(var(--f)*2s)
+}
+
+* {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	background: none;
+	color: inherit;
+	font: inherit
+}
+
+body {
+	--i: var(--wide, 1);
+	--not-i: calc(1 - var(--i));
+	display: grid;
+	grid-template-rows: max-content 1fr max-content;
+	overflow-x: hidden;
+	min-width: 205px; height: 100vh;
+	background: #222;
+	color: #eee;
+	font: 1.25em/ 1.5 consolas, ubuntu mono, monaco, monospace;
+	transition: --a calc(var(--f)*2s) ease-out;
+	counter-reset: a var(--a);
+	
+	@media (max-width: 715px) {
+		.token--arg:nth-child(3)::before { content: '\A     ' }
+	}
+	
+	@media (max-width: 605px) { --wide: 0 }
+	
+	@media (max-width: 435px) {
+		.token--arg:nth-child(1)::before { content: '\A     ' }
+	}
+	
+	@media (max-width: 340px) { font-size: 1em }
+	@media (max-width: 275px) { font-size: .875em }
+	@media (max-width: 240px) { font-size: .75em }
+}
+
+.sec {
+	--focus: 0;
+	--not-focus: calc(1 - var(--focus));
+	padding: $sec-pad;
+}
+
+form {
+	display: grid;
+	grid-template-columns: 1fr $track-w 1fr;
+	grid-gap: $sec-pad;
+	filter: grayScale(var(--not-focus));
+	
+	&:focus-within {
+		&, & ~ .sec { --focus: 1 }
+	}
+}
+
+label {
+	grid-column: calc(1 + var(--not-i));
+	place-self: center var(--wide, end)
+}
+
+input {
+	cursor: pointer;
+	
+	&[type='range'] {
+		&, &::-webkit-slider-thumb, 
+		&::-webkit-slider-runnable-track { -webkit-appearance: none }
+		
+		grid-column: 2;
+		grid-row: calc(1 + var(--not-i));
+		
+		&::-webkit-slider-runnable-track {
+			@include track()
+		}
+		
+		&::-moz-range-track {
+			@include track()
+		}
+		
+		&::-webkit-slider-thumb {
+			@include thumb(1)
+		}
+		
+		&::-moz-range-thumb {
+			@include thumb()
+		}
+		
+		&:focus { outline: solid 0 transparent }
+	}
+	
+	&[type='button'] {
+		--hlight: 0;
+		--select: 0;
+		border: solid 1px #eee;
+		width: $btn-dim;
+		border-radius: 5px;
+		background: 
+			rgba(nth($c, 1), 
+					 calc(var(--select) + .875*var(--hlight)));
+		color: HSL(0, 0%, calc(100%*(1 - (var(--select) + var(--hlight)))));
+				
+		&:focus { outline: none }
+		&:hover, &:focus { --hlight: 1 }
+	}
+	
+	&.hl { --select: 1 }
+}
+
+output {
+	grid-column: calc(3 - var(--not-i));
+	grid-row: calc(1 + var(--not-i));
+	place-self: start;
+	transform: 
+		translate(calc(var(--not-i)*(#{$thumb-r} + var(--a)/180*#{$mover-w} - 50%)), 
+							calc(var(--not-i)*(#{1.5*$b-arrow} - 100%)));
+	
+	&::after {
+		display: block;
+		border: solid $b-arrow transparent;
+		padding: 0 .25em;
+		border-radius: calc(#{$b-arrow} + 3px);
+		transform-origin: 50% 100%;
+		transform: scale(calc(var(--i) + var(--not-i)*var(--focus)));
+		background: nth($c, 1) border-box;
+		color: #222;
+		text-align: center;
+		--xy: calc(var(--not-i)*50%) calc(50%*(1 + var(--not-i)));
+		--mask:
+			linear-gradient(red, red) padding-box, 
+			conic-gradient(
+					from calc(45deg - var(--not-i)*90deg) 
+					at var(--xy), 
+					red 0% 25%, transparent 0%) 
+				var(--xy)/ 50% 50% no-repeat border-box;
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+		transition: transform .3s, filter .3s;
+		content: counter(a)'°'
+	}
+}
+
+.button {
+	grid-column: 2;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 calc(#{$thumb-r} - #{.5*$btn-dim})
+}
+
+#result {
+	--line: #{nth($c, 1)} 0 #{.5*$l}, 
+					transparent 0 calc(100% - #{.5*$l}), 
+					#{nth($c, 1)};
+	background: 
+		linear-gradient(var(--line)), 
+		linear-gradient(90deg, var(--line)), 
+		repeating-conic-gradient(from calc(var(--a)*1deg), 
+				#000 0% 25%, #eee 0% 50%);
+	background-position: 50%;
+	background-size: $s $s
+}
+
+.token {
+	&--func { color: nth($c, 1) }
+	
+	&--keyw { color: nth($c, 2) }
+	
+	&--ang {
+		display: inline-block;
+		position: relative;
+		padding: 0 .25em;
+		vertical-align: bottom;
+		color: nth($c, 3);
+		
+		&::before {
+			position: absolute;
+			top: 1px; right: 0; bottom: 0; left: 0;
+			background: currentcolor;
+			--rect: inset(0 calc(var(--not-focus)*100%) 0 0 round 5px);
+			-webkit-clip-path: var(--rect);
+							clip-path: var(--rect);
+			mix-blend-mode: difference;
+			transition: .5s 
+				cubic-bezier(calc(var(--focus)*.42), 0, calc(var(--not-focus)*.58), 1);
+			content: ''
+		}
+	}
+	
+	&--hex { color: nth($c, 4) }
+	
+	&--perc { color: nth($c, 5) }
+	
+	&--ang &--num::after { content: counter(a) }
+	
+	&--arg::before { white-space: pre }
+}

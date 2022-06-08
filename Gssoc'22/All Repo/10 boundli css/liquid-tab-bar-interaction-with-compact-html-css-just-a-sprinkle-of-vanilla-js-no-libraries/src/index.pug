@@ -1,0 +1,13 @@
+- let data = {
+- 	home: '🏠', 
+- 	search: '🔍', 
+- 	likes: '🖤', 
+- 	notification: '🔔', 
+- 	profile: '👱'
+- };
+- let a = Object.entries(data);
+- let n = a.length;
+
+nav(style=`--n: ${n}; --k: 0`)
+	- for(let i = 0; i < n; i++)
+		a.nav-item(href='#' data-ico=a[i][1] style=`--i: ${i}`) #{a[i][0]}

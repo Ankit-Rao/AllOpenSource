@@ -1,0 +1,350 @@
+$c: #00908a, #41024f, #f60c61, #ff6a00, #ffb231;
+
+$track-p: Min(4vw, .5em);
+$track-u: 1px;
+$track-h: .25em;
+$track-r: .5*$track-h;
+
+$thumb-d: 1em;
+$thumb-r: .5*$thumb-d;
+
+$arrow-a: 70deg;
+$arrow-b: .25em;
+$arrow-r: .25em;
+
+$label-d: 3ch;
+$label-o: -.5*$label-d;
+
+$t: .3s;
+
+@mixin track() {
+	border: none;
+	width: 100%; height: $track-h;
+	border-radius: $track-r;
+	background: 
+		radial-gradient(circle at var(--pos), 
+			transparent calc(var(--js)*(#{$thumb-r} - 2px)), 
+			#ccc calc(var(--js)*(#{$thumb-r} - 1px)))
+}
+
+@mixin thumb($f: 0) {
+	margin-top: $f*($track-r - $thumb-r);
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	background: currentcolor;
+	filter: Invert(var(--not-focus)) brightness(calc(1 + .25*var(--not-focus)));
+	transition: $t;
+	transition-property: transform, filter;
+	
+	.js & { transform: scale(calc(.5*(1 + var(--focus)))) }
+}
+
+@property --houdini {
+	syntax: '<integer>';
+	initial-value: 1;
+	inherits: true
+}
+
+@property --x {
+	syntax: '<integer>';
+	initial-value: 0;
+	inherits: true
+}
+
+@property --y {
+	syntax: '<integer>';
+	initial-value: 0;
+	inherits: true
+}
+
+/* --------------- GENERAL --------------- */
+* {
+	box-sizing: inherit;
+	margin: 0;
+	border: none;
+	padding: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+}
+
+html { 
+	--k: var(--js, 0);
+	--not-k: calc(1 - var(--k));
+	
+	&.js { --js: 1 }
+}
+
+body {
+	--s: var(--houdini, 0);
+	--i: var(--narr, 1);
+	--not-i: calc(1 - var(--i));
+	--j: var(--wide, 1);
+	--not-j: calc(1 - var(--j));
+	--x: calc(var(--r)*var(--cos));
+	--y: calc(var(--r)*var(--sin));
+	--u: '';
+	display: grid;
+	grid-gap: 1vmin;
+	grid-template-rows: max-content 1fr max-content;
+	overflow-x: hidden;
+	margin: 0;
+	height: 100vh;
+	font: 400 clamp(.875em, 6.25vw, 1.5em)/ 1.375 raleway, sans-serif;
+	
+	@media (max-width: 575px) { --wide: 0 }
+	@media (min-width: 470px) { --narr: 0 }
+}
+
+form, pre { background: #100e17 }
+[for], pre { color: #fafafa }
+pre, output { font-family: ubuntu mono, consolas, monaco, monospace }
+text, var { font-style: italic; font-family: serif }
+
+/* --------------- FORM --------------- */
+.wrap {
+	--focus: 0;
+	--not-focus: calc(1 - var(--focus));
+	--range: calc(var(--max) - var(--min));
+	--track-w: clamp(4.5em, calc(100vw - 2*#{$track-p}), calc(var(--range)*#{$track-u} + #{$thumb-d}));
+	--pos: calc(#{$thumb-r} + (var(--val) - var(--min))/var(--range)*(var(--track-w) - #{$thumb-d}));
+	display: grid;
+	justify-self: stretch;
+	place-content: center;
+	padding: .25em $track-p;
+	filter: grayScale(var(--not-focus));
+	counter-reset: n var(--n);
+	transition: filter $t;
+	
+	&--r { --c: #{nth($c, 3)} }
+	&--a { --c: #{nth($c, 4)} }
+	
+	> * { align-self: center }
+	label { margin: 0 calc(var(--js)*var(--j)*1vw) }
+	
+	&:focus-within { --focus: 1 }
+}
+
+input[type='range'] {
+	&, &::-webkit-slider-thumb, 
+	&::-webkit-slider-runnable-track {
+		-webkit-appearance: none
+	}
+	
+	display: var(--js, none);
+	grid-area: 
+		calc(1 + var(--not-j))/ 
+		calc(1 + var(--j));
+	width: var(--track-w); height: $thumb-d;
+	color: var(--c);
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track { @include track() }
+	
+	&::-moz-range-track { @include track() }
+	
+	&::-webkit-slider-thumb { @include thumb(1) }
+	
+	&::-moz-range-thumb { @include thumb() }
+	
+	&:focus { outline: solid 0 transparent }
+}
+
+output {
+	border-radius: 5px;
+	text-align: center;
+	counter-reset: val var(--val);
+	
+	form & {
+		grid-area: 
+			calc(1 + var(--i) + var(--not-j))/ 
+			calc(1 + var(--k)*(var(--not-i) + var(--j)) + var(--not-k));
+		justify-self: start;
+		min-width: 2.5em;
+		margin: 
+			calc(var(--js)*(var(--i)*1vw + var(--not-i)*#{-$arrow-b})) 
+			0 
+			calc(var(--js)*var(--not-i)*#{-$arrow-b}) 
+			calc(var(--js)*var(--not-i)*1vw);
+		transform: translate(calc(var(--i)*(var(--pos) - 50%)));
+		
+		@supports (background: conic-gradient(red, tan)) {
+			.js & {
+				--xy: calc(var(--i)*50%) calc(var(--not-i)*50%);
+				margin-top: calc(var(--not-i)*#{-$arrow-b} + var(--i)*1vw);
+				border: solid $arrow-b transparent;
+				border-radius: $arrow-b + $arrow-r;
+				--mask: 
+					linear-gradient(red, red) padding-box, 
+					conic-gradient(from calc(90deg - .5*#{$arrow-a} + var(--i)*90deg) at var(--xy), 
+							red #{$arrow-a}, transparent 0%) 
+						var(--xy)/ 50% 50% no-repeat border-box;
+				-webkit-mask: var(--mask);
+								mask: var(--mask);
+			}
+		}
+	}
+	
+	:not(pre) & { background: var(--c) }
+	
+	&::before { content: counter(val) var(--u) }
+}
+
+[for='a'] { --u: '°' }
+
+/* --------------- VISUAL --------------- */
+svg {
+	--c: #000;
+	--rf: calc(var(--r)/var(--r-max));
+	--mov: #{unquote(' ')};
+	--ang-a: calc(var(--a)*1deg);
+	--sgn-a: clamp(-1, var(--a), 1);
+	--abs-a: calc(var(--sgn-a)*var(--a));
+	--r-arc: calc(.5px*var(--r-min));
+	place-self: stretch;
+	fill: none;
+	
+	* { 
+		stroke: var(--c);
+		stroke-width: calc(var(--r-max)*var(--sm, .004px))
+	}
+}
+
+.axes { --c: #c0c0c0 }
+
+text { stroke: none }
+
+text, use, .point { fill: var(--c); }
+
+.meas, .rad { --sm: .01px }
+
+.meas {
+	--a-cut: clamp(0, calc(var(--abs-a) - 15), 1);
+	--c: #{nth($c, 4)}
+}
+
+g.meas { transform: scaley(var(--sgn-a)) }
+
+.arc {
+	r: var(--r-arc);
+	stroke-dasharray: calc(var(--abs-a)*1px) 360px;
+}
+
+.arr {
+	transform: 
+		rotate(calc(var(--sgn-a)*var(--ang-a))) 
+		translate(var(--r-arc));
+	opacity: var(--a-cut);
+	stroke-linejoin: round
+}
+
+[x2] { transform: var(--mov) scalex(calc(var(--rf)*var(--cos))) }
+[y2] { transform: var(--mov) scaley(calc(var(--rf)*var(--sin))) }
+
+.guide {
+	--c: #d7d7d7;
+	
+	&[x2] { --mov: translatey(calc(var(--y)*1px)) }	
+	&[y2] { --mov: translatex(calc(var(--x)*1px)) }
+}
+
+.proj { --c: #{nth($c, 1)} }
+.rad { --c: #{nth($c, 3)} }
+
+line.proj { --sm: .008px }
+
+line.rad {
+	transform: rotate(calc(var(--a)*1deg)) scalex(var(--rf));
+}
+
+.main {
+	--c: #{nth($c, 2)};
+	--sm: .006px;
+	r: calc(var(--r)*1px)
+}
+
+.point {
+	stroke: #140027;
+	
+	&--x { cx: calc(var(--x)*1px) }
+	&--y { cy: calc(var(--y)*1px) }
+}
+
+foreignObject {
+	--h: 1.5em;
+	position: relative;
+	x: calc(-.5*var(--w));
+	y: calc(-.5*var(--h));
+	width: var(--w);
+	height: var(--h);
+	
+	&.meas {
+		--w: 6ch;
+		--a-cut: clamp(0, calc(var(--abs-a) - 39), 1);
+		--r-cut: clamp(0, calc(var(--r) - 325), 1);
+		--flag: Min(1, calc(var(--a-cut) + var(--r-cut)));
+		transform: 
+			rotate(calc(.5*var(--ang-a))) 
+			translate(calc(var(--flag)*(var(--r-arc) + .325*(var(--w) + var(--h))) + (1 - var(--flag))*.4375*var(--r-arc))) 
+			rotate(calc(-.5*var(--ang-a)));
+	}
+	
+	&.rad {
+		--w: 4ch;
+		transform: 
+			rotate(calc(var(--ang-a))) 
+			translate(calc(var(--r)*.75px)) 
+			rotate(calc(-1*var(--ang-a)));
+	}
+	
+	&.cart {
+		--c: #{nth($c, 1)};
+		--w: 10ch;
+		transform: 
+			rotate(calc(var(--ang-a))) 
+			translate(calc(var(--r)*1px + .375*(var(--w) + var(--h)))) 
+			rotate(calc(-1*var(--ang-a)));
+		opacity: var(--s);
+		
+		output {
+			counter-reset: x var(--x) y var(--y);
+			
+			&::before { content: counter(x) ',' counter(y) }
+		}
+	}
+	
+	output {
+		position: absolute;
+		top: 50%; left: 50%;
+		padding: 0 2px 2px;
+		transform: translate(-50%, -50%);
+		background: var(--c);
+	}
+}
+
+/* --------------- CODE --------------- */
+pre {
+	display: grid;
+	place-content: center;
+	white-space: normal
+}
+
+.token {
+	&--form { display: flex }
+	
+	&--var { color: mix(nth($c, 2), #fff) }	
+	&--func { color: mix(nth($c, 5), #fff) }
+	&--len { color: mix(nth($c, 3), #fff) }
+	&--ang { color: mix(nth($c, 4), #fff) }
+	&--coord { color: mix(nth($c, 1), #fff) }
+	
+	&--oper:first-of-type, &--punc + &--oper {		
+		&::before, &::after {
+			white-space: pre;
+			content: ' '
+		}
+	}
+
+	&--oper:last-of-type, &--coord { opacity: var(--s) }
+}

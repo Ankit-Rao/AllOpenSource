@@ -1,0 +1,111 @@
+@import 'compass/css3';
+
+// #f8f8f8, #f5f5f7, #eaeaec, #e8e8ea
+$base-w: 10rem; // base width (of light grey area)
+$base-h: 3.25*$base-w; // base height (of light grey area)
+$base-p: .075*$base-w; // base padding (inside light grey area)
+$sh-tan: $base-w/$base-h; // tangent of shadow angle wrt horizontal
+$sh-ang: atan($sh-tan)*180deg/pi(); // shadow angle wrt horizontal
+$rond-r: .1*$base-w; // corner radius (of grey area)
+$bite-r: .65*$base-w; // bite radius
+$bite-y: $bite-r + 1.5*$rond-r; // vertical bite offset
+$in-off: .5*$rond-r; // inner offset
+$back-w: $base-w - 2*$in-off; // width of neon part showing through bite
+$back-h: $base-h - 2*$in-off; // height of neon part showing through bite
+$back-p: $rond-r - $in-off; // "padding" of neon part (incl in its content-box)
+$off-dx: $rond-r*sin($sh-ang); // inner horizontal offset
+$off-dy: $rond-r*cos($sh-ang); // inner vertical offset
+$out-dx: .75*$base-w; // outer horizontal offset
+$out-dy: $sh-tan*$out-dx; // outer vertical offset
+$full-w: $base-w - $rond-r + $off-dx + $out-dx; // full width of <p>
+$full-h: $base-h - $rond-r + $off-dy + $out-dy; // full height of <p>
+// "right margin" = distance between right edge of light grey area and right edge of <p>
+$full-m: $out-dx + $off-dx - $rond-r;
+
+* { margin: 0 }
+
+html { font: 2vw/ 1.25 bubbler one, trebuchet ms, sans-serif }
+
+body {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	overflow-x: hidden;
+	height: 100vh;
+	background: #404042
+}
+
+h1 {
+	order: var(--n);
+	color: #fff;
+	font-size: 5em;
+	font-weight: 900;
+	text-shadow: -1px -1px #999;
+	text-transform: uppercase
+}
+
+p {
+	box-sizing: border-box;
+	position: relative;
+	margin: 1em 0;
+	padding: 
+		/* top    */ $bite-y + $bite-r + $base-p 
+		/* right  */ $full-m + $base-p  
+		/* bottom */ 0 
+		/* left   */ $base-p;
+	width: $full-w; height: $full-h;
+	text-indent: 1em;
+	filter: drop-shadow(1px 1px 2px rgba(#000, .35));
+	counter-increment: c;
+	
+	&:last-of-type { margin-right: -$full-m }
+	
+	&:before, &:after {
+		position: absolute;
+		z-index: -1;
+		top: 0; left: 0;
+		border-radius: $rond-r
+	}
+	
+	&:before {
+		--points: 0 0,
+			$base-w - $rond-r + $off-dx $rond-r - $off-dy, 
+			100% $rond-r - $off-dy + $out-dy, 
+			100% 100%, 
+			$rond-r - $off-dx + $out-dx 100%, 
+			$rond-r - $off-dx $base-h - $rond-r + $off-dy;
+		padding: 
+			/* top    */ $in-off 
+			/* right  */ $full-m + $in-off 
+			/* bottom */ $out-dy + $off-dy - $rond-r + $in-off 
+			/* left   */ $in-off;
+		width: $back-w; height: $back-h;
+		background: 
+			radial-gradient(circle at calc(100% + .5rem) #{$bite-y - $in-off + .25rem}, transparent calc(#{$bite-r} - .5rem),  rgba(#000, .5) $bite-r) content-box, 
+			Linear-gradient(90deg, var(--c0), var(--c1) 50%, var(--c2) 0, var(--c3) 85%, var(--c4)) content-box, 
+			linear-gradient($sh-ang - 90deg, transparent,  rgba(#000, .65));
+		font: #{.625*$base-w}/ #{2*$bite-y} ubuntu, trebuchet ms, verdana, arial, sans-serif;
+		color: #fff;
+		text-indent: .8125em;
+		text-shadow: 1px 1px 1px #000;
+		-webkit-clip-path: polygon(var(--points));
+						clip-path: polygon(var(--points));
+		content: counter(c)
+	}
+	
+	&:after {
+		--mask: Radial-gradient(circle at 100% #{$bite-y}, transparent calc(#{$bite-r} - 1px), red #{$bite-r});
+		box-sizing: border-box;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		padding: $base-p;
+		width: $base-w; height: $base-h;
+		background: Linear-gradient(90deg, #f8f8f8, #f5f5f7 50%, #eaeaec 0, #e8e8ea);
+		font-size: 2em;
+		-webkit-mask: var(--mask);
+						mask: var(--mask);
+		content: attr(data-icon)
+	}
+}

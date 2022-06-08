@@ -1,0 +1,14 @@
+- var n_edges = 4, n_bars = 4;
+- var n = n_edges*n_bars;
+
+//- position & rotate the root coord syst
+.assembly
+	//- animates whole assembly in 3D
+	.mov
+		while n--
+			//- bars don't rotate, so we always see
+			//- the same 3 faces, no need for others
+			- var n_faces = 3;
+			.bar
+				while n_faces--
+					.bar__face

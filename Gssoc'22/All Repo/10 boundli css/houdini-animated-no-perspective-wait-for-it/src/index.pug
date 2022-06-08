@@ -1,0 +1,9 @@
+- let n_rot = 5, n_dot = 24;
+- let p = 2*n_rot*n_dot + 1;
+
+style .a3d { --n-dot: #{n_dot}; --p: #{p} }
+	- for(let k = 0; k < n_dot; k++)
+		| .dot:nth-child(#{n_dot}n + #{k + 1}) { --k: #{k} }
+.a3d
+	while p--
+		.dot(style=`--i: ${p}`)

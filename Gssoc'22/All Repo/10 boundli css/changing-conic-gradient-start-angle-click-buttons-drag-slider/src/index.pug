@@ -1,0 +1,49 @@
+- let val = 0, min = 0, max = 180;
+- let nst = 4, dif = max/nst;
+
+body(style=`--a: ${val}`)
+	form.sec
+		label(for='a') Start angle:
+		input#a(type='range' min=min max=max value=val)
+		output(for='a')
+		.button
+			- for(let i = 0; i <= nst; i++)
+				input(type='button' class=i === val ? 'hl' : null value=i*dif)
+	section#result
+	pre.sec
+		span.token--func repeating-conic-gradient
+		span.token--punc (
+		span.token--args
+			span.token--arg.token--ini
+				span.token--keyw from
+				|  
+				span.token--ang
+					span.token--num
+					span.token--unit deg
+			span.token--punc ,
+			|  
+			span.token--arg.token--stop
+				span.token--col.span.token--hex #000
+				|  
+				span.token--list.token--pos
+					span.token--item.token--perc
+						span.token--num 0
+						span.token--unit %
+					|  
+					span.token--item.token--perc
+						span.token--num 25
+						span.token--unit %
+			span.token--punc ,
+			|  
+			span.token--arg.token--stop
+				span.token--col.span.token--hex #eee
+				|  
+				span.token--list.token--pos
+					span.token--item.token--perc
+						span.token--num 0
+						span.token--unit %
+					|  
+					span.token--item.token--perc
+						span.token--num 50
+						span.token--unit %
+		span.token--punc )

@@ -1,0 +1,31 @@
+@function rad($c0: #000, $c1: #fff) {
+	@return radial-gradient(circle closest-side, $c0 calc(50% - 1px), $c1 50%, $c1 calc(100% - 1px), transparent 100%)
+}
+
+body {
+	display: grid;
+	place-content: center;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #000
+}
+
+.☯️ {
+	--d: 50%;
+	display: flex;
+	align-items: center;
+	width: var(--d); height: var(--d);
+	border-radius: 50%;
+	background: var(--mid, #{unquote(' ')}) linear-gradient(#fff 50%, #000 0);
+	background-repeat: no-repeat;
+	animation: a 5s linear infinite;
+	
+	//* outermost element */
+	:not(&) > & { --d: 80vmin }
+	
+	//* innermost element */
+	&:empty { --mid: #{rad()} 0 50%/ 50%, #{rad(#fff, #000)} 100% 50%/ 50%, }
+}
+
+@keyframes a { to { transform: rotate(1turn) } }

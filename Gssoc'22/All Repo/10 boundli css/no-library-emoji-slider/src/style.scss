@@ -1,0 +1,110 @@
+$c0: #ff6a13;
+$c1: #ffd100;
+$hue0: round(hue($c0)/1deg);
+$sat0: round(saturation($c0));
+$lum0: round(lightness($c0));
+$hue1: round(hue($c1)/1deg);
+$sat1: round(saturation($c1));
+$lum1: round(lightness($c1));
+
+$track-h: .5em;
+$track-r: .5*$track-h;
+$thumb-d: 1em;
+$offset: .5*($track-h - $thumb-d);
+
+@mixin track() {
+	border: none;
+	width: 100%; height: $track-h;
+	border-radius: $track-r;
+	background: #888b8d; /* works for no CSS vars here */
+	background-image: linear-gradient(90deg, 
+		$c0, currentcolor var(--x), transparent 0)
+}
+
+@mixin thumb() {
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	/* some visual fallback if no emoji */
+	box-shadow: inset 0 0 0 2px #eee;
+	background: #222;
+}
+
+* { margin: 0; padding: 0; color: inherit; font: inherit }
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: #222
+}
+
+form {
+	--x: calc(var(--val)/100*(100% - #{$thumb-d}));
+	position: relative;
+	width: 92vw;
+	max-width: 600px;
+	color: gainsboro; /* fallback for no CSS vars */
+	color: HSL(/* because nested calc doesn't work in Edge :( */
+		calc((1 - var(--val)/100)*#{$hue0} + var(--val)/100*#{$hue1}), 
+		calc((1 - var(--val)/100)*#{$sat0} + var(--val)/100*#{$sat1}), 
+		calc((1 - var(--val)/100)*#{$lum0} + var(--val)/100*#{$lum1}));
+	font: 2.5em/ 2 nunito, sans-serif
+}
+
+label[for='mood'] {
+	display: block;
+	margin-bottom: .75em;
+	font-size: .625em;
+	counter-reset: val var(--val)
+}
+
+input[id='mood'] {
+	&, &::-webkit-slider-thumb, 
+	&::-webkit-slider-runnable-track { -webkit-appearance: none }
+	
+	display: block;
+	width: 100%; height: $track-h;
+	background: none;
+	cursor: pointer;
+	
+	&::-webkit-slider-runnable-track { @include track }
+	
+	&::-moz-range-track { @include track }
+	
+	&::-ms-track { @include track; color: transparent }
+	
+	&::-ms-fill-lower {
+		border-radius: $track-r 0 0 $track-r;
+		background-image: linear-gradient(90deg, $c0, $c1); /* no var fallback */
+		background-image: linear-gradient(90deg, $c0, var(--c, currentcolor));
+	}
+	
+	&::-webkit-slider-thumb { @include thumb; margin-top: $offset }
+	
+	&::-moz-range-thumb { @include thumb }
+	
+	&::-ms-thumb { @include thumb; margin-top: 0 }
+	
+	&:focus { outline: dashed 1px #ff6a13 }
+}
+
+output[for='mood'] {
+	/* for browsers that don't support vars, 
+	 * so won't place the emoji correctly even if 
+	 * they display it and not show a rectangle */
+	display: none;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	bottom: $offset; left: var(--x);
+	width: $thumb-d; height: $thumb-d;
+	pointer-events: none
+}
+
+/* if CSS variables are supported */
+@supports (margin: var(--m, 1em)) {
+	label[for='mood']:after { content: ': ' counter(val) '%' }
+	output[for='mood'] { display: flex }
+}

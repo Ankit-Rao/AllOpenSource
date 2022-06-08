@@ -1,0 +1,50 @@
+$w: .5em;
+$h: 8em;
+$p: 25;
+$t: 3.75s;
+
+body {
+	display: flex;
+	margin: 0;
+	height: 100vh;
+	background: #222;
+}
+
+section { flex: 1 } // DONE
+
+#s0 {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	
+	.bar {
+		margin: 0 .5vmin calc(50vh - #{.5*$h}) .5vmin;
+		padding: 0 .25vmin;
+	}
+}
+
+#s1 {
+	position: relative;
+	
+	.bar {
+		position: absolute;
+		top: 50%; left: 50%;
+		margin-left: -.5*$h;
+		transform-origin: 50% 0;
+		transform: 
+			rotate(calc(var(--i)*360deg/var(--n)))
+			translatey(3*$w);
+	}
+}
+
+.bar {
+	width: $w; height: $h;
+	border-radius: .5*$h;
+	animation: a $t ease-in-out calc(var(--i)*#{-$t}/var(--n)) infinite
+}
+
+@keyframes a {
+	@for $i from 0 to $p {
+		#{$i*100%/$p} { height: random()*$h; }
+	}
+}

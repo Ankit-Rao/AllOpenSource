@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Vertical HSL bicone slicing</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&family=Ubuntu+Mono&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body style="--h: 0; --s: 100; --l: 15">
+  <form>
+    <div class="wrap" style="--val: var(--h); --max: 360">
+      <label for="h">Hue</label>
+      <input id="h" type="range" value="0" max="360"/>
+      <output for="h" data-unit="°"></output>
+    </div>
+  </form>
+  <section>
+    <div class="graphic">
+      <div class="tri"></div>
+      <div class="axs sat" data-lbl="Saturation"></div>
+      <div class="axs lum" data-lbl="Lightness"></div><code class="lbl" style="--s: 0; --l: 0"></code><code class="lbl" style="--s: 0; --l: 50"></code><code class="lbl" style="--s: 0; --l: 100"></code><code class="lbl" style="--s: 100; --l: 50"></code>
+      <output class="pos" for="h s l"></output>
+    </div>
+  </section>
+  <form>
+    <div class="wrap" style="--val: var(--s)">
+      <label for="s">Saturation</label>
+      <input id="s" type="range" value="100"/>
+      <output for="s" data-unit="%"></output>
+    </div>
+    <div class="wrap" style="--val: var(--l)">
+      <label for="l">Lightness</label>
+      <input id="l" type="range" value="15"/>
+      <output for="l" data-unit="%"></output>
+    </div>
+  </form>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

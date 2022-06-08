@@ -1,0 +1,14 @@
+- let n = 8;
+
+.canvas(style=`--n: ${n}`)
+	.iso
+		- for(var i = 0; i < n; i++) {
+			- let avg = 100/(n + 2);
+			- let dif = ~~(.5*n);
+			- let min = n - dif;
+			- let max = n + dif;
+			- let rd = +(min + 2*dif*Math.random()).toFixed(2);
+			.bubble(style=`--rd: ${rd}; --i: ${i}`)
+		- }
+button#sort(style='--sl: #22a9e1, #edee62') Sort!
+button#rand(style='--sl: #e50889, #f68e1b') Mess Up!

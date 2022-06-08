@@ -1,0 +1,44 @@
+c = #8AAAFF, #FA8CFF
+h = .25em
+
+bar()
+	border none
+	border-radius .5*h
+	background #E6EEFF
+
+val()
+	border none
+	border-radius inherit
+	background linear-gradient(90deg, c)
+
+body, #loader
+	display flex
+	justify-content center
+	align-items center
+
+body
+	height 100vh
+
+#loader
+	flex-direction column-reverse
+	color c[0]
+	font 2.5em sans-serif
+
+progress[value]
+	width 12.5em
+	height h
+	bar()
+	&::-webkit-progress-bar
+		bar()
+	&::-webkit-progress-value
+		val()
+	&::-moz-progress-bar
+		val()
+	&::-ms-fill
+		val()
+		
+output:not(:empty)
+	padding-bottom 1em
+	
+	&:after
+		content '%'

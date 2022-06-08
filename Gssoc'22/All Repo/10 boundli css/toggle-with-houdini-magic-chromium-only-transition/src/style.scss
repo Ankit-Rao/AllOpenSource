@@ -1,0 +1,78 @@
+$d: 9em;
+$b: 1em;
+$c0: #f3e5d3;
+$c1: #7e86fa;
+$cs: #d7d6ff;
+
+$r: .5*$d;
+$h: .5*$b;
+$o0: .35*$d;
+$m0: $d - 2*$o0;
+$o1: 3*$h;
+
+body {
+  display: grid;
+  place-content: center;
+  margin: 0;
+  min-height: 100vh;
+  background: $c0
+}
+
+#toggle {
+  z-index: 2;
+  width: 2*($d + $b); height: $d + 2*$b;
+  opacity: 0;
+  
+  &, + [for='toggle'] {
+    grid-area: 1/ 1;
+    clip-path: inset(0 round $r + $b);
+    cursor: pointer
+  }
+  
+  + [for='toggle'] {
+    --i: 0;
+    --not-i: calc(1 - var(--i));
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr;
+    overflow: hidden;
+    border: solid $b transparent;
+    width: 2*$d; height: $d;
+    --c: rgb(calc(var(--not-i)*#{red($c0)} + var(--i)*#{red($c1)}), 
+             calc(var(--not-i)*#{green($c0)} + var(--i)*#{green($c1)}), 
+             calc(var(--not-i)*#{blue($c0)} + var(--i)*#{blue($c1)}));
+    background: 
+      radial-gradient(closest-side, var(--c) calc(100% - 1px), transparent) 
+        calc(var(--i)*100%)/ #{50%} no-repeat, 
+      radial-gradient(closest-side, rgba($cs, var(--i)) 65%, transparent) 
+        calc(var(--i)*100% + #{$b}) #{$b}/ #{50%} no-repeat
+      #fff;
+    color: transparent;
+    user-select: none;
+    transition: --i .5s;
+    
+    &::before, &::after {
+      --j: 0;
+      --not-j: calc(1 - var(--j));
+      --sgn-j: calc(2*var(--j) - 1);
+      grid-area: 1/ 1;
+      place-self: center;
+      width: $d; height: $h;
+      transform: 
+        translate(calc(var(--i)*100%)) 
+        rotate(calc(var(--sgn-j)*45deg - var(--i)*.5turn)) 
+        translate(calc(var(--i)*var(--j)*#{.25*$m0}), 
+          calc(var(--i)*(var(--not-j)*#{-.25*$m0} + 
+                         var(--j)*(#{$o1} - #{$r} + 50%))));
+      background: #fff;
+      --o: calc(var(--not-i)*#{2*$b} + 
+                var(--i)*(var(--not-j)*#{$o1} + 
+                          var(--j)*#{$o0}));
+      clip-path: inset(0 var(--o) round .5*$h);
+      content: ''
+    }
+    
+    &::after { --j: 1 }
+  }
+  
+  &:checked + [for='toggle'] { --i: 1 }
+}

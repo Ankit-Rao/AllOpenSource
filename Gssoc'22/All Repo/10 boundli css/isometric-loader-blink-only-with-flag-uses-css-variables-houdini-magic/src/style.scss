@@ -1,0 +1,43 @@
+$r: 2em;
+$f: 4;
+$c: #4968fc #38ebf5;
+
+html { background: #1d2430 }
+
+div { position: absolute }
+
+div:not(:empty) { transform-style: preserve-3d }
+
+.a3d {
+	top: 50%; left: 50%;
+	transform: rotatex(-35deg) rotatey(-45deg)
+}
+
+.bar {
+	transform-origin: 0 $r 0;
+	--a: calc(360deg*var(--idx)/var(--n));
+	transform: rotatey(var(--a)) translate3d($r, $f*$r, $r) rotatey(calc(-1*var(--a))) scaley(var(--f));
+	--dx: .4;
+	--cx: calc((1 - var(--dx))*var(--idx)/var(--n));
+	animation: s 1.25s cubic-bezier(var(--cx), 0, calc(var(--dx) + var(--cx)), 1) infinite;
+	
+	&:nth-child(2n) { --p: 0 }
+}
+
+@keyframes s { 47.5%, 52.5% { --f: #{$f} } }
+
+.face {
+	--i: 0;
+	--j: calc(1 - var(--i));
+	--m: 1;
+	margin: -$r;
+	padding: $r;
+	transform: rotate3d(var(--i), var(--j), 0, calc(var(--m)*90deg)) translatez($r);
+	box-shadow: 0 0 calc(var(--i)*1px) nth($c, 1);
+	background: linear-gradient(nth($c, 1) calc(var(--i)*100%), nth($c, 2));
+	filter: brightness(calc(1 - var(--j)*(var(--m) + var(--p, 1))*.08));
+	
+	&:nth-child(1) { --m: 0 }
+	
+	&:nth-child(3) { --i: 1 }
+}

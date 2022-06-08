@@ -1,0 +1,13 @@
+- let val = 40;
+
+svg(width='0' height='0')
+	symbol#vico(viewBox='0 -48 98 96')
+		g
+			path(d='M60 22a25 25 0 0 0 0-44')
+			path(d='M24-11h-19v22h19l20 20v-62z')
+		path(d='M65 40a43 43 0 0 0 0-80')
+
+div(role='group' aria-label='volume slider' style=`--val: ${val}`)
+	svg.ico(style='--ico: 0'): use(xlink:href='#vico')
+	input(type='range' value=val list='l')
+	svg.ico(style='--ico: 1'): use(xlink:href='#vico')

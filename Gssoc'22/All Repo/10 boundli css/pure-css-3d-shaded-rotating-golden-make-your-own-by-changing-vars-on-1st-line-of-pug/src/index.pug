@@ -1,0 +1,28 @@
+//- change these three values to change the shape of the star
+//- n is the number of star points (must be at least 3)
+//- rf is a factor between 0 and 1; the smaller it is, the pointier the star
+//- hf is a height factor that controls the height of the two star pyramids making up the star
+- let n = 5, rf = .5, hf = .3;
+
+//- computed values
+- let m = 2*n, ba = Math.PI/n, cos_ba = Math.cos(ba);
+- let rri = rf*cos_ba, rh = hf;
+- let sq = 1 + Math.pow(rri, 2) - 2*rri*cos_ba;
+- let re = Math.sqrt(sq);
+- let cos_ax = .5*(1 + sq - Math.pow(rri, 2))/re;
+- let rad_ax = Math.acos(cos_ax);
+- let rad_ay = Math.atan(Math.sin(rad_ax)/rh);
+- let rsw = +Math.hypot(rh, Math.sin(rad_ax)).toFixed(2);
+- let rsh = +cos_ax.toFixed(2);
+- let deg_ax = +(rad_ax*180/Math.PI).toFixed(2);
+- let deg_ay = +(rad_ay*180/Math.PI).toFixed(2);
+- let rcm = +(.5*(.5*Math.PI - rad_ax)/Math.PI).toFixed(3);
+
+style
+	| .arm { --q: 0 }
+	| .arm:nth-child(n + #{n + 1}) { --q: 1 }
+	- for(let i = 0; i < n; i++)
+		| .arm:nth-child(#{n}n + #{i + 1}) { --i: #{i} }
+div(class='⭐' style=`--n: ${n}; --re: ${+re.toFixed(2)}; --rsw: ${rsw}; --rsh: ${rsh}; --ax: ${deg_ax}deg; --ay: ${deg_ay}deg; --rcm: ${rcm}`)
+	- for(let i = 0; i < m; i++)
+		.arm

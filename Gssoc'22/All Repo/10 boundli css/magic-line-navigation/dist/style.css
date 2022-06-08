@@ -1,0 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: repeat(2, -webkit-max-content) 1fr;
+  grid-template-rows: repeat(2, max-content) 1fr;
+  padding: 2.5em;
+  min-height: 100vh;
+  background: linear-gradient(rgba(10, 23, 43, 0.95), rgba(10, 23, 43, 0.95)), url(http://www.evolva.com/wp-content/uploads/2015/08/Eve-Vanillin.jpg) 50%/cover fixed;
+  color: #909cac;
+  font: 300 1em/1.25 open sans, sans-serif;
+}
+
+h3 {
+  font-size: 150%;
+  font-weight: 600;
+  line-height: 2;
+  text-transform: uppercase;
+}
+
+p a {
+  color: #1abc9c;
+}
+
+em {
+  display: block;
+  padding-top: 0.5em;
+  font-size: 75%;
+}
+
+nav {
+  --hover: var(--curr);
+  --h: 4.375em;
+  place-self: center;
+  position: relative;
+  border-right: solid 1px currentcolor;
+  font-size: 0.875em;
+  line-height: 5;
+}
+nav:after {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 3px;
+  height: var(--h);
+  border-radius: 1.5px;
+  background: #1abc9c;
+  transform: translatey(calc(var(--hover)*var(--h)));
+  transition: transform 0.3s cubic-bezier(0.21, 0.61, 0.35, 1);
+  content: "";
+}
+nav a {
+  --iscurr: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1em;
+  min-width: 9em;
+  height: var(--h);
+  color: inherit;
+  font-weight: calc(300*(1 + var(--iscurr)));
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+[aria-current] {
+  --iscurr: 1 ;
+}

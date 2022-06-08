@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+div {
+  position: absolute;
+  padding: 50vmin;
+  border-radius: 50%;
+  transform-origin: 0 0;
+}

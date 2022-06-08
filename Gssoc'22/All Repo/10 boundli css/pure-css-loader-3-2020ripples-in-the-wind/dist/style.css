@@ -1,0 +1,64 @@
+.wrap, body:before, body:after {
+  --wrap-r: calc(2em/var(--f));
+  overflow: hidden;
+  top: calc(50% - var(--wrap-r));
+  left: calc(50% - var(--wrap-r));
+  padding: var(--wrap-r);
+  border-radius: 50%;
+}
+
+body {
+  margin: 0;
+  background: #000;
+}
+body:before, body:after {
+  position: absolute;
+  content: "";
+}
+body:before {
+  background: radial-gradient(transparent 50%, #000), repeating-conic-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 10%), conic-gradient(cyan, magenta, yellow, cyan);
+  animation: rot 15.37s linear infinite reverse;
+}
+body:after {
+  transform: scale(1.01);
+  box-shadow: inset 0 0 5px 5px #000;
+}
+
+div {
+  position: absolute;
+}
+
+.wrap {
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2em #fff;
+  background: #000;
+  filter: contrast(99);
+  mix-blend-mode: multiply;
+  animation: rot 13.95s linear infinite;
+}
+
+@keyframes rot {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.item {
+  transform: rotate(calc(var(--i)*1turn/var(--n))) translate(var(--wrap-r));
+  filter: blur(9px);
+}
+.item:before {
+  position: absolute;
+  margin: -2em;
+  padding: 2em;
+  border-radius: 9%;
+  transform: translate(-50%) rotate(var(--ra0)) skewx(var(--sxa0)) skewy(var(--sya0)) scale(var(--fx0), var(--fy0));
+  background: #fff;
+  animation: ani var(--t) infinite calc(var(--dt)*var(--t)) alternate;
+  content: "";
+}
+
+@keyframes ani {
+  to {
+    transform: translate(-50%) rotate(var(--ra1)) skewx(var(--sxa1)) skewy(var(--sya1)) scale(var(--fx1), var(--fy1));
+  }
+}

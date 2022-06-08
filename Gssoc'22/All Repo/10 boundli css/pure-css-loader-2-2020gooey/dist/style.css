@@ -1,0 +1,57 @@
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+body:before {
+  display: block;
+  background: radial-gradient(circle, #85a29e, #ffebbf, #f0d442, #f59330, #b22148, #000 15em);
+  height: 100vh;
+  content: "";
+}
+
+div {
+  position: absolute;
+}
+
+.a {
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  margin: calc(-15em + 2*-1em);
+  padding: calc(15em + 2*1em);
+  background: #000;
+  filter: contrast(99);
+  mix-blend-mode: multiply;
+  animation: rot 6s linear infinite;
+}
+
+@keyframes rot {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.spark {
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  margin: -1em;
+  padding: 1em;
+  border-radius: 50%;
+  --pos: rotate(calc(var(--i)*1turn/var(--n0)));
+  animation: mov 1.5s ease-out calc((var(--i)+var(--j))*-3s/(var(--n))) infinite alternate;
+  background: #fff;
+  filter: blur(9px);
+}
+
+@keyframes mov {
+  0%, 10% {
+    transform: var(--pos) translate(15em) scale(0.5, 0.25);
+  }
+  90%, 100% {
+    transform: var(--pos);
+  }
+}

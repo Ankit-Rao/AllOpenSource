@@ -1,0 +1,96 @@
+@import 'compass/css3';
+
+$n-edges: 4;
+$n-bars: 4;
+$bg: darken(indigo, 15%);
+$c: #ddd;
+$w: 4em; // bar width
+$h: 5*$w; // bar height
+$ba: 360deg/$n-edges; // base angle
+$g: .5*$w; // gap
+$off: $w + $g; // offset between bars
+$l: $n-bars*$off; // edge length
+$ri: .5*$l/tan(.5*$ba); // inradius
+$p: 50%/$n-edges/$n-bars;
+
+html { overflow: hidden; }
+body { background: $bg; }
+div, :after { position: absolute; }
+div { transform-style: preserve-3d; }
+
+.assembly {
+	top: 50%; left: 50%;
+	transform: rotateX(55deg) rotate(-45deg) 
+		translateZ(-.25*$h) scale3d(.5, .5, .5);
+}
+
+.mov { animation: mov 1.75s linear infinite; }
+
+.bar {
+	animation: inherit;
+	animation-timing-function: ease-out;
+	
+	@for $i from 0 to $n-edges {
+		$ca: $i*$ba; // current angle
+		
+		@for $j from 0 to $n-bars {
+			$idx: $i*$n-bars + $j + 1;
+			$y0: ($j - .5*$n-bars)*$off;
+			// rotate for every edge
+			// change of coord from rot by $ca
+			$x: $ri*cos($ca) - $y0*sin($ca);
+			$y: $ri*sin($ca) + $y0*cos($ca);
+			
+			&:nth-child(#{$idx}) {
+				// fix Firefox 3D order
+				z-index: floor(($y - $x)/1em);
+				margin: $y $x;
+				animation-name: mov#{$idx};
+			}
+			
+			@keyframes mov#{$idx} {
+				0%, #{10% + 1.5*($idx - 1)*$p} {
+					transform: none;
+				}
+				#{15% + 1.5*$idx*$p}, 100% {
+					transform: translateZ(.5*$h);
+				}
+			}
+		}
+	}
+	
+	&__face {
+		$n-faces: 3;
+		margin: -.5*$h (-.5*$w); 
+		width: $w; height: $h;
+		background: darken($c, 13%);
+		
+		&:nth-child(-n + #{$n-faces - 1}):after {
+			width: inherit; height: inherit;
+			background: linear-gradient($bg 16%, 
+						rgba($bg, 0));
+			content: '';
+		}
+		
+		@for $i from 0 to $n-faces - 1 {
+			&:nth-child(#{$i + 1}) {
+				transform: rotateX(90deg)
+					rotateY(($i + 1)*-90deg) 
+					translateZ(.5*$w);
+				box-shadow: inset 
+					pow(-1, $i)*2px -2px 8px $c;
+			}
+		}
+		
+		&:last-child {
+			margin-top: -.5*$w; height: $w;
+			transform: translateZ(.5*$h);
+			box-shadow: inset 2px -2px 8px $c;
+			background: darken($c, 4%);
+		}
+	}
+}
+
+@keyframes mov {
+	0% { transform: translateZ(.5*$h); }
+}

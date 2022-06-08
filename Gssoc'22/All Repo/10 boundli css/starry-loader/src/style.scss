@@ -1,0 +1,30 @@
+$t: 2s;
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: 100vh;
+	background: #000
+}
+
+.scene { perspective: 7em }
+
+.ring {
+	display: grid;
+	grid-gap: 5em;
+	transform-style: preserve-3d;
+	animation: r $t linear calc(var(--k)*#{-.5*$t}) infinite;
+	
+	&:before, &:after {
+		color: gold;
+		animation: inherit;
+		animation-direction: reverse;
+		content: '⭐'
+	}
+	
+	&:after { filter: hue-rotate(.5turn) }
+}
+
+@keyframes r { 0% { transform: rotateX(1turn) } }

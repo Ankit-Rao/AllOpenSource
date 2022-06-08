@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  height: 100vh;
+  perspective-origin: 50% calc(50% - 2.5em);
+  perspective: 35em;
+  background: #121212;
+}
+
+div, :before {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.system {
+  --ax: 10deg;
+  top: 50%;
+  left: 50%;
+  transform: rotatex(calc(-1*var(--ax)));
+}
+
+.orbit {
+  --r: calc(var(--f)*2em);
+  --hsl: calc(var(--i)*360/var(--n)), 100%, 65%;
+  --t: calc(3s + var(--i)*.75s);
+  animation: rot var(--t) linear infinite;
+}
+.orbit:before {
+  position: absolute;
+  border: solid 4px rgba(255, 255, 255, 0.1);
+  padding: calc(var(--r) - 1px);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotatex(-90deg);
+  content: "";
+}
+
+@keyframes rot {
+  to {
+    transform: rotatey(1turn);
+  }
+}
+.planet {
+  --ay: calc(var(--j)/var(--m)*var(--a));
+  transform: rotatey(var(--ay)) translatez(var(--r)) rotatey(calc(-1*var(--ay))) rotatex(var(--ax));
+}
+.planet:before {
+  margin: -0.5em;
+  padding: 0.5em;
+  border-radius: 50%;
+  background: radial-gradient(circle at 65% 35%, #fff, HSL(var(--hsl)));
+  animation: rot var(--t) linear infinite reverse;
+  content: "";
+}

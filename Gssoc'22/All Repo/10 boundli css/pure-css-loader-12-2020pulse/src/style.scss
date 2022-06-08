@@ -1,0 +1,53 @@
+$w: 9em;
+$h: .75em;
+$r: .5*$h;
+$t: .1s;
+
+body {
+	display: grid;
+	place-content: center;
+	overflow: hidden;
+	margin: 0;
+	height: 100vh;
+	background: #000;
+}
+
+.eq {
+	position: relative;
+	animation: rot 18s steps(var(--n)) infinite
+}
+
+@keyframes rot { to { transform: rotate(1turn) } }
+
+.bar {
+	&, &:before, &:after {
+		position: absolute;
+		width: $w; height: $h;
+		border-radius: $r;
+	}
+	
+	overflow: hidden;
+	top: calc(50% - #{$r}); left: 50%;
+	transform-origin: 0 50%;
+	transform: 
+		rotate(calc((var(--k) + .5)*1turn/var(--n)))
+		translate(calc(.75*#{$h}*var(--f)));
+	
+	&:before, &:after {
+		transform: translate(calc(#{$h} - 100%));
+		background: HSL(calc(var(--k)/var(--n)*360), 100%, 75%);
+		animation: osc $t ease-in calc(var(--k)*#{-6*$t}/var(--n)) infinite alternate;
+		content: ''
+	}
+	
+	&:after {
+		animation: peak var(--t) ease-in var(--dt) infinite alternate
+	}
+}
+
+@keyframes osc { to { transform: translate(calc(2*#{$h} - 100%)) } }
+
+@keyframes peak {
+	0%, 90% { transform: translate(calc(#{$h} - 100%)) }
+	100% { transform: translate(calc(#{$h} - 100% + var(--tx))) }
+}

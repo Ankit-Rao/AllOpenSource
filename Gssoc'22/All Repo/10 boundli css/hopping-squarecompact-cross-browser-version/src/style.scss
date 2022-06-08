@@ -1,0 +1,80 @@
+$d: 6.25em;
+$s: 4*$d;
+$top: 55%;
+$left: 50%;
+$sh-w: $d + 1.5em;
+$sh-h: 1.125em;
+$duration: 1.6s;
+$easing: cubic-bezier(.72,.03,.28,.97);
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh
+}
+
+.frame {
+	overflow: hidden;
+	position: relative;
+	width: $s; height: $s;
+	border-radius: 3px;
+	box-shadow: 1px 2px 10px rgba(#000, .2);
+	background: #3498db;
+	
+	* {
+		position: absolute;
+		top: $top; left: $left;
+	}
+}
+
+.jump {
+	transform: translateY(-100px);
+	animation: jump $duration ease-in infinite
+}
+
+.squeeze {
+	transform-origin: 50% .5*$d;
+	animation: squeeze $duration $easing infinite
+}
+
+.rotate {
+	margin: -.5*$d;
+	width: $d; height: $d;
+	transform: rotate(-135deg);
+	background: #fff;
+	animation: rotate $duration ease-out infinite;
+}
+
+.shadow {
+	margin: .5*($d - $sh-h) (-.5*$sh-w);
+	width: $sh-w; height: $sh-h;
+	border-radius: 50%;
+	transform: scaleX(.5);
+	background: rgba(#000, .2);
+	animation: shadow $duration ease-in-out infinite;
+}
+
+@keyframes jump {
+	20%, 75% { 
+		transform: translateY(0);
+		animation-timing-function: ease-in-out
+	}
+}
+
+@keyframes squeeze {
+	0%, 4%, 100% { transform: scale(1) }
+	45% { transform: scale(1.8, .4) }
+}
+
+@keyframes rotate {
+	20%, 80% {
+		transform: rotate(0deg);
+		animation-timing-function: ease-in
+	}
+	100% { transform: rotate(135deg) }
+}
+
+@keyframes shadow {
+	45%, 50% { transform: scaleX(1.8) } 
+}

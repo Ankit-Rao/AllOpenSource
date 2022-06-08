@@ -1,0 +1,108 @@
+@property --a0 {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --da {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --dy {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+@property --fy {
+  syntax: '<number>';
+  initial-value: 1;
+  inherits: false;
+}
+body {
+  display: grid;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  background: #000;
+}
+body::before {
+  background: Radial-Gradient(closest-side, #569fff 50%, rgba(86, 159, 255, 0) 90%) 50%/ 13em 13em no-repeat, conic-gradient(#569fff, #00d2d3, #54a0ff, #5f27cd, #569fff);
+  content: "";
+}
+
+div, ::before, ::after {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  border-radius: 50%;
+}
+
+.loader {
+  border-radius: 0;
+  background: #000;
+  filter: contrast(9);
+  mix-blend-mode: multiply;
+}
+.loader__comp {
+  place-self: center;
+  filter: blur(9px);
+}
+.loader__comp--arc {
+  --da: 17.62947deg;
+  transform: rotate(calc(var(--a0) - 8.81474deg));
+  animation: rot 1.25s linear infinite, exp 0.625s ease-out infinite alternate;
+}
+.loader__comp--arc::before, .loader__comp--arc::after {
+  place-self: center;
+  content: "";
+}
+.loader__comp--arc::before {
+  border: solid 1em transparent;
+  padding: 6.5em;
+  background: radial-gradient(circle at 50% 0.5em, #ffffff 0.5em, rgba(0, 0, 0, 0) 0%), conic-gradient(#fff var(--da, 30deg), transparent 0%);
+  background-origin: border-box;
+  --full: linear-gradient(#ffffff, #ffffff);
+  --mask: var(--full) padding-box, var(--full) border-box;
+  -webkit-mask: var(--mask);
+  -webkit-mask-composite: xor;
+  mask: var(--mask);
+  mask-composite: exclude;
+}
+.loader__comp--arc::after {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%/ 90% 90% 10% 10%;
+  transform: rotate(var(--da)) translatey(-7em);
+  background: #fff;
+}
+.loader__comp--drop {
+  padding: 0.8125em;
+  transform-origin: 50% 100%;
+  transform: translatey(calc(var(--dy) - 6.5em)) scaley(var(--fy));
+  background: #fff;
+  animation: mov 1.25s ease-in infinite, vis 1.25s ease-in infinite;
+}
+
+@keyframes rot {
+  to {
+    --a0: 360deg;
+  }
+}
+@keyframes exp {
+  to {
+    --da: 90deg;
+  }
+}
+@keyframes mov {
+  35%, 100% {
+    --dy: 12.5em;
+  }
+}
+@keyframes vis {
+  35% {
+    --fy: 1.5;
+  }
+  50%, 100% {
+    --fy: 0;
+  }
+}

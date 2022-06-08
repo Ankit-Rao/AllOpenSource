@@ -1,0 +1,57 @@
+- var w = 4001, h = .73*w;
+- var ox = -.5*w, oy = -.5*h;
+- var sym = ['❤️', '🌸', '🌿'], n = sym.length;
+
+- for(var i = 0; i < 101; i++) {
+	- var idx = Math.floor(n*Math.random());
+	- var x = Math.floor(101*Math.random());
+	- var y = idx ? 0 : Math.floor(101*Math.random());
+	- var t0 = +((1 + idx)*(3 + 29*Math.random())).toFixed(2);
+	- var dt0 = -1*(Math.random()*t0).toFixed(2);
+	- var t1 = idx ? +(3 + 7*Math.random()).toFixed(2) : t0;
+	- var dt1 = -1*(Math.random()*t1).toFixed(2);
+	- var dx = +((idx || 3)*(2 + 3*Math.random())).toFixed(2);
+	- var a0 = idx ? 0 : +(31*Math.random()).toFixed(2);
+	- var a1 = idx ? 359 : +(a0 + 89 + 271*Math.random()).toFixed(2);
+	.sym(class=idx?'fall':'grow' data-sym=sym[idx] style=`--x: ${x}vw; --y: ${y}vh; --t0: ${t0}s; --dt0: ${dt0}s; --t1: ${t1}s; --dt1: ${dt1}s; --dx: ${dx}em; --a0: ${a0}deg; --a1: ${a1}deg`)
+- }
+
+svg(viewBox=[ox, oy, w, h].join(' '))
+	radialGradient#grad--upper(r='653%' fy='101%')
+		stop(offset='.0887' stop-color='var(--body-c0)')
+		stop(offset=".089" stop-color='var(--body-c1)')
+		stop(offset=".1049" stop-color='var(--body-c1)')
+		stop(offset='.1051' stop-color='var(--body-c0)')
+	radialGradient#grad--lower(r='950%' fy='2%' gradientTransform='scale(1 .5)')
+		stop(offset='.0887' stop-color='var(--body-c1)')
+		stop(offset=".089" stop-color='var(--body-c0)')
+		stop(offset=".1049" stop-color='var(--body-c0)')
+		stop(offset='.1051' stop-color='var(--body-c1)')
+		stop(offset='.1213' stop-color='var(--body-c1)')
+		stop(offset=".1217" stop-color='var(--body-c0)')
+		stop(offset=".1549" stop-color='var(--body-c0)')
+		stop(offset='.1573' stop-color='var(--body-c1)')
+		stop(offset='.1747' stop-color='var(--body-c1)')
+		stop(offset=".1753" stop-color='var(--body-c0)')
+	g#cicada
+		g#head
+			g#head--side
+				circle.eye(r='37' cx='101' cy='-233')
+				path.ant(d='M67-317q89-73 149-37q-67-47-163 37')
+			use(xlink:href='#head--side' transform='scale(-1 1)')
+			ellipse(rx='83' ry='67' cy='-281')
+		g#body
+			path.upper(d='M-89 83C-433-373 433-373 97 83')
+			ellipse.lower(rx='137' ry='271' cy='293')
+			g#body--side
+				path.upper(d='M151-181l23-13 3 3 37-19 13-53 89-41-73 53-11 53-53 31 5 5-37 19M131-53l23 11-2 5 37 19 67-5 67 61-71-43-61 5-37-19-5 5-23-11')
+				path.lower(d='M79 83l23 11-1 5 67 41 67-5 53 61-61-43-61 5-53-37-5 5-23-11')
+				g.wing.lower
+					path(d='M89 0c-19 67-17 127 167 263s229 127 317 5-67-233-181-241z')
+					path(d='M251 257q137-37 241 89M89 0q151 199 283 263 53-137 197 5M461 199q23-97 103-79M479 167q-199-127-307-71M397 113q0-67-17-89')
+				g.wing.upper
+					path(d='M89 0c5-79 53-151 211-251s127-131 491-131 337 97 199 199-71 41-199 157-181 73-701 31z')
+					path(d='M97-37q839 17 977-293M127-101q367-101 409-263M109-71q263-7 271-127M373-173q71 67 17 131M487-277c37 89 277 0 283-113M409-127q151 -51 181-113M563-199q127 37 167 103M673-151q349-227 397-181M823-241q53-67 7-137M523-53q73 53 67 101')
+			use(xlink:href='#body--side' transform='scale(-1 1)')
+	line(y1=oy y2=-oy)
+	line(x1=ox x2=-ox) 

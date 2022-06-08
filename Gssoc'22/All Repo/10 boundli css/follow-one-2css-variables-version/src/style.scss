@@ -1,0 +1,70 @@
+$bg: #222;
+$c: #ddd;
+$n-dots: 12; // same as in Haml code
+$d-dot: 1.375em; // dot diameter
+$d-ring: 16.25em; // ring diameter
+$t: 2s; // animation duration
+$ba: 360deg/$n-dots; // base angle
+$bw: .5*$d-dot; // ring thickness
+$tx: .5*($d-ring - $bw);
+$r-rot: 2*$d-dot;
+$sh: 0 0 0 .625*$bw $bg;
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	perspective: 20em;
+	background: $bg;
+}
+
+div, :after {
+	--pos: #{unquote(' ')};
+	--off: #{unquote(' ')};
+	--k: calc(1 - var(--j));
+	position: absolute;
+	top: 50%; left: 50%;
+	border-radius: 50%;
+	transform-style: preserve-3d;
+	animation: r $t linear infinite
+}
+
+.assembly {
+	--j: 0;
+	box-sizing: border-box;
+	margin: -.5*$d-ring;
+	border: solid $bw $c;
+	width: $d-ring; height: $d-ring;
+	box-shadow: $sh, inset $sh;
+	animation-duration: .5*$n-dots*$t
+}
+
+.dot {
+	--i: 0;
+	--j: 1;
+	--pos: rotate(calc(var(--i)*#{$ba})) translate(#{$tx});
+	--off: translate(#{$r-rot});
+	transform: var(--pos) rotate3d(0, var(--j), var(--k), 0deg) var(--off);
+	animation-direction: reverse;
+	animation-delay: calc(var(--i)*#{-$t/$n-dots});
+	
+	@for $i from 1 to $n-dots {
+		&:nth-child(#{$i + 1}) { --i: #{$i} }
+	}
+	
+	&:after {
+		margin: -.5*$d-dot;
+		width: $d-dot; height: $d-dot;
+		box-shadow: $sh;
+		background: $c;
+		animation-delay: inherit;
+		content: ''
+	}
+}
+
+@keyframes r {
+	0% {
+		transform: var(--pos) 
+							 rotate3d(0, var(--j), var(--k), 1turn) 
+							 var(--off)
+	} 
+}

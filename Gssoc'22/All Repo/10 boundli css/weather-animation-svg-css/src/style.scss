@@ -1,0 +1,76 @@
+@import 'compass/css3';
+
+$palette: (
+	dark: #5591b3 #4e4e4e #ffd960 #bebebe, 
+	light: #f1f9fd #c2c2c2 #ffefc5 #f7f7f7
+);
+$n: length(map-get($palette, dark));
+$d: 14em;
+$t: 4s;
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: 100vh;
+	animation: bg $t infinite
+}
+
+@keyframes bg {
+	@for $i from 0 to $n {
+		#{$i*25%}, #{$i*25% + 15%} {
+			background: nth(map-get($palette, light), $i + 1)
+		}
+	}
+}
+
+.weather {
+	overflow: hidden;
+	position: relative;
+	width: $d; height: $d;
+	border-radius: 50%;
+	box-shadow: 2px 3px 15px grey;
+	color: white
+}
+
+.state {
+	--x: 50%; --y: 50%;
+	position: absolute;
+	transform: scale(1.02);
+	fill: currentcolor;
+	animation: order $t steps(1) infinite, 
+		clip $t infinite;
+	
+	@for $i from 0 to $n {
+		$j: $i%2;
+		$k: floor($i/2);
+		
+		&:nth-child(#{$i + 1}) {
+			@if $j > 0 { --x: #{50% - pow(-1, $k)*105%} }
+			@else  { --y: #{50% + pow(-1, $k)*105%} }
+			background: nth(map-get($palette, dark), $i + 1);
+			animation-delay: ($i - 4)*$t/$n;
+		}
+ 	}
+}
+
+@keyframes order {
+	0%, 90% { z-index: 1 }
+	15% { z-index: 0 }
+}
+
+@keyframes clip {
+	0%, 25%, 100% { clip-path: circle(50%) }
+	25.001%, 90% { clip-path: circle(50% at var(--x) var(--y)) }
+}
+
+path {
+	fill: none;
+	stroke: currentcolor;
+	stroke-width: 10px;
+	stroke-linecap: round;
+	stroke-linejoin: round
+}
+
+.starshape { fill: url(#rg) }

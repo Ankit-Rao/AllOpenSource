@@ -1,0 +1,52 @@
+$r: 1em;
+$tx: 15em;
+$p: 10%;
+$t: 1.5s;
+
+html { overflow: hidden; }
+
+body {
+	margin: 0;
+	
+	&:before {
+		display: block;
+		background: radial-gradient(circle, #85a29e, #ffebbf, #f0d442, #f59330, #b22148, #000 $tx);
+	height: 100vh;
+		content: ''
+	}
+}
+
+div { position: absolute }
+
+.a {
+	z-index: 1;
+	top: 50%; left: 50%;
+	margin: calc(#{-$tx} + 2*#{-$r});;
+	padding: calc(#{$tx} + 2*#{$r});
+	background: #000;
+	filter: contrast(99);
+	mix-blend-mode: multiply;
+	animation: rot 4*$t linear infinite
+}
+
+@keyframes rot { to { transform: rotate(1turn) } }
+
+.spark {
+	top: 50%; left: 50%;
+	overflow: hidden;
+	position: absolute;
+	margin: -$r;
+	padding: $r;
+	border-radius: 50%;
+	--pos: rotate(calc(var(--i)*1turn/var(--n0)));
+	animation: mov $t ease-out 
+		calc((var(--i)+var(--j))*#{-2*$t}/(var(--n))) 
+		infinite alternate;
+	background: #fff;
+	filter: blur(9px)
+}
+
+@keyframes mov {
+	0%, #{$p} { transform: var(--pos) translate($tx) scale(.5, .25) }
+	#{100% - $p}, 100% { transform: var(--pos) }
+}

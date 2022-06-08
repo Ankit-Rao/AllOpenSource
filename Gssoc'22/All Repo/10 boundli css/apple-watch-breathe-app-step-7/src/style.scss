@@ -1,0 +1,43 @@
+$d: 8em;
+$t: 4s;
+$r: .5*$d;
+
+body {
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: #000
+}
+
+.watch-face {
+	position: relative;
+	animation: pulse $t cubic-bezier(.5, 0, .5, 1) infinite alternate;
+	animation-name: pulse, fix
+}
+
+.circle {
+	position: absolute;
+	margin: -$r;
+	width: $d; height: $d;
+	border-radius: 50%;
+	transform: rotate(var(--ca));
+	background: #61bea2;
+	mix-blend-mode: screen;
+	animation: circle $t infinite alternate;
+	
+	@supports not (mix-blend-mode: screen) {
+		opacity: .75
+	}
+}
+
+@keyframes circle {
+	to { transform: rotate(var(--ca)) translate($r) }
+}
+
+@keyframes pulse {
+  0% { transform: scale(.15) rotate(.5turn) }
+}
+
+@-moz-keyframes fix { to { filter: blur(0) } }

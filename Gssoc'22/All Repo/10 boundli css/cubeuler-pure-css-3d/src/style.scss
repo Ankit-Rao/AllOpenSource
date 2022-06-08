@@ -1,0 +1,94 @@
+@import 'compass/css3';
+
+$n: 12; // nymber of tiles
+$f: 1; // scaling factor
+$t: 4.2s; // animation duration
+$l: 6.75em/$f; // cube edge length
+$h: $l/$n; // tile height
+$m: .5*($n - 1);
+$b: 4%; // buffer
+$pk: 25% - $b; // peak percentage
+$p: .5*(100% - $b)/$n; // unit percentage
+
+body {
+	overflow: hidden;
+	height: 100vh;
+	perspective: 20em;
+	background: #269be7;
+}
+
+div {
+	position: absolute;
+	transform-style: preserve-3d;
+}
+
+.assembly {
+	top: 50%; left: 50%;
+	animation: r 4*$t ease-in-out infinite;
+}
+
+@keyframes r {
+	@for $i from 1 through 4 {
+		$a: $i*90deg;
+		
+		#{$i*25%} { transform: rotate($a) rotateY($a); }
+	}
+}
+
+.off { animation: a $t ease-in-out
+	infinite; }
+
+@keyframes a {
+	0%, #{.5*$b} { transform: none; }
+	50% { transform: scaleY(2.5) translateY(-.75*$m*$h); }
+	#{100% - .5*$b}, 100% { transform: scaleY(1) translateY(-1.5*$m*$h); }
+}
+
+.tile {
+	animation: inherit;
+	
+	@for $i from 0 to $n {
+		$cp: .5*$b + $i*$p; // current
+		
+		&:nth-child(#{$i + 1}) {
+			animation-name: a#{$i + 1};
+		}
+		
+		@at-root {
+			@keyframes a#{$i + 1} {
+				0%, #{$cp + 0*$pk} {
+					transform: translateY(($m - $i)*$h);
+				}
+				#{$cp + 2*$pk}, 100% {
+					transform: translateY((2.5*$m - $i)*$h) 
+						rotateY(.5turn);
+				}
+			}
+		}
+	}
+	
+	&__face {
+		margin: -.5*$h (-.5*$l);
+		width: $l; height: $h;
+		backface-visibility: hidden;
+		background: currentColor;
+		color: #fff;
+		
+		&:nth-child(-n + 4):nth-child(odd) {
+			color: #0174cb;
+		}
+		
+		&:nth-child(n + 5) {
+			margin-top: -.5*$l; height: $l;
+		}
+		
+		@for $i from 0 to 6 {
+			&:nth-child(#{$i + 1}) {
+				transform: 
+					if($i < 4, rotateY($i*90deg), 
+						rotateX(pow(-1, $i)*90deg)) 
+					translateZ(.5*if($i < 4, $l, $h))
+			}
+		}
+	}
+}

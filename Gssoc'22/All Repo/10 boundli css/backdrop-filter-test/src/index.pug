@@ -1,0 +1,64 @@
+- const DEFAULT_MIN = 0;
+- const DEFAULT_VAL = 1;
+- const DEFAULT_MAX = 1;
+
+- let data = {
+//- super values, max > 1
+- 	'brightness': { step: .01, max: 10 }, 
+- 	'contrast': { step: .01, max: 10 }, 
+- 	'saturate': { step: .01, max: 10 }, 
+
+//- in [0, 1] interval, default 0
+- 	'grayscale': { step: .01, val: 0 }, 
+- 	'invert': { step: .01, val: 0 }, 
+- 	'sepia': { step: .01, val: 0 }, 
+
+//- in [0, 1] interval, default 1
+//- 	'opacity': { step: .01 }, 
+
+//- others
+- 	'blur': { val: 0, max: 10, unit: 'px' }, 
+- 	'hue-rotate': { val: 0, max: 360, unit: 'deg' }
+- };
+
+- let fn = Object.keys(data);
+- let has_o = fn.indexOf('opacity') !== -1;
+
+body(style=`--n: ${fn.length}; --val: ${fn.map(f => `${f}(var(--${f}))`).join(' ')}`)
+	style
+		| body {
+		- fn.forEach(f => {
+			| --#{f}: #{(data[f].val || data[f].val === 0) ? data[f].val : DEFAULT_VAL}#{data[f].unit || ''};
+		- })
+		| }
+	section
+		article
+			h3 Hello Gorgeous!
+			p Remember all the blood we had...
+	aside
+		- fn.forEach(f => {
+			- let val = (data[f].val || data[f].val === 0) ? data[f].val : DEFAULT_VAL;
+			- let max = data[f].max || DEFAULT_MAX;
+			form(style=`--min: 0; --val: var(--${f}); --max: ${max}`)
+				input(id=f 
+							type='range' 
+							step=data[f].step 
+							value=val
+							max=max 
+							data-unit=data[f].unit)
+				label(for=f) #{f}
+				button(data-var=f data-val=val disabled) Reset
+		- })
+		p
+			strong Why #{has_o ? 'is' : 'are'} there no 
+				code drop-shadow
+				| #{has_o ? '' : ' and '}
+				if !has_o
+					code opacity
+				|  filter#{has_o ? '' : 's'}?
+			em Because #{has_o ? 'it is' : 'they are'} 
+				a(href='https://twitter.com/anatudor/status/1270001307584270336' target='_blank') a mess
+				| !
+		p
+			strong TODO:
+			em Make it responsive, for fuck's sake! Allow changing the function order by dragging the panels above.

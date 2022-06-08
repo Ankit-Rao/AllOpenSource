@@ -1,0 +1,48 @@
+$n: 4; // HAS TO match number of lines
+$m: 3; // second run is $m x faster
+$p: $m*100%/($m + 1); // boundary between two runs
+$u0: $p/$n; // unit blink interval, slow case
+$u1: (100% - $p)/$n; // unit blink interval, fast case
+$t: 2s;
+
+html {
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/bg_halloween_ghosts_bats.jpg) 50%/ cover;
+	height: 100%;
+	color: #fff;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin: 0;
+	padding-left: 8vw;
+	height: 100%;
+}
+
+.line {
+	transform: translatey(-25%);
+	opacity: .35;
+	font: 900 5vw/1.125 comic sans ms, cursive;
+	text-transform: uppercase;
+	animation: a $t cubic-bezier(1, 0, 1, 1) infinite;
+	
+	@for $i from 0 to $n {
+		&:nth-child(#{$i + 1}) {
+			animation-name: a#{$i + 1}
+		}
+		
+		@at-root {
+			@keyframes a#{$i + 1} {
+				#{$i*$u0}, #{($i + 1)*$u0}, #{$p + $i*$u1}, #{$p + ($i + 1)*$u1} { opacity: .35 }
+				#{($i + .5)*$u0}, #{$p + ($i + .5)*$u1} { opacity: .99 }
+			}
+		}
+	}
+	
+	&:first-letter {
+		display: inline-block;
+		font-size: 1.375em;
+		vertical-align: bottom;
+	}
+}

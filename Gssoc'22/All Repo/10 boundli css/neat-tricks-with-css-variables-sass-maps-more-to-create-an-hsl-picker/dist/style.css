@@ -1,0 +1,149 @@
+#btn--yp {
+  box-sizing: content-box;
+  position: fixed;
+  z-index: 9;
+  bottom: 1em;
+  right: 1em;
+  border: solid 1em transparent;
+  width: 4.625em;
+  height: 3.25em;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/icon-yp.svg) 50%/cover content-box;
+  font: 16px/1.25 trebuchet ms, sans-serif;
+  text-indent: 200vw;
+  text-shadow: none;
+  filter: grayscale(1) drop-shadow(0 0 1px #e8e0e0);
+  transition: 0.5s;
+  white-space: nowrap;
+}
+#btn--yp:before {
+  box-sizing: inherit;
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin: 1em -0.5em;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 5px;
+  background: #e8e0e0;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0vw;
+  white-space: normal;
+  animation: float 1s ease-in-out infinite alternate;
+  content: attr(data-txt);
+}
+#btn--yp:hover, #btn--yp:focus {
+  outline: none;
+  filter: grayscale(0) drop-shadow(0 0 1px crimson);
+}
+
+@keyframes float {
+  to {
+    transform: translateY(0.75em);
+  }
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  --basec: #333;
+  --llight: hsl(calc(var(--h)), 85%, 35%);
+  --hlight: hsl(calc(var(--h)), 100%, 65%);
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_03_bg_rainbow_landscape.jpg) 50%/cover hsl(calc(var(--h) + 180), 35%, 85%);
+  background-blend-mode: screen;
+  font: 1em/1.5 handlee, cursive;
+  --h: 0;
+  --s: 100;
+  --l: 50;
+}
+[id=h] {
+  --slist: hsl(0, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(30, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(60, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(90, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(120, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(150, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(180, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(210, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(240, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(270, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(300, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(330, calc(var(--s)*1%), calc(var(--l)*1%)), hsl(360, calc(var(--s)*1%), calc(var(--l)*1%));
+}
+[id=h] + :after {
+  counter-reset: h var(--h);
+  content: ": " counter(h);
+}
+
+[id=s] {
+  --slist: hsl(calc(var(--h)*1), 0%, calc(var(--l)*1%)), hsl(calc(var(--h)*1), 100%, calc(var(--l)*1%));
+}
+[id=s] + :after {
+  counter-reset: s var(--s);
+  content: ": " counter(s);
+}
+
+[id=l] {
+  --slist: hsl(calc(var(--h)*1), calc(var(--s)*1%), 0%), hsl(calc(var(--h)*1), calc(var(--s)*1%), 50%), hsl(calc(var(--h)*1), calc(var(--s)*1%), 100%);
+}
+[id=l] + :after {
+  counter-reset: l var(--l);
+  content: ": " counter(l);
+}
+
+h1 {
+  font-size: 4em;
+  line-height: 1.2;
+  text-shadow: 2px 2px 1px var(--hlight), 4px 4px 1px var(--basec);
+}
+h1 ~ :not([for]) {
+  margin-top: 2em;
+}
+
+input {
+  min-width: 8em;
+  width: 80vmin;
+  max-width: 35em;
+  height: 2.8125em;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+input, input::-webkit-slider-thumb, input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+}
+input::-webkit-slider-runnable-track {
+  border: none;
+  min-width: 8em;
+  width: 80vmin;
+  max-width: 35em;
+  height: 0.75em;
+  border-radius: 0.75em;
+  box-shadow: 0 0 0 1px #fff, 0 0 1px 2px var(--basec);
+  background: linear-gradient(90deg, var(--slist));
+}
+input::-webkit-slider-thumb {
+  margin-top: -0.5625em;
+  border: none;
+  width: 1.875em;
+  height: 1.875em;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 1px var(--basec);
+  background: gainsboro;
+}
+input:focus {
+  outline: none;
+}
+input:focus, input:focus + label {
+  --basec: var(--llight);
+  font-weight: 900;
+}
+
+label {
+  color: var(--basec);
+  font-size: 2em;
+}
+
+output {
+  min-width: 5.2em;
+  width: 52vmin;
+  max-width: 22.75em;
+  min-height: 2.48em;
+  height: 24.8vmin;
+  max-height: 10.85em;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px #222;
+  background: hsl(calc(var(--h)), calc(var(--s)*1%), calc(var(--l)*1%));
+}

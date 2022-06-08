@@ -1,0 +1,9 @@
+- let data = {
+- 	heart: { ico: '❤️', hue: 344 }, 
+- 	like: { ico: '👍', hue: 247 }, 
+- 	star: { ico: '⭐', hue: 48 }
+- }
+
+- for(let p in data)
+	- let v = data[p]
+	button(aria-label=p data-ico=v.ico style=`--hue: ${v.hue}deg`)

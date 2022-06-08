@@ -1,0 +1,7 @@
+- var n = 4;
+
+.custom-radios
+  - for(var i = 0; i < n; i++) {
+    input(type='radio' name='c' id=`c${i}` checked=i?null:'checked')
+    label(for=`c${i}`) c#{i}
+  - }

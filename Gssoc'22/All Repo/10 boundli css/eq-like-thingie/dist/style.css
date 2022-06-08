@@ -1,0 +1,117 @@
+body {
+  display: flex;
+  margin: 0;
+  height: 100vh;
+  background: #222;
+}
+
+section {
+  flex: 1;
+}
+
+#s0 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#s0 .bar {
+  margin: 0 0.5vmin calc(50vh - 4em) 0.5vmin;
+  padding: 0 0.25vmin;
+}
+
+#s1 {
+  position: relative;
+}
+#s1 .bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -4em;
+  transform-origin: 50% 0;
+  transform: rotate(calc(var(--i)*360deg/var(--n))) translatey(1.5em);
+}
+
+.bar {
+  width: 0.5em;
+  height: 8em;
+  border-radius: 4em;
+  animation: a 3.75s ease-in-out calc(var(--i)*-3.75s/var(--n)) infinite;
+}
+
+@keyframes a {
+  0% {
+    height: 6.3947687458em;
+  }
+  4% {
+    height: 7.181471814em;
+  }
+  8% {
+    height: 4.498968745em;
+  }
+  12% {
+    height: 4.1425313306em;
+  }
+  16% {
+    height: 6.0164697617em;
+  }
+  20% {
+    height: 3.2149735797em;
+  }
+  24% {
+    height: 4.2053595817em;
+  }
+  28% {
+    height: 6.3205882691em;
+  }
+  32% {
+    height: 6.7310157854em;
+  }
+  36% {
+    height: 3.4261726756em;
+  }
+  40% {
+    height: 2.9260930098em;
+  }
+  44% {
+    height: 2.9282392774em;
+  }
+  48% {
+    height: 6.8621777128em;
+  }
+  52% {
+    height: 1.467011127em;
+  }
+  56% {
+    height: 6.3427650912em;
+  }
+  60% {
+    height: 7.5960169698em;
+  }
+  64% {
+    height: 1.6074190532em;
+  }
+  68% {
+    height: 4.636459664em;
+  }
+  72% {
+    height: 0.6332432756em;
+  }
+  76% {
+    height: 7.1047672155em;
+  }
+  80% {
+    height: 6.4979669786em;
+  }
+  84% {
+    height: 5.6331869102em;
+  }
+  88% {
+    height: 4.6707782107em;
+  }
+  92% {
+    height: 0.5350791818em;
+  }
+  96% {
+    height: 5.854398963em;
+  }
+}

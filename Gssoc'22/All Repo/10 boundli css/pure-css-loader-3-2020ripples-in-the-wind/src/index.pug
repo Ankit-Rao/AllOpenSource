@@ -1,0 +1,20 @@
+- let n = 18, ba = 2*Math.PI/n;
+- let f = +(Math.tan(.5*ba)).toFixed(4);
+- let lim = 90, amp = .5*lim;
+
+body(style=`--f: ${f}`)
+	.wrap(style=`--n: ${n}`)
+		- for(let i = 0; i < n; i++)
+			.item(style=`--i: ${i};
+									 --ra0: ${Math.round(Math.random()*360)}deg;
+									 --ra1: ${Math.round(Math.random()*360)}deg;
+									 --sxa0: ${Math.round(Math.random()*lim - amp)}deg;
+									 --sxa1: ${Math.round(Math.random()*lim - amp)}deg;
+									 --sya0: ${Math.round(Math.random()*lim - amp)}deg;
+									 --sya1: ${Math.round(Math.random()*lim - amp)}deg;
+									 --fx0: ${(.75 + .5*Math.random()).toFixed(2)};
+									 --fx1: ${(.75 + .5*Math.random()).toFixed(2)};
+									 --fy0: ${(.75 + .5*Math.random()).toFixed(2)};
+									 --fy1: ${(.75 + .5*Math.random()).toFixed(2)};
+									 --t: ${(.7 + 2*Math.random()).toFixed(2)}s;
+									 --dt: ${-1*(Math.random()).toFixed(2)}`)

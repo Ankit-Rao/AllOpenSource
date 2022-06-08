@@ -1,0 +1,11 @@
+- var n = [12, 15], m = n.length;
+- var palette = [
+- 	['#8cd0e5', '#376888', '#826b88', '#de786a', '#f8b976', '#fcddc9'], 
+- 	['#a95a9d', '#fd5590', '#e97f02', '#f8ca00', '#8a9b0f']
+- ];
+- var q = palette.map(c => c.length)
+
+- for(var k = 0; k < m; k++)
+	section(id=`s${k}` style=`--n: ${n[k]}`)
+		- for(var i = 0; i < n[k]; i++)
+			.bar(style=`--i: ${i}; background: ${palette[k][i%q[k]]}`)

@@ -1,0 +1,27 @@
+- let hue = 0, sat = 100, lum = 15;
+
+body(style=`--h: ${hue}; --s: ${sat}; --l: ${lum}`)
+	form
+		.wrap(style=`--val: var(--h); --max: 360`)
+			label(for='h') Hue
+			input#h(type='range' value=hue max=360)
+			output(for='h' data-unit='°')
+	section
+		.graphic
+			.tri
+			.axs.sat(data-lbl='Saturation')
+			.axs.lum(data-lbl='Lightness')
+			code.lbl(style=`--s: 0; --l: 0`)
+			code.lbl(style=`--s: 0; --l: 50`)
+			code.lbl(style=`--s: 0; --l: 100`)
+			code.lbl(style=`--s: 100; --l: 50`)
+			output.pos(for='h s l')
+	form
+		.wrap(style=`--val: var(--s)`)
+			label(for='s') Saturation
+			input#s(type='range' value=sat)
+			output(for='s' data-unit='%')
+		.wrap(style=`--val: var(--l)`)
+			label(for='l') Lightness
+			input#l(type='range' value=lum)
+			output(for='l' data-unit='%')

@@ -1,0 +1,63 @@
+@import 'compass/css3';
+
+$l: 5em;
+$c: #f7cb51 #289eaa #e35941 #c3db6d #3c4951;
+$t: .625s;
+
+body { background: #f1e6d9 }
+
+div { position: absolute }
+
+.cube {
+	top: 50%; left: 50%;
+	transform-style: preserve-3d;
+	--oy: #{.5*$l};
+	transform-origin: 50% var(--oy);
+	--pos: rotatex(-35deg) rotatey(45deg);
+	--y: -25vh;
+	transform: var(--pos) 
+		rotatey(calc(var(--ay0) + var(--ay1)))
+		translatey(var(--y)) 
+		scaley(var(--fy));
+	animation: 
+		step 4*$t steps(4) infinite, 
+		fine $t ease-in-out infinite, 
+		jump $t ease-in-out infinite alternate, 
+		s $t ease-in infinite alternate, 
+		orig $t steps(1) infinite alternate;
+	
+	&__face {
+		--i: 0;
+		--j: calc(1 - var(--i));
+		margin: -.5*$l;
+		width: $l; height: $l;
+		backface-visibility: hidden;
+		transform: rotate3d(var(--i), var(--j), 0, calc(var(--m, 1)*90deg)) 
+			translatez(.5*$l);
+		
+		@for $i from 0 to 5 {
+			&:nth-child(#{$i + 1}) {
+				@if $i%3 != 1 { --m: #{$i} }
+				@elseif $i == 4 { --i: 1 }
+				
+				background: nth($c, $i + 1)
+			}
+		}
+	}
+}
+
+@keyframes step { to { --ay0: 1turn } }
+
+@keyframes fine { to { --ay1: 90deg } }
+
+@keyframes jump { 0%, 5% { --y: 25vh } }
+
+@keyframes s {
+	0%, 5% { --fy: .25 }
+	65% {
+		--fy: 1;
+		animation-timing-function: ease-out
+	}
+}
+
+@keyframes orig { 50% { --oy: #{-.5*$l} } }

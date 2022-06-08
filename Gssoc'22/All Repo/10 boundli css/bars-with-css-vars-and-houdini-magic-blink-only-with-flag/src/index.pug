@@ -1,0 +1,11 @@
+- var nd = 4, n2d = Math.pow(nd, 2);
+
+.a3d(style=`--nd: ${nd}`)
+	- for(var j = 0; j < n2d; j++) {
+		- var i = j%nd, k = ~~(j/nd);
+		.bar(style=`--i: ${i}; --k: ${k}; 
+								--f: ${(Math.round(nd*Math.random()) || .25)/nd}`)
+			- var nf = 3;
+			- for(var i = 0; i < nf; i++)
+				.bar__face(style=`--idx: ${i}; --f: ${i%2 ? 'calc(1/var(--nd))' : 1}`)
+	- }

@@ -1,0 +1,5 @@
+- def nest(cls, n);
+-   return '' unless n > 0;
+-   "<div class='#{cls}'>#{nest(cls, n - 1)}#{nest(cls, n - 1)}</div>"; end
+
+= nest('☯️', 6)

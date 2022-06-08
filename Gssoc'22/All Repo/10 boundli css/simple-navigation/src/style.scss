@@ -1,0 +1,46 @@
+$c: #5bd0dc, #236d95, #2d4a8f;
+$alpha: .1;
+
+body { background: #15527d; }
+
+ul {
+	display: flex;
+	justify-content: center;
+	margin: 1em auto;
+	padding: 0;
+	width: 30em;
+	list-style: none;
+	border-radius: 2em;
+	box-shadow: inset 0 1px #aaf7f8, 
+		inset 0 -1px #15527d, 
+		0 8px 5px -2px rgba(#000, .75);
+	background: linear-gradient(
+			rgba(nth($c, 1), $alpha) 50%, 
+			rgba(nth($c, 3), $alpha) 0), 
+		radial-gradient(#{at 50% 0}, 
+			nth($c, 1) 40%, nth($c, 2), nth($c, 3));
+	font: 700 1.25em/ 2.5 sans-serif;
+}
+
+li {	
+	&:not(:last-child) {
+		border-right: solid 1px #28638e;
+	}
+	
+	&:not(:first-child) {
+		border-left: solid 1px #72d2e0;
+	}
+}
+
+a {
+	display: block;
+	padding: 0 1em;
+	color: #c2d7ff;
+	text-decoration: none;
+	text-shadow: 1px 1px #080e77;
+	
+	&:hover {
+		color: #0a1b6f;
+		text-shadow: 1px 1px #a5b1e5;
+	}
+}

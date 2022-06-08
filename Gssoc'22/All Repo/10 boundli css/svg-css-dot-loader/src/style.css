@@ -1,0 +1,12 @@
+body {
+	display: grid;
+	place-content: center;
+	grid-template-columns: 13em;
+	margin: 0;
+	height: 100vh;
+	background: #222
+}
+
+g { animation: a 2s ease-in-out infinite }
+
+@keyframes a { to { transform: rotate(1turn) } }

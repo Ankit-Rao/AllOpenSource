@@ -1,0 +1,35 @@
+- var star_n = 5;
+- var d = 160, o = -.5*d, r = .0325*d;
+
+mixin star(n, ro, k, id)
+	- var n = Math.max(n || 5, 3);
+	- var ro = ro || .2*d;
+	- var ri = (k || .5)*ro;
+	- var ba = Math.PI/n;
+	- var v = [];
+	- for(var i = 0; i < 2*n; i++) {
+		- var cr = i%2 ? ri : ro;
+		- var ca = i*ba - .5*Math.PI;
+		- var x = Math.round(cr*Math.cos(ca));
+		- var y = Math.round(cr*Math.sin(ca));
+		- v.push([x, y].join().replace(',-', '-'))
+	- }
+	path(d=`M${v.join().replace(',-', '-')}`)
+	
+.wrap
+	svg(width='0' height='0')
+		filter#shadow(x='-95%' y='-95%' width='290%' height='290%')
+			feGaussianBlur(in='SourceAlpha' stdDeviation='29' result='blur')
+			feFlood(flood-color='currentColor')
+			feComposite(in2='blur' operator='in')
+			feMerge
+				feMergeNode
+				feMergeNode(in='SourceGraphic')
+		symbol#star(viewBox=[o, o, d, d].join(' '))
+			+star()
+	while star_n--
+		svg.star
+			use(xlink:href='#star')
+	.spin
+		svg#rocket(viewBox=[o, -.75*d, d, 1.5*d].join(' '))
+			path(d=`M0 ${.075*d}h${.075*d}l${.0375*d} ${.0875*d} ${.0375*d}${-.0125*d} ${.05*d}${-.1375*d}${-.0875*d}${-.0875*d}Q${.15*d}${.75*o + .075*d} 0${o + .075*d}${-.15*d}${.75*o + .075*d}-${.1125*d} ${-.15*d + .075*d}l${-.0875*d} ${.0875*d} ${.05*d} ${.1375*d} ${.0375*d} ${.0125*d} ${.0375*d}${-.0875*d}H0V${-.275*d}a${r} ${r} 0 0 1 0${-2*r} ${r} ${r} 0 0 1 0 ${2*r}H0z`)

@@ -1,0 +1,58 @@
+@property --a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+body, div {
+  display: grid;
+}
+
+div, ::before, ::after {
+  grid-area: 1/1;
+  place-self: center;
+}
+
+body {
+  background: #333;
+  filter: drop-shadow(4px 4px 13px #000);
+}
+body::before, body::after {
+  padding: calc(47vmin - 2em);
+  border-radius: 1em;
+  content: "";
+}
+body::before {
+  background: linear-gradient(var(--a), #612e8d, #1674bc, #00a396, #81c540, #f5b52e, #ed5b35, #ea225e, #c22286, #612e8d) #666;
+  background-blend-mode: screen;
+  animation: a 5s linear infinite reverse;
+}
+body::after {
+  background: inherit;
+  mix-blend-mode: lighten;
+}
+
+div {
+  display: grid;
+  clip-path: inset(2em round 1em);
+  filter: contrast(99) blur(1px);
+  mix-blend-mode: darken;
+}
+div::before, div::after {
+  padding: 47vmin;
+  background: repeating-conic-gradient(#777 0% 25%, #fafafa 0% 50%) 50%/4em 4em round;
+  content: "";
+}
+div::before {
+  filter: blur(9px);
+}
+div::after {
+  background: conic-gradient(from var(--a, 0deg), #fafafa, 15%, #888, 85%, #fafafa);
+  mix-blend-mode: multiply;
+  animation: a 7s linear infinite;
+}
+
+@keyframes a {
+  to {
+    --a: 1turn ;
+  }
+}

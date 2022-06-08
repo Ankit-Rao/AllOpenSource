@@ -1,0 +1,38 @@
+@mixin grass($n: 4) {
+	$base: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/17_07_art_grass_';
+	$bg-imgs: ();
+	$bg-poss: ();
+	$bg-size: ();
+	
+	@for $i from 0 to $n {
+		$bg-imgs: $bg-imgs, url('#{$base}#{$i}.svg');
+		$size: (20 + random(80))*1px;
+		$bg-poss: $bg-poss, -.01*random(100)*$size 100%;
+		$bg-size: $bg-size, $size;
+	}
+	
+	background: $bg-imgs;
+	background-position: $bg-poss;
+	background-repeat: repeat-x;
+	background-size: $bg-size;
+}
+
+html {
+	overflow: hidden;
+	height: 100vh;
+	@include grass
+}
+
+.ball {
+	position: absolute;
+	bottom: 0;
+	left: calc(var(--ball-x) - var(--ball-r));
+	--ball-d: calc(2*var(--ball-r, 35px));
+	width: var(--ball-d); height: var(--ball-d);
+	border-radius: 50%;
+	transform: translatey(calc(-1*var(--ball-h)));
+	background: radial-gradient(circle at 35% 25%, 
+		mix(white, mediumvioletred, 85%), 
+		mediumvioletred, darkmagenta);
+	filter: hue-rotate(var(--ball-ang));
+}

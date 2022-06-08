@@ -1,0 +1,48 @@
+$icn-url: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/2017/check-icn.svg';
+$c: #2ecc71 #3498db #f1c40f #e74c3c;
+$d: 2.5em;
+
+html, body { height: 100% }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #333;
+}
+
+.custom-radios {
+  [type='radio'] {
+    position: absolute;
+    right: 100vw;
+    
+    + label {
+      display: inline-block;
+      overflow: hidden;
+      position: relative;
+      margin: 0 4px;
+      border: 2px solid #fff;
+      width: $d; height: $d;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(#000, 0.33);
+      text-indent: $d;
+      cursor: pointer;
+      
+      @for $i from 1 through length($c) {
+        &:nth-of-type(#{$i}) { background: nth($c, $i) }
+      }
+      
+      &:before {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        opacity: 0;
+        background: url($icn-url) 50%/ 50% no-repeat;
+        transition: opacity .3s ease;
+        content: '';
+      }
+    }
+    
+    &:checked + label:before { opacity: 1 }
+  }
+}

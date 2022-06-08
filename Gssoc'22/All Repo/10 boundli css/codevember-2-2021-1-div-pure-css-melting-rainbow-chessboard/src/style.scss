@@ -1,0 +1,66 @@
+$r: 47vmin;
+$o: 2em;
+$b: 9;
+$c: #612e8d, #1674bc, #00a396, #81c540, #f5b52e, #ed5b35, #ea225e, #c22286;
+$g: #fafafa;
+
+@property --a {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false
+}
+
+body, div { display: grid }
+
+div, ::before, ::after {
+	grid-area: 1/ 1;
+	place-self: center
+}
+
+body {
+	background: #333;
+	filter: drop-shadow(4px 4px 13px #000);
+	
+	&::before, &::after {
+		padding: calc(#{$r} - #{$o});
+		border-radius: .5*$o;
+		content: ''
+	}
+	
+	&::before {
+		background: linear-gradient(var(--a), $c, nth($c, 1)) #666;
+		background-blend-mode: screen;
+		animation: a 5s linear infinite reverse
+	}
+	
+	&::after {
+		background: inherit;
+		mix-blend-mode: lighten
+	}
+}
+
+div {
+	display: grid;
+	clip-path: inset($o round .5*$o);
+	filter: contrast(11*$b) blur(1px);
+	mix-blend-mode: darken;
+	
+	&::before, &::after {
+		padding: $r;
+		background: 
+			repeating-conic-gradient(#777 0% 25%, $g 0% 50%) 
+				50%/ 4em 4em round;
+		content: ''
+	}
+	
+	&::before { filter: blur($b*1px) }
+	
+	&::after {
+		background: 
+			conic-gradient(from var(--a, 0deg), $g, 15%, #888, 85%, $g);
+		mix-blend-mode: multiply;
+		animation: a 7s linear infinite
+	}
+}
+
+@keyframes a { to { --a: 1turn } }

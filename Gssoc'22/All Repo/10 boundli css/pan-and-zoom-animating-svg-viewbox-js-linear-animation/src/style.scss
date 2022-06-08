@@ -1,0 +1,44 @@
+* { padding: 0 }
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: 100vh;
+}
+
+p { font: 1.125em/2 trebuchet ms, tahoma, sans-serif }
+
+code {
+	display: inline-block;
+	padding: 0 .375em .125em;
+	border-radius: 5px;
+	background: #ccc;
+	font: 900 1.125em/1.25 consolas, monaco, monospace
+}
+
+svg {
+	width: 96vw;
+	box-shadow: 0 0 1px 1px #333
+}
+
+[d] {
+	fill: #333;
+	transition: .7s;
+	cursor: pointer
+}
+
+[d]:hover { fill: #f90 }
+
+.msg {
+	height: 2em;
+	
+	&:not(:empty) {
+		padding: .25em .75em;
+		border-radius: 5px;
+		background: #b53;
+		color: #fff
+	}
+}
